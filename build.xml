@@ -19,17 +19,13 @@
   <get src="https://getcomposer.org/composer.phar" dest="${basedir}/composer.phar" skipexisting="true"/>
   <exec executable="php">
    <arg value="composer.phar"/>
-   <arg value="run-script"/>
-   <arg value="pre-install-cmd"/>
-  </exec>
-  <exec executable="php">
-   <arg value="composer.phar"/>
    <arg value="install"/>
   </exec>
  </target>
  <target name="test" description="Run tests" depends="phpunit,codeclimate"/>
  <target name="phpunit" description="Generate Reports">
-  <touch file="${basedir}/var/log/test.log"/>
+  <mkdir dir="${basedir}/var/logs"/>
+  <touch file="${basedir}/var/logs/test.log"/>
   <exec executable="${basedir}/vendor/bin/phpunit">
   </exec>
  </target>
