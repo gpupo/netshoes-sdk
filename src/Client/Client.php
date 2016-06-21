@@ -23,7 +23,7 @@ class Client extends ClientAbstract implements ClientInterface
         return [
             'client_id'     => false,
             'access_token'  => false,
-            'base_url'      => 'https://{VERSION}.netshoes.com/api/v2',
+            'base_url'      => 'https:api-//{VERSION}.netshoes.com.br/api/v1',
             'version'       => 'sandbox',
             'verbose'       => false,
             'sslVersion'    => 'SecureTransport',

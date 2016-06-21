@@ -98,12 +98,6 @@ Parâmetro | Descrição | Valores possíveis
 
 ---
 
-## Contributors
-
-- [@gpupo](https://github.com/gpupo)
-- [All Contributors](https://github.com/gpupo/netshoes-sdk/contributors)
-
----
 
 ## Links
 
