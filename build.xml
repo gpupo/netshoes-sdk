@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="netshoes-sdk" default="composer-rebuild">
+ <target name="composer-rebuild" depends="clean,composer,libraries"/>
+ <target name="clean" description="Cleanup build artifacts">
+  <delete dir="${basedir}/vendor"/>
+  <delete file="${basedir}/composer.lock"/>
+ </target>
+ <target name="composer" depends="clean" description="Install dependencies with Composer">
+  <tstamp>
+   <format property="thirty.days.ago" pattern="MM/dd/yyyy hh:mm aa" offset="-30" unit="day"/>
+  </tstamp>
+  <delete>
+   <fileset dir="${basedir}">
+    <include name="composer.phar" />
+    <date datetime="${thirty.days.ago}" when="before"/>
+   </fileset>
+  </delete>
+  <get src="https://getcomposer.org/composer.phar" dest="${basedir}/composer.phar" skipexisting="true"/>
+  <exec executable="php">
+   <arg value="composer.phar"/>
+   <arg value="run-script"/>
+   <arg value="pre-install-cmd"/>
+  </exec>
+  <exec executable="php">
+   <arg value="composer.phar"/>
+   <arg value="install"/>
+  </exec>
+ </target>
+ <target name="test" description="Run tests" depends="phpunit,codeclimate"/>
+ <target name="phpunit" description="Generate Reports">
+  <touch file="${basedir}/var/log/test.log"/>
+  <exec executable="${basedir}/vendor/bin/phpunit">
+  </exec>
+ </target>
+ <target name="codeclimate" description="Upload Clover Report">
+  <exec executable="${basedir}/vendor/bin/test-reporter">
+   <env key="CODECLIMATE_REPO_TOKEN" value="b1c4d409f70d29b8d9394116f4bc7097556ae5080b69a2297a095e6946ded76f"/>
+  </exec>
+  <delete dir="${basedir}/build"/>
+ </target>
+ <target name="libraries" depends="composer" description="List dependencies">
+   <echo output="Resources/doc/libraries-list.md" append="false">#List of dependencies:
+```
+</echo>
+   <exec executable="php">
+    <redirector output="Resources/doc/libraries-list.md" alwayslog="true" append="true"/>
+     <arg value="composer.phar"/>
+     <arg value="show"/>
+   </exec>
+   <echo output="Resources/doc/libraries-tree.md" append="false">#Tree of dependencies:
+```
+</echo>
+   <exec executable="php">
+    <redirector output="Resources/doc/libraries-tree.md" alwayslog="true" append="true"/>
+     <arg value="composer.phar"/>
+     <arg value="show"/>
+     <arg value="-t"/>
+   </exec>
+ </target>
+</project>
