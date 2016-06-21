@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="netshoes-sdk" default="composer-rebuild">
+<project name="gpupo-component" default="composer-rebuild">
+  <property file="build.properties"/>
  <target name="composer-rebuild" depends="clean,composer,libraries"/>
  <target name="clean" description="Cleanup build artifacts">
   <delete dir="${basedir}/vendor"/>
@@ -34,7 +35,7 @@
  </target>
  <target name="codeclimate" description="Upload Clover Report">
   <exec executable="${basedir}/vendor/bin/test-reporter">
-   <env key="CODECLIMATE_REPO_TOKEN" value="b1c4d409f70d29b8d9394116f4bc7097556ae5080b69a2297a095e6946ded76f"/>
+   <env key="CODECLIMATE_REPO_TOKEN" value="${codeclimate.token}"/>
   </exec>
   <delete dir="${basedir}/build"/>
  </target>
