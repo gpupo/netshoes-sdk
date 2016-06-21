@@ -1,0 +1,38 @@
+{
+    "name": "gpupo/netshoes-sdk",
+    "description": "SDK Não Oficial para integração a partir de aplicações PHP com APIs da Netshoes Marketplace",
+    "homepage": "http://www.g1mr.com/netshoes-sdk/",
+    "authors": [
+        {
+            "name": "Gilmar Pupo",
+            "email": "g@g1mr.com"
+        }
+    ],
+    "keywords": ["netshoes", "marketplace", "sdk", "api"],
+    "license": "MIT",
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "ext-curl" : "*",
+        "gpupo/common-sdk": "~2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gpupo\\NetshoesSdk\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gpupo\\Tests\\NetshoesSdk\\": "tests"
+        }
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "touch var/log/tests.log"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
