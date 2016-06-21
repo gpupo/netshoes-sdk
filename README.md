@@ -1,14 +1,9 @@
-[![Build Status](https://secure.travis-ci.org/gpupo/netshoes-sdk.png?branch=master)](http://travis-ci.org/gpupo/netshoes-sdk)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/netshoes-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/netshoes-sdk/?branch=master)
-[![Codacy Badge](https://www.codacy.com/project/badge/1289591352044e509187b0a9a3699332)](https://www.codacy.com/app/g/netshoes-sdk)
-[![Code Climate](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/gpa.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk)
-[![Test Coverage](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/coverage.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk/coverage)
-[![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EK6F2WRKG7GNN&item_name=netshoes-sdk)
-
-
 # Netshoes-SDK
 
 SDK Não Oficial para integração a partir de aplicações PHP com as APIs da Netshoes Marketplace
+
+[![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EK6F2WRKG7GNN&item_name=netshoes-sdk)
+
 
 ## Requisitos
 
@@ -21,9 +16,11 @@ Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/b
 
 ## Indicadores de qualidade
 
-[![Build Status](https://secure.travis-ci.org/gpupo/Netshoes.png?branch=master)](http://travis-ci.org/gpupo/Netshoes)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/Netshoes/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/Netshoes/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/e4572276-e535-43b3-88ff-0bbc3cdcff3f/small.png)](https://insight.sensiolabs.com/projects/e4572276-e535-43b3-88ff-0bbc3cdcff3f)
+[![Build Status](https://secure.travis-ci.org/gpupo/netshoes-sdk.png?branch=master)](http://travis-ci.org/gpupo/netshoes-sdk)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/netshoes-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/netshoes-sdk/?branch=master)
+[![Codacy Badge](https://www.codacy.com/project/badge/1289591352044e509187b0a9a3699332)](https://www.codacy.com/app/g/netshoes-sdk)
+[![Code Climate](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/gpa.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk)
+[![Test Coverage](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/coverage.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk/coverage)
 
 ## Agradecimentos
 
@@ -97,7 +94,7 @@ Parâmetro | Descrição | Valores possíveis
     use Monolog\Handler\StreamHandler;
     //..
     $logger = new Logger('foo');
-    $logger->pushHandler(new StreamHandler('Resources/logs/main.log', Logger::DEBUG));
+    $logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
     $netshoesSdk->setLogger($logger);
 
 ---
@@ -114,8 +111,8 @@ Parâmetro | Descrição | Valores possíveis
 * [Netshoes-sdk Composer Package](https://packagist.org/packages/gpupo/netshoes-sdk) no packagist.org
 * [Documentação Oficial](http://developers.netshoes.com.br/api-portal/)
 * [SDK Oficial](https://github.com/netshoes/marketplace-api-sdk-php)
-* [Marketplace-bundle Composer Package](https://packagist.org/packages/gpupo/markethub-bundle) - Integração deste pacote com Symfony2
-* [Outras SDKs para o Ecommerce do Brasil](https://github.com/gpupo/common-sdk)
+* [Marketplace-bundle Composer Package](http://www.g1mr.com/MarkethubBundle/) - Integração deste pacote com Symfony
+* [Outras SDKs para o Ecommerce do Brasil](http://www.g1mr.com/common-sdk/)
 
 ---
 
@@ -155,7 +152,7 @@ Você poder criar um arquivo chamado ``app.json`` com suas configurações perso
 Utilize como modelo o arquivo ``app.json.dist``
 
 
-*Dica*: Verifique os logs gerados em ``Resources/logs/main.log``
+*Dica*: Verifique os logs gerados em ``var/log/main.log``
 
 ---
 
@@ -164,7 +161,7 @@ Utilize como modelo o arquivo ``app.json.dist``
 <!--
 Comando para geração da lista:
 
-phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/Gpupo\\Tests\\NetshoesSdk\\/### /g' > Resources/logs/testdox.txt
+phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/Gpupo\\Tests\\NetshoesSdk\\/### /g' > var/log/testdox.txt
 -->
 
 A lista abaixo é gerada a partir da saída da execução dos testes:

@@ -26,9 +26,6 @@
         }
     },
     "scripts": {
-        "pre-install-cmd": [
-            "touch var/log/tests.log"
-        ]
     },
     "config": {
         "preferred-install": "dist"
