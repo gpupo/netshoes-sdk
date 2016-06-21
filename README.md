@@ -24,10 +24,9 @@ Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/b
 
 ## Agradecimentos
 
-* A todos os que [contribuiram com patchs](https://github.com/gpupo/Netshoes/contributors)
-* Aos que [fizeram sugestões importantes](https://github.com/gpupo/Netshoes/issues)
-* A todos os desenvolvedores que criaram as [bibliotecas utilizadas neste componente](https://github.com/gpupo/Netshoes/blob/master/Resources/doc/libraries-list.md)
-
+* A todos os que [contribuiram com patchs](https://github.com/gpupo/netshoes-sdk/contributors);
+* Aos que [fizeram sugestões importantes](https://github.com/gpupo/netshoes-sdk/issues);
+* Aos desenvolvedores que criaram as [bibliotecas utilizadas neste componente](https://github.com/gpupo/netshoes-sdk/blob/master/Resources/doc/libraries-list.md).
 
  _- [Gilmar Pupo](http://www.g1mr.com/)_
 
