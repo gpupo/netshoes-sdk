@@ -12,7 +12,7 @@ namespace Gpupo\NetshoesSdk\Entity\Templates;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
-class Templates extends EntityAbstract implements EntityInterface
+class TemplatesCollection extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
     {
