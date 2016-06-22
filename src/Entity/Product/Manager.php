@@ -20,12 +20,11 @@ class Manager extends ManagerAbstract
     protected $entity = 'Product';
 
     protected $maps = [
-        'save'         => ['POST', '/loads/products'],
-        'updateStatus' => ['PUT', '/sellerItems/{itemId}/status'], //Ativação/Desativação de produto no Marketplace
-        'updateStock'  => ['PUT', '/sellerItems/{itemId}/stock'], //Atualização do estoque do item
-        'updatePrice'  => ['PUT', '/sellerItems/{itemId}/prices'], //Atualização do preço do item
-        'findById'     => ['GET', '/loads/products/{itemId}'],
-        'fetch'        => ['GET', '/sellerItems?_offset={offset}&_limit={limit}&status={status}&createdAt={createdAt}'],
+        'save'         => ['POST', '/products'],
+        'findById'     => ['GET', '/products/{itemId}'],
+        'patch'        => ['PATCH', '/products/{itemId}'],
+        'update'       => ['PUT', '/products/{itemId}'],
+        'fetch'        => ['GET', '/products?page={offset}&size={limit}'],
     ];
 
     /**

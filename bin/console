@@ -2,14 +2,11 @@
 <?php
 
 /*
- * This file is part of gpupo/netshoes-sdk
- *
- * (c) Gilmar Pupo <g@g1mr.com>
- *
+ * This file is part of gpupo component
+ * Created by Gilmar Pupo <g@g1mr.com>
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
- * @version 1
+ * For more information, see <http://www.g1mr.com/>.
  */
 require __DIR__.'/../vendor/autoload.php';
 
@@ -26,12 +23,22 @@ $app->appendCommand('credential:test', 'Testa a validade de suas credenciais')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
         $list = $app->processInputParameters([], $input, $output);
 
-        if ($app->factorySdk($list)->factoryManager('product')->fetch()) {
+        if ($app->factorySdk($list)->factoryManager('templates')->getBrands()) {
             $output->writeln('<info>Success!</info>');
         } else {
             $output->writeln('<error>Error</error>');
         }
     });
+
+$app->appendCommand('templates:brands', 'Exibe a lista de marcas')
+    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+        $list = $app->processInputParameters([], $input, $output);
+
+        $brands = $app->factorySdk($list)->factoryManager('templates')->getBrands();
+
+        var_dump($brands->toArray());
+    });
+
 
 $app->appendCommand('product:status', 'Consulta a situação de um produto')
     ->addArgument('skuSellerId', InputArgument::REQUIRED, 'Lojista Sku Id')
@@ -39,15 +46,12 @@ $app->appendCommand('product:status', 'Consulta a situação de um produto')
         $list = $app->processInputParameters([], $input, $output);
 
 $input->getArgument('skuSellerId');
-return print_r($list);
-        if ($app->factorySdk($list)->factoryManager('product')->fetch()) {
-            $output->writeln('<info>Success!</info>');
-        } else {
-            $output->writeln('<error>Error</error>');
-        }
-    });
-
-
+    if ($app->factorySdk($list)->factoryManager('product')->fetch()) {
+        $output->writeln('<info>Success!</info>');
+    } else {
+        $output->writeln('<error>Error</error>');
+    }
+});
 
 
 $app->run();
