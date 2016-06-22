@@ -18,9 +18,6 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
     protected function fetchDefaultParameters()
     {
         return [
-            'status'     => '',
-            'createdAt'  => '',
-            'purchaseAt' => '',
         ];
     }
 
@@ -32,11 +29,6 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         if ( ! empty($data)) {
             return $this->factoryEntityCollection($data);
         }
-    }
-
-    protected function factoryEntityCollection($data)
-    {
-        return $this->factoryNeighborObject($this->getEntityName() . 'Collection', $data);
     }
 
     /**

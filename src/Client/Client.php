@@ -19,15 +19,15 @@ class Client extends ClientAbstract implements ClientInterface
         return [
             'client_id'     => false,
             'access_token'  => false,
-            'base_url'      => 'https:api-//{VERSION}.netshoes.com.br/api/v1',
+            'base_url'      => 'http://api-{VERSION}.netshoes.com.br/api/v1',
             'version'       => 'sandbox',
-            'verbose'       => false,
+            'verbose'       => true,
             'sslVersion'    => 'SecureTransport',
             'cacheTTL'      => 3600,
             'sslVerifyPeer' => true,
         ];
     }
-
+    
     protected function renderAuthorization()
     {
         $list = [];

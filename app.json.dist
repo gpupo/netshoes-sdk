@@ -4,5 +4,5 @@
     "env": "sandbox",
     "protocol": "http",
     "sslVersion": "SecureTransport",
-    "registerPath": false
+    "registerPath": "var/logs/"
 }

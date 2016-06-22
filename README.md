@@ -127,11 +127,11 @@ Personalize os parâmetros!
 
 Lista de comandos disponíveis:
 
-    ./bin/main
+    ./bin/console
 
 Você pode verificar suas credenciais Netshoes na linha de comando:
 
-    ./bin/main credential
+    ./bin/console credential
 
 Você poder criar um arquivo chamado ``app.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando:
 
