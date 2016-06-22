@@ -20,11 +20,11 @@ class Manager extends ManagerAbstract
     protected $entity = 'Product';
 
     protected $maps = [
-        'save'         => ['POST', '/products'],
-        'findById'     => ['GET', '/products/{itemId}'],
-        'patch'        => ['PATCH', '/products/{itemId}'],
-        'update'       => ['PUT', '/products/{itemId}'],
-        'fetch'        => ['GET', '/products?page={offset}&size={limit}'],
+        'save'     => ['POST', '/products'],
+        'findById' => ['GET', '/products/{itemId}'],
+        'patch'    => ['PATCH', '/products/{itemId}'],
+        'update'   => ['PUT', '/products/{itemId}'],
+        'fetch'    => ['GET', '/products?page={offset}&size={limit}'],
     ];
 
     /**
@@ -48,7 +48,7 @@ class Manager extends ManagerAbstract
             }
         }
 
-        $atualizado = ! empty($updated);
+        $atualizado = !empty($updated);
 
         $context = [
             'id'         => $entity->getId(),

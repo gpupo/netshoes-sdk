@@ -9,7 +9,6 @@
  */
 namespace Gpupo\Tests\NetshoesSdk\Entity\Templates;
 
-use Gpupo\NetshoesSdk\Entity\Product\Product;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 class BrandTest extends TestCaseAbstract

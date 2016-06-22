@@ -17,7 +17,7 @@ class Templates extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
-            'items'   => 'object',
+            'items' => 'object',
             //'links'         => 'object',
         ];
     }

@@ -26,7 +26,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
      */
     protected function fetchPrepare($data)
     {
-        if ( ! empty($data)) {
+        if (!empty($data)) {
             return $this->factoryEntityCollection($data);
         }
     }
@@ -38,7 +38,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
     {
         $data = parent::findById($itemId);
 
-        if ( ! empty($data)) {
+        if (!empty($data)) {
             return $this->factoryEntity($data->toArray());
         }
     }

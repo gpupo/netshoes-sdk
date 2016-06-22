@@ -21,9 +21,9 @@ class Item extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
-            'code'          => 'string',
-            'name'          => 'string',
-            'externalCode'  => 'string',
+            'code'         => 'string',
+            'name'         => 'string',
+            'externalCode' => 'string',
         ];
     }
 }

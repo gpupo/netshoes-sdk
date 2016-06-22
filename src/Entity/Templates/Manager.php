@@ -9,7 +9,6 @@
  */
 namespace Gpupo\NetshoesSdk\Entity\Templates;
 
-use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Traits\PoolTrait;
 use Gpupo\NetshoesSdk\Entity\ManagerAbstract;
 
@@ -20,7 +19,7 @@ class Manager extends ManagerAbstract
     protected $entity = 'Templates';
 
     protected $maps = [
-        'brands'        => ['GET', '/brands'],
+        'brands' => ['GET', '/brands'],
     ];
 
     public function getBrands()
@@ -30,5 +29,4 @@ class Manager extends ManagerAbstract
 
         return $this->fetchPrepare($p);
     }
-
 }

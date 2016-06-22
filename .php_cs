@@ -45,8 +45,8 @@ return Config::create()
         'newline_after_open_tag',
         'concat_with_spaces',
         'ereg_to_preg',
-        'logical_not_operators_with_spaces',
-        'logical_not_operators_with_successor_space',
+        //'logical_not_operators_with_spaces',
+        //'logical_not_operators_with_successor_space',
         'short_echo_tag',
         'pre_increment',
     ])
