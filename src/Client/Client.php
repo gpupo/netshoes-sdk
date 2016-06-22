@@ -27,7 +27,7 @@ class Client extends ClientAbstract implements ClientInterface
             'sslVerifyPeer' => true,
         ];
     }
-    
+
     protected function renderAuthorization()
     {
         $list = [];

@@ -35,7 +35,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testObjetoRequestPossuiHeader($client)
     {
-        if ( ! $this->hasToken()) {
+        if (!$this->hasToken()) {
             return $this->markSkipped('API Token ausente');
         }
 
@@ -51,7 +51,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDePedidos()
     {
-        if ( ! $this->hasToken()) {
+        if (!$this->hasToken()) {
             return $this->markSkipped('API Token ausente');
         }
 
@@ -64,7 +64,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDeProdutos()
     {
-        if ( ! $this->hasToken()) {
+        if (!$this->hasToken()) {
             return $this->markSkipped('API Token ausente');
         }
 
