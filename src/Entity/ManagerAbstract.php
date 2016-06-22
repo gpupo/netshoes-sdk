@@ -31,6 +31,11 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         }
     }
 
+    protected function factoryEntityCollection($data)
+    {
+        return $this->factoryNeighborObject($this->getEntityName() . 'Collection', $data);
+    }
+
     /**
      * @return Gpupo\Common\Entity\CollectionAbstract|null
      */

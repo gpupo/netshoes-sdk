@@ -32,7 +32,7 @@ class Factory extends FactoryAbstract
                 'manager' => $namespace . 'Product\Manager',
             ],
             'templates' => [
-                'class'   => $namespace . 'Templates\Item',
+                'class'   => $namespace . 'Templates\Templates',
                 'manager' => $namespace . 'Templates\Manager',
             ],
         ];

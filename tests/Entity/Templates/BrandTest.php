@@ -23,7 +23,7 @@ class BrandTest extends TestCaseAbstract
         $manager = $this->getFactory()->factoryManager('templates');
         $manager->setDryRun($this->factoryResponseFromFixture('fixture/Templates/brands.json'));
 
-        $list = $manager->getBrands();
+        $list = $manager->fetch();
 
         foreach ($list->getItems() as $item) {
             $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Templates\Item', $item);

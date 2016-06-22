@@ -19,14 +19,7 @@ class Manager extends ManagerAbstract
     protected $entity = 'Templates';
 
     protected $maps = [
-        'brands' => ['GET', '/brands'],
+        'fetch' => ['GET', '/brands'],
     ];
 
-    public function getBrands()
-    {
-        $response = $this->perform($this->factoryMap('brands'));
-        $p = $this->processResponse($response);
-
-        return $this->fetchPrepare($p);
-    }
 }
