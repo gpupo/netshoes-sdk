@@ -1,6 +1,6 @@
 #Tree of dependencies:
 ```
-gpupo/common-sdk 2.0.4 Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
+gpupo/common-sdk 2.0.6 Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
 |--codeclimate/php-test-reporter @dev
 |  |--ext-curl *
 |  |--php >=5.3
