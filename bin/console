@@ -16,6 +16,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
 
+
 $app = new Application("netshoes-sdk");
 $app->findConfig([__DIR__.'/../']);
 
@@ -30,15 +31,21 @@ $app->appendCommand('credential:test', 'Testa a validade de suas credenciais')
         }
     });
 
-$app->appendCommand('templates:brands', 'Exibe a lista de marcas')
-    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-        $list = $app->processInputParameters([], $input, $output);
-
-        $brands = $app->factorySdk($list)->factoryManager('templates')->getBrands();
-
-        var_dump($brands->toArray());
+foreach([
+    'brands',
+    'flavors',
+    'colors',
+    'departments',
+    'sizes',
+    'attributes',
+] as $templateKey) {
+    $app->appendCommand('templates:' . $templateKey, 'List of ' . $templateKey)
+        ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $templateKey) {
+            $list = $app->processInputParameters([], $input, $output);
+            $brands = $app->factorySdk($list)->factoryManager('templates')->fetchByRoute($templateKey);
+            $app->displayTableResults($output, $brands);
     });
-
+}
 
 $app->appendCommand('product:status', 'Consulta a situação de um produto')
     ->addArgument('skuSellerId', InputArgument::REQUIRED, 'Lojista Sku Id')

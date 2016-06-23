@@ -23,7 +23,7 @@ class BrandTest extends TestCaseAbstract
         $manager = $this->getFactory()->factoryManager('templates');
         $manager->setDryRun($this->factoryResponseFromFixture('fixture/Templates/brands.json'));
 
-        $list = $manager->fetch();
+        $list = $manager->fetchByRoute('brands');
 
         $this->assertCount(65, $list->toArray());
 
