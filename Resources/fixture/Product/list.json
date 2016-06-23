@@ -1,0 +1,76 @@
+{
+    "items": [
+        {
+            "productId": "14080",
+            "skus": [
+                {
+                    "sku": "14080",
+                    "name": "Gentle Refiner Unissex 50ml Clarins",
+                    "description": "É bom ter uma pele radiante!",
+                    "color": "Incolor",
+                    "size": "P",
+                    "gender": "Unissex",
+                    "eanIsbn": "3380811244105",
+                    "video": "https://wwww.youtube.com/D-jynxn38z4",
+                    "height": 10,
+                    "width": 10,
+                    "depth": 10,
+                    "weight": 0.3,
+                    "links": [
+                        {
+                            "rel": "self",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/skus/14080"
+                        },
+                        {
+                            "rel": "images",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/skus/14080/images"
+                        },
+                        {
+                            "rel": "Status - NS",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/skus/14080/bus/NS/status"
+                        },
+                        {
+                            "rel": "Status - ZT",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/skus/14080/bus/ZT/status"
+                        },
+                        {
+                            "rel": "product",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/14080"
+                        }
+                    ]
+                }
+            ],
+            "department": "Masculino",
+            "productType": "BCAA",
+            "brand": "Nike",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products//14080"
+                },
+                {
+                    "rel": "skus",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products//14080/skus"
+                },
+                {
+                    "rel": "attributes",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products//14080/attributes"
+                }
+            ]
+        }
+    ],
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/?page=0&size=20"
+        },
+        {
+            "rel": "first",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/?page=0&size=20"
+        },
+        {
+            "rel": "last",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/?page=0&size=20"
+        }
+    ]
+}

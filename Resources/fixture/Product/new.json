@@ -1,0 +1,27 @@
+{
+  "productId": "14080",
+  "skus": [
+    {
+      "sku": "14080",
+      "name": "Gentle Refiner Unissex 50ml Clarins",
+      "description": "É bom ter uma pele radiante! ",
+      "gender": "Unissex",
+      "eanIsbn": "3380811244105",
+      "size": "P",
+      "images": [
+        {
+          "url": "http://static.sepha.com.br/prd/14000/14080/14080_3_lst_30.jpg"
+        }
+      ],
+      "video": "https://wwww.youtube.com/D-jynxn38z4",
+      "height": "10.0",
+      "width": "10.0",
+      "depth": "10.0",
+      "weight": 0.3,
+      "color": "Incolor"
+    }
+  ],
+  "department": "Masculino",
+  "productType": "BCAA",
+  "brand": "Nike"
+}

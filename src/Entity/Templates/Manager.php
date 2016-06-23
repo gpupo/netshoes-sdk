@@ -22,6 +22,7 @@ class Manager extends ManagerAbstract
         'brands' => ['GET', '/brands'],
         'flavors' => ['GET', '/flavors'],
         'colors' => ['GET', '/colors'],
+        'sizes' => ['GET', '/sizes'],
         'departments' => ['GET', '/bus/{buId}/departments'],
         'productTypes' => ['GET', '/department/{departmentCode}/productType'],
         'attributes' => ['GET', '/department/{departmentCode}/productType/{productTypeCode}/templates'],

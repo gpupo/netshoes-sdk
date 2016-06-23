@@ -35,6 +35,7 @@ foreach([
     'brands',
     'flavors',
     'colors',
+    'sizes',
 ] as $templateKey) {
     $app->appendCommand('templates:' . $templateKey, 'List of ' . $templateKey)
         ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $templateKey) {
