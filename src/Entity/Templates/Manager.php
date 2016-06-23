@@ -19,12 +19,12 @@ class Manager extends ManagerAbstract
     protected $entity = 'Templates';
 
     public $maps = [
-        'brands' => ['GET', '/brands'],
-        'flavors' => ['GET', '/flavors'],
-        'colors' => ['GET', '/colors'],
-        'sizes' => ['GET', '/sizes'],
-        'departments' => ['GET', '/bus/{buId}/departments'],
+        'brands'       => ['GET', '/brands'],
+        'flavors'      => ['GET', '/flavors'],
+        'colors'       => ['GET', '/colors'],
+        'sizes'        => ['GET', '/sizes'],
+        'departments'  => ['GET', '/bus/{buId}/departments'],
         'productTypes' => ['GET', '/department/{departmentCode}/productType'],
-        'attributes' => ['GET', '/department/{departmentCode}/productType/{productTypeCode}/templates'],
+        'attributes'   => ['GET', '/department/{departmentCode}/productType/{productTypeCode}/templates'],
     ];
 }

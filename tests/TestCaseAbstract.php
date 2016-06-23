@@ -64,7 +64,7 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
     public function dataProviderProducts()
     {
         $manager = $this->getFactory()->factoryManager('product');
-        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/Item.json'));
+        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/list.json'));
 
         $list = [];
 

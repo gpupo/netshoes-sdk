@@ -42,9 +42,9 @@ class BrandTest extends TestCaseAbstract
         $i = 0;
         foreach ($list as $item) {
             ++$i;
-            $this->assertEquals($i, $item->getCode());
+            $this->assertSame($i, $item->getCode());
             $this->assertNotEmpty($item->getName());
-            $this->assertEquals((string) "0" . $i, $item->getExternalCode());
+            $this->assertSame((string) '0' . $i, $item->getExternalCode());
         }
     }
 }
