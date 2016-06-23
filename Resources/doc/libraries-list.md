@@ -9,7 +9,7 @@ doctrine/inflector                 v1.1.0             Common String Manipulation
 doctrine/instantiator              1.0.5              A small, lightweight utility to instantiate objects in PHP without invoking their constructors
 doctrine/lexer                     v1.0.1             Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.
 gpupo/cache                        1.3.0              Caching library that implements PSR-6
-gpupo/common                       1.6.1              Common Objects
+gpupo/common                       1.6.4              Common Objects
 gpupo/common-sdk                   2.0.9              Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
 guzzle/guzzle                      v3.9.3             PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle
 monolog/monolog                    1.19.0             Sends your logs to files, sockets, inboxes, databases and various web services
