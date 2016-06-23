@@ -154,7 +154,42 @@ Utilize como modelo o arquivo ``app.json.dist``
 <!--
 Comando para geração da lista:
 
-phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/Gpupo\\Tests\\NetshoesSdk\\/### /g' > var/log/testdox.txt
+phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/Gpupo\\Tests\\NetshoesSdk\\/### /g' > var/logs/testdox.txt
 -->
 
 A lista abaixo é gerada a partir da saída da execução dos testes:
+
+
+### Client\Client
+
+
+- [x] Sucesso ao definir options
+- [x] Gerencia uri de recurso
+- [x] Objeto request possui header
+- [ ] Acesso a lista de pedidos
+- [x] Acesso a lista de produtos
+
+### Entity\Product\Manager
+
+
+- [x] É o administrador de produtos
+- [x] Possui objeto pool
+- [x] Possui objeto client
+- [x] Obtem lista de produtos cadastrados
+- [x] Recupera informacoes de um produto especifico a partir de id
+- [x] Guarda produtos em uma fila para gravacao em lote
+- [x] Gerencia gravacao de produtos em lote
+
+### Entity\Product\Product
+
+
+- [x] Possui propriedades e objetos
+- [x] Possui uma colecao attributes
+- [x] Entrega json
+
+
+### Factory
+
+
+- [x] Centraliza acesso a managers
+- [x] Centraliza criacao de objetos
