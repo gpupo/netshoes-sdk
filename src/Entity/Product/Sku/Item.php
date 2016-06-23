@@ -17,8 +17,18 @@ class Item extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
+            'sku'  => 'string',
             'name'  => 'string',
-            'value' => 'string',
+            'description' => 'string',
+            'color' => 'string',
+            'size' => 'string',
+            'gender' => 'string',
+            'eanIsbn' => 'string',
+            'video' => 'string',
+            'height' => 'string',
+            'width' => 'string',
+            'depth' => 'string',
+            'weight' => 'string',
         ];
     }
 }
