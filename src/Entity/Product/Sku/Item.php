@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of gpupo component
+ * This file is part of gpupo/netshoes-sdk
  * Created by Gilmar Pupo <g@g1mr.com>
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,18 +17,18 @@ class Item extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'sku'  => 'string',
-            'name'  => 'string',
+            'sku'         => 'string',
+            'name'        => 'string',
             'description' => 'string',
-            'color' => 'string',
-            'size' => 'string',
-            'gender' => 'string',
-            'eanIsbn' => 'string',
-            'video' => 'string',
-            'height' => 'string',
-            'width' => 'string',
-            'depth' => 'string',
-            'weight' => 'string',
+            'color'       => 'string',
+            'size'        => 'string',
+            'gender'      => 'string',
+            'eanIsbn'     => 'string',
+            'video'       => 'string',
+            'height'      => 'string',
+            'width'       => 'string',
+            'depth'       => 'string',
+            'weight'      => 'string',
         ];
     }
 }
