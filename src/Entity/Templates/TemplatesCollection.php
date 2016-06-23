@@ -9,16 +9,17 @@
  */
 namespace Gpupo\NetshoesSdk\Entity\Templates;
 
-use Gpupo\CommonSdk\Entity\EntityAbstract;
-use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
 
-class TemplatesCollection extends EntityAbstract implements EntityInterface
+class TemplatesCollection extends MetadataContainerAbstract
 {
-    public function getSchema()
+    protected function getKey()
     {
-        return [
-            'items' => 'object',
-            //'links'         => 'object',
-        ];
+        return 'items';
+    }
+
+    protected function factoryEntity(array $data)
+    {
+        return new Item($data);
     }
 }

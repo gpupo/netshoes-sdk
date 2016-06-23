@@ -25,8 +25,26 @@ class BrandTest extends TestCaseAbstract
 
         $list = $manager->fetch();
 
-        foreach ($list->getItems() as $item) {
+        $this->assertCount(65, $list->toArray());
+
+        foreach ($list as $item) {
             $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Templates\Item', $item);
+        }
+
+        return $list;
+    }
+
+    /**
+     * @depends testList
+     */
+    public function testItem($list)
+    {
+        $i = 0;
+        foreach ($list as $item) {
+            ++$i;
+            $this->assertEquals($i, $item->getCode());
+            $this->assertNotEmpty($item->getName());
+            $this->assertEquals((string) "0" . $i, $item->getExternalCode());
         }
     }
 }
