@@ -1,62 +1,58 @@
 {
-  "productId": null,
-  "skus": [
-    {
-      "sku": "14080",
-      "name": "Esfoliante Facial Creme Doux Polissant Unissex 50ml Clarins",
-      "description": "É bom ter uma pele radiante!",
-      "color": "string",
-      "flavor": "string",
-      "size": "string",
-      "gender": "string",
-      "eanIsbn": "string",
-      "images": [
+    "productId": "14080",
+    "skus": [
         {
-          "url": "string",
-          "links": [
-            {
-              "href": "string",
-              "rel": "string",
-              "templated": true
-            }
-          ]
+            "sku": "14080",
+            "name": "Gentle Refiner Unissex 50ml Clarins",
+            "description": "É bom ter uma pele radiante!",
+            "color": "Incolor",
+            "size": "P",
+            "gender": "Unissex",
+            "eanIsbn": "3380811244105",
+            "video": "https://wwww.youtube.com/D-jynxn38z4",
+            "height": 10,
+            "width": 10,
+            "depth": 10,
+            "weight": 0.3,
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/skus/14080"
+                },
+                {
+                    "rel": "images",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/skus/14080/images"
+                },
+                {
+                    "rel": "Status - NS",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/skus/14080/bus/NS/status"
+                },
+                {
+                    "rel": "Status - ZT",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/skus/14080/bus/ZT/status"
+                },
+                {
+                    "rel": "product",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/14080"
+                }
+            ]
         }
-      ],
-      "video": "string",
-      "height": 0,
-      "width": 0,
-      "depth": 0,
-      "weight": 0,
-      "links": [
+    ],
+    "department": "Masculino",
+    "productType": "BCAA",
+    "brand": "Nike",
+    "links": [
         {
-          "href": "string",
-          "rel": "string",
-          "templated": true
-        }
-      ]
-    }
-  ],
-  "department": "string",
-  "productType": "string",
-  "brand": "string",
-  "attributes": [
-    {
-      "name": "string",
-      "value": "string",
-      "links": [
+            "rel": "self",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/14080"
+        },
         {
-          "href": "string",
-          "rel": "string",
-          "templated": true
+            "rel": "skus",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/14080/skus"
+        },
+        {
+            "rel": "attributes",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/14080/attributes"
         }
-      ]
-    }
-  ],
-  "links": [
-    {
-      "href": "string",
-      "rel": "string",
-      "templated": true
-    }
-  ]
+    ]
 }
