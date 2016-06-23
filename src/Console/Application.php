@@ -36,8 +36,13 @@ class Application extends AbstractApplication
         [
             'key'     => 'registerPath',
             'default' => false,
-        ],
+        ]
     ];
+
+    protected function getLogFilePath()
+    {
+        return 'var/logs/console.log';
+    }
 
     public function factorySdk(array $options)
     {

@@ -117,17 +117,25 @@ $app->appendCommand('templates:tree', 'Tree of templates')
         }
 });
 
-$app->appendCommand('product:status', 'Consulta a situação de um produto')
-    ->addArgument('skuSellerId', InputArgument::REQUIRED, 'Lojista Sku Id')
+$app->appendCommand('product:view', 'Consulta a situação de um produto')
+    ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
         $list = $app->processInputParameters([], $input, $output);
 
-$input->getArgument('skuSellerId');
-    if ($app->factorySdk($list)->factoryManager('product')->fetch()) {
-        $output->writeln('<info>Success!</info>');
-    } else {
-        $output->writeln('<error>Error</error>');
-    }
+
+    $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
+
+    $app->displayTableResults($output, [[
+        'Id'         => $p->getProductId(),
+        'Brand' => $p->getBrand(),
+        'Department' => $p->getDepartment(),
+        'Product Type' => $p->getProductType(),
+    ]]);
+
+    $output->writeln('<fg=yellow>Skus</>');
+
+    $app->displayTableResults($output, $p->getSkus());
+
 });
 
 
