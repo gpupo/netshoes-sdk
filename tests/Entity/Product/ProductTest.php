@@ -9,14 +9,35 @@
  */
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
+use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\Product\Product;
+use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 class ProductTest extends TestCaseAbstract
 {
+    use EntityTrait;
+
+    const QUALIFIED = 'Gpupo\NetshoesSdk\Entity\Product\Product';
+
     public static function setUpBeforeClass()
     {
-        self::displayClassDocumentation(new Product());
+        static::setFullyQualifiedObject(self::QUALIFIED);
+        parent::setUpBeforeClass();
+    }
+
+    public function dataProviderObject()
+    {
+        $expected = [
+            'productId'   => 'string',
+            'skus'        => 'object',
+            'department'  => 'string',
+            'productType' => 'string',
+            'brand'       => 'string',
+            'attributes'  => 'object',
+        ];
+
+        return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
     }
 
     protected function factory($data)
@@ -69,5 +90,125 @@ class ProductTest extends TestCaseAbstract
         foreach (['productId', 'department', 'productType', 'brand'] as $key) {
             $this->assertArrayHasKey($key, $array);
         }
+    }
+
+    /**
+     * @testdox Possui método ``getProductId()`` para acessar ProductId
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterProductId(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('productId', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setProductId()`` que define ProductId
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterProductId(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('productId', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getSkus()`` para acessar Skus
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterSkus(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('skus', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setSkus()`` que define Skus
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterSkus(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('skus', 'object', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getDepartment()`` para acessar Department
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterDepartment(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('department', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setDepartment()`` que define Department
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterDepartment(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('department', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getProductType()`` para acessar ProductType
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterProductType(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('productType', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setProductType()`` que define ProductType
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterProductType(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('productType', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getBrand()`` para acessar Brand
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterBrand(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('brand', 'string', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setBrand()`` que define Brand
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterBrand(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('brand', 'string', $object);
+    }
+
+    /**
+     * @testdox Possui método ``getAttributes()`` para acessar Attributes
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function getterAttributes(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaGetter('attributes', 'object', $object, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setAttributes()`` que define Attributes
+     * @dataProvider dataProviderObject
+     * @test
+     */
+    public function setterAttributes(EntityInterface $object, $expected = null)
+    {
+        $this->assertSchemaSetter('attributes', 'object', $object);
     }
 }
