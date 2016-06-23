@@ -5,6 +5,7 @@
  <target name="clean" description="Cleanup build artifacts">
   <delete dir="${basedir}/vendor"/>
   <delete file="${basedir}/composer.lock"/>
+  <delete file="${basedir}/var/logs/*"/>
  </target>
  <target name="composer" depends="clean" description="Install dependencies with Composer">
   <tstamp>
@@ -40,7 +41,7 @@
   </exec>
   <delete dir="${basedir}/build"/>
  </target>
- <target name="libraries" depends="composer" description="List dependencies">
+ <target name="libraries" description="List dependencies">
    <echo output="Resources/doc/libraries-list.md" append="false">#List of dependencies:
 ```
 </echo>
@@ -53,7 +54,7 @@
 ```
 </echo>
    <exec executable="php">
-    <redirector output="Resources/doc/libraries-tree.md" alwayslog="true" append="true"/>
+    <redirector output="Resources/doc/libraries-tree.md" alwayslog="false" append="true"/>
      <arg value="composer.phar"/>
      <arg value="show"/>
      <arg value="-t"/>
