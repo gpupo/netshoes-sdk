@@ -18,7 +18,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
     protected function fetchDefaultParameters()
     {
         return [
-            'buId'  => 'ZT',
+            'buId' => 'ZT',
         ];
     }
 
