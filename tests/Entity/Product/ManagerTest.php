@@ -64,4 +64,51 @@ class ManagerTest extends TestCaseAbstract
 
         return $list;
     }
+
+    public function testRecuperaInformacoesDeUmProdutoEspecificoAPartirDeId()
+    {
+        $manager = $this->getManager('item.json');
+        $product = $manager->findById(14080);
+        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Product', $product);
+        $this->assertSame('14080', $product->getProductId());
+        $this->assertSame('14080', $product->getId());
+    }
+
+    public function testGuardaProdutosEmUmaFilaParaGravacaoEmLote()
+    {
+        $manager = $this->getManager();
+        $list = $this->dataProviderProducts();
+
+        foreach ($list as $data) {
+            $product = $this->getFactory()->createProduct(current($data));
+            $this->assertTrue($manager->save($product));
+        }
+
+        $poolItens = json_decode($manager->getPool()->toJson(), true);
+
+        foreach ($list as $data) {
+            $item = current($data);
+            $poolItem = current($poolItens);
+
+            foreach (['productId', 'department', 'brand'] as $key) {
+                $this->assertSame($item[$key], $poolItem[$key]);
+            }
+
+            next($poolItens);
+        }
+    }
+
+    public function testGerenciaGravacaoDeProdutosEmLote()
+    {
+        $manager = $this->getFactory()->factoryManager('product')->setDryRun();
+
+        $list = $this->dataProviderProducts();
+
+        foreach ($list as $data) {
+            $product = current($data);
+            $manager->save($product);
+        }
+
+        $this->assertTrue($manager->commit(), 'Gravacao de lote');
+    }
 }
