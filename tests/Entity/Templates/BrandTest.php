@@ -44,7 +44,7 @@ class BrandTest extends TestCaseAbstract
             ++$i;
             $this->assertSame($i, $item->getCode());
             $this->assertNotEmpty($item->getName());
-            $this->assertSame((string) '0' . $i, $item->getExternalCode());
+            $this->assertSame(str_pad($i, 3, "0", STR_PAD_LEFT) , $item->getExternalCode());
         }
     }
 }
