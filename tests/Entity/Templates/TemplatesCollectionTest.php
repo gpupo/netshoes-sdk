@@ -45,6 +45,6 @@ class TemplatesCollectionTest extends TestCaseAbstract
      */
     public function testMetadataSelf(MetadataContainerAbstract $container)
     {
-        $this->assertSame($container->getMetadata()->getSelf(), 'http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/brands');
+        $this->assertSame($container->getMetadata()->getSelf(), '/v1/brands');
     }
 }
