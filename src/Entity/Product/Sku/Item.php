@@ -24,6 +24,7 @@ class Item extends EntityAbstract implements EntityInterface
             'size'        => 'string',
             'gender'      => 'string',
             'eanIsbn'     => 'string',
+            'images'      => 'object',
             'video'       => 'string',
             'height'      => 'string',
             'width'       => 'string',

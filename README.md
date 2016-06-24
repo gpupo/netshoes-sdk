@@ -46,7 +46,7 @@ Este exemplo demonstra o uso simplificado a partir do ``Factory``:
 
 ```PHP
 
-///...
+//...
 use Gpupo\NetshoesSdk\Factory;
 
 $sdk = Factory::getInstance()->setup([
@@ -69,32 +69,60 @@ Parâmetro | Descrição | Valores possíveis
 
 ### Acesso a lista de produtos cadastrados:
 
-    $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection de Objetos Product
+```PHP
+
+//...
+
+$produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection de Objetos Product
+
+```
 
 ### Acesso a informações de um produto cadastrado e com identificador conhecido:
+
+```PHP
+
+//...
 
     $produto = $sdk->factoryManager('product')->findById(9)); // Objeto Produto
     echo $product->getName(); // Acesso ao nome do produto de Id 9
 
+```
 
 ### Criação de um produto:
+
+```PHP
+
+//...
 
     $data = []; // Veja o formato de $data em Resources/fixture/Product/ProductId.json
     $product = $sdk->createProduct($data);
 
+```
+
 ### Envio do produto para o Marketplace:
+
+
+```PHP
+
+//...
 
     $sdk->factoryManager('product')->save($product);
 
+```
+
 ### Registro (log)
 
-    //...
-    use Monolog\Logger;
-    use Monolog\Handler\StreamHandler;
-    //..
-    $logger = new Logger('foo');
-    $logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
-    $sdk->setLogger($logger);
+```PHP
+
+//...
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+//..
+$logger = new Logger('foo');
+$logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
+$sdk->setLogger($logger);
+
+```
 
 ---
 
@@ -111,6 +139,18 @@ Verificar suas credenciais Netshoes na linha de comando:
 Verificar a situação de um produto:
 
     ./bin/console produto:view [id do produto]
+
+Inserir um produto a partir de um arquivo json:
+
+    ./bin/console  product:insert --file=Resources/fixture/Product/new.json
+
+Lista de Departamentos:
+
+    ./bin/console templates:departments NS
+
+
+
+### Configurações
 
 Você poder criar um arquivo chamado ``app.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando:
 
@@ -173,8 +213,6 @@ Personalize os parâmetros!
 - [x] Possui objeto client
 - [x] Obtem lista de produtos cadastrados
 - [x] Recupera informacoes de um produto especifico a partir de id
-- [x] Guarda produtos em uma fila para gravacao em lote
-- [x] Gerencia gravacao de produtos em lote
 
 ### Entity\Product\ProductCollection
 
@@ -204,6 +242,13 @@ Personalize os parâmetros!
 - [x] Possui método ``setBrand()`` que define Brand
 - [x] Possui método ``getAttributes()`` para acessar Attributes
 - [x] Possui método ``setAttributes()`` que define Attributes
+- [x] Entidade é uma Coleção
+
+### Entity\Product\Sku\Image
+
+
+- [x] Possui método ``getUrl()`` para acessar Url
+- [x] Possui método ``setUrl()`` que define Url
 - [x] Entidade é uma Coleção
 
 ### Entity\Product\Sku\Item
