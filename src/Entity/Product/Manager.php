@@ -29,15 +29,7 @@ class Manager extends ManagerAbstract
 
     public function save(EntityInterface $product, $route = 'save')
     {
-        $existent = $product->getPrevious();
-
-        $this->log('INFO', 'save', ['route' => $route, 'existent' => $existent]);
-
-        if ($existent) {
-            return $this->update($product, $existent);
-        }
-
-        return $this->getPool()->add($product);
+        return $this->execute($this->factoryMap('save'), $product->toJson());
     }
 
     protected function getMap($route, Product $product)
@@ -45,12 +37,4 @@ class Manager extends ManagerAbstract
         return $this->factoryMap($route, ['itemId' => $product->getId()]);
     }
 
-    public function commit()
-    {
-        if ($this->getPool()->count() > 0) {
-            return $this->execute($this->factoryMap('save'), $this->getPool()->toJson());
-        }
-
-        return false;
-    }
 }
