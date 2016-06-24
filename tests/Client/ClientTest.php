@@ -51,12 +51,7 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDePedidos()
     {
-        if (!$this->hasToken()) {
-            return $this->markSkipped('API Token ausente');
-        }
-
-        $response = $this->factoryClient()->get('/orders/status/new/?_offset=0&_limit=1');
-        $this->assertSame('200', $response->getHttpStatusCode());
+        $this->markIncomplete('Não implementado');
     }
 
     /**
@@ -68,7 +63,7 @@ class ClientTest extends TestCaseAbstract
             return $this->markSkipped('API Token ausente');
         }
 
-        $response = $this->factoryClient()->get('/sellerItems/status/selling/?_offset=0&_limit=1');
-        $this->assertSame('200', $response->getHttpStatusCode());
+        $response = $this->factoryClient()->get('/products');
+        $this->assertSame(200, $response->getHttpStatusCode());
     }
 }
