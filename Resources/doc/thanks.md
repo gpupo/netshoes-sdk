@@ -1,3 +1,5 @@
+---
+
 ## Agradecimentos
 
 * A todos os que [contribuiram com patchs](https://github.com/gpupo/netshoes-sdk/contributors);

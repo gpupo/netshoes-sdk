@@ -37,14 +37,6 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @depends testÉOAdministradorDeProdutos
      */
-    public function testPossuiObjetoPool($manager)
-    {
-        $this->assertInstanceOf('\Gpupo\CommonSdk\Pool', $manager->getPool());
-    }
-
-    /**
-     * @depends testÉOAdministradorDeProdutos
-     */
     public function testPossuiObjetoClient($manager)
     {
         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Client\Client', $manager->getClient());
