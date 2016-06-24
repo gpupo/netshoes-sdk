@@ -10,7 +10,6 @@
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Gpupo\NetshoesSdk\Console\Application;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -19,7 +18,7 @@ class SkuCommand
     public static function append(Application $app)
     {
         $insertOptions = [
-            ['key'   => 'file'],
+            ['key' => 'file'],
         ];
 
         $app->appendCommand('product:sku:update', 'Atualiza um SKU')
@@ -37,11 +36,10 @@ class SkuCommand
                     if (202 === $operation->getHttpStatusCode()) {
                         $output->writeln('<info>Successo!</info>');
                     }
-
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
-                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                    $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
+                    $output->writeln('Message: <comment>' . $e->getMessage() . '</comment>');
+                    $output->writeln('Code: <comment>' . $e->getCode() . '</comment>');
                 }
         });
 
