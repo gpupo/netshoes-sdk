@@ -17,7 +17,12 @@ Verificar a situação de um produto:
 
 Inserir um produto a partir de um arquivo json:
 
-./bin/console  product:insert --file=Resources/fixture/Product/new.json
+    ./bin/console  product:insert --file=Resources/fixture/Product/new.json
+
+Lista de Departamentos:
+
+    ./bin/console templates:departments NS
+
 
 
 ### Configurações
