@@ -13,7 +13,7 @@ use Gpupo\NetshoesSdk\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Gpupo\CommonSdk\Exception\ClientException;
+
 class ProductCommand
 {
     public static function append(Application $app)
@@ -62,6 +62,8 @@ class ProductCommand
                     $output->writeln('<error>Erro na criação</error>');
                     $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
                     $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
+
+                    echo $product->toJson();
                 }
         });
 
