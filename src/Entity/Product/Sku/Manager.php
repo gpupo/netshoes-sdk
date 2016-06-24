@@ -14,15 +14,17 @@ use Gpupo\NetshoesSdk\Entity\ManagerAbstract;
 
 class Manager extends ManagerAbstract
 {
-
-    protected $entity = 'Product';
+    protected $entity = 'Sku';
 
     protected $maps = [
-        'save'     => ['POST', '/products'],
-        'findById' => ['GET', '/products/{itemId}'],
-        'patch'    => ['PATCH', '/products/{itemId}'],
-        'update'   => ['PUT', '/products/{itemId}'],
-        'fetch'    => ['GET', '/products?page={offset}&size={limit}'],
+        'save'              => ['POST', '/products/{productId}/skus'], //Create a new sku for a product
+        'findById'          => ['GET', '/products/{productId}/skus/{itemId}'], // Get the a sku by product Id and sku Id
+        'update'            => ['PUT', '/products/{productId}/skus/{sku}/{itemId}'], //Update a product based on SKU
+        'fetch'             => ['GET', '/products/{productId}/skus?page={offset}&size={limit}'], //Get the list of product skus
+        'saveStatus'        => ['PUT', '/skus/{sku}/bus/{buId}/status'], //Enable or disable sku for sale
+        'savePriceSchedule' => ['POST', '/skus/{sku}/priceSchedules'], //Save a price schedule
+        'savePrice'         => ['PUT', '/skus/{sku}/prices'], //Save a base price
+        'saveStock'         => ['PUT', '/skus/{sku}/stocks'], //Update stock quantity by sku
     ];
 
     public function save(EntityInterface $product, $route = 'save')
@@ -34,5 +36,4 @@ class Manager extends ManagerAbstract
     {
         return $this->factoryMap($route, ['itemId' => $product->getId()]);
     }
-
 }

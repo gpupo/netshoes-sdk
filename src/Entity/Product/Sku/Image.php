@@ -13,17 +13,15 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
- *
  * @method string getUrl()    Acesso a url
  * @method setUrl(string $url)    Define url
- *
  */
 class Image extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
     {
         return  [
-            'url'      => 'string',
+            'url' => 'string',
         ];
     }
 }

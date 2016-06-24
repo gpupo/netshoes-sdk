@@ -14,7 +14,6 @@ use Gpupo\NetshoesSdk\Entity\ManagerAbstract;
 
 class Manager extends ManagerAbstract
 {
-
     protected $entity = 'Product';
 
     protected $maps = [
@@ -34,5 +33,4 @@ class Manager extends ManagerAbstract
     {
         return $this->factoryMap($route, ['itemId' => $product->getId()]);
     }
-
 }

@@ -29,5 +29,4 @@ class ManagerTest extends TestCaseAbstract
 
         return $manager;
     }
-
 }

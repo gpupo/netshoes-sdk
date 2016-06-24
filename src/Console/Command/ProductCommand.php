@@ -39,7 +39,7 @@ class ProductCommand
         });
 
         $insertOptions = [
-            ['key'   => 'file'],
+            ['key' => 'file'],
         ];
 
         $app->appendCommand('product:insert', 'Insere um produto a partir do Json de um arquivo')
@@ -57,11 +57,10 @@ class ProductCommand
                     if (202 === $operation->getHttpStatusCode()) {
                         $output->writeln('<info>Successo!</info>');
                     }
-
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
-                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                    $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
+                    $output->writeln('Message: <comment>' . $e->getMessage() . '</comment>');
+                    $output->writeln('Code: <comment>' . $e->getCode() . '</comment>');
                 }
         });
 

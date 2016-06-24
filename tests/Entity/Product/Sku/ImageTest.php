@@ -27,14 +27,13 @@ class ImageTest extends TestCaseAbstract
 
     public function dataProviderObject()
     {
-
         $expected = [
             'url' => 'string',
         ];
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
     }
-    
+
     /**
      * @testdox Possui método ``getUrl()`` para acessar Url
      * @dataProvider dataProviderObject
