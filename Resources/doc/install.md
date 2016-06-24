@@ -15,7 +15,7 @@ Este exemplo demonstra o uso simplificado a partir do ``Factory``:
 
 ```PHP
 
-///...
+//...
 use Gpupo\NetshoesSdk\Factory;
 
 $sdk = Factory::getInstance()->setup([
@@ -38,29 +38,57 @@ Parâmetro | Descrição | Valores possíveis
 
 ### Acesso a lista de produtos cadastrados:
 
-    $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection de Objetos Product
+```PHP
+
+//...
+
+$produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection de Objetos Product
+
+```
 
 ### Acesso a informações de um produto cadastrado e com identificador conhecido:
+
+```PHP
+
+//...
 
     $produto = $sdk->factoryManager('product')->findById(9)); // Objeto Produto
     echo $product->getName(); // Acesso ao nome do produto de Id 9
 
+```
 
 ### Criação de um produto:
+
+```PHP
+
+//...
 
     $data = []; // Veja o formato de $data em Resources/fixture/Product/ProductId.json
     $product = $sdk->createProduct($data);
 
+```
+
 ### Envio do produto para o Marketplace:
+
+
+```PHP
+
+//...
 
     $sdk->factoryManager('product')->save($product);
 
+```
+
 ### Registro (log)
 
-    //...
-    use Monolog\Logger;
-    use Monolog\Handler\StreamHandler;
-    //..
-    $logger = new Logger('foo');
-    $logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
-    $sdk->setLogger($logger);
+```PHP
+
+//...
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+//..
+$logger = new Logger('foo');
+$logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
+$sdk->setLogger($logger);
+
+```

@@ -28,8 +28,8 @@ class ItemTest extends TestCaseAbstract
     public function dataProviderObject()
     {
         $expected = [
-            'code' => 'string',
-            'name' => 'string',
+            'code'         => 'string',
+            'name'         => 'string',
             'externalCode' => 'string',
         ];
 
@@ -95,5 +95,4 @@ class ItemTest extends TestCaseAbstract
     {
         $this->assertSchemaSetter('externalCode', 'string', $object);
     }
-
 }

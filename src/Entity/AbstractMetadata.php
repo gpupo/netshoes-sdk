@@ -30,5 +30,4 @@ abstract class AbstractMetadata extends MetadataContainerAbstract
 
         return $data;
     }
-
 }
