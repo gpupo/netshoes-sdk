@@ -1,4 +1,4 @@
-#List of dependencies:
+## Lista de dependências (libraries)
 ```
 codeclimate/php-test-reporter      v0.3.2             PHP client for reporting test coverage to Code Climate
 doctrine/annotations               v1.2.7             Docblock Annotations Parser
