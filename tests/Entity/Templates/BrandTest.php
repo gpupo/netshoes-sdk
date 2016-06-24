@@ -18,6 +18,9 @@ class BrandTest extends TestCaseAbstract
         return $this->getFactory()->createTemplate($data);
     }
 
+    /**
+     * @testdox Possui Acesso a lista de marcas cadastradas
+     */
     public function testList()
     {
         $manager = $this->getFactory()->factoryManager('templates');
@@ -35,6 +38,7 @@ class BrandTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Cada objeto da lista é uma instância de Item
      * @depends testList
      */
     public function testItem($list)
