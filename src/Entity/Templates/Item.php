@@ -12,7 +12,16 @@ namespace Gpupo\NetshoesSdk\Entity\Templates;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+
 /**
+ *
+ * @method string getCode()    Acesso a code
+ * @method setCode(string $code)    Define code
+ * @method string getName()    Acesso a name
+ * @method setName(string $name)    Define name
+ * @method string getExternalCode()    Acesso a externalCode
+ * @method setExternalCode(string $externalCode)    Define externalCode
+ *
  */
 class Item extends EntityAbstract implements EntityInterface
 {
