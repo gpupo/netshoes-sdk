@@ -9,8 +9,8 @@
  */
 namespace Gpupo\Tests\NetshoesSdk\Entity\Templates;
 
-use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
+use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 class TemplatesCollectionTest extends TestCaseAbstract
 {
@@ -47,5 +47,4 @@ class TemplatesCollectionTest extends TestCaseAbstract
     {
         $this->assertSame($container->getMetadata()->getSelf(), 'http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/brands');
     }
-
 }

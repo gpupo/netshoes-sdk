@@ -42,7 +42,7 @@
   <delete dir="${basedir}/build"/>
  </target>
  <target name="libraries" description="List dependencies">
-   <echo output="Resources/doc/libraries-list.md" append="false">#List of dependencies:
+   <echo output="Resources/doc/libraries-list.md" append="false">#List of dependencies
 ```
 </echo>
    <exec executable="php">
@@ -50,7 +50,7 @@
      <arg value="composer.phar"/>
      <arg value="show"/>
    </exec>
-   <echo output="Resources/doc/libraries-tree.md" append="false">#Tree of dependencies:
+   <echo output="Resources/doc/libraries-tree.md" append="false">#Tree of dependencies
 ```
 </echo>
    <exec executable="php">
