@@ -45,7 +45,7 @@ class ProductCollectionTest extends TestCaseAbstract
      */
     public function testMetadataSelf(MetadataContainerAbstract $container)
     {
-        $this->assertSame($container->getMetadata()->getSelf(), 'http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/?page=0&size=20');
+        $this->assertSame($container->getMetadata()->getSelf(), '/v1/products/?page=0&size=20');
     }
 
     /**
@@ -53,7 +53,7 @@ class ProductCollectionTest extends TestCaseAbstract
      */
     public function testMetadataFirst(MetadataContainerAbstract $container)
     {
-        $this->assertSame($container->getMetadata()->getFirst(), 'http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/?page=0&size=20');
+        $this->assertSame($container->getMetadata()->getFirst(), '/v1/products/?page=0&size=20');
     }
 
     /**
@@ -61,6 +61,6 @@ class ProductCollectionTest extends TestCaseAbstract
      */
     public function testMetadataLast(MetadataContainerAbstract $container)
     {
-        $this->assertSame($container->getMetadata()->getLast(), 'http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/?page=0&size=20');
+        $this->assertSame($container->getMetadata()->getLast(), '/v1/products/?page=0&size=20');
     }
 }

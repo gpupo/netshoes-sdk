@@ -24,7 +24,7 @@ abstract class AbstractMetadata extends MetadataContainerAbstract
 
         if (is_array($metas)) {
             foreach ($metas as $meta) {
-                $data[$meta['rel']] = $meta['href'];
+                $data[$meta['rel']] = str_replace('http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs', '', $meta['href']);
             }
         }
 
