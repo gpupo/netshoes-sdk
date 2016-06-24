@@ -1,6 +1,64 @@
 {
     "items": [
         {
+            "productId": "17920",
+            "skus": [
+                {
+                    "sku": "17920",
+                    "name": "Balance Refresh Revitalizante Unissex 250ml Wella Professionals",
+                    "description": "Acalma e limpa o cabelo e o couro cabeludo de uma forma purificada e delicada, deixando os cabelos renovados e cheios de vitalidade.",
+                    "color": "Incolor",
+                    "size": "P",
+                    "gender": "Unissex",
+                    "eanIsbn": "4015600116217",
+                    "video": "",
+                    "height": 10,
+                    "width": 10,
+                    "depth": 10,
+                    "weight": 0.3,
+                    "links": [
+                        {
+                            "rel": "self",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/skus/17920"
+                        },
+                        {
+                            "rel": "images",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/skus/17920/images"
+                        },
+                        {
+                            "rel": "Status - NS",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/skus/17920/bus/NS/status"
+                        },
+                        {
+                            "rel": "Status - ZT",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/skus/17920/bus/ZT/status"
+                        },
+                        {
+                            "rel": "product",
+                            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/17920"
+                        }
+                    ]
+                }
+            ],
+            "department": "Feminino",
+            "productType": "Bolsas",
+            "brand": "Marca",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products//17920"
+                },
+                {
+                    "rel": "skus",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products//17920/skus"
+                },
+                {
+                    "rel": "attributes",
+                    "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products//17920/attributes"
+                }
+            ]
+        },
+        {
             "productId": "14080",
             "skus": [
                 {
