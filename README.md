@@ -171,6 +171,16 @@ Utilize como modelo o arquivo ``app.json.dist``
 - [x] Guarda produtos em uma fila para gravacao em lote
 - [x] Gerencia gravacao de produtos em lote
 
+### Entity\Product\ProductCollection
+
+
+- [x] Links
+- [x] Instance
+- [x] Possui objeto metadata
+- [x] Metadata self
+- [x] Metadata first
+- [x] Metadata last
+
 ### Entity\Product\Product
 
 
@@ -236,6 +246,14 @@ Utilize como modelo o arquivo ``app.json.dist``
 - [x] Possui método ``getExternalCode()`` para acessar ExternalCode
 - [x] Possui método ``setExternalCode()`` que define ExternalCode
 - [x] Entidade é uma Coleção
+
+### Entity\Templates\TemplatesCollection
+
+
+- [x] Links
+- [x] Instance
+- [x] Possui objeto metadata
+- [x] Metadata self
 
 ### Factory
 

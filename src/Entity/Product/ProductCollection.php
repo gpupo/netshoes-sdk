@@ -9,9 +9,9 @@
  */
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
-use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
+use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 
-class ProductCollection extends MetadataContainerAbstract
+class ProductCollection extends AbstractMetadata
 {
     protected function getKey()
     {

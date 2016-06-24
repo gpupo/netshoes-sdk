@@ -327,6 +327,9 @@
     }
   ],
   "links":[
-
+    {
+        "rel": "self",
+        "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/brands"
+    }
   ]
 }
