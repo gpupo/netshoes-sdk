@@ -20,6 +20,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 $app = new Application("netshoes-sdk");
 $app->findConfig([__DIR__.'/../']);
 
+$app = \Gpupo\NetshoesSdk\Console\Command\ProductCommand::append($app);
+$app = \Gpupo\NetshoesSdk\Console\Command\TemplatesCommand::append($app);
+
 $app->appendCommand('credential:test', 'Testa a validade de suas credenciais')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
         $list = $app->processInputParameters([], $input, $output);
@@ -30,113 +33,6 @@ $app->appendCommand('credential:test', 'Testa a validade de suas credenciais')
             $output->writeln('<error>Error</error>');
         }
     });
-
-foreach([
-    'brands',
-    'flavors',
-    'colors',
-    'sizes',
-] as $templateKey) {
-    $app->appendCommand('templates:' . $templateKey, 'List of ' . $templateKey)
-        ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $templateKey) {
-            $list = $app->processInputParameters([], $input, $output);
-            $responseList = $app->factorySdk($list)->factoryManager('templates')->fetchByRoute($templateKey);
-            $app->displayTableResults($output, $responseList);
-    });
-}
-
-$app->appendCommand('templates:departments', 'List of departments')
-    ->addArgument('buId', InputArgument::REQUIRED, 'Business unit id - NS = Netshoes e ZT = Zattini')
-    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-        $list = $app->processInputParameters([], $input, $output);
-        $responseList = $app->factorySdk($list)->factoryManager('templates')
-            ->fetchByRoute('departments', 0, 50, [
-                'buId'  => $input->getArgument('buId')
-            ]);
-        $app->displayTableResults($output, $responseList);
-});
-
-$app->appendCommand('templates:productTypes', 'List of productTypes')
-    ->addArgument('departmentCode', InputArgument::REQUIRED, 'Id do departamento')
-    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-        $list = $app->processInputParameters([], $input, $output);
-        $responseList = $app->factorySdk($list)->factoryManager('templates')
-            ->fetchByRoute('productTypes', 0, 50, [
-                'departmentCode'  => $input->getArgument('departmentCode')
-            ]);
-        $app->displayTableResults($output, $responseList);
-});
-
-$app->appendCommand('templates:attributes', 'List of attributes')
-    ->addArgument('departmentCode', InputArgument::REQUIRED, 'Id do departamento')
-    ->addArgument('productTypeCode', InputArgument::REQUIRED, 'Id do Product Type')
-    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-        $list = $app->processInputParameters([], $input, $output);
-        $responseList = $app->factorySdk($list)->factoryManager('templates')
-            ->fetchByRoute('attributes', 0, 50, [
-                'departmentCode'    => $input->getArgument('departmentCode'),
-                'productTypeCode'   => $input->getArgument('productTypeCode'),
-            ]);
-        $app->displayTableResults($output, $responseList);
-});
-
-$app->appendCommand('templates:tree', 'Tree of templates')
-    ->addArgument('buId', InputArgument::REQUIRED, 'Business unit id - NS = Netshoes e ZT = Zattini')
-    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-        $list = $app->processInputParameters([], $input, $output);
-        $buId =  $input->getArgument('buId');
-        $manager = $app->factorySdk($list)->factoryManager('templates');
-
-        $departaments = $manager->fetchByRoute('departments', 0, 50, [
-            'buId'  => $buId
-        ]);
-
-        foreach($departaments as $departament) {
-            $output->writeln('<info>'.$departament->getId().'</info> '  . $departament->getName());
-
-            $types = $manager->fetchByRoute('productTypes', 0, 50, [
-                    'departmentCode'  => $departament->getId()
-            ]);
-
-            foreach($types as $type) {
-                $output->writeln("\t - " . '<fg=yellow>'.$type->getId().'</> ' . $type->getName());
-
-                $attributes =  $manager->fetchByRoute('attributes', 0, 50, [
-                        'departmentCode'    => $departament->getId(),
-                        'productTypeCode'   => $type->getId(),
-                ]);
-
-                /*
-                foreach($attributes as $attribute) {
-                    $output->writeln("\t\t * " . '<fg=blue>'.$attribute->getId().'</> ' . $attribute->getName());
-                }
-                */
-            }
-
-            $output->writeln('<fg=yellow>------</>');
-        }
-});
-
-$app->appendCommand('product:view', 'Consulta a situação de um produto')
-    ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
-    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-        $list = $app->processInputParameters([], $input, $output);
-
-
-    $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
-
-    $app->displayTableResults($output, [[
-        'Id'         => $p->getProductId(),
-        'Brand' => $p->getBrand(),
-        'Department' => $p->getDepartment(),
-        'Product Type' => $p->getProductType(),
-    ]]);
-
-    $output->writeln('<fg=yellow>Skus</>');
-
-    $app->displayTableResults($output, $p->getSkus());
-
-});
 
 
 $app->run();
