@@ -171,3 +171,6 @@ gpupo/common-sdk 2.0.11 Componente de uso comum entre SDKs para integração a p
 |     `--php >=5.3.3
 `--twig/twig *
    `--php >=5.2.7
+
+```
+---

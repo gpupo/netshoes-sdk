@@ -31,6 +31,10 @@ class Factory extends FactoryAbstract
                 'class'   => $namespace . 'Product\Product',
                 'manager' => $namespace . 'Product\Manager',
             ],
+            'sku' => [
+                'class'   => $namespace . 'Product\Sku\Item',
+                'manager' => $namespace . 'Product\Sku\Manager',
+            ],
             'templates' => [
                 'class'   => $namespace . 'Templates\Templates',
                 'manager' => $namespace . 'Templates\Manager',
