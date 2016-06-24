@@ -13,7 +13,7 @@ use Gpupo\NetshoesSdk\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-
+use Gpupo\CommonSdk\Exception\ClientException;
 class ProductCommand
 {
     public static function append(Application $app)
@@ -36,6 +36,33 @@ class ProductCommand
 
             $app->displayTableResults($output, $p->getSkus());
 
+        });
+
+        $insertOptions = [
+            ['key'   => 'file'],
+        ];
+
+        $app->appendCommand('product:insert', 'Insere um produto a partir do Json de um arquivo')
+            ->setDefinition($app->factoryDefinition($insertOptions))
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
+                $list = $app->processInputParameters($insertOptions, $input, $output);
+
+                $data = json_decode(file_get_contents($list['file']), true);
+                $sdk = $app->factorySdk($list);
+                $product = $sdk->createProduct($data);
+
+                try {
+                    $operation = $sdk->factoryManager('product')->save($product);
+
+                    if (202 === $operation->getHttpStatusCode()) {
+                        $output->writeln('<info>Successo!</info>');
+                    }
+
+                } catch (\Exception $e) {
+                    $output->writeln('<error>Erro na criação</error>');
+                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
+                    $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
+                }
         });
 
         return $app;

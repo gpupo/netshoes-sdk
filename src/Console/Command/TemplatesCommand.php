@@ -87,17 +87,6 @@ class TemplatesCommand
 
                     foreach ($types as $type) {
                         $output->writeln("\t - " . '<fg=yellow>' . $type->getId() . '</> ' . $type->getName());
-
-                        $attributes = $manager->fetchByRoute('attributes', 0, 50, [
-                                'departmentCode'  => $departament->getId(),
-                                'productTypeCode' => $type->getId(),
-                        ]);
-
-                        /*
-                        foreach($attributes as $attribute) {
-                            $output->writeln("\t\t * " . '<fg=blue>'.$attribute->getId().'</> ' . $attribute->getName());
-                        }
-                        */
                     }
 
                     $output->writeln('<fg=yellow>------</>');
