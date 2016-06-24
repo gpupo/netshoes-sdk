@@ -1,4 +1,4 @@
-#Tree of dependencies:
+## Árvore de dependências (libraries)
 ```
 gpupo/common-sdk 2.0.11 Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
 |--codeclimate/php-test-reporter @dev

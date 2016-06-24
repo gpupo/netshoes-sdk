@@ -22,6 +22,7 @@ Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/b
 [![Code Climate](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/gpa.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk)
 [![Test Coverage](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/coverage.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk/coverage)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2/big.png)](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2)
 ## Agradecimentos
 
 * A todos os que [contribuiram com patchs](https://github.com/gpupo/netshoes-sdk/contributors);
@@ -311,7 +312,7 @@ Personalize os parâmetros!
 - [x] Centraliza acesso a managers
 - [x] Centraliza criacao de objetos
 
-#List of dependencies:
+## Lista de dependências (libraries)
 ```
 codeclimate/php-test-reporter      v0.3.2             PHP client for reporting test coverage to Code Climate
 doctrine/annotations               v1.2.7             Docblock Annotations Parser
