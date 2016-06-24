@@ -12,11 +12,23 @@ namespace Gpupo\NetshoesSdk\Console\Command;
 use Gpupo\NetshoesSdk\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputArgument;
 
 class SkuCommand
 {
     public static function append(Application $app)
     {
+
+        $app->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')
+            ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+
+            $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
+
+            $app->displayTableResults($output, $p);
+        });
+
         $insertOptions = [
             ['key' => 'file'],
         ];

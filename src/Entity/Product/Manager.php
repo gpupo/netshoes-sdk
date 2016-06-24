@@ -28,9 +28,4 @@ class Manager extends ManagerAbstract
     {
         return $this->execute($this->factoryMap('save'), $product->toJson());
     }
-
-    protected function getMap($route, Product $product)
-    {
-        return $this->factoryMap($route, ['itemId' => $product->getId()]);
-    }
 }
