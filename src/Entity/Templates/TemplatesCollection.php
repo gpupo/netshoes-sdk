@@ -9,9 +9,9 @@
  */
 namespace Gpupo\NetshoesSdk\Entity\Templates;
 
-use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
+use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 
-class TemplatesCollection extends MetadataContainerAbstract
+class TemplatesCollection extends AbstractMetadata
 {
     protected function getKey()
     {
