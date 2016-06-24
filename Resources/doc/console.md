@@ -19,6 +19,10 @@ Inserir um produto a partir de um arquivo json:
 
     ./bin/console  product:insert --file=Resources/fixture/Product/new.json
 
+Exibe os SKUs de um produto:
+
+    ./bin/console product:sku:view 14080
+
 Lista de Departamentos:
 
     ./bin/console templates:departments NS

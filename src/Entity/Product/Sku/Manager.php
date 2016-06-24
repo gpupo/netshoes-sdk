@@ -11,16 +11,17 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\ManagerAbstract;
+use Gpupo\NetshoesSdk\Entity\Product\Skus;
 
 class Manager extends ManagerAbstract
 {
-    protected $entity = 'Sku';
+    protected $entity = 'SkuCollection';
 
     protected $maps = [
         'save'              => ['POST', '/products/{productId}/skus'], //Create a new sku for a product
-        'findById'          => ['GET', '/products/{productId}/skus/{itemId}'], // Get the a sku by product Id and sku Id
+        'findSkuById'          => ['GET', '/products/{productId}/skus/{itemId}'], // Get the a sku by product Id and sku Id
         'update'            => ['PUT', '/products/{productId}/skus/{sku}/{itemId}'], //Update a product based on SKU
-        'fetch'             => ['GET', '/products/{productId}/skus?page={offset}&size={limit}'], //Get the list of product skus
+        'findById'          => ['GET', '/products/{itemId}/skus'], //Get the list of product skus
         'saveStatus'        => ['PUT', '/skus/{sku}/bus/{buId}/status'], //Enable or disable sku for sale
         'savePriceSchedule' => ['POST', '/skus/{sku}/priceSchedules'], //Save a price schedule
         'savePrice'         => ['PUT', '/skus/{sku}/prices'], //Save a base price
@@ -30,10 +31,5 @@ class Manager extends ManagerAbstract
     public function save(EntityInterface $product, $route = 'save')
     {
         return $this->execute($this->factoryMap('save'), $product->toJson());
-    }
-
-    protected function getMap($route, Product $product)
-    {
-        return $this->factoryMap($route, ['itemId' => $product->getId()]);
     }
 }
