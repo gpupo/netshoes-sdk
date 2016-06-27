@@ -13,6 +13,8 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 ## Licença
 
 Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/blob/master/LICENSE)
+<!-- qa -->
+
 ---
 
 ## Indicadores de qualidade
@@ -26,6 +28,8 @@ Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/b
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2/big.png)](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2)
 
 [![StyleCI](https://styleci.io/repos/61658580/shield)](https://styleci.io/repos/61658580)
+<!-- thanks -->
+
 ---
 
 ## Agradecimentos
@@ -35,6 +39,7 @@ Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/b
 * Aos desenvolvedores que criaram as [bibliotecas utilizadas neste componente](https://github.com/gpupo/netshoes-sdk/blob/master/Resources/doc/libraries-list.md).
 
  _- [Gilmar Pupo](http://www.g1mr.com/)_
+<!-- install -->
 
 ---
 
@@ -129,6 +134,7 @@ $logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
 $sdk->setLogger($logger);
 
 ```
+<!-- console -->
 
 ---
 
@@ -172,9 +178,9 @@ Você poder criar um arquivo chamado ``app.json`` com suas configurações perso
 ```
 
 Utilize como modelo o arquivo ``app.json.dist``
+<!-- links -->
 
 ---
-
 
 ## Links
 
@@ -183,6 +189,7 @@ Utilize como modelo o arquivo ``app.json.dist``
 * [SDK Oficial](https://github.com/netshoes/marketplace-api-sdk-php)
 * [Marketplace-bundle Composer Package](http://www.g1mr.com/MarkethubBundle/) - Integração deste pacote com Symfony
 * [Outras SDKs para o Ecommerce do Brasil](http://www.g1mr.com/common-sdk/)
+<!-- dev -->
 
 ---
 
