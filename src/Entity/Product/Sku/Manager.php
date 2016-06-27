@@ -11,7 +11,6 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\ManagerAbstract;
-use Gpupo\NetshoesSdk\Entity\Product\Skus;
 
 class Manager extends ManagerAbstract
 {
