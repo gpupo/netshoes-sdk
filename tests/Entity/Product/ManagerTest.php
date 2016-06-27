@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
@@ -20,22 +21,22 @@ class ManagerTest extends TestCaseAbstract
         }
 
         $manager = $this->getFactory()->factoryManager('product');
-        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/' . $filename));
+        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/'.$filename));
 
         return $manager;
     }
-    /**
-     * @testdox Administra operações de Products
-     * @test
-     */
+     /**
+      * @testdox Administra operações de Products
+      * @test
+      */
      public function testManager()
-    {
-        $manager = $this->getManager();
+     {
+         $manager = $this->getManager();
 
-        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Manager', $manager);
+         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Manager', $manager);
 
-        return $manager;
-    }
+         return $manager;
+     }
 
     /**
      * @depends testManager

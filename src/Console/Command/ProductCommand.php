@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Gpupo\NetshoesSdk\Console\Application;
@@ -59,8 +60,8 @@ class ProductCommand
                     }
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
-                    $output->writeln('Message: <comment>' . $e->getMessage() . '</comment>');
-                    $output->writeln('Code: <comment>' . $e->getCode() . '</comment>');
+                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
+                    $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
                 }
         });
 

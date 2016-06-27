@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\Tests\NetshoesSdk;
 
 use Gpupo\NetshoesSdk\Factory;
@@ -33,15 +34,15 @@ class FactoryTest extends FactoryTestAbstract
     public function dataProviderObjetos()
     {
         return [
-            [$this->namespace . 'Entity\Product\Product', 'product', null],
+            [$this->namespace.'Entity\Product\Product', 'product', null],
         ];
     }
 
     public function dataProviderManager()
     {
         return [
-            [$this->namespace . 'Entity\Product\Manager', 'product'],
-            [$this->namespace . 'Entity\Templates\Manager', 'templates'],
+            [$this->namespace.'Entity\Product\Manager', 'product'],
+            [$this->namespace.'Entity\Templates\Manager', 'templates'],
         ];
     }
 }

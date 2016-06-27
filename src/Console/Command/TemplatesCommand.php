@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Gpupo\NetshoesSdk\Console\Application;
@@ -24,7 +25,7 @@ class TemplatesCommand
             'colors',
             'sizes',
         ] as $templateKey) {
-            $app->appendCommand('templates:' . $templateKey, 'List of ' . $templateKey)
+            $app->appendCommand('templates:'.$templateKey, 'List of '.$templateKey)
                 ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $templateKey) {
                     $list = $app->processInputParameters([], $input, $output);
                     $responseList = $app->factorySdk($list)->factoryManager('templates')->fetchByRoute($templateKey);
@@ -79,14 +80,14 @@ class TemplatesCommand
                 ]);
 
                 foreach ($departaments as $departament) {
-                    $output->writeln('<info>' . $departament->getId() . '</info> ' . $departament->getName());
+                    $output->writeln('<info>'.$departament->getId().'</info> '.$departament->getName());
 
                     $types = $manager->fetchByRoute('productTypes', 0, 50, [
                             'departmentCode' => $departament->getId(),
                     ]);
 
                     foreach ($types as $type) {
-                        $output->writeln("\t - " . '<fg=yellow>' . $type->getId() . '</> ' . $type->getName());
+                        $output->writeln("\t - ".'<fg=yellow>'.$type->getId().'</> '.$type->getName());
                     }
 
                     $output->writeln('<fg=yellow>------</>');
