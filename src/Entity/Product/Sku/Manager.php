@@ -42,7 +42,7 @@ class Manager extends ManagerAbstract
 
         return $this->execute($this->factoryMap('update', [
             'productId' => $entity->getId(),
-            'itemId' => $entity->getId(),
-        ]), $entity->toJson());
+            'itemId'    => $entity->getId(),
+        ], $entity->toJson()));
     }
 }

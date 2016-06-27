@@ -12,5 +12,4 @@ namespace Gpupo\NetshoesSdk\Console\Command;
 
 abstract class AbstractCommand
 {
-
 }

@@ -37,7 +37,7 @@ class ProductCommand extends AbstractCommand
 
                 $app->displayTableResults($output, $p->getSkus());
 
-        });
+            });
 
         $insertOptions = [
             ['key' => 'file'],
@@ -63,7 +63,7 @@ class ProductCommand extends AbstractCommand
                     $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
                     $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
-        });
+            });
 
         return $app;
     }
