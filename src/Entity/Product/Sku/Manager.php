@@ -24,13 +24,35 @@ class Manager extends ManagerAbstract
         'findById'          => ['GET', '/products/{itemId}/skus'], //Get the list of product skus
         'saveStatus'        => ['PUT', '/skus/{sku}/bus/{buId}/status'], //Enable or disable sku for sale
         'savePriceSchedule' => ['POST', '/skus/{sku}/priceSchedules'], //Save a price schedule
+        'getPriceSchedule'  => ['GET', '/skus/{sku}/priceSchedules'], //Get PriceSchedule
+        'getPrice'          => ['GET', '/skus/{sku}/prices'], //Get a base price
         'savePrice'         => ['PUT', '/skus/{sku}/prices'], //Save a base price
         'saveStock'         => ['PUT', '/skus/{sku}/stocks'], //Update stock quantity by sku
+        'getStock'          => ['GET', '/skus/{sku}/stocks'], //Get Stock
+        'getStatus'          => ['GET', '/skus/{sku}/bus/{buId}/status'], //Get Status
     ];
 
     public function save(EntityInterface $product, $route = 'save')
     {
         return $this->execute($this->factoryMap($route), $product->toJson());
+    }
+
+    protected function getDetail($skuId, $type)
+    {
+        $response = $this->perform($this->factoryMap('get'.$type, ['sku' => $skuId]));
+        $className = 'Gpupo\NetshoesSdk\Entity\Product\Sku\\'.$type;
+
+        return new $className($this->processResponse($response));
+    }
+
+    public function getDetailsById($skuId)
+    {
+        return [
+            'price'         => $this->getDetail($skuId, 'Price'),
+            'priceSchedule' => $this->getDetail($skuId, 'PriceSchedule'),
+            'stock'         => $this->getDetail($skuId, 'Stock'),
+            'status'         => $this->getDetail($skuId, 'Status'),
+        ];
     }
 
     /**

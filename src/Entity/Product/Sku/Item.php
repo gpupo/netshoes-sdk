@@ -17,7 +17,7 @@ class Item extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'sku';
 
-    protected $exclude = ['price', 'priceSchedule', 'stock'];
+    protected $exclude = ['price', 'priceSchedule', 'stock', 'status'];
 
     public function getSchema()
     {
@@ -38,6 +38,7 @@ class Item extends EntityAbstract implements EntityInterface
             'price'         => 'object',
             'priceSchedule' => 'object',
             'stock'         => 'object',
+            'status'        => 'object',
         ];
     }
 
