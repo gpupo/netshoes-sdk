@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class TemplatesCommand
+class TemplatesCommand extends AbstractCommand
 {
     public static function append(Application $app)
     {

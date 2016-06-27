@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ProductCommand
+class ProductCommand extends AbstractCommand
 {
     public static function append(Application $app)
     {
@@ -61,7 +61,7 @@ class ProductCommand
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
                     $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                    $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
+                    $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
         });
 
