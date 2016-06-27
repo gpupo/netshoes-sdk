@@ -11,9 +11,9 @@
 namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\NetshoesSdk\Entity\ManagerAbstract;
+use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
-class Manager extends ManagerAbstract
+class Manager extends AbstractManager
 {
     protected $entity = 'SkuCollection';
 
@@ -29,6 +29,7 @@ class Manager extends ManagerAbstract
         'savePrice'         => ['PUT', '/skus/{sku}/prices'], //Save a base price
         'saveStock'         => ['PUT', '/skus/{sku}/stocks'], //Update stock quantity by sku
         'getStock'          => ['GET', '/skus/{sku}/stocks'], //Get Stock
+        'saveStatus'         => ['GET', '/skus/{sku}/bus/{buId}/status'], //Save Status
         'getStatus'         => ['GET', '/skus/{sku}/bus/{buId}/status'], //Get Status
     ];
 
@@ -41,18 +42,38 @@ class Manager extends ManagerAbstract
     {
         $response = $this->perform($this->factoryMap('get'.$type, ['sku' => $skuId]));
         $className = 'Gpupo\NetshoesSdk\Entity\Product\Sku\\'.$type;
+        $data = $this->processResponse($response);
 
-        return new $className($this->processResponse($response));
+        $o = new $className($data->toArray());
+
+        $this->getLogger()->addInfo('Detail', [
+            'sku'       => $skuId,
+            'typ'       => $type,
+            'response'  => $data,
+            'className' => $className,
+            'object'    => $o,
+        ]);
+
+        return $o;
+    }
+
+    public function saveDetail(EntityInterface $sku, $type)
+    {
+        return $this->execute($this->factoryMap('save'.$type, ['sku' => $sku->getId()]), $sku->toJson($type));
     }
 
     public function getDetailsById($skuId)
     {
-        return [
-            'price'         => $this->getDetail($skuId, 'Price'),
-            'priceSchedule' => $this->getDetail($skuId, 'PriceSchedule'),
-            'stock'         => $this->getDetail($skuId, 'Stock'),
-            'status'        => $this->getDetail($skuId, 'Status'),
-        ];
+        $o = new Item([
+            'sku'   => $skuId,
+        ]);
+
+        $o->setPrice($this->getDetail($skuId, 'Price'));
+        $o->setPriceSchedule($this->getDetail($skuId, 'PriceSchedule'));
+        $o->setStock($this->getDetail($skuId, 'Stock'));
+        $o->setStatus($this->getDetail($skuId, 'Status'));
+
+        return $o;
     }
 
     /**

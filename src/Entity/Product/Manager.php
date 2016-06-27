@@ -11,9 +11,9 @@
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\NetshoesSdk\Entity\ManagerAbstract;
+use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
-class Manager extends ManagerAbstract
+class Manager extends AbstractManager
 {
     protected $entity = 'Product';
 
