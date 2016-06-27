@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SkuCommand
+class SkuCommand extends AbstractCommand
 {
     public static function append(Application $app)
     {
@@ -43,7 +43,7 @@ class SkuCommand
                 $product = $sdk->createSku($data);
 
                 try {
-                    $operation = $sdk->factoryManager('sku')->save($product);
+                    $operation = $sdk->factoryManager('sku')->update($product);
 
                     if (202 === $operation->getHttpStatusCode()) {
                         $output->writeln('<info>Successo!</info>');
@@ -51,7 +51,7 @@ class SkuCommand
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
                     $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                    $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
+                    $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
         });
 
