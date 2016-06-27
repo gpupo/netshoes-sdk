@@ -20,7 +20,7 @@ class Manager extends ManagerAbstract
     protected $maps = [
         'save'              => ['POST', '/products/{productId}/skus'], //Create a new sku for a product
         'findSkuById'       => ['GET', '/products/{productId}/skus/{itemId}'], // Get the a sku by product Id and sku Id
-        'update'            => ['PUT', '/products/{productId}/skus/{sku}/{itemId}'], //Update a product based on SKU
+        'update'            => ['PUT', '/products/{productId}/skus/{itemId}'], //Update a product based on SKU
         'findById'          => ['GET', '/products/{itemId}/skus'], //Get the list of product skus
         'saveStatus'        => ['PUT', '/skus/{sku}/bus/{buId}/status'], //Enable or disable sku for sale
         'savePriceSchedule' => ['POST', '/skus/{sku}/priceSchedules'], //Save a price schedule
@@ -31,5 +31,18 @@ class Manager extends ManagerAbstract
     public function save(EntityInterface $product, $route = 'save')
     {
         return $this->execute($this->factoryMap('save'), $product->toJson());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function update(EntityInterface $entity, EntityInterface $existent = null)
+    {
+        parent::update($entity, $existent);
+
+        return $this->execute($this->factoryMap('update', [
+            'productId' => $entity->getId(),
+            'itemId' => $entity->getId(),
+        ]), $entity->toJson());
     }
 }
