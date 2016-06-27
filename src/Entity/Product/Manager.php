@@ -27,6 +27,6 @@ class Manager extends ManagerAbstract
 
     public function save(EntityInterface $product, $route = 'save')
     {
-        return $this->execute($this->factoryMap('save'), $product->toJson());
+        return $this->execute($this->factoryMap($route), $product->toJson());
     }
 }

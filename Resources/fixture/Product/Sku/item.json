@@ -10,5 +10,9 @@
     "height": 10,
     "width": 10,
     "depth": 10,
-    "weight": 0.3
+    "weight": 0.3,
+    "sellPrice": 100,
+    "listPrice": 90,
+    "stock": 20
+
 }

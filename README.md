@@ -21,7 +21,7 @@ Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/b
 
 [![Build Status](https://secure.travis-ci.org/gpupo/netshoes-sdk.png?branch=master)](http://travis-ci.org/gpupo/netshoes-sdk)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpupo/netshoes-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpupo/netshoes-sdk/?branch=master)
-[![Codacy Badge](https://www.codacy.com/project/badge/1289591352044e509187b0a9a3699332)](https://www.codacy.com/app/g/netshoes-sdk)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fb9acd45d3bc42c1a5b45ebaeaa10401)](https://www.codacy.com/app/g/netshoes-sdk?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gpupo/netshoes-sdk&amp;utm_campaign=Badge_Grade)
 [![Code Climate](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/gpa.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk)
 [![Test Coverage](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/coverage.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk/coverage)
 
@@ -243,59 +243,59 @@ Personalize os parâmetros!
 ### Entity\Product\Product
 
 
-- [x] Possui propriedades e objetos
-- [x] Possui uma colecao attributes
-- [x] Entrega json
-- [x] Possui método ``getProductId()`` para acessar ProductId
-- [x] Possui método ``setProductId()`` que define ProductId
-- [x] Possui método ``getSkus()`` para acessar Skus
-- [x] Possui método ``setSkus()`` que define Skus
-- [x] Possui método ``getDepartment()`` para acessar Department
-- [x] Possui método ``setDepartment()`` que define Department
-- [x] Possui método ``getProductType()`` para acessar ProductType
-- [x] Possui método ``setProductType()`` que define ProductType
-- [x] Possui método ``getBrand()`` para acessar Brand
-- [x] Possui método ``setBrand()`` que define Brand
-- [x] Possui método ``getAttributes()`` para acessar Attributes
-- [x] Possui método ``setAttributes()`` que define Attributes
-- [x] Entidade é uma Coleção
+- [x] Possui propriedades e objetos 
+- [x] Possui uma colecao attributes 
+- [x] Entrega json 
+- [x] Possui método ``getProductId()`` para acessar ProductId 
+- [x] Possui método ``setProductId()`` que define ProductId 
+- [x] Possui método ``getSkus()`` para acessar Skus 
+- [x] Possui método ``setSkus()`` que define Skus 
+- [x] Possui método ``getDepartment()`` para acessar Department 
+- [x] Possui método ``setDepartment()`` que define Department 
+- [x] Possui método ``getProductType()`` para acessar ProductType 
+- [x] Possui método ``setProductType()`` que define ProductType 
+- [x] Possui método ``getBrand()`` para acessar Brand 
+- [x] Possui método ``setBrand()`` que define Brand 
+- [x] Possui método ``getAttributes()`` para acessar Attributes 
+- [x] Possui método ``setAttributes()`` que define Attributes 
+- [x] Entidade é uma Coleção 
 
 ### Entity\Product\Sku\Image
 
 
-- [x] Possui método ``getUrl()`` para acessar Url
-- [x] Possui método ``setUrl()`` que define Url
-- [x] Entidade é uma Coleção
+- [x] Possui método ``getUrl()`` para acessar Url 
+- [x] Possui método ``setUrl()`` que define Url 
+- [x] Entidade é uma Coleção 
 
 ### Entity\Product\Sku\Item
 
 
-- [x] Possui método ``getId()`` para acessar Sku Id
-- [x] Possui método ``getSku()`` para acessar Sku
-- [x] Possui método ``setSku()`` que define Sku
-- [x] Possui método ``getName()`` para acessar Name
-- [x] Possui método ``setName()`` que define Name
-- [x] Possui método ``getDescription()`` para acessar Description
-- [x] Possui método ``setDescription()`` que define Description
-- [x] Possui método ``getColor()`` para acessar Color
-- [x] Possui método ``setColor()`` que define Color
-- [x] Possui método ``getSize()`` para acessar Size
-- [x] Possui método ``setSize()`` que define Size
-- [x] Possui método ``getGender()`` para acessar Gender
-- [x] Possui método ``setGender()`` que define Gender
-- [x] Possui método ``getEanIsbn()`` para acessar EanIsbn
-- [x] Possui método ``setEanIsbn()`` que define EanIsbn
-- [x] Possui método ``getVideo()`` para acessar Video
-- [x] Possui método ``setVideo()`` que define Video
-- [x] Possui método ``getHeight()`` para acessar Height
-- [x] Possui método ``setHeight()`` que define Height
-- [x] Possui método ``getWidth()`` para acessar Width
-- [x] Possui método ``setWidth()`` que define Width
-- [x] Possui método ``getDepth()`` para acessar Depth
-- [x] Possui método ``setDepth()`` que define Depth
-- [x] Possui método ``getWeight()`` para acessar Weight
-- [x] Possui método ``setWeight()`` que define Weight
-- [x] Entidade é uma Coleção
+- [x] Possui método ``getId()`` para acessar Sku Id 
+- [x] Possui método ``getSku()`` para acessar Sku 
+- [x] Possui método ``setSku()`` que define Sku 
+- [x] Possui método ``getName()`` para acessar Name 
+- [x] Possui método ``setName()`` que define Name 
+- [x] Possui método ``getDescription()`` para acessar Description 
+- [x] Possui método ``setDescription()`` que define Description 
+- [x] Possui método ``getColor()`` para acessar Color 
+- [x] Possui método ``setColor()`` que define Color 
+- [x] Possui método ``getSize()`` para acessar Size 
+- [x] Possui método ``setSize()`` que define Size 
+- [x] Possui método ``getGender()`` para acessar Gender 
+- [x] Possui método ``setGender()`` que define Gender 
+- [x] Possui método ``getEanIsbn()`` para acessar EanIsbn 
+- [x] Possui método ``setEanIsbn()`` que define EanIsbn 
+- [x] Possui método ``getVideo()`` para acessar Video 
+- [x] Possui método ``setVideo()`` que define Video 
+- [x] Possui método ``getHeight()`` para acessar Height 
+- [x] Possui método ``setHeight()`` que define Height 
+- [x] Possui método ``getWidth()`` para acessar Width 
+- [x] Possui método ``setWidth()`` que define Width 
+- [x] Possui método ``getDepth()`` para acessar Depth 
+- [x] Possui método ``setDepth()`` que define Depth 
+- [x] Possui método ``getWeight()`` para acessar Weight 
+- [x] Possui método ``setWeight()`` que define Weight 
+- [x] Entidade é uma Coleção 
 
 ### Entity\Product\Sku\Manager
 
@@ -321,13 +321,13 @@ Personalize os parâmetros!
 ### Entity\Templates\Item
 
 
-- [x] Possui método ``getCode()`` para acessar Code
-- [x] Possui método ``setCode()`` que define Code
-- [x] Possui método ``getName()`` para acessar Name
-- [x] Possui método ``setName()`` que define Name
-- [x] Possui método ``getExternalCode()`` para acessar ExternalCode
-- [x] Possui método ``setExternalCode()`` que define ExternalCode
-- [x] Entidade é uma Coleção
+- [x] Possui método ``getCode()`` para acessar Code 
+- [x] Possui método ``setCode()`` que define Code 
+- [x] Possui método ``getName()`` para acessar Name 
+- [x] Possui método ``setName()`` que define Name 
+- [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
+- [x] Possui método ``setExternalCode()`` que define ExternalCode 
+- [x] Entidade é uma Coleção 
 
 ### Entity\Templates\TemplatesCollection
 
@@ -340,8 +340,8 @@ Personalize os parâmetros!
 ### Factory
 
 
-- [x] Centraliza acesso a managers
-- [x] Centraliza criacao de objetos
+- [x] Centraliza acesso a managers 
+- [x] Centraliza criacao de objetos 
 
 ## Lista de dependências (libraries)
 
