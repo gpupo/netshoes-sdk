@@ -2,12 +2,13 @@
 <?php
 
 /*
- * This file is part of gpupo component
+ * This file is part of gpupo/netshoes-sdk
  * Created by Gilmar Pupo <g@g1mr.com>
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 require __DIR__.'/../vendor/autoload.php';
 
 use Gpupo\NetshoesSdk\Console\Application;
@@ -22,6 +23,7 @@ $app->findConfig([__DIR__.'/../']);
 
 $app = \Gpupo\NetshoesSdk\Console\Command\ProductCommand::append($app);
 $app = \Gpupo\NetshoesSdk\Console\Command\SkuCommand::append($app);
+$app = \Gpupo\NetshoesSdk\Console\Command\PriceCommand::append($app);
 $app = \Gpupo\NetshoesSdk\Console\Command\TemplatesCommand::append($app);
 
 $app->appendCommand('credential:test', 'Testa a validade de suas credenciais')

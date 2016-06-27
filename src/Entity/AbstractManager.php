@@ -11,10 +11,10 @@
 namespace Gpupo\NetshoesSdk\Entity;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\CommonSdk\Entity\ManagerAbstract as CommonAbstract;
+use Gpupo\CommonSdk\Entity\ManagerAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
 
-abstract class ManagerAbstract extends CommonAbstract implements ManagerInterface
+abstract class AbstractManager extends ManagerAbstract implements ManagerInterface
 {
     protected function fetchDefaultParameters()
     {
@@ -25,7 +25,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
 
     public function factoryMap($operation, array $parameters = null)
     {
-        return parent::factoryMap($operation, array_merge($this->fetchDefaultParameters(), $parameters));
+        return parent::factoryMap($operation, array_merge($this->fetchDefaultParameters(), (array) $parameters));
     }
 
     /**

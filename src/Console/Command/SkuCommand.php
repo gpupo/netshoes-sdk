@@ -33,9 +33,16 @@ class SkuCommand extends AbstractCommand
             ->addArgument('skuId', InputArgument::REQUIRED, 'Sku ID')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
-                $app->displayTableResults($output, [$app->factorySdk($list)
+
+                $sku = $app->factorySdk($list)
                     ->factoryManager('sku')
-                    ->getDetailsById($input->getArgument('skuId')), ]);
+                    ->getDetailsById($input->getArgument('skuId'));
+
+                $output->writeln('Price: R$<info>'.$sku->getPrice()->getPrice().'</info>');
+                $output->writeln('Price Schedule: R$<info>'.$sku->getPriceSchedule()->getPriceTo().'</info>');
+                $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
+                $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
+
             });
 
         $insertOptions = [
