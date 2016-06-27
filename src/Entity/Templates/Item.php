@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Entity\Templates;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
@@ -27,8 +28,8 @@ class Item extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
-            'code'         => 'string',
-            'name'         => 'string',
+            'code' => 'string',
+            'name' => 'string',
             'externalCode' => 'string',
         ];
     }

@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Entity\Templates;
 
 use Gpupo\CommonSdk\Traits\PoolTrait;
@@ -19,12 +20,12 @@ class Manager extends ManagerAbstract
     protected $entity = 'Templates';
 
     public $maps = [
-        'brands'       => ['GET', '/brands'],
-        'flavors'      => ['GET', '/flavors'],
-        'colors'       => ['GET', '/colors'],
-        'sizes'        => ['GET', '/sizes'],
-        'departments'  => ['GET', '/bus/{buId}/departments'],
+        'brands' => ['GET', '/brands'],
+        'flavors' => ['GET', '/flavors'],
+        'colors' => ['GET', '/colors'],
+        'sizes' => ['GET', '/sizes'],
+        'departments' => ['GET', '/bus/{buId}/departments'],
         'productTypes' => ['GET', '/department/{departmentCode}/productType'],
-        'attributes'   => ['GET', '/department/{departmentCode}/productType/{productTypeCode}/templates'],
+        'attributes' => ['GET', '/department/{departmentCode}/productType/{productTypeCode}/templates'],
     ];
 }

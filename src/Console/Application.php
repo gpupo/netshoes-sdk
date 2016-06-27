@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Console;
 
 use Gpupo\CommonSdk\Console\AbstractApplication;
@@ -22,19 +23,19 @@ class Application extends AbstractApplication
             'key' => 'access_token',
         ],
         [
-            'key'     => 'env',
+            'key' => 'env',
             'options' => ['sandbox', 'api'],
             'default' => 'sandbox',
-            'name'    => 'Version',
+            'name' => 'Version',
         ],
         [
-            'key'     => 'sslVersion',
+            'key' => 'sslVersion',
             'options' => ['SecureTransport', 'TLS'],
             'default' => 'SecureTransport',
-            'name'    => 'SSL Version',
+            'name' => 'SSL Version',
         ],
         [
-            'key'     => 'registerPath',
+            'key' => 'registerPath',
             'default' => false,
         ],
     ];

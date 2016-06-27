@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Gpupo\NetshoesSdk\Console\Application;
@@ -23,20 +24,19 @@ class ProductCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
 
-            $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
+                $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
 
-            $app->displayTableResults($output, [[
-                'Id'           => $p->getProductId(),
-                'Brand'        => $p->getBrand(),
-                'Department'   => $p->getDepartment(),
+                $app->displayTableResults($output, [[
+                'Id' => $p->getProductId(),
+                'Brand' => $p->getBrand(),
+                'Department' => $p->getDepartment(),
                 'Product Type' => $p->getProductType(),
             ]]);
 
-            $output->writeln('<fg=yellow>Skus</>');
+                $output->writeln('<fg=yellow>Skus</>');
 
-            $app->displayTableResults($output, $p->getSkus());
-
-        });
+                $app->displayTableResults($output, $p->getSkus());
+            });
 
         $insertOptions = [
             ['key' => 'file'],
@@ -59,10 +59,10 @@ class ProductCommand
                     }
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
-                    $output->writeln('Message: <comment>' . $e->getMessage() . '</comment>');
-                    $output->writeln('Code: <comment>' . $e->getCode() . '</comment>');
+                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
+                    $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
                 }
-        });
+            });
 
         return $app;
     }

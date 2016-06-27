@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Gpupo\NetshoesSdk\Console\Application;
@@ -24,12 +25,12 @@ class TemplatesCommand
             'colors',
             'sizes',
         ] as $templateKey) {
-            $app->appendCommand('templates:' . $templateKey, 'List of ' . $templateKey)
+            $app->appendCommand('templates:'.$templateKey, 'List of '.$templateKey)
                 ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $templateKey) {
                     $list = $app->processInputParameters([], $input, $output);
                     $responseList = $app->factorySdk($list)->factoryManager('templates')->fetchByRoute($templateKey);
                     $app->displayTableResults($output, $responseList);
-            });
+                });
         }
 
         $app->appendCommand('templates:departments', 'List of departments')
@@ -41,7 +42,7 @@ class TemplatesCommand
                         'buId' => $input->getArgument('buId'),
                     ]);
                 $app->displayTableResults($output, $responseList);
-        });
+            });
 
         $app->appendCommand('templates:productTypes', 'List of productTypes')
             ->addArgument('departmentCode', InputArgument::REQUIRED, 'Id do departamento')
@@ -52,7 +53,7 @@ class TemplatesCommand
                         'departmentCode' => $input->getArgument('departmentCode'),
                     ]);
                 $app->displayTableResults($output, $responseList);
-        });
+            });
 
         $app->appendCommand('templates:attributes', 'List of attributes')
             ->addArgument('departmentCode', InputArgument::REQUIRED, 'Id do departamento')
@@ -61,11 +62,11 @@ class TemplatesCommand
                 $list = $app->processInputParameters([], $input, $output);
                 $responseList = $app->factorySdk($list)->factoryManager('templates')
                     ->fetchByRoute('attributes', 0, 50, [
-                        'departmentCode'  => $input->getArgument('departmentCode'),
+                        'departmentCode' => $input->getArgument('departmentCode'),
                         'productTypeCode' => $input->getArgument('productTypeCode'),
                     ]);
                 $app->displayTableResults($output, $responseList);
-        });
+            });
 
         $app->appendCommand('templates:tree', 'Tree of templates')
             ->addArgument('buId', InputArgument::REQUIRED, 'Business unit id - NS = Netshoes e ZT = Zattini')
@@ -79,19 +80,19 @@ class TemplatesCommand
                 ]);
 
                 foreach ($departaments as $departament) {
-                    $output->writeln('<info>' . $departament->getId() . '</info> ' . $departament->getName());
+                    $output->writeln('<info>'.$departament->getId().'</info> '.$departament->getName());
 
                     $types = $manager->fetchByRoute('productTypes', 0, 50, [
                             'departmentCode' => $departament->getId(),
                     ]);
 
                     foreach ($types as $type) {
-                        $output->writeln("\t - " . '<fg=yellow>' . $type->getId() . '</> ' . $type->getName());
+                        $output->writeln("\t - ".'<fg=yellow>'.$type->getId().'</> '.$type->getName());
                     }
 
                     $output->writeln('<fg=yellow>------</>');
                 }
-        });
+            });
 
         return $app;
     }
