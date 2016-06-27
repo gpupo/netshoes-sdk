@@ -19,7 +19,7 @@ class Manager extends ManagerAbstract
 
     protected $maps = [
         'save'              => ['POST', '/products/{productId}/skus'], //Create a new sku for a product
-        'findSkuById'          => ['GET', '/products/{productId}/skus/{itemId}'], // Get the a sku by product Id and sku Id
+        'findSkuById'       => ['GET', '/products/{productId}/skus/{itemId}'], // Get the a sku by product Id and sku Id
         'update'            => ['PUT', '/products/{productId}/skus/{sku}/{itemId}'], //Update a product based on SKU
         'findById'          => ['GET', '/products/{itemId}/skus'], //Get the list of product skus
         'saveStatus'        => ['PUT', '/skus/{sku}/bus/{buId}/status'], //Enable or disable sku for sale
