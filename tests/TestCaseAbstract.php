@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\Tests\NetshoesSdk;
 
 use Gpupo\NetshoesSdk\Factory;
@@ -18,7 +19,7 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
 
     public static function getResourcesPath()
     {
-        return dirname(dirname(__FILE__)) . '/Resources/';
+        return dirname(dirname(__FILE__)).'/Resources/';
     }
 
     public function factoryClient()

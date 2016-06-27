@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;

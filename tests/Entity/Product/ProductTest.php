@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
@@ -47,8 +48,8 @@ class ProductTest extends TestCaseAbstract
 
     protected function assertIsObject($name)
     {
-        $method = 'get' . $name;
-        $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Product\\' . $name,
+        $method = 'get'.$name;
+        $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Product\\'.$name,
             $this->factorySingleProduct()->$method());
     }
 
