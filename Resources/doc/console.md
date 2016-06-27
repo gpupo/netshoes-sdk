@@ -24,6 +24,11 @@ Exibe os SKUs de um produto:
 
     ./bin/console product:sku:view 14080
 
+Mostra preço, estoque e situação de um SKU:
+
+    ./bin/console product:sku:details 14080
+
+
 Lista de Departamentos:
 
     ./bin/console templates:departments NS
