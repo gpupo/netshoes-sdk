@@ -29,7 +29,7 @@ class Manager extends ManagerAbstract
         'savePrice'         => ['PUT', '/skus/{sku}/prices'], //Save a base price
         'saveStock'         => ['PUT', '/skus/{sku}/stocks'], //Update stock quantity by sku
         'getStock'          => ['GET', '/skus/{sku}/stocks'], //Get Stock
-        'getStatus'          => ['GET', '/skus/{sku}/bus/{buId}/status'], //Get Status
+        'getStatus'         => ['GET', '/skus/{sku}/bus/{buId}/status'], //Get Status
     ];
 
     public function save(EntityInterface $product, $route = 'save')
@@ -51,7 +51,7 @@ class Manager extends ManagerAbstract
             'price'         => $this->getDetail($skuId, 'Price'),
             'priceSchedule' => $this->getDetail($skuId, 'PriceSchedule'),
             'stock'         => $this->getDetail($skuId, 'Stock'),
-            'status'         => $this->getDetail($skuId, 'Status'),
+            'status'        => $this->getDetail($skuId, 'Status'),
         ];
     }
 

@@ -73,6 +73,10 @@ class Item extends EntityAbstract implements EntityInterface
                 $data['priceSchedule'] = ['priceTo' => $data['sellPrice']];
                 unset($data['sellPrice']);
             }
+
+            if (array_key_exists('status', $data)) {
+                $data['status'] = ['active' => $data['status']];
+            }
         }
 
         return $data;

@@ -23,6 +23,11 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
         ];
     }
 
+    public function factoryMap($operation, array $parameters = null)
+    {
+        return parent::factoryMap($operation, array_merge($this->fetchDefaultParameters(), $parameters));
+    }
+
     /**
      * @return Gpupo\Common\Entity\CollectionAbstract|null
      */
