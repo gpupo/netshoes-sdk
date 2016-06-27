@@ -24,18 +24,18 @@ class ProductCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
 
-            $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
+                $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
 
-            $app->displayTableResults($output, [[
-                'Id'           => $p->getProductId(),
-                'Brand'        => $p->getBrand(),
-                'Department'   => $p->getDepartment(),
-                'Product Type' => $p->getProductType(),
-            ]]);
+                $app->displayTableResults($output, [[
+                    'Id'           => $p->getProductId(),
+                    'Brand'        => $p->getBrand(),
+                    'Department'   => $p->getDepartment(),
+                    'Product Type' => $p->getProductType(),
+                ]]);
 
-            $output->writeln('<fg=yellow>Skus</>');
+                $output->writeln('<fg=yellow>Skus</>');
 
-            $app->displayTableResults($output, $p->getSkus());
+                $app->displayTableResults($output, $p->getSkus());
 
         });
 

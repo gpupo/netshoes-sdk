@@ -24,9 +24,9 @@ class SkuCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
 
-            $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
+                $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
 
-            $app->displayTableResults($output, $p);
+                $app->displayTableResults($output, $p);
         });
 
         $insertOptions = [
