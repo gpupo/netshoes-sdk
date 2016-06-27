@@ -6,12 +6,6 @@ linting: true
 
 enabled:
   - short_array_syntax
-  - strict
-  - align_double_arrow
-
-disabled:
-  - unalign_double_arrow
-  - long_array_syntax
 
 finder:
   exclude:
