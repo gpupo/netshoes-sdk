@@ -47,5 +47,4 @@ class SkuCollectionTest extends TestCaseAbstract
     {
         $this->assertSame($container->getMetadata()->getSelf(), '/v1/products/14080/skus');
     }
-
 }
