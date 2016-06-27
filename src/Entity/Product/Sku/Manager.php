@@ -40,9 +40,11 @@ class Manager extends ManagerAbstract
     {
         parent::update($entity, $existent);
 
-        return $this->execute($this->factoryMap('update', [
+        $m = $this->factoryMap('update', [
             'productId' => $entity->getId(),
             'itemId'    => $entity->getId(),
-        ], $entity->toJson()));
+        ]);
+
+        return $this->execute($m, $entity->toJson());
     }
 }

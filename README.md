@@ -270,6 +270,7 @@ Personalize os parâmetros!
 ### Entity\Product\Sku\Item
 
 
+- [x] Possui método ``getId()`` para acessar Sku Id
 - [x] Possui método ``getSku()`` para acessar Sku
 - [x] Possui método ``setSku()`` que define Sku
 - [x] Possui método ``getName()`` para acessar Name

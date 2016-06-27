@@ -45,7 +45,7 @@ class SkuCommand extends AbstractCommand
                 try {
                     $operation = $sdk->factoryManager('sku')->update($sku);
 
-                    if (202 === $operation->getHttpStatusCode()) {
+                    if (200 === $operation->getHttpStatusCode()) {
                         $output->writeln('<info>Successo!</info>');
                     }
                 } catch (\Exception $e) {
