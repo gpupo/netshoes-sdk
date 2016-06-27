@@ -13,6 +13,7 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 ## Licença
 
 Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/blob/master/LICENSE)
+---
 
 ## Indicadores de qualidade
 
@@ -23,6 +24,8 @@ Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/b
 [![Test Coverage](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/coverage.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk/coverage)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2/big.png)](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2)
+---
+
 ## Agradecimentos
 
 * A todos os que [contribuiram com patchs](https://github.com/gpupo/netshoes-sdk/contributors);
@@ -145,6 +148,10 @@ Inserir um produto a partir de um arquivo json:
 
     ./bin/console  product:insert --file=Resources/fixture/Product/new.json
 
+Exibe os SKUs de um produto:
+
+    ./bin/console product:sku:view 14080
+
 Lista de Departamentos:
 
     ./bin/console templates:departments NS
@@ -210,7 +217,6 @@ Personalize os parâmetros!
 
 
 - [x] É o administrador de produtos
-- [x] Possui objeto pool
 - [x] Possui objeto client
 - [x] Obtem lista de produtos cadastrados
 - [x] Recupera informacoes de um produto especifico a partir de id
@@ -280,6 +286,19 @@ Personalize os parâmetros!
 - [x] Possui método ``getWeight()`` para acessar Weight
 - [x] Possui método ``setWeight()`` que define Weight
 - [x] Entidade é uma Coleção
+
+### Entity\Product\Sku\Manager
+
+
+- [x] Manager
+
+### Entity\Product\Sku\SkuCollection
+
+
+- [x] Links
+- [x] Instance
+- [x] Possui objeto metadata
+- [x] Metadata self
 
 ### Entity\Templates\Brand
 
