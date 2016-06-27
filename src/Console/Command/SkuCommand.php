@@ -29,14 +29,15 @@ class SkuCommand extends AbstractCommand
                 $app->displayTableResults($output, $p);
             });
 
-        $app->appendCommand('product:sku:detail', 'Mostra preço, estoque e situação de um SKUs')
-            ->addArgument('SkuId', InputArgument::REQUIRED, 'Sku ID')
+        $app->appendCommand('product:sku:details', 'Mostra preço, estoque e situação de um SKUs')
+            ->addArgument('skuId', InputArgument::REQUIRED, 'Sku ID')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
 
-                $id = $input->getArgument('productId');
+                $id = $input->getArgument('skuId');
                 $m = $app->factorySdk($list)->factoryManager('sku');
 
+                $app->displayTableResults($output,[$m->getDetails()]);
             });
 
         $insertOptions = [
