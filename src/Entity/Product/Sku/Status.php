@@ -18,7 +18,7 @@ class Status extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'active' => 'bool',
+            'active' => 'boolean',
         ];
     }
 }
