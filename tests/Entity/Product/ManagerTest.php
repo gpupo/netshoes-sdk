@@ -24,8 +24,11 @@ class ManagerTest extends TestCaseAbstract
 
         return $manager;
     }
-
-    public function testÉOAdministradorDeProdutos()
+    /**
+     * @testdox Administra operações de Products
+     * @test
+     */
+     public function testManager()
     {
         $manager = $this->getManager();
 
@@ -35,7 +38,7 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
-     * @depends testÉOAdministradorDeProdutos
+     * @depends testManager
      */
     public function testPossuiObjetoClient($manager)
     {
@@ -43,7 +46,7 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
-     * @depends testÉOAdministradorDeProdutos
+     * @depends testManager
      */
     public function testObtemListaDeProdutosCadastrados($manager)
     {
