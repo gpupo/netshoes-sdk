@@ -17,7 +17,7 @@ class Item extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'sku';
 
-    protected $exclude = ['price','priceSchedule','stock'];
+    protected $exclude = ['price', 'priceSchedule', 'stock'];
 
     public function getSchema()
     {
@@ -59,7 +59,6 @@ class Item extends EntityAbstract implements EntityInterface
         }
 
         if (is_array($data)) {
-
             if (array_key_exists('stock', $data)) {
                 $data['stock'] = ['available' => $data['stock']];
             }
@@ -73,7 +72,6 @@ class Item extends EntityAbstract implements EntityInterface
                 $data['priceSchedule'] = ['priceTo' => $data['sellPrice']];
                 unset($data['sellPrice']);
             }
-
         }
 
         return $data;
@@ -86,7 +84,7 @@ class Item extends EntityAbstract implements EntityInterface
     {
         $a = parent::toArray();
 
-        foreach($this->exclude as $k) {
+        foreach ($this->exclude as $k) {
             unset($a[$k]);
         }
 

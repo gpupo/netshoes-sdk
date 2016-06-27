@@ -29,6 +29,16 @@ class SkuCommand extends AbstractCommand
                 $app->displayTableResults($output, $p);
             });
 
+        $app->appendCommand('product:sku:detail', 'Mostra preço, estoque e situação de um SKUs')
+            ->addArgument('SkuId', InputArgument::REQUIRED, 'Sku ID')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+
+                $id = $input->getArgument('productId');
+                $m = $app->factorySdk($list)->factoryManager('sku');
+
+            });
+
         $insertOptions = [
             ['key' => 'file'],
         ];
@@ -41,7 +51,7 @@ class SkuCommand extends AbstractCommand
                 $data = json_decode(file_get_contents($list['file']), true);
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
-var_dump($sku->toJson()); exit;
+
                 try {
                     $operation = $sdk->factoryManager('sku')->update($sku);
 
