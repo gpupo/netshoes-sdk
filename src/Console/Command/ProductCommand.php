@@ -36,7 +36,6 @@ class ProductCommand extends AbstractCommand
                 $output->writeln('<fg=yellow>Skus</>');
 
                 $app->displayTableResults($output, $p->getSkus());
-
             });
 
         $insertOptions = [

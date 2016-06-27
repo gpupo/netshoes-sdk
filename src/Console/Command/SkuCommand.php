@@ -41,7 +41,7 @@ class SkuCommand extends AbstractCommand
                 $data = json_decode(file_get_contents($list['file']), true);
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
-
+var_dump($sku->toJson()); exit;
                 try {
                     $operation = $sdk->factoryManager('sku')->update($sku);
 
