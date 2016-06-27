@@ -24,6 +24,8 @@ Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/b
 [![Test Coverage](https://codeclimate.com/github/gpupo/netshoes-sdk/badges/coverage.svg)](https://codeclimate.com/github/gpupo/netshoes-sdk/coverage)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2/big.png)](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2)
+
+[![StyleCI](https://styleci.io/repos/61658580/shield)](https://styleci.io/repos/61658580)
 ---
 
 ## Agradecimentos
