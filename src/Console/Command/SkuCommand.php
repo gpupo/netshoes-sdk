@@ -40,10 +40,10 @@ class SkuCommand extends AbstractCommand
 
                 $data = json_decode(file_get_contents($list['file']), true);
                 $sdk = $app->factorySdk($list);
-                $product = $sdk->createSku($data);
+                $sku = $sdk->createSku($data);
 
                 try {
-                    $operation = $sdk->factoryManager('sku')->update($product);
+                    $operation = $sdk->factoryManager('sku')->update($sku);
 
                     if (202 === $operation->getHttpStatusCode()) {
                         $output->writeln('<info>Successo!</info>');

@@ -53,7 +53,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
     /**
      * {@inheritdoc}
      */
-    public function update(EntityInterface $entity, EntityInterface $existent)
+    public function update(EntityInterface $entity, EntityInterface $existent = null)
     {
         $text = 'Chamada a Atualização de entity '.$this->entity;
 
