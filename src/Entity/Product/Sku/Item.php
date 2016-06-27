@@ -15,6 +15,8 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Item extends EntityAbstract implements EntityInterface
 {
+    protected $primaryKey = 'sku';
+
     public function getSchema()
     {
         return  [
