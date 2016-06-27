@@ -19,9 +19,9 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
     {
         return  [
             'priceFrom' => 'number',
-            'priceTo' => 'number',
-            'dateInit' => 'number',
-            'dateEnd' => 'number',
+            'priceTo'   => 'number',
+            'dateInit'  => 'number',
+            'dateEnd'   => 'number',
         ];
     }
 
@@ -29,5 +29,4 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
     {
         $this->setOptionalSchema(['priceFrom', 'dateInit', 'dateEnd']);
     }
-    
 }
