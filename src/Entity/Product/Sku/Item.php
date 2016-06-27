@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
@@ -17,19 +18,19 @@ class Item extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'sku'         => 'string',
-            'name'        => 'string',
+            'sku' => 'string',
+            'name' => 'string',
             'description' => 'string',
-            'color'       => 'string',
-            'size'        => 'string',
-            'gender'      => 'string',
-            'eanIsbn'     => 'string',
-            'images'      => 'object',
-            'video'       => 'string',
-            'height'      => 'string',
-            'width'       => 'string',
-            'depth'       => 'string',
-            'weight'      => 'string',
+            'color' => 'string',
+            'size' => 'string',
+            'gender' => 'string',
+            'eanIsbn' => 'string',
+            'images' => 'object',
+            'video' => 'string',
+            'height' => 'string',
+            'width' => 'string',
+            'depth' => 'string',
+            'weight' => 'string',
         ];
     }
 }

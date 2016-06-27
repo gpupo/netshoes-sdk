@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
@@ -35,12 +36,12 @@ class Product extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
-            'productId'   => 'string',
-            'skus'        => 'object',
-            'department'  => 'string',
+            'productId' => 'string',
+            'skus' => 'object',
+            'department' => 'string',
             'productType' => 'string',
-            'brand'       => 'string',
-            'attributes'  => 'object',
+            'brand' => 'string',
+            'attributes' => 'object',
             //'links'         => 'object',
         ];
     }

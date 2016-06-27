@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
@@ -17,11 +18,11 @@ class Manager extends ManagerAbstract
     protected $entity = 'Product';
 
     protected $maps = [
-        'save'     => ['POST', '/products'],
+        'save' => ['POST', '/products'],
         'findById' => ['GET', '/products/{itemId}'],
-        'patch'    => ['PATCH', '/products/{itemId}'],
-        'update'   => ['PUT', '/products/{itemId}'],
-        'fetch'    => ['GET', '/products?page={offset}&size={limit}'],
+        'patch' => ['PATCH', '/products/{itemId}'],
+        'update' => ['PUT', '/products/{itemId}'],
+        'fetch' => ['GET', '/products?page={offset}&size={limit}'],
     ];
 
     public function save(EntityInterface $product, $route = 'save')

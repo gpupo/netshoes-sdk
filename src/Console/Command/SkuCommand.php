@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Gpupo\NetshoesSdk\Console\Application;
@@ -23,10 +24,10 @@ class SkuCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
 
-            $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
+                $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
 
-            $app->displayTableResults($output, $p);
-        });
+                $app->displayTableResults($output, $p);
+            });
 
         $insertOptions = [
             ['key' => 'file'],
@@ -49,10 +50,10 @@ class SkuCommand
                     }
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
-                    $output->writeln('Message: <comment>' . $e->getMessage() . '</comment>');
-                    $output->writeln('Code: <comment>' . $e->getCode() . '</comment>');
+                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
+                    $output->writeln('Code: <comment>'.$e->getCode().'</comment>');
                 }
-        });
+            });
 
         return $app;
     }

@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Entity;
 
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;

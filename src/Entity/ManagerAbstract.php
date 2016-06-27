@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Entity;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
@@ -34,7 +35,7 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
 
     protected function factoryEntityCollection($data)
     {
-        return $this->factoryNeighborObject($this->getEntityName() . 'Collection', $data);
+        return $this->factoryNeighborObject($this->getEntityName().'Collection', $data);
     }
 
     /**
@@ -54,10 +55,10 @@ abstract class ManagerAbstract extends CommonAbstract implements ManagerInterfac
      */
     public function update(EntityInterface $entity, EntityInterface $existent)
     {
-        $text = 'Chamada a Atualização de entity ' . $this->entity;
+        $text = 'Chamada a Atualização de entity '.$this->entity;
 
         return $this->log('debug', $text, [
-            'entity'   => $entity,
+            'entity' => $entity,
             'existent' => $existent,
         ]);
     }

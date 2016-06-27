@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk;
 
 use Gpupo\CommonSdk\FactoryAbstract;
@@ -28,16 +29,16 @@ class Factory extends FactoryAbstract
     {
         return [
             'product' => [
-                'class'   => $namespace . 'Product\Product',
-                'manager' => $namespace . 'Product\Manager',
+                'class' => $namespace.'Product\Product',
+                'manager' => $namespace.'Product\Manager',
             ],
             'sku' => [
-                'class'   => $namespace . 'Product\Sku\Item',
-                'manager' => $namespace . 'Product\Sku\Manager',
+                'class' => $namespace.'Product\Sku\Item',
+                'manager' => $namespace.'Product\Sku\Manager',
             ],
             'templates' => [
-                'class'   => $namespace . 'Templates\Templates',
-                'manager' => $namespace . 'Templates\Manager',
+                'class' => $namespace.'Templates\Templates',
+                'manager' => $namespace.'Templates\Manager',
             ],
         ];
     }

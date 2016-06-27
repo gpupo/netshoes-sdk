@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Client;
 
 use Gpupo\CommonSdk\Client\ClientAbstract;
@@ -17,13 +18,13 @@ class Client extends ClientAbstract implements ClientInterface
     public function getDefaultOptions()
     {
         return [
-            'client_id'     => false,
-            'access_token'  => false,
-            'base_url'      => 'http://api-{VERSION}.netshoes.com.br/api/v1',
-            'version'       => 'sandbox',
-            'verbose'       => true,
-            'sslVersion'    => 'SecureTransport',
-            'cacheTTL'      => 3600,
+            'client_id' => false,
+            'access_token' => false,
+            'base_url' => 'http://api-{VERSION}.netshoes.com.br/api/v1',
+            'version' => 'sandbox',
+            'verbose' => true,
+            'sslVersion' => 'SecureTransport',
+            'cacheTTL' => 3600,
             'sslVerifyPeer' => true,
         ];
     }
@@ -35,10 +36,10 @@ class Client extends ClientAbstract implements ClientInterface
         foreach (['client_id', 'access_token'] as $key) {
             $value = $this->getOptions()->get($key);
             if (empty($value)) {
-                throw new \InvalidArgumentException('[' . $key . '] ausente!');
+                throw new \InvalidArgumentException('['.$key.'] ausente!');
             }
 
-            $list[] = $key . ':' . $value;
+            $list[] = $key.':'.$value;
         }
 
         return $list;

@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  * For more information, see <http://www.g1mr.com/>.
  */
+
 namespace Gpupo\NetshoesSdk\Entity\Product\Attributes;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
@@ -17,7 +18,7 @@ class Attribute extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return  [
-            'name'  => 'string',
+            'name' => 'string',
             'value' => 'string',
         ];
     }
