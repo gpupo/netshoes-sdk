@@ -30,7 +30,7 @@ class TemplatesCommand extends AbstractCommand
                     $list = $app->processInputParameters([], $input, $output);
                     $responseList = $app->factorySdk($list)->factoryManager('templates')->fetchByRoute($templateKey);
                     $app->displayTableResults($output, $responseList);
-            });
+                });
         }
 
         $app->appendCommand('templates:departments', 'List of departments')
@@ -42,7 +42,7 @@ class TemplatesCommand extends AbstractCommand
                         'buId' => $input->getArgument('buId'),
                     ]);
                 $app->displayTableResults($output, $responseList);
-        });
+            });
 
         $app->appendCommand('templates:productTypes', 'List of productTypes')
             ->addArgument('departmentCode', InputArgument::REQUIRED, 'Id do departamento')
@@ -53,7 +53,7 @@ class TemplatesCommand extends AbstractCommand
                         'departmentCode' => $input->getArgument('departmentCode'),
                     ]);
                 $app->displayTableResults($output, $responseList);
-        });
+            });
 
         $app->appendCommand('templates:attributes', 'List of attributes')
             ->addArgument('departmentCode', InputArgument::REQUIRED, 'Id do departamento')
@@ -66,7 +66,7 @@ class TemplatesCommand extends AbstractCommand
                         'productTypeCode' => $input->getArgument('productTypeCode'),
                     ]);
                 $app->displayTableResults($output, $responseList);
-        });
+            });
 
         $app->appendCommand('templates:tree', 'Tree of templates')
             ->addArgument('buId', InputArgument::REQUIRED, 'Business unit id - NS = Netshoes e ZT = Zattini')
@@ -92,7 +92,7 @@ class TemplatesCommand extends AbstractCommand
 
                     $output->writeln('<fg=yellow>------</>');
                 }
-        });
+            });
 
         return $app;
     }

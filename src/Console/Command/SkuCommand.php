@@ -27,7 +27,7 @@ class SkuCommand extends AbstractCommand
                 $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
 
                 $app->displayTableResults($output, $p);
-        });
+            });
 
         $insertOptions = [
             ['key' => 'file'],
@@ -53,7 +53,7 @@ class SkuCommand extends AbstractCommand
                     $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
                     $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
-        });
+            });
 
         return $app;
     }

@@ -5,17 +5,7 @@ use Symfony\CS\FixerInterface;
 use Symfony\CS\Finder\DefaultFinder;
 use Symfony\CS\Fixer\Contrib\HeaderCommentFixer;
 
-
-$header = <<<EOF
-This file is part of gpupo/netshoes-sdk
-Created by Gilmar Pupo <g@g1mr.com>
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-For more information, see <http://www.g1mr.com/>.
-
-EOF;
-
-HeaderCommentFixer::setHeader($header);
+HeaderCommentFixer::setHeader(file_get_contents ('Resources/doc/file-header.md'));
 
 $finder = DefaultFinder::create()
     ->notName('LICENSE')
@@ -23,8 +13,8 @@ $finder = DefaultFinder::create()
     ->notName('phpunit.xml*')
     ->notName('*.phar')
     ->exclude('vendor')
-    ->exclude('Resources')
     ->exclude('var')
+    ->exclude('Resources')
     ->in(__DIR__);
 
 return Config::create()

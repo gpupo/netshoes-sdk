@@ -225,7 +225,7 @@ Personalize os parâmetros!
 ### Entity\Product\Manager
 
 
-- [x] É o administrador de produtos
+- [x] Administra operações de Products
 - [x] Possui objeto client
 - [x] Obtem lista de produtos cadastrados
 - [x] Recupera informacoes de um produto especifico a partir de id
@@ -299,7 +299,9 @@ Personalize os parâmetros!
 ### Entity\Product\Sku\Manager
 
 
-- [x] Manager
+- [x] Administra operações de SKUs
+- [x] Possui objeto client
+- [x] Dá Acesso a lista de SKUs de um Product
 
 ### Entity\Product\Sku\SkuCollection
 
