@@ -4,6 +4,7 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 
 [![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EK6F2WRKG7GNN&item_name=netshoes-sdk)
 <!-- require -->
+
 ## Requisitos
 
 * PHP >= *5.6*
@@ -12,6 +13,7 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 <!-- //require -->
 
 <!-- licence -->
+
 ## Direitos autorais e de licença
 
 Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/blob/master/LICENSE)
@@ -235,6 +237,15 @@ Personalize os parâmetros!
 ---
 
 ## Propriedades dos objetos
+<!-- todo -->
+## Todo
+
+1) Atualmente os a estrutura de Produtos está relacionando cada SKU a um Product com o mesmo Id,
+ou seja, não há agrupamento de SKUs em um único Product, por conta da estrutura atual de apresentação
+de produtos no marketplace da Netshoes. No futuro, quando o agrupamento for implementado,
+as rotas de Entity/Product/Sku precisam ser revistas.
+
+<!-- //todo -->
 
 ### NetshoesSdk\Client\Client
 
@@ -406,7 +417,7 @@ doctrine/inflector | v1.1.0 | Common String Manipulations with regard to casing 
 doctrine/instantiator | 1.0.5 | A small, lightweight utility to instantiate objects in PHP without invoking their constructors
 doctrine/lexer | v1.0.1 | Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.
 gpupo/cache | 1.3.0 | Caching library that implements PSR-6
-gpupo/common | 1.6.5 | Common Objects
+gpupo/common | 1.6.6 | Common Objects
 gpupo/common-sdk | 2.0.11 | Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
 guzzle/guzzle | v3.9.3 | PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle
 monolog/monolog | 1.19.0 | Sends your logs to files, sockets, inboxes, databases and various web services

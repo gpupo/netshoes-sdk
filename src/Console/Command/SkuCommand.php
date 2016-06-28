@@ -60,13 +60,13 @@ class SkuCommand extends AbstractCommand
                 $data = json_decode(file_get_contents($list['file']), true);
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
+                $manager = $sdk->factoryManager('sku');
+                $previous = $manager->findSkuById($sku->getId());
 
                 try {
-                    $operation = $sdk->factoryManager('sku')->update($sku);
+                    $operation = $manager->update($sku, $previous);
 
-                    if (200 === $operation->getHttpStatusCode()) {
-                        $output->writeln('<info>Successo!</info>');
-                    }
+                    $app->displayTableResults($output, [$operation]);
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
                     $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');

@@ -6,6 +6,6 @@ vendor/bin/phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | sed 's/.*Gpupo
 
 cat Resources/doc/main.md Resources/doc/require.md Resources/doc/license.md \
 Resources/doc/QA.md Resources/doc/thanks.md Resources/doc/install.md Resources/doc/console.md \
-Resources/doc/links.md Resources/doc/dev.md var/logs/testdox.txt > README.md;
+Resources/doc/links.md Resources/doc/dev.md Resources/doc/todo.md var/logs/testdox.txt > README.md;
 
 cat Resources/doc/libraries-list.md | sed 's/  * / | /g' | sed 's/e0 / | /g' >> README.md;

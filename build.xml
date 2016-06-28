@@ -46,7 +46,7 @@
     <arg value="fix"/>
     <arg value="."/>
   </exec>
-  <exec executable="${basedir}/Resources/doc/build.sh">
+  <exec executable="${basedir}/bin/build-documentation.sh">
   </exec>
  </target>
  <target name="libraries" description="List dependencies">

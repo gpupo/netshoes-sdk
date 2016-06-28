@@ -112,6 +112,33 @@ class Manager extends AbstractManager
             'itemId'    => $entity->getId(),
         ]);
 
-        return $this->execute($m, $entity->toJson());
+        $response = [
+            'sku'      => $entity->getId(),
+            'bypassed' => [],
+            'updated'  => [],
+            'code'     => [],
+        ];
+
+        foreach ([
+            'Status' => ['active'],
+            'Stock' => ['available'],
+            'Price' => ['price'],
+            'PriceSchedule' => ['priceTo'],
+        ] as $key => $attributes) {
+            $getter = 'get'.$key;
+            $diff = $this->attributesDiff($entity->$getter(), $existent->$getter(), $attributes);
+            if (!empty($diff)) {
+                $response['code'][$key] = $this->saveDetail($entity, $key)->getHttpStatusCode();
+
+                $response['updated'][] = $key;
+            } else {
+                $response['bypassed'][] = $key;
+            }
+        }
+
+        $this->log('info', 'Operação de Atualização de entity '
+            .$this->entity, $response);
+
+        return $response;
     }
 }

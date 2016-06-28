@@ -13,5 +13,6 @@
     "weight": 0.3,
     "sellPrice": 100,
     "listPrice": 90,
-    "stock": 20
+    "stock": 20,
+    "status": true
 }

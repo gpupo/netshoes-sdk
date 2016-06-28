@@ -25,9 +25,9 @@ class DetailCommand extends AbstractCommand
         $insertOptions = [
             ['key' => 'file'],
             [
-                'key'       => 'type',
-                'options'   => ['Price', 'PriceSchedule', 'Stock', 'Status'],
-                'default'   => 'Price'
+                'key'     => 'type',
+                'options' => ['Price', 'PriceSchedule', 'Stock', 'Status'],
+                'default' => 'Price',
             ],
         ];
 
@@ -44,7 +44,7 @@ class DetailCommand extends AbstractCommand
                     $type = ucfirst($list['type']);
                     $operation = $sdk->factoryManager('sku')->saveDetail($sku, $type);
 
-                    if (in_array($operation->getHttpStatusCode(), [200, 201])) {
+                    if (in_array($operation->getHttpStatusCode(), [200, 201], true)) {
                         $output->writeln('Atualizando <comment>'.$type.'</comment>');
                         $output->writeln('<info>Successo!</info>');
                     }
