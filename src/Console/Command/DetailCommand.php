@@ -44,7 +44,7 @@ class DetailCommand extends AbstractCommand
                     $type = ucfirst($list['type']);
                     $operation = $sdk->factoryManager('sku')->saveDetail($sku, $type);
 
-                    if (200 === $operation->getHttpStatusCode()) {
+                    if (in_array($operation->getHttpStatusCode(), [200, 201])) {
                         $output->writeln('Atualizando <comment>'.$type.'</comment>');
                         $output->writeln('<info>Successo!</info>');
                     }

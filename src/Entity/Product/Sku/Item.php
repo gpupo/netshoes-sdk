@@ -119,5 +119,4 @@ class Item extends EntityAbstract implements EntityInterface
     {
         return $this->getStock()->toArray();
     }
-
 }
