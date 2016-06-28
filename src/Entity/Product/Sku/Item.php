@@ -102,6 +102,6 @@ class Item extends EntityAbstract implements EntityInterface
 
     public function toPrice()
     {
-        return $this->getPrice()->toJson();
+        return $this->getPrice()->toArray();
     }
 }
