@@ -18,14 +18,13 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
 /**
- *
  * @method string getAgreedDate()    Acesso a agreedDate
  * @method setAgreedDate(string $agreedDate)    Define agreedDate
  * @method string getBusinessUnit()    Acesso a businessUnit
  * @method setBusinessUnit(string $businessUnit)    Define businessUnit
- * @method boolean getDevolutionRequested()    Acesso a devolutionRequested
+ * @method bool getDevolutionRequested()    Acesso a devolutionRequested
  * @method setDevolutionRequested(boolean $devolutionRequested)    Define devolutionRequested
- * @method boolean getExchangeRequested()    Acesso a exchangeRequested
+ * @method bool getExchangeRequested()    Acesso a exchangeRequested
  * @method setExchangeRequested(boolean $exchangeRequested)    Define exchangeRequested
  * @method string getOrderDate()    Acesso a orderDate
  * @method setOrderDate(string $orderDate)    Define orderDate
@@ -55,7 +54,6 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setTotalNet(float $totalNet)    Define totalNet
  * @method float getTotalQuantity()    Acesso a totalQuantity
  * @method setTotalQuantity(float $totalQuantity)    Define totalQuantity
- *
  */
 class Order extends EntityAbstract implements EntityInterface
 {
