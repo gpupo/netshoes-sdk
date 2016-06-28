@@ -15,6 +15,8 @@ Adicione o pacote ``netshoes-sdk`` ao seu projeto utilizando [composer](http://g
 Este exemplo demonstra o uso simplificado a partir do ``Factory``:
 
 ```php
+<?php
+
 use Gpupo\NetshoesSdk\Factory;
 
 $sdk = Factory::getInstance()->setup([
@@ -37,20 +39,28 @@ Parâmetro | Descrição | Valores possíveis
 ### Acesso a lista de produtos cadastrados:
 
 ```php
+<?php
+//..
 $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection de Objetos Product
 
 ```
 
 ### Acesso a informações de um produto cadastrado e com identificador conhecido:
 
+
 ```php
+<?php
+//..
 $produto = $sdk->factoryManager('product')->findById(9)); // Objeto Produto
 echo $product->getName(); // Acesso ao nome do produto de Id 9
 ```
 
 ### Criação de um produto:
 
+
 ```php
+<?php
+//..
 $data = []; // Veja o formato de $data em Resources/fixture/Product/ProductId.json
 $product = $sdk->createProduct($data);
 ```
@@ -59,12 +69,16 @@ $product = $sdk->createProduct($data);
 
 
 ```php
+<?php
+//..
 $sdk->factoryManager('product')->save($product);
 ```
 
 ### Registro (log)
 
 ```php
+<?php
+//..
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 //..
