@@ -36,13 +36,12 @@ class SkuCommand extends AbstractCommand
 
                 $sku = $app->factorySdk($list)
                     ->factoryManager('sku')
-                    ->getDetailsById($input->getArgument('skuId'));
+                    ->findSkuById($input->getArgument('skuId'));
 
                 $output->writeln('Price: R$<info>'.$sku->getPrice()->getPrice().'</info>');
                 $output->writeln('Price Schedule: R$<info>'.$sku->getPriceSchedule()->getPriceTo().'</info>');
                 $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
                 $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
-
             });
 
         $insertOptions = [

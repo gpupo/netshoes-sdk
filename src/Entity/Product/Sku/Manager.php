@@ -38,6 +38,27 @@ class Manager extends AbstractManager
         return $this->execute($this->factoryMap($route), $product->toJson());
     }
 
+    /**
+     * @return Gpupo\Common\Entity\CollectionAbstract|null
+     */
+    public function findSkuById($itemId)
+    {
+        $response = $this->perform($this->factoryMap('findSkuById', [
+            'productId' => $itemId,
+            'itemId'    => $itemId,
+        ]));
+
+        $data = $this->processResponse($response);
+
+        if (empty($data)) {
+            return;
+        }
+
+        $sku = new Item($data->toArray());
+
+        return $this->hydrate(EntityInterface $sku);
+    }
+
     protected function getDetail($skuId, $type)
     {
         $response = $this->perform($this->factoryMap('get'.$type, ['sku' => $skuId]));
@@ -57,12 +78,12 @@ class Manager extends AbstractManager
         return $o;
     }
 
-    public function saveDetail(EntityInterface $sku, $type)
+    public function saveDetail(Item $sku, $type)
     {
         return $this->execute($this->factoryMap('save'.$type, ['sku' => $sku->getId()]), $sku->toJson($type));
     }
 
-    public function hydrate(EntityInterface $sku)
+    protected function hydrate(EntityInterface $sku)
     {
         $sku->setPrice($this->getDetail($skuId, 'Price'))
             ->setPriceSchedule($this->getDetail($skuId, 'PriceSchedule'))
