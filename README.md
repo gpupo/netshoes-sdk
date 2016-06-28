@@ -394,7 +394,7 @@ Personalize os parâmetros!
 ## Lista de dependências (libraries)
 
  Name | Version | Description
- -----|---------|-----------------------------------------------------------------------------
+ -----|---------|------------------------------------------------------
 codeclimate/php-test-reporter | v0.3.2 | PHP client for reporting test coverage to Code Climate
 doctrine/annotations | v1.2.7 | Docblock Annotations Parser
 doctrine/cache | v1.6.0 | Caching library offering an object-oriented API for many cache backends
