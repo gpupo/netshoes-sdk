@@ -18,15 +18,20 @@ use Gpupo\NetshoesSdk\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class PriceCommand extends AbstractCommand
+class DetailCommand extends AbstractCommand
 {
     public static function append(Application $app)
     {
         $insertOptions = [
             ['key' => 'file'],
+            [
+                'key'       => 'type',
+                'options'   => ['Price', 'PriceSchedule', 'Stock', 'Status'],
+                'default'   => 'Price'
+            ],
         ];
 
-        $app->appendCommand('product:sku:price:update', 'Atualiza o preço de um SKU')
+        $app->appendCommand('product:sku:detail:update', 'Atualiza detalhes de um SKU')
             ->setDefinition($app->factoryDefinition($insertOptions))
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
                 $list = $app->processInputParameters($insertOptions, $input, $output);
@@ -36,9 +41,11 @@ class PriceCommand extends AbstractCommand
                 $sku = $sdk->createSku($data);
 
                 try {
-                    $operation = $sdk->factoryManager('sku')->saveDetail($sku, 'Price');
+                    $type = ucfirst($list['type']);
+                    $operation = $sdk->factoryManager('sku')->saveDetail($sku, $type);
 
                     if (200 === $operation->getHttpStatusCode()) {
+                        $output->writeln('Atualizando <comment>'.$type.'</comment>');
                         $output->writeln('<info>Successo!</info>');
                     }
                 } catch (\Exception $e) {

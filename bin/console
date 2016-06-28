@@ -23,7 +23,7 @@ $app->findConfig([__DIR__.'/../']);
 
 $app = \Gpupo\NetshoesSdk\Console\Command\ProductCommand::append($app);
 $app = \Gpupo\NetshoesSdk\Console\Command\SkuCommand::append($app);
-$app = \Gpupo\NetshoesSdk\Console\Command\PriceCommand::append($app);
+$app = \Gpupo\NetshoesSdk\Console\Command\DetailCommand::append($app);
 $app = \Gpupo\NetshoesSdk\Console\Command\TemplatesCommand::append($app);
 
 $app->appendCommand('credential:test', 'Testa a validade de suas credenciais')

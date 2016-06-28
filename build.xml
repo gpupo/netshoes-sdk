@@ -52,6 +52,7 @@
  <target name="libraries" description="List dependencies">
    <echo output="Resources/doc/libraries-list.md" append="false"><!--libraries-list-->
 ## Lista de dependências (libraries)
+
 Name | Version | Description
 -----|---------|------------------------------------------------------
 </echo>
