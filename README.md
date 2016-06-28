@@ -10,9 +10,30 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 * PHP >= *5.6*
 * [curl extension](http://php.net/manual/en/intro.curl.php)
 
-## Licença
+## Direitos autorais e de licença
 
 Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/blob/master/LICENSE)
+
+Para a informação dos direitos autorais e de licença você deve ler o arquivo
+de [licença](https://github.com/gpupo/common-sdk/blob/master/LICENSE) que é distribuído com este código-fonte.
+
+### Resumo da licença
+
+Exigido:
+
+- Aviso de licença e direitos autorais
+
+Permitido:
+
+- Uso comercial
+- Modificação
+- Distribuição
+- Sublicenciamento
+- Proibido
+
+Proibido:
+
+- Responsabilidade Assegurada
 <!-- qa -->
 
 ---
@@ -298,7 +319,74 @@ Personalize os parâmetros!
 ### Entity\Product\Sku\Manager
 
 
-- [ ] Administra operações de SKUs
+- [x] Administra operações de SKUs
+- [x] Possui objeto client
+- [x] Dá Acesso a lista de SKUs de um Product
+
+### Entity\Product\Sku\PriceSchedule
+
+
+- [x] Entidade é uma Coleção 
+
+### Entity\Product\Sku\Price
+
+
+- [x] Possui método ``getPrice()`` para acessar Price 
+- [x] Possui método ``setPrice()`` que define Price 
+- [x] Entidade é uma Coleção 
+
+### Entity\Product\Sku\SkuCollection
+
+
+- [x] Links
+- [x] Instance
+- [x] Possui objeto metadata
+- [x] Metadata self
+
+### Entity\Product\Sku\Status
+
+
+- [x] Possui método ``getActive()`` para acessar Active 
+- [x] Possui método ``setActive()`` que define Active 
+- [x] Entidade é uma Coleção 
+
+### Entity\Product\Sku\Stock
+
+
+- [x] Possui método ``getAvailable()`` para acessar Available 
+- [x] Possui método ``setAvailable()`` que define Available 
+- [x] Entidade é uma Coleção 
+
+### Entity\Templates\Brand
+
+
+- [x] Possui Acesso a lista de marcas cadastradas
+- [x] Cada objeto da lista é uma instância de Item
+
+### Entity\Templates\Item
+
+
+- [x] Possui método ``getCode()`` para acessar Code 
+- [x] Possui método ``setCode()`` que define Code 
+- [x] Possui método ``getName()`` para acessar Name 
+- [x] Possui método ``setName()`` que define Name 
+- [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
+- [x] Possui método ``setExternalCode()`` que define ExternalCode 
+- [x] Entidade é uma Coleção 
+
+### Entity\Templates\TemplatesCollection
+
+
+- [x] Links
+- [x] Instance
+- [x] Possui objeto metadata
+- [x] Metadata self
+
+### Factory
+
+
+- [x] Centraliza acesso a managers 
+- [x] Centraliza criacao de objetos 
 
 ## Lista de dependências (libraries)
 
