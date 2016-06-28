@@ -107,11 +107,6 @@ class Manager extends AbstractManager
     {
         parent::update($entity, $existent);
 
-        $m = $this->factoryMap('update', [
-            'productId' => $entity->getId(),
-            'itemId'    => $entity->getId(),
-        ]);
-
         $response = [
             'sku'      => $entity->getId(),
             'bypassed' => [],
