@@ -264,59 +264,59 @@ Personalize os parâmetros!
 ### Entity\Product\Product
 
 
-- [x] Possui propriedades e objetos 
-- [x] Possui uma colecao attributes 
-- [x] Entrega json 
-- [x] Possui método ``getProductId()`` para acessar ProductId 
-- [x] Possui método ``setProductId()`` que define ProductId 
-- [x] Possui método ``getSkus()`` para acessar Skus 
-- [x] Possui método ``setSkus()`` que define Skus 
-- [x] Possui método ``getDepartment()`` para acessar Department 
-- [x] Possui método ``setDepartment()`` que define Department 
-- [x] Possui método ``getProductType()`` para acessar ProductType 
-- [x] Possui método ``setProductType()`` que define ProductType 
-- [x] Possui método ``getBrand()`` para acessar Brand 
-- [x] Possui método ``setBrand()`` que define Brand 
-- [x] Possui método ``getAttributes()`` para acessar Attributes 
-- [x] Possui método ``setAttributes()`` que define Attributes 
-- [x] Entidade é uma Coleção 
+- [x] Possui propriedades e objetos
+- [x] Possui uma colecao attributes
+- [x] Entrega json
+- [x] Possui método ``getProductId()`` para acessar ProductId
+- [x] Possui método ``setProductId()`` que define ProductId
+- [x] Possui método ``getSkus()`` para acessar Skus
+- [x] Possui método ``setSkus()`` que define Skus
+- [x] Possui método ``getDepartment()`` para acessar Department
+- [x] Possui método ``setDepartment()`` que define Department
+- [x] Possui método ``getProductType()`` para acessar ProductType
+- [x] Possui método ``setProductType()`` que define ProductType
+- [x] Possui método ``getBrand()`` para acessar Brand
+- [x] Possui método ``setBrand()`` que define Brand
+- [x] Possui método ``getAttributes()`` para acessar Attributes
+- [x] Possui método ``setAttributes()`` que define Attributes
+- [x] Entidade é uma Coleção
 
 ### Entity\Product\Sku\Image
 
 
-- [x] Possui método ``getUrl()`` para acessar Url 
-- [x] Possui método ``setUrl()`` que define Url 
-- [x] Entidade é uma Coleção 
+- [x] Possui método ``getUrl()`` para acessar Url
+- [x] Possui método ``setUrl()`` que define Url
+- [x] Entidade é uma Coleção
 
 ### Entity\Product\Sku\Item
 
 
-- [x] Possui método ``getId()`` para acessar Sku Id 
-- [x] Possui método ``getSku()`` para acessar Sku 
-- [x] Possui método ``setSku()`` que define Sku 
-- [x] Possui método ``getName()`` para acessar Name 
-- [x] Possui método ``setName()`` que define Name 
-- [x] Possui método ``getDescription()`` para acessar Description 
-- [x] Possui método ``setDescription()`` que define Description 
-- [x] Possui método ``getColor()`` para acessar Color 
-- [x] Possui método ``setColor()`` que define Color 
-- [x] Possui método ``getSize()`` para acessar Size 
-- [x] Possui método ``setSize()`` que define Size 
-- [x] Possui método ``getGender()`` para acessar Gender 
-- [x] Possui método ``setGender()`` que define Gender 
-- [x] Possui método ``getEanIsbn()`` para acessar EanIsbn 
-- [x] Possui método ``setEanIsbn()`` que define EanIsbn 
-- [x] Possui método ``getVideo()`` para acessar Video 
-- [x] Possui método ``setVideo()`` que define Video 
-- [x] Possui método ``getHeight()`` para acessar Height 
-- [x] Possui método ``setHeight()`` que define Height 
-- [x] Possui método ``getWidth()`` para acessar Width 
-- [x] Possui método ``setWidth()`` que define Width 
-- [x] Possui método ``getDepth()`` para acessar Depth 
-- [x] Possui método ``setDepth()`` que define Depth 
-- [x] Possui método ``getWeight()`` para acessar Weight 
-- [x] Possui método ``setWeight()`` que define Weight 
-- [x] Entidade é uma Coleção 
+- [x] Possui método ``getId()`` para acessar Sku Id
+- [x] Possui método ``getSku()`` para acessar Sku
+- [x] Possui método ``setSku()`` que define Sku
+- [x] Possui método ``getName()`` para acessar Name
+- [x] Possui método ``setName()`` que define Name
+- [x] Possui método ``getDescription()`` para acessar Description
+- [x] Possui método ``setDescription()`` que define Description
+- [x] Possui método ``getColor()`` para acessar Color
+- [x] Possui método ``setColor()`` que define Color
+- [x] Possui método ``getSize()`` para acessar Size
+- [x] Possui método ``setSize()`` que define Size
+- [x] Possui método ``getGender()`` para acessar Gender
+- [x] Possui método ``setGender()`` que define Gender
+- [x] Possui método ``getEanIsbn()`` para acessar EanIsbn
+- [x] Possui método ``setEanIsbn()`` que define EanIsbn
+- [x] Possui método ``getVideo()`` para acessar Video
+- [x] Possui método ``setVideo()`` que define Video
+- [x] Possui método ``getHeight()`` para acessar Height
+- [x] Possui método ``setHeight()`` que define Height
+- [x] Possui método ``getWidth()`` para acessar Width
+- [x] Possui método ``setWidth()`` que define Width
+- [x] Possui método ``getDepth()`` para acessar Depth
+- [x] Possui método ``setDepth()`` que define Depth
+- [x] Possui método ``getWeight()`` para acessar Weight
+- [x] Possui método ``setWeight()`` que define Weight
+- [x] Entidade é uma Coleção
 
 ### Entity\Product\Sku\Manager
 
@@ -328,14 +328,14 @@ Personalize os parâmetros!
 ### Entity\Product\Sku\PriceSchedule
 
 
-- [x] Entidade é uma Coleção 
+- [x] Entidade é uma Coleção
 
 ### Entity\Product\Sku\Price
 
 
-- [x] Possui método ``getPrice()`` para acessar Price 
-- [x] Possui método ``setPrice()`` que define Price 
-- [x] Entidade é uma Coleção 
+- [x] Possui método ``getPrice()`` para acessar Price
+- [x] Possui método ``setPrice()`` que define Price
+- [x] Entidade é uma Coleção
 
 ### Entity\Product\Sku\SkuCollection
 
@@ -348,16 +348,16 @@ Personalize os parâmetros!
 ### Entity\Product\Sku\Status
 
 
-- [x] Possui método ``getActive()`` para acessar Active 
-- [x] Possui método ``setActive()`` que define Active 
-- [x] Entidade é uma Coleção 
+- [x] Possui método ``getActive()`` para acessar Active
+- [x] Possui método ``setActive()`` que define Active
+- [x] Entidade é uma Coleção
 
 ### Entity\Product\Sku\Stock
 
 
-- [x] Possui método ``getAvailable()`` para acessar Available 
-- [x] Possui método ``setAvailable()`` que define Available 
-- [x] Entidade é uma Coleção 
+- [x] Possui método ``getAvailable()`` para acessar Available
+- [x] Possui método ``setAvailable()`` que define Available
+- [x] Entidade é uma Coleção
 
 ### Entity\Templates\Brand
 
@@ -368,13 +368,13 @@ Personalize os parâmetros!
 ### Entity\Templates\Item
 
 
-- [x] Possui método ``getCode()`` para acessar Code 
-- [x] Possui método ``setCode()`` que define Code 
-- [x] Possui método ``getName()`` para acessar Name 
-- [x] Possui método ``setName()`` que define Name 
-- [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
-- [x] Possui método ``setExternalCode()`` que define ExternalCode 
-- [x] Entidade é uma Coleção 
+- [x] Possui método ``getCode()`` para acessar Code
+- [x] Possui método ``setCode()`` que define Code
+- [x] Possui método ``getName()`` para acessar Name
+- [x] Possui método ``setName()`` que define Name
+- [x] Possui método ``getExternalCode()`` para acessar ExternalCode
+- [x] Possui método ``setExternalCode()`` que define ExternalCode
+- [x] Entidade é uma Coleção
 
 ### Entity\Templates\TemplatesCollection
 
@@ -387,13 +387,14 @@ Personalize os parâmetros!
 ### Factory
 
 
-- [x] Centraliza acesso a managers 
-- [x] Centraliza criacao de objetos 
+- [x] Centraliza acesso a managers
+- [x] Centraliza criacao de objetos
 
 
 ## Lista de dependências (libraries)
+
  Name | Version | Description
- -----|---------|------------
+ -----|---------|-----------------------------------------------------------------------------
 codeclimate/php-test-reporter | v0.3.2 | PHP client for reporting test coverage to Code Climate
 doctrine/annotations | v1.2.7 | Docblock Annotations Parser
 doctrine/cache | v1.6.0 | Caching library offering an object-oriented API for many cache backends
@@ -410,7 +411,7 @@ monolog/monolog | 1.19.0 | Sends your logs to files, sockets, inboxes, databases
 myclabs/deep-copy | 1.5.1 | Create deep copies (clones) of your objects
 phpdocumentor/reflection-common | 1.0 | Common reflection classes used by phpdocumentor to reflect the code structure
 phpdocumentor/reflection-docblock | 3.1.0 | With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.
-phpdocumentor/type-resolver | 0.2 | 
+phpdocumentor/type-resolver | 0.2 |
 phpspec/prophecy | v1.6.1 | Highly opinionated mocking framework for PHP 5.3+
 phpunit/php-code-coverage | 4.0.0 | Library that provides collection, processing, and rendering functionality for PHP code coverage information.
 phpunit/php-file-iterator | 1.4.1 | FilterIterator implementation that filters files based on a list of suffixes.
@@ -442,5 +443,3 @@ symfony/stopwatch | v3.1.1 | Symfony Stopwatch Component
 symfony/yaml | v3.1.1 | Symfony Yaml Component
 twig/twig | v1.24.1 | Twig, the flexible, fast, and secure template language for PHP
 webmozart/assert | 1.0.2 | Assertions to validate method input/output with nice error messages.
-
-
