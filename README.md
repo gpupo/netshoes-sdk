@@ -160,6 +160,11 @@ Exibe os SKUs de um produto:
 
     ./bin/console product:sku:view 14080
 
+Mostra preço, estoque e situação de um SKU:
+
+    ./bin/console product:sku:details 14080
+
+
 Lista de Departamentos:
 
     ./bin/console templates:departments NS
@@ -304,6 +309,18 @@ Personalize os parâmetros!
 - [x] Possui objeto client
 - [x] Dá Acesso a lista de SKUs de um Product
 
+### Entity\Product\Sku\PriceSchedule
+
+
+- [x] Entidade é uma Coleção 
+
+### Entity\Product\Sku\Price
+
+
+- [x] Possui método ``getPrice()`` para acessar Price 
+- [x] Possui método ``setPrice()`` que define Price 
+- [x] Entidade é uma Coleção 
+
 ### Entity\Product\Sku\SkuCollection
 
 
@@ -311,6 +328,20 @@ Personalize os parâmetros!
 - [x] Instance
 - [x] Possui objeto metadata
 - [x] Metadata self
+
+### Entity\Product\Sku\Status
+
+
+- [x] Possui método ``getActive()`` para acessar Active 
+- [x] Possui método ``setActive()`` que define Active 
+- [x] Entidade é uma Coleção 
+
+### Entity\Product\Sku\Stock
+
+
+- [x] Possui método ``getAvailable()`` para acessar Available 
+- [x] Possui método ``setAvailable()`` que define Available 
+- [x] Entidade é uma Coleção 
 
 ### Entity\Templates\Brand
 

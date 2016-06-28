@@ -29,7 +29,7 @@ class Manager extends AbstractManager
         'savePrice'         => ['PUT', '/skus/{sku}/prices'], //Save a base price
         'saveStock'         => ['PUT', '/skus/{sku}/stocks'], //Update stock quantity by sku
         'getStock'          => ['GET', '/skus/{sku}/stocks'], //Get Stock
-        'saveStatus'         => ['GET', '/skus/{sku}/bus/{buId}/status'], //Save Status
+        'saveStatus'        => ['GET', '/skus/{sku}/bus/{buId}/status'], //Save Status
         'getStatus'         => ['GET', '/skus/{sku}/bus/{buId}/status'], //Get Status
     ];
 
@@ -62,18 +62,14 @@ class Manager extends AbstractManager
         return $this->execute($this->factoryMap('save'.$type, ['sku' => $sku->getId()]), $sku->toJson($type));
     }
 
-    public function getDetailsById($skuId)
+    public function hydrate(EntityInterface $sku)
     {
-        $o = new Item([
-            'sku'   => $skuId,
-        ]);
+        $sku->setPrice($this->getDetail($skuId, 'Price'))
+            ->setPriceSchedule($this->getDetail($skuId, 'PriceSchedule'))
+            ->setStock($this->getDetail($skuId, 'Stock'))
+            ->setStatus($this->getDetail($skuId, 'Status'));
 
-        $o->setPrice($this->getDetail($skuId, 'Price'));
-        $o->setPriceSchedule($this->getDetail($skuId, 'PriceSchedule'));
-        $o->setStock($this->getDetail($skuId, 'Stock'));
-        $o->setStatus($this->getDetail($skuId, 'Status'));
-
-        return $o;
+        return $sku;
     }
 
     /**
