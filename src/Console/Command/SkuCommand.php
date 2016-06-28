@@ -65,7 +65,6 @@ class SkuCommand extends AbstractCommand
 
                 try {
                     $operation = $manager->update($sku, $previous);
-
                     $app->displayTableResults($output, [$operation]);
                 } catch (\Exception $e) {
                     $output->writeln('<error>Erro na criação</error>');
