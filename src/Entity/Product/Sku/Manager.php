@@ -56,19 +56,19 @@ class Manager extends AbstractManager
 
         $sku = new Item($data->toArray());
 
-        return $this->hydrate(EntityInterface $sku);
+        return $this->hydrate($sku);
     }
 
-    protected function getDetail($skuId, $type)
+    protected function getDetail(EntityInterface $sku, $type)
     {
-        $response = $this->perform($this->factoryMap('get'.$type, ['sku' => $skuId]));
+        $response = $this->perform($this->factoryMap('get'.$type, ['sku' => $sku->getId()]));
         $className = 'Gpupo\NetshoesSdk\Entity\Product\Sku\\'.$type;
         $data = $this->processResponse($response);
 
         $o = new $className($data->toArray());
 
         $this->getLogger()->addInfo('Detail', [
-            'sku'       => $skuId,
+            'sku'       => $sku->getId(),
             'typ'       => $type,
             'response'  => $data,
             'className' => $className,
@@ -85,10 +85,10 @@ class Manager extends AbstractManager
 
     protected function hydrate(EntityInterface $sku)
     {
-        $sku->setPrice($this->getDetail($skuId, 'Price'))
-            ->setPriceSchedule($this->getDetail($skuId, 'PriceSchedule'))
-            ->setStock($this->getDetail($skuId, 'Stock'))
-            ->setStatus($this->getDetail($skuId, 'Status'));
+        $sku->setPrice($this->getDetail($sku, 'Price'))
+            ->setPriceSchedule($this->getDetail($sku, 'PriceSchedule'))
+            ->setStock($this->getDetail($sku, 'Stock'))
+            ->setStatus($this->getDetail($sku, 'Status'));
 
         return $sku;
     }
