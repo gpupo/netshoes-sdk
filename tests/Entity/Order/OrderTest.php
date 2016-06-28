@@ -33,24 +33,24 @@ class OrderTest extends TestCaseAbstract
     public function dataProviderObject()
     {
         $expected = [
-            'agreedDate' => 'string',
-            'businessUnit' => 'string',
+            'agreedDate'          => 'string',
+            'businessUnit'        => 'string',
             'devolutionRequested' => false,
-            'exchangeRequested' => true,
-            'orderDate' => 'string',
-            'orderNumber' => 'string',
-            'orderStatus' => 'string',
-            'orderType' => 'string',
-            'originNumber' => 'string',
-            'originSite' => 'string',
-            'paymentDate' => 'string',
-            'shippings' => 'object',
-            'totalCommission' => 1.1,
-            'totalDiscount' => 2.1,
-            'totalFreight' => 2.0,
-            'totalGross' => 99.6,
-            'totalNet' => 1.11,
-            'totalQuantity' => 71.0,
+            'exchangeRequested'   => true,
+            'orderDate'           => 'string',
+            'orderNumber'         => 'string',
+            'orderStatus'         => 'string',
+            'orderType'           => 'string',
+            'originNumber'        => 'string',
+            'originSite'          => 'string',
+            'paymentDate'         => 'string',
+            'shippings'           => 'object',
+            'totalCommission'     => 1.1,
+            'totalDiscount'       => 2.1,
+            'totalFreight'        => 2.0,
+            'totalGross'          => 99.6,
+            'totalNet'            => 1.11,
+            'totalQuantity'       => 71.0,
         ];
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
@@ -415,5 +415,4 @@ class OrderTest extends TestCaseAbstract
     {
         $this->assertSchemaSetter('totalQuantity', 'number', $object);
     }
-
 }
