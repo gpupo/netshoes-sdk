@@ -100,8 +100,24 @@ class Item extends EntityAbstract implements EntityInterface
         return $a;
     }
 
-    public function toPrice()
+    protected function toPrice()
     {
         return $this->getPrice()->toArray();
     }
+
+    protected function toPriceSchedule()
+    {
+        return $this->getSchedule()->toArray();
+    }
+
+    protected function toStatus()
+    {
+        return $this->getStatus()->toArray();
+    }
+
+    protected function toStock()
+    {
+        return $this->getStock()->toArray();
+    }
+    
 }

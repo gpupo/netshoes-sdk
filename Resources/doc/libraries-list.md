@@ -1,6 +1,7 @@
-## Lista de dependências (libraries)
 
-```
+## Lista de dependências (libraries)
+ Name | Version | Description
+ -----|---------|------------
 codeclimate/php-test-reporter      v0.3.2             PHP client for reporting test coverage to Code Climate
 doctrine/annotations               v1.2.7             Docblock Annotations Parser
 doctrine/cache                     v1.6.0             Caching library offering an object-oriented API for many cache backends
@@ -50,5 +51,4 @@ symfony/yaml                       v3.1.1             Symfony Yaml Component
 twig/twig                          v1.24.1            Twig, the flexible, fast, and secure template language for PHP
 webmozart/assert                   1.0.2              Assertions to validate method input/output with nice error messages.
 
-```
----
+

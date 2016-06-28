@@ -84,7 +84,7 @@ class Manager extends AbstractManager
 
     public function saveDetail(Item $sku, $type)
     {
-        $json =  $sku->toJson($type);
+        $json = $sku->toJson($type);
         $map = $this->factoryMap('save'.$type, ['sku' => $sku->getId()]);
 
         return $this->execute($map, $json);
