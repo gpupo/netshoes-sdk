@@ -3,13 +3,15 @@
 SDK Não Oficial para integração a partir de aplicações PHP com as APIs da Netshoes Marketplace
 
 [![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EK6F2WRKG7GNN&item_name=netshoes-sdk)
-
-
+<!-- require -->
 ## Requisitos
 
 * PHP >= *5.6*
 * [curl extension](http://php.net/manual/en/intro.curl.php)
 
+<!-- //require -->
+
+<!-- licence -->
 ## Direitos autorais e de licença
 
 Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/blob/master/LICENSE)
@@ -234,7 +236,7 @@ Personalize os parâmetros!
 
 ## Propriedades dos objetos
 
-### Client\Client
+### NetshoesSdk\Client\Client
 
 
 - [x] Sucesso ao definir options
@@ -243,7 +245,7 @@ Personalize os parâmetros!
 - [ ] Acesso a lista de pedidos
 - [x] Acesso a lista de produtos
 
-### Entity\Product\Manager
+### NetshoesSdk\Entity\Product\Manager
 
 
 - [x] Administra operações de Products
@@ -251,7 +253,7 @@ Personalize os parâmetros!
 - [x] Obtem lista de produtos cadastrados
 - [x] Recupera informacoes de um produto especifico a partir de id
 
-### Entity\Product\ProductCollection
+### NetshoesSdk\Entity\Product\ProductCollection
 
 
 - [x] Links
@@ -261,7 +263,7 @@ Personalize os parâmetros!
 - [x] Metadata first
 - [x] Metadata last
 
-### Entity\Product\Product
+### NetshoesSdk\Entity\Product\Product
 
 
 - [x] Possui propriedades e objetos 
@@ -281,14 +283,14 @@ Personalize os parâmetros!
 - [x] Possui método ``setAttributes()`` que define Attributes 
 - [x] Entidade é uma Coleção 
 
-### Entity\Product\Sku\Image
+### NetshoesSdk\Entity\Product\Sku\Image
 
 
 - [x] Possui método ``getUrl()`` para acessar Url 
 - [x] Possui método ``setUrl()`` que define Url 
 - [x] Entidade é uma Coleção 
 
-### Entity\Product\Sku\Item
+### NetshoesSdk\Entity\Product\Sku\Item
 
 
 - [x] Possui método ``getId()`` para acessar Sku Id 
@@ -318,26 +320,26 @@ Personalize os parâmetros!
 - [x] Possui método ``setWeight()`` que define Weight 
 - [x] Entidade é uma Coleção 
 
-### Entity\Product\Sku\Manager
+### NetshoesSdk\Entity\Product\Sku\Manager
 
 
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
 - [x] Dá Acesso a lista de SKUs de um Product
 
-### Entity\Product\Sku\PriceSchedule
+### NetshoesSdk\Entity\Product\Sku\PriceSchedule
 
 
 - [x] Entidade é uma Coleção 
 
-### Entity\Product\Sku\Price
+### NetshoesSdk\Entity\Product\Sku\Price
 
 
 - [x] Possui método ``getPrice()`` para acessar Price 
 - [x] Possui método ``setPrice()`` que define Price 
 - [x] Entidade é uma Coleção 
 
-### Entity\Product\Sku\SkuCollection
+### NetshoesSdk\Entity\Product\Sku\SkuCollection
 
 
 - [x] Links
@@ -345,27 +347,27 @@ Personalize os parâmetros!
 - [x] Possui objeto metadata
 - [x] Metadata self
 
-### Entity\Product\Sku\Status
+### NetshoesSdk\Entity\Product\Sku\Status
 
 
 - [x] Possui método ``getActive()`` para acessar Active 
 - [x] Possui método ``setActive()`` que define Active 
 - [x] Entidade é uma Coleção 
 
-### Entity\Product\Sku\Stock
+### NetshoesSdk\Entity\Product\Sku\Stock
 
 
 - [x] Possui método ``getAvailable()`` para acessar Available 
 - [x] Possui método ``setAvailable()`` que define Available 
 - [x] Entidade é uma Coleção 
 
-### Entity\Templates\Brand
+### NetshoesSdk\Entity\Templates\Brand
 
 
 - [x] Possui Acesso a lista de marcas cadastradas
 - [x] Cada objeto da lista é uma instância de Item
 
-### Entity\Templates\Item
+### NetshoesSdk\Entity\Templates\Item
 
 
 - [x] Possui método ``getCode()`` para acessar Code 
@@ -376,7 +378,7 @@ Personalize os parâmetros!
 - [x] Possui método ``setExternalCode()`` que define ExternalCode 
 - [x] Entidade é uma Coleção 
 
-### Entity\Templates\TemplatesCollection
+### NetshoesSdk\Entity\Templates\TemplatesCollection
 
 
 - [x] Links
@@ -384,7 +386,7 @@ Personalize os parâmetros!
 - [x] Possui objeto metadata
 - [x] Metadata self
 
-### Factory
+### NetshoesSdk\Factory
 
 
 - [x] Centraliza acesso a managers 
