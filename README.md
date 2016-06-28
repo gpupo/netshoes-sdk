@@ -5,10 +5,21 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 [![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EK6F2WRKG7GNN&item_name=netshoes-sdk)
 <!-- require -->
 
-## Requisitos
+## Requisitos para uso
 
 * PHP >= *5.6*
 * [curl extension](http://php.net/manual/en/intro.curl.php)
+
+Este componente **não é uma aplicação Stand Alone** e seu objetivo é ser utilizado como biblioteca.
+Sua implantação deve ser feita por desenvolvedores experientes.
+
+**Isto não é um Plugin!**
+
+As opções que funcionam no modo de comando apenas servem para depuração em modo de
+desenvolvimento.
+
+A documentação mais importante está nos testes unitários. Se você não consegue ler os testes unitários, eu recomendo que não utilize esta biblioteca.
+
 
 <!-- //require -->
 
@@ -255,153 +266,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Objeto request possui header
 - [ ] Acesso a lista de pedidos
 - [x] Acesso a lista de produtos
-
-### NetshoesSdk\Entity\Product\Manager
-
-
-- [x] Administra operações de Products
-- [x] Possui objeto client
-- [x] Obtem lista de produtos cadastrados
-- [x] Recupera informacoes de um produto especifico a partir de id
-
-### NetshoesSdk\Entity\Product\ProductCollection
-
-
-- [x] Links
-- [x] Instance
-- [x] Possui objeto metadata
-- [x] Metadata self
-- [x] Metadata first
-- [x] Metadata last
-
-### NetshoesSdk\Entity\Product\Product
-
-
-- [x] Possui propriedades e objetos 
-- [x] Possui uma colecao attributes 
-- [x] Entrega json 
-- [x] Possui método ``getProductId()`` para acessar ProductId 
-- [x] Possui método ``setProductId()`` que define ProductId 
-- [x] Possui método ``getSkus()`` para acessar Skus 
-- [x] Possui método ``setSkus()`` que define Skus 
-- [x] Possui método ``getDepartment()`` para acessar Department 
-- [x] Possui método ``setDepartment()`` que define Department 
-- [x] Possui método ``getProductType()`` para acessar ProductType 
-- [x] Possui método ``setProductType()`` que define ProductType 
-- [x] Possui método ``getBrand()`` para acessar Brand 
-- [x] Possui método ``setBrand()`` que define Brand 
-- [x] Possui método ``getAttributes()`` para acessar Attributes 
-- [x] Possui método ``setAttributes()`` que define Attributes 
-- [x] Entidade é uma Coleção 
-
-### NetshoesSdk\Entity\Product\Sku\Image
-
-
-- [x] Possui método ``getUrl()`` para acessar Url 
-- [x] Possui método ``setUrl()`` que define Url 
-- [x] Entidade é uma Coleção 
-
-### NetshoesSdk\Entity\Product\Sku\Item
-
-
-- [x] Possui método ``getId()`` para acessar Sku Id 
-- [x] Possui método ``getSku()`` para acessar Sku 
-- [x] Possui método ``setSku()`` que define Sku 
-- [x] Possui método ``getName()`` para acessar Name 
-- [x] Possui método ``setName()`` que define Name 
-- [x] Possui método ``getDescription()`` para acessar Description 
-- [x] Possui método ``setDescription()`` que define Description 
-- [x] Possui método ``getColor()`` para acessar Color 
-- [x] Possui método ``setColor()`` que define Color 
-- [x] Possui método ``getSize()`` para acessar Size 
-- [x] Possui método ``setSize()`` que define Size 
-- [x] Possui método ``getGender()`` para acessar Gender 
-- [x] Possui método ``setGender()`` que define Gender 
-- [x] Possui método ``getEanIsbn()`` para acessar EanIsbn 
-- [x] Possui método ``setEanIsbn()`` que define EanIsbn 
-- [x] Possui método ``getVideo()`` para acessar Video 
-- [x] Possui método ``setVideo()`` que define Video 
-- [x] Possui método ``getHeight()`` para acessar Height 
-- [x] Possui método ``setHeight()`` que define Height 
-- [x] Possui método ``getWidth()`` para acessar Width 
-- [x] Possui método ``setWidth()`` que define Width 
-- [x] Possui método ``getDepth()`` para acessar Depth 
-- [x] Possui método ``setDepth()`` que define Depth 
-- [x] Possui método ``getWeight()`` para acessar Weight 
-- [x] Possui método ``setWeight()`` que define Weight 
-- [x] Entidade é uma Coleção 
-
-### NetshoesSdk\Entity\Product\Sku\Manager
-
-
-- [x] Administra operações de SKUs
-- [x] Possui objeto client
-- [x] Dá Acesso a lista de SKUs de um Product
-
-### NetshoesSdk\Entity\Product\Sku\PriceSchedule
-
-
-- [x] Entidade é uma Coleção 
-
-### NetshoesSdk\Entity\Product\Sku\Price
-
-
-- [x] Possui método ``getPrice()`` para acessar Price 
-- [x] Possui método ``setPrice()`` que define Price 
-- [x] Entidade é uma Coleção 
-
-### NetshoesSdk\Entity\Product\Sku\SkuCollection
-
-
-- [x] Links
-- [x] Instance
-- [x] Possui objeto metadata
-- [x] Metadata self
-
-### NetshoesSdk\Entity\Product\Sku\Status
-
-
-- [x] Possui método ``getActive()`` para acessar Active 
-- [x] Possui método ``setActive()`` que define Active 
-- [x] Entidade é uma Coleção 
-
-### NetshoesSdk\Entity\Product\Sku\Stock
-
-
-- [x] Possui método ``getAvailable()`` para acessar Available 
-- [x] Possui método ``setAvailable()`` que define Available 
-- [x] Entidade é uma Coleção 
-
-### NetshoesSdk\Entity\Templates\Brand
-
-
-- [x] Possui Acesso a lista de marcas cadastradas
-- [x] Cada objeto da lista é uma instância de Item
-
-### NetshoesSdk\Entity\Templates\Item
-
-
-- [x] Possui método ``getCode()`` para acessar Code 
-- [x] Possui método ``setCode()`` que define Code 
-- [x] Possui método ``getName()`` para acessar Name 
-- [x] Possui método ``setName()`` que define Name 
-- [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
-- [x] Possui método ``setExternalCode()`` que define ExternalCode 
-- [x] Entidade é uma Coleção 
-
-### NetshoesSdk\Entity\Templates\TemplatesCollection
-
-
-- [x] Links
-- [x] Instance
-- [x] Possui objeto metadata
-- [x] Metadata self
-
-### NetshoesSdk\Factory
-
-
-- [x] Centraliza acesso a managers 
-- [x] Centraliza criacao de objetos 
 
 
 ## Lista de dependências (libraries)
