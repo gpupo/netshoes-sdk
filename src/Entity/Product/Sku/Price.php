@@ -13,6 +13,10 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+/**
+ * @method float getPrice()    Acesso a price
+ * @method setPrice(float $price)    Define price
+ */
 class Price extends EntityAbstract implements EntityInterface
 {
     public function getSchema()

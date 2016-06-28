@@ -11,7 +11,6 @@
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Gpupo\NetshoesSdk\Console\Application;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -32,7 +31,7 @@ class PriceCommand extends AbstractCommand
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
 
-                try {                    
+                try {
                     $operation = $sdk->factoryManager('sku')->saveDetail($sku, 'Price');
 
                     if (200 === $operation->getHttpStatusCode()) {

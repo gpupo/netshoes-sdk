@@ -13,12 +13,16 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+/**
+ * @method int getAvailable()    Acesso a available
+ * @method setAvailable(integer $available)    Define available
+ */
 class Stock extends EntityAbstract implements EntityInterface
 {
     public function getSchema()
     {
         return  [
-            'available' => 'number',
+            'available' => 'integer',
         ];
     }
 }
