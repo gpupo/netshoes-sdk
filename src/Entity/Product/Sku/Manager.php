@@ -84,7 +84,10 @@ class Manager extends AbstractManager
 
     public function saveDetail(Item $sku, $type)
     {
-        return $this->execute($this->factoryMap('save'.$type, ['sku' => $sku->getId()]), $sku->toJson($type));
+        $json =  $sku->toJson($type);
+        $map = $this->factoryMap('save'.$type, ['sku' => $sku->getId()]);
+
+        return $this->execute($map, $json);
     }
 
     protected function hydrate(EntityInterface $sku)
