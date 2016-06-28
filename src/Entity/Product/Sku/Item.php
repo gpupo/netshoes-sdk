@@ -107,7 +107,7 @@ class Item extends EntityAbstract implements EntityInterface
 
     protected function toPriceSchedule()
     {
-        return $this->getSchedule()->toArray();
+        return $this->getPriceSchedule()->toArray();
     }
 
     protected function toStatus()
@@ -119,5 +119,5 @@ class Item extends EntityAbstract implements EntityInterface
     {
         return $this->getStock()->toArray();
     }
-    
+
 }
