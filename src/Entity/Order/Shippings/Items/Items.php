@@ -12,14 +12,14 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\NetshoesSdk\Entity\Order\Shippings;
+namespace Gpupo\NetshoesSdk\Entity\Order\Shippings\Items;
 
 use Gpupo\CommonSdk\Entity\CollectionAbstract;
 
-class Shippings extends CollectionAbstract
+class Items extends CollectionAbstract
 {
     public function factoryElement($data)
     {
-        return new Shipping($data);
+        return new Item($data);
     }
 }

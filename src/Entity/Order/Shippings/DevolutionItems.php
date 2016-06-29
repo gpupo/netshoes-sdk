@@ -14,12 +14,6 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Order\Shippings;
 
-use Gpupo\CommonSdk\Entity\CollectionAbstract;
-
-class Shippings extends CollectionAbstract
+class DevolutionItems extends Items\Items
 {
-    public function factoryElement($data)
-    {
-        return new Shipping($data);
-    }
 }

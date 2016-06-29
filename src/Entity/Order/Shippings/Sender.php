@@ -14,12 +14,16 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Order\Shippings;
 
-use Gpupo\CommonSdk\Entity\CollectionAbstract;
+use Gpupo\CommonSdk\Entity\EntityAbstract;
+use Gpupo\CommonSdk\Entity\EntityInterface;
 
-class Shippings extends CollectionAbstract
+class Sender extends EntityAbstract implements EntityInterface
 {
-    public function factoryElement($data)
+    protected $primaryKey = '';
+
+    public function getSchema()
     {
-        return new Shipping($data);
+        return [
+      ];
     }
 }
