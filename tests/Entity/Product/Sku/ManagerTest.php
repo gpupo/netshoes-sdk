@@ -41,6 +41,7 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @depends testManager
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager::getClient
      */
     public function testPossuiObjetoClient($manager)
     {
@@ -50,6 +51,11 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @testdox Dá Acesso a lista de SKUs de um Product
      * @depends testManager
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager::fetch
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager::execute
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager::factoryMap
+     * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
     public function testFetch($manager)
     {

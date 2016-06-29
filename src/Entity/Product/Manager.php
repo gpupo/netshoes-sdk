@@ -21,6 +21,9 @@ class Manager extends AbstractManager
 {
     protected $entity = 'Product';
 
+    /**
+     * @codeCoverageIgnore
+     */
     protected $maps = [
         'save'     => ['POST', '/products'],
         'findById' => ['GET', '/products/{itemId}'],

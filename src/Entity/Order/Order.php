@@ -59,6 +59,9 @@ class Order extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'orderNumber';
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return [

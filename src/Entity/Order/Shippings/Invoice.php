@@ -21,6 +21,9 @@ class Invoice extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = '';
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return [

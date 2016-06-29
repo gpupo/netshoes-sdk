@@ -25,6 +25,8 @@ class BrandTest extends TestCaseAbstract
 
     /**
      * @testdox Possui Acesso a lista de marcas cadastradas
+     * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
     public function testList()
     {
