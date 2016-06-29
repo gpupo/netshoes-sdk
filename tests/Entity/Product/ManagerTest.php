@@ -45,7 +45,7 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @depends testManager
-     * @covers Manager::getClient
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::getClient
      */
     public function testPossuiObjetoClient($manager)
     {
@@ -54,7 +54,7 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @depends testManager
-     * @covers Manager::fetch
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::fetch
      */
     public function testObtemListaDeProdutosCadastrados($manager)
     {
@@ -65,7 +65,7 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
-     * @covers Manager::findById
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::findById
      */
     public function testRecuperaInformacoesDeUmProdutoEspecificoAPartirDeId()
     {
