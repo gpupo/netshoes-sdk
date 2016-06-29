@@ -1,3 +1,6 @@
+
+<!-- licence -->
+
 ## Direitos autorais e de licença
 
 Este componente está sob a [licença MIT](https://github.com/gpupo/common-sdk/blob/master/LICENSE)
@@ -22,3 +25,5 @@ Permitido:
 Proibido:
 
 - Responsabilidade Assegurada
+
+<!-- //licence -->

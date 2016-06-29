@@ -12,14 +12,18 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\NetshoesSdk\Entity\Order\Shippings;
+namespace Gpupo\NetshoesSdk\Entity\Order\Shippings\Items;
 
-use Gpupo\CommonSdk\Entity\CollectionAbstract;
+use Gpupo\CommonSdk\Entity\EntityAbstract;
+use Gpupo\CommonSdk\Entity\EntityInterface;
 
-class Shippings extends CollectionAbstract
+class Item extends EntityAbstract implements EntityInterface
 {
-    public function factoryElement($data)
+    protected $primaryKey = '';
+
+    public function getSchema()
     {
-        return new Shipping($data);
+        return [
+        ];
     }
 }

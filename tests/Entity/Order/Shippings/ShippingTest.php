@@ -12,14 +12,21 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\NetshoesSdk\Entity\Order\Shippings;
+namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings;
 
-use Gpupo\CommonSdk\Entity\CollectionAbstract;
+use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
+use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
-class Shippings extends CollectionAbstract
+class ShippingsTest extends TestCaseAbstract
 {
-    public function factoryElement($data)
+    use EntityTrait;
+
+    const QUALIFIED = 'Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping';
+
+    public static function setUpBeforeClass()
     {
-        return new Shipping($data);
+        static::setFullyQualifiedObject(self::QUALIFIED);
+        parent::setUpBeforeClass();
     }
 }

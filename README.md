@@ -9,10 +9,13 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 
 <!-- require -->
 
+<!-- require -->
+
 ## Requisitos para uso
 
 * PHP >= *5.6*
 * [curl extension](http://php.net/manual/en/intro.curl.php)
+* [Composer Dependency Manager](http://getcomposer.org)
 
 Este componente **não é uma aplicação Stand Alone** e seu objetivo é ser utilizado como biblioteca.
 Sua implantação deve ser feita por desenvolvedores experientes.
@@ -24,7 +27,13 @@ desenvolvimento.
 
 A documentação mais importante está nos testes unitários. Se você não consegue ler os testes unitários, eu recomendo que não utilize esta biblioteca.
 
+
+<!-- //require -->
+
 <!-- license -->
+
+
+<!-- licence -->
 
 ## Direitos autorais e de licença
 
@@ -50,6 +59,8 @@ Permitido:
 Proibido:
 
 - Responsabilidade Assegurada
+
+<!-- //licence -->
 
 <!-- QA -->
 
