@@ -54,8 +54,6 @@ class Application extends AbstractApplication
 
     public function factorySdk(array $options)
     {
-        $options['version'] = $options['env'];
-
         return  Factory::getInstance()->setup($options, $this->factoryLogger());
     }
 
