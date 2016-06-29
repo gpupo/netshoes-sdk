@@ -37,9 +37,11 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
      */
     protected function fetchPrepare($data)
     {
-        if (!empty($data)) {
-            return $this->factoryEntityCollection($data);
+        if (empty($data)) {
+            return false;
         }
+
+        return $this->factoryEntityCollection($data);
     }
 
     protected function factoryEntityCollection($data)
@@ -54,13 +56,16 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
     {
         $data = parent::findById($itemId);
 
-        if (!empty($data)) {
-            return $this->factoryEntity($data->toArray());
+        if (empty($data) || $data->get('type') === "Resource_Not_Found") {
+            return false;
         }
+
+        return $this->factoryEntity($data->toArray());
     }
 
     /**
      * {@inheritdoc}
+     * @codeCoverageIgnore
      */
     public function update(EntityInterface $entity, EntityInterface $existent = null)
     {
