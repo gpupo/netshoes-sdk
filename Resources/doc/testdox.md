@@ -49,6 +49,33 @@
 - [x] Possui método ``setTotalQuantity()`` que define TotalQuantity 
 - [x] Entidade é uma Coleção 
 
+### NetshoesSdk\Entity\Order\Shippings\Shipping
+
+
+- [x] Possui método ``getShippingCode()`` para acessar ShippingCode 
+- [x] Possui método ``setShippingCode()`` que define ShippingCode 
+- [x] Possui método ``getCustomer()`` para acessar Customer 
+- [x] Possui método ``setCustomer()`` que define Customer 
+- [x] Possui método ``getFreightAmount()`` para acessar FreightAmount 
+- [x] Possui método ``setFreightAmount()`` que define FreightAmount 
+- [x] Possui método ``getInvoice()`` para acessar Invoice 
+- [x] Possui método ``setInvoice()`` que define Invoice 
+- [x] Possui método ``getItems()`` para acessar Items 
+- [x] Possui método ``setItems()`` que define Items 
+- [x] Possui método ``getSender()`` para acessar Sender 
+- [x] Possui método ``setSender()`` que define Sender 
+- [x] Possui método ``getStatus()`` para acessar Status 
+- [x] Possui método ``setStatus()`` que define Status 
+- [x] Possui método ``getTransport()`` para acessar Transport 
+- [x] Possui método ``setTransport()`` que define Transport 
+- [x] Possui método ``getCountry()`` para acessar Country 
+- [x] Possui método ``setCountry()`` que define Country 
+- [x] Possui método ``getCancellationReason()`` para acessar CancellationReason 
+- [x] Possui método ``setCancellationReason()`` que define CancellationReason 
+- [x] Possui método ``getDevolutionItems()`` para acessar DevolutionItems 
+- [x] Possui método ``setDevolutionItems()`` que define DevolutionItems 
+- [x] Entidade é uma Coleção 
+
 ### NetshoesSdk\Entity\Product\Manager
 
 
