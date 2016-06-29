@@ -111,6 +111,6 @@ class ManagerTest extends TestCaseAbstract
     {
         $manager = $this->getManager('item.json', 202);
         $product = $this->getFactory()->createProduct();
-        $this->assertEquals(202, $manager->save($product)->getHttpStatusCode());
+        $this->assertSame(202, $manager->save($product)->getHttpStatusCode());
     }
 }

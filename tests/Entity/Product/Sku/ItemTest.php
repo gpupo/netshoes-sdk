@@ -14,7 +14,7 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
-use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
@@ -30,24 +30,75 @@ class ItemTest extends TestCaseAbstract
         parent::setUpBeforeClass();
     }
 
+    protected $array = [
+            'sku'         => '12345',
+            'name'        => 'string',
+            'description' => 'string',
+            'color'       => 'string',
+            'size'        => 'string',
+            'gender'      => 'string',
+            'eanIsbn'     => 'string',
+            'video'       => 'string',
+            'height'      => 'string',
+            'width'       => 'string',
+            'depth'       => 'string',
+            'weight'      => 'string',
+            'listPrice'   => 1.22,
+            'sellPrice'   => 0.99,
+            'stock'       => 20,
+            'status'      => true,
+        ];
+
     public function dataProviderObject()
     {
-        $expected = [
-                'sku'         => '12345',
-                'name'        => 'string',
-                'description' => 'string',
-                'color'       => 'string',
-                'size'        => 'string',
-                'gender'      => 'string',
-                'eanIsbn'     => 'string',
-                'video'       => 'string',
-                'height'      => 'string',
-                'width'       => 'string',
-                'depth'       => 'string',
-                'weight'      => 'string',
-            ];
+        $o = $this->dataProviderEntitySchema(self::QUALIFIED, $this->array);
 
-        return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
+        $o[0][0] = new Item($o[0][0]);
+
+        return $o;
+    }
+
+    public function beforeConstruct()
+    {
+    }
+
+    /**
+     * @testdox Prepara o Json para gravação de preço
+     * @dataProvider dataProviderObject
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::beforeConstruct
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::toPrice
+     * @test
+     */
+    public function toPrice()
+    {
+        $item = $this->proxy(new Item($this->array));
+        $this->assertSame(['price' => 1.22], $item->toPrice());
+    }
+
+    /**
+     * @testdox Prepara o Json para gravação de Estoque
+     * @dataProvider dataProviderObject
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::beforeConstruct
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::toStock
+     * @test
+     */
+    public function toStock(Item $object)
+    {
+        $item = $this->proxy(new Item($this->array));
+        $this->assertSame(['available' => 20], $item->toStock());
+    }
+
+    /**
+     * @testdox Prepara o Json para gravação de Situação (disponibilidade)
+     * @dataProvider dataProviderObject
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::beforeConstruct
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::toStatus
+     * @test
+     */
+    public function toStatus(Item $object)
+    {
+        $item = $this->proxy(new Item($this->array));
+        $this->assertSame(['active' => true], $item->toStatus());
     }
 
     /**
@@ -55,7 +106,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterId(EntityInterface $object, $expected = null)
+    public function getterId(Item $object, $expected = null)
     {
         $this->assertSame('12345', $object->getId());
         $this->assertSchemaGetter('sku', 'string', $object, $expected);
@@ -66,7 +117,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterSku(EntityInterface $object, $expected = null)
+    public function getterSku(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('sku', 'string', $object, $expected);
     }
@@ -76,7 +127,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterSku(EntityInterface $object, $expected = null)
+    public function setterSku(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('sku', 'string', $object);
     }
@@ -86,7 +137,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterName(EntityInterface $object, $expected = null)
+    public function getterName(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('name', 'string', $object, $expected);
     }
@@ -96,7 +147,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterName(EntityInterface $object, $expected = null)
+    public function setterName(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('name', 'string', $object);
     }
@@ -106,7 +157,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterDescription(EntityInterface $object, $expected = null)
+    public function getterDescription(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('description', 'string', $object, $expected);
     }
@@ -116,7 +167,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterDescription(EntityInterface $object, $expected = null)
+    public function setterDescription(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('description', 'string', $object);
     }
@@ -126,7 +177,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterColor(EntityInterface $object, $expected = null)
+    public function getterColor(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('color', 'string', $object, $expected);
     }
@@ -136,7 +187,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterColor(EntityInterface $object, $expected = null)
+    public function setterColor(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('color', 'string', $object);
     }
@@ -146,7 +197,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterSize(EntityInterface $object, $expected = null)
+    public function getterSize(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('size', 'string', $object, $expected);
     }
@@ -156,7 +207,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterSize(EntityInterface $object, $expected = null)
+    public function setterSize(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('size', 'string', $object);
     }
@@ -166,7 +217,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterGender(EntityInterface $object, $expected = null)
+    public function getterGender(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('gender', 'string', $object, $expected);
     }
@@ -176,7 +227,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterGender(EntityInterface $object, $expected = null)
+    public function setterGender(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('gender', 'string', $object);
     }
@@ -186,7 +237,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterEanIsbn(EntityInterface $object, $expected = null)
+    public function getterEanIsbn(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('eanIsbn', 'string', $object, $expected);
     }
@@ -196,7 +247,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterEanIsbn(EntityInterface $object, $expected = null)
+    public function setterEanIsbn(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('eanIsbn', 'string', $object);
     }
@@ -206,7 +257,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterVideo(EntityInterface $object, $expected = null)
+    public function getterVideo(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('video', 'string', $object, $expected);
     }
@@ -216,7 +267,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterVideo(EntityInterface $object, $expected = null)
+    public function setterVideo(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('video', 'string', $object);
     }
@@ -226,7 +277,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterHeight(EntityInterface $object, $expected = null)
+    public function getterHeight(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('height', 'string', $object, $expected);
     }
@@ -236,7 +287,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterHeight(EntityInterface $object, $expected = null)
+    public function setterHeight(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('height', 'string', $object);
     }
@@ -246,7 +297,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterWidth(EntityInterface $object, $expected = null)
+    public function getterWidth(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('width', 'string', $object, $expected);
     }
@@ -256,7 +307,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterWidth(EntityInterface $object, $expected = null)
+    public function setterWidth(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('width', 'string', $object);
     }
@@ -266,7 +317,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterDepth(EntityInterface $object, $expected = null)
+    public function getterDepth(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('depth', 'string', $object, $expected);
     }
@@ -276,7 +327,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterDepth(EntityInterface $object, $expected = null)
+    public function setterDepth(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('depth', 'string', $object);
     }
@@ -286,7 +337,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterWeight(EntityInterface $object, $expected = null)
+    public function getterWeight(Item $object, $expected = null)
     {
         $this->assertSchemaGetter('weight', 'string', $object, $expected);
     }
@@ -296,7 +347,7 @@ class ItemTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterWeight(EntityInterface $object, $expected = null)
+    public function setterWeight(Item $object, $expected = null)
     {
         $this->assertSchemaSetter('weight', 'string', $object);
     }
