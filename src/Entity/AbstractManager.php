@@ -56,7 +56,7 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
     {
         $data = parent::findById($itemId);
 
-        if (empty($data) || $data->get('type') === "Resource_Not_Found") {
+        if (empty($data) || $data->get('type') === 'Resource_Not_Found') {
             return false;
         }
 
@@ -65,6 +65,7 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
 
     /**
      * {@inheritdoc}
+     *
      * @codeCoverageIgnore
      */
     public function update(EntityInterface $entity, EntityInterface $existent = null)

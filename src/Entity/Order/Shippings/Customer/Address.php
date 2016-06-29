@@ -12,24 +12,27 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
+namespace Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
-/**
- * @method int getAvailable()    Acesso a available
- * @method setAvailable(integer $available)    Define available
- */
-class Stock extends EntityAbstract implements EntityInterface
+class Address extends EntityAbstract implements EntityInterface
 {
     /**
      * @codeCoverageIgnore
      */
     public function getSchema()
     {
-        return  [
-            'available' => 'integer',
-        ];
+        return [
+              'city'         => 'string',
+              'complement'   => 'string',
+              'neighborhood' => 'string',
+              'number'       => 'string',
+              'postalCode'   => 'string',
+              'reference'    => 'string',
+              'state'        => 'string',
+              'street'       => 'string',
+      ];
     }
 }

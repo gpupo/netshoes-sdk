@@ -23,6 +23,9 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  */
 class Price extends EntityAbstract implements EntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return  [

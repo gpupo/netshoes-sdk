@@ -14,8 +14,8 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
-use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 use Gpupo\NetshoesSdk\Entity\Product\Manager;
+use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 class ManagerTest extends TestCaseAbstract
 {

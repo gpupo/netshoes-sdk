@@ -19,6 +19,9 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Attribute extends EntityAbstract implements EntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return  [

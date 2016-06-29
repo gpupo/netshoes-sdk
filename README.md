@@ -264,9 +264,6 @@ Personalize os parâmetros!
 
 *Dica*: Verifique os logs gerados em ``var/log/main.log``
 
-<!-- \ -->
-
-
 <!-- todo -->
 
 ## Todo
@@ -367,9 +364,10 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 
 - [x] Administra operações de Products
-- [x] Possui objeto client
-- [x] Obtem lista de produtos cadastrados
-- [x] Recupera informacoes de um produto especifico a partir de id
+- [x] Possui objeto Client
+- [x] Obtem a lista de produtos cadastrados
+- [x] Recupera informações de um produto especifico a partir de Id
+- [x] Recebe false em caso de produto inexistente
 
 ### NetshoesSdk\Entity\Product\ProductCollection
 

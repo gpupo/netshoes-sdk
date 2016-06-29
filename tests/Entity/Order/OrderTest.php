@@ -487,5 +487,4 @@ class OrderTest extends TestCaseAbstract
     {
         $this->assertSchemaSetter('totalQuantity', 'number', $object);
     }
-    
 }

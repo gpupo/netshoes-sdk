@@ -44,6 +44,9 @@ class Application extends AbstractApplication
         ],
     ];
 
+    /**
+     * @codeCoverageIgnore
+     */
     protected function getLogFilePath()
     {
         return 'var/logs/console.log';

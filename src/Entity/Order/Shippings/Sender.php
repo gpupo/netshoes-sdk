@@ -27,6 +27,10 @@ class Sender extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
+              'sellerCode'   => 'integer',
+              'sellerName'   => 'string',
+              'supplierCnpj' => 'string',
+              'supplierName' => 'string',
       ];
     }
 }

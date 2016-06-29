@@ -19,7 +19,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Customer extends EntityAbstract implements EntityInterface
 {
-    protected $primaryKey = '';
+    protected $primaryKey = 'document';
 
     /**
      * @codeCoverageIgnore
@@ -27,6 +27,14 @@ class Customer extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
+              'address'          => 'object',
+              'cellPhone'        => 'string',
+              'customerName'     => 'string',
+              'document'         => 'string',
+              'landLine'         => 'string',
+              'recipientName'    => 'string',
+              'stateInscription' => 'string',
+              'tradeName'        => 'string',
       ];
     }
 }
