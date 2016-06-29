@@ -45,18 +45,20 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @depends testManager
+     * @testdox Possui objeto Client
      * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::getClient
      */
-    public function testPossuiObjetoClient($manager)
+    public function testGetClient($manager)
     {
         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Client\Client', $manager->getClient());
     }
 
     /**
      * @depends testManager
+     * @testdox Obtem a lista de produtos cadastrados
      * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::fetch
      */
-    public function testObtemListaDeProdutosCadastrados($manager)
+    public function testFetch($manager)
     {
         $list = $manager->fetch();
         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\ProductCollection', $list);
@@ -65,9 +67,10 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Recupera informações de um produto especifico a partir de Id
      * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::findById
      */
-    public function testRecuperaInformacoesDeUmProdutoEspecificoAPartirDeId()
+    public function testFindBy()
     {
         $manager = $this->getManager('item.json');
         $product = $manager->findById(14080);
