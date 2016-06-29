@@ -101,4 +101,16 @@ class ManagerTest extends TestCaseAbstract
         $product = $manager->findById(88888);
         $this->assertFalse($product);
     }
+
+    /**
+     * @testdox Recebe false em caso de produto inexistente
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::save
+     * @test
+     */
+    public function save()
+    {
+        $manager = $this->getManager('item.json', 202);
+        $product = $this->getFactory()->createProduct();
+        $this->assertEquals(202, $manager->save($product)->getHttpStatusCode());
+    }
 }
