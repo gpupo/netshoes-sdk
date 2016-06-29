@@ -33,7 +33,7 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
     }
 
     /**
-     * @return Gpupo\Common\Entity\CollectionAbstract|null
+     * @return Gpupo\Common\Entity\CollectionAbstract|false
      */
     protected function fetchPrepare($data)
     {
@@ -50,7 +50,7 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
     }
 
     /**
-     * @return Gpupo\Common\Entity\CollectionAbstract|null
+     * @return Gpupo\Common\Entity\CollectionAbstract|false
      */
     public function findById($itemId)
     {
