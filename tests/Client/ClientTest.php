@@ -14,10 +14,17 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Client;
 
+use Gpupo\CommonSdk\Client\ClientInterface;
+use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 class ClientTest extends TestCaseAbstract
 {
+    /**
+     * @testdox
+     * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
+     */
     public function testSucessoAoDefinirOptions()
     {
         $client = $this->factoryClient();
@@ -29,7 +36,7 @@ class ClientTest extends TestCaseAbstract
     /**
      * @depends testSucessoAoDefinirOptions
      */
-    public function testGerenciaUriDeRecurso($client)
+    public function testGerenciaUriDeRecurso(ClientInterface $client)
     {
         $this->assertSame('http://api-sandbox.netshoes.com.br/api/v1/sku',
             $client->getResourceUri('/sku'));
@@ -38,7 +45,7 @@ class ClientTest extends TestCaseAbstract
     /**
      * @depends testSucessoAoDefinirOptions
      */
-    public function testObjetoRequestPossuiHeader($client)
+    public function testObjetoRequestPossuiHeader(ClientInterface $client)
     {
         if (!$this->hasToken()) {
             return $this->markSkipped('API Token ausente');
@@ -70,5 +77,34 @@ class ClientTest extends TestCaseAbstract
 
         $response = $this->factoryClient()->get('/products');
         $this->assertSame(200, $response->getHttpStatusCode());
+    }
+
+    /**
+     * @test Trata com a autenticação(HTTP headers)
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
+     */
+    public function renderAuthorization()
+    {
+        $client = new Client([
+            'client_id'    => 'x882ja',
+            'access_token' => '8998329jejd',
+        ]);
+
+        $list = $this->proxy($client)->renderAuthorization();
+
+        $this->assertStringStartsWith('client_id', $list[0]);
+        $this->assertStringStartsWith('access_token', $list[1]);
+    }
+
+    /**
+     * @test Falha ao ser usado em credenciais
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
+     * @expectedException InvalidArgumentException
+     * @test
+     */
+    public function renderAuthorizationFail()
+    {
+        $client = new Client();
+        $this->proxy($client)->renderAuthorization();
     }
 }

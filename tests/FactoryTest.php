@@ -27,6 +27,22 @@ class FactoryTest extends FactoryTestAbstract
     }
 
     /**
+     * @test Dá acesso a ``Factory``
+     * @test
+     */
+    public function setClient()
+    {
+        $factory = new Factory();
+
+        $factory->setClient([
+            'client_id'    => 'x882ja',
+            'access_token' => '8998329jejd',
+        ]);
+
+        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Client\Client', $factory->getClient());
+    }
+
+    /**
      * @dataProvider dataProviderManager
      */
     public function testCentralizaAcessoAManagers($objectExpected, $target)
