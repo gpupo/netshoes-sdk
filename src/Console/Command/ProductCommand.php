@@ -21,6 +21,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ProductCommand extends AbstractCommand
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public static function append(Application $app)
     {
         $app->appendCommand('product:view', 'Consulta a situação de um produto')

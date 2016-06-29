@@ -19,14 +19,14 @@ use Gpupo\NetshoesSdk\Entity\Product\Manager;
 
 class ManagerTest extends TestCaseAbstract
 {
-    protected function getManager($filename = null)
+    protected function getManager($filename = null, $code = 200)
     {
         if (empty($filename)) {
             $filename = 'list.json';
         }
 
         $manager = $this->getFactory()->factoryManager('product');
-        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/'.$filename));
+        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/'.$filename, $code));
 
         return $manager;
     }
@@ -85,5 +85,20 @@ class ManagerTest extends TestCaseAbstract
         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Product', $product);
         $this->assertSame('14080', $product->getProductId());
         $this->assertSame('14080', $product->getId());
+    }
+
+    /**
+     * @testdox Recebe false em caso de produto inexistente
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::findById
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::execute
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::factoryMap
+     * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
+     */
+    public function testFindByFail()
+    {
+        $manager = $this->getManager('notfound.json', 404);
+        $product = $manager->findById(88888);
+        $this->assertFalse($product);
     }
 }

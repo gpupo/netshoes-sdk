@@ -21,6 +21,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class TemplatesCommand extends AbstractCommand
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public static function append(Application $app)
     {
         foreach ([

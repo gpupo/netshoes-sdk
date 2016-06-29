@@ -20,6 +20,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class DetailCommand extends AbstractCommand
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public static function append(Application $app)
     {
         $insertOptions = [

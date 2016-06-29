@@ -19,6 +19,9 @@ use Gpupo\CommonSdk\Client\ClientInterface;
 
 class Client extends ClientAbstract implements ClientInterface
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDefaultOptions()
     {
         return [

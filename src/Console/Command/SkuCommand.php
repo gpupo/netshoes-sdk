@@ -21,6 +21,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class SkuCommand extends AbstractCommand
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public static function append(Application $app)
     {
         $app->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')
