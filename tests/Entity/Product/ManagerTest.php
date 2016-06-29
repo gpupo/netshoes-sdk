@@ -15,6 +15,7 @@
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+use Gpupo\NetshoesSdk\Entity\Product\Manager;
 
 class ManagerTest extends TestCaseAbstract
 {
@@ -37,13 +38,14 @@ class ManagerTest extends TestCaseAbstract
      {
          $manager = $this->getManager();
 
-         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Manager', $manager);
+         $this->assertInstanceOf(Manager::class, $manager);
 
          return $manager;
      }
 
     /**
      * @depends testManager
+     * @covers Manager::getClient
      */
     public function testPossuiObjetoClient($manager)
     {
@@ -52,6 +54,7 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @depends testManager
+     * @covers Manager::fetch
      */
     public function testObtemListaDeProdutosCadastrados($manager)
     {
@@ -61,6 +64,9 @@ class ManagerTest extends TestCaseAbstract
         return $list;
     }
 
+    /**
+     * @covers Manager::findById
+     */
     public function testRecuperaInformacoesDeUmProdutoEspecificoAPartirDeId()
     {
         $manager = $this->getManager('item.json');
