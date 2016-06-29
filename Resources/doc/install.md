@@ -1,5 +1,3 @@
-<!-- install -->
-
 ---
 
 ## Instalação

@@ -1,5 +1,3 @@
-<!-- require -->
-
 ## Requisitos para uso
 
 * PHP >= *5.6*
@@ -14,6 +12,3 @@ As opções que funcionam no modo de comando apenas servem para depuração em m
 desenvolvimento.
 
 A documentação mais importante está nos testes unitários. Se você não consegue ler os testes unitários, eu recomendo que não utilize esta biblioteca.
-
-
-<!-- //require -->
