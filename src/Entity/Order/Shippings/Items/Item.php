@@ -27,6 +27,31 @@ class Item extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
+            'brand'                    => 'string',
+            'color'                    => 'string',
+            'departmentCode'           => 'integer',
+            'departmentName'           => 'string',
+            'discountUnitValue'        => 'number',
+            'ean'                      => 'string',
+            'flavor'                   => 'string',
+            'grossUnitValue'           => 'number',
+            'itemId'                   => 'integer',
+            'manufacturerCode'         => 'string',
+            'name'                     => 'string',
+            'netUnitValue'             => 'number',
+            'quantity'                 => 'number',
+            'size'                     => 'string',
+            'sku'                      => 'string',
+            'status'                   => 'string',
+            'totalCommission'          => 'number',
+            'totalDiscount'            => 'number',
+            'totalFreight'             => 'number',
+            'totalGross'               => 'number',
+            'totalNet'                 => 'number',
+            'checkInData'              => 'string',
+            'devolutionData'           => 'string',
+            'devolutionExchangeStatus' => 'string',
+            'exchangeProcessCode'      => 'integer',
         ];
     }
 }

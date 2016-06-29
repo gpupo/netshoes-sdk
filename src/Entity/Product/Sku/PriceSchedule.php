@@ -29,6 +29,9 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  */
 class PriceSchedule extends EntityAbstract implements EntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return  [

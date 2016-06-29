@@ -27,6 +27,13 @@ class Transport extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
+            'carrier'          => 'string',
+            'deliveryDate'     => 'string',
+            'deliveryService'  => 'string',
+            'shipDate'         => 'string',
+            'trackingLink'     => 'string',
+            'trackingNumber'   => 'string',
+            'trackingShipDate' => 'string',
       ];
     }
 }

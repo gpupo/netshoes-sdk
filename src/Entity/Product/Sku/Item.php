@@ -23,6 +23,9 @@ class Item extends EntityAbstract implements EntityInterface
 
     protected $exclude = ['price', 'priceSchedule', 'stock', 'status'];
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return  [
