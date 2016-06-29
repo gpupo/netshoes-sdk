@@ -333,6 +333,110 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setTotalQuantity()`` que define TotalQuantity 
 - [x] Entidade é uma Coleção 
 
+### NetshoesSdk\Entity\Order\Shippings\Customer\Address
+
+
+- [x] Possui método ``getCity()`` para acessar City 
+- [x] Possui método ``setCity()`` que define City 
+- [x] Possui método ``getComplement()`` para acessar Complement 
+- [x] Possui método ``setComplement()`` que define Complement 
+- [x] Possui método ``getNeighborhood()`` para acessar Neighborhood 
+- [x] Possui método ``setNeighborhood()`` que define Neighborhood 
+- [x] Possui método ``getNumber()`` para acessar Number 
+- [x] Possui método ``setNumber()`` que define Number 
+- [x] Possui método ``getPostalCode()`` para acessar PostalCode 
+- [x] Possui método ``setPostalCode()`` que define PostalCode 
+- [x] Possui método ``getReference()`` para acessar Reference 
+- [x] Possui método ``setReference()`` que define Reference 
+- [x] Possui método ``getState()`` para acessar State 
+- [x] Possui método ``setState()`` que define State 
+- [x] Possui método ``getStreet()`` para acessar Street 
+- [x] Possui método ``setStreet()`` que define Street 
+- [x] Entidade é uma Coleção 
+
+### NetshoesSdk\Entity\Order\Shippings\Customer\Customer
+
+
+- [x] Possui método ``getAddress()`` para acessar Address 
+- [x] Possui método ``setAddress()`` que define Address 
+- [x] Possui método ``getCellPhone()`` para acessar CellPhone 
+- [x] Possui método ``setCellPhone()`` que define CellPhone 
+- [x] Possui método ``getCustomerName()`` para acessar CustomerName 
+- [x] Possui método ``setCustomerName()`` que define CustomerName 
+- [x] Possui método ``getDocument()`` para acessar Document 
+- [x] Possui método ``setDocument()`` que define Document 
+- [x] Possui método ``getLandLine()`` para acessar LandLine 
+- [x] Possui método ``setLandLine()`` que define LandLine 
+- [x] Possui método ``getRecipientName()`` para acessar RecipientName 
+- [x] Possui método ``setRecipientName()`` que define RecipientName 
+- [x] Possui método ``getStateInscription()`` para acessar StateInscription 
+- [x] Possui método ``setStateInscription()`` que define StateInscription 
+- [x] Possui método ``getTradeName()`` para acessar TradeName 
+- [x] Possui método ``setTradeName()`` que define TradeName 
+- [x] Entidade é uma Coleção 
+
+### NetshoesSdk\Entity\Order\Shippings\Items\Item
+
+
+- [x] Possui método ``getBrand()`` para acessar Brand 
+- [x] Possui método ``setBrand()`` que define Brand 
+- [x] Possui método ``getColor()`` para acessar Color 
+- [x] Possui método ``setColor()`` que define Color 
+- [x] Possui método ``getDepartmentCode()`` para acessar DepartmentCode 
+- [x] Possui método ``setDepartmentCode()`` que define DepartmentCode 
+- [x] Possui método ``getDepartmentName()`` para acessar DepartmentName 
+- [x] Possui método ``setDepartmentName()`` que define DepartmentName 
+- [x] Possui método ``getDiscountUnitValue()`` para acessar DiscountUnitValue 
+- [x] Possui método ``setDiscountUnitValue()`` que define DiscountUnitValue 
+- [x] Possui método ``getEan()`` para acessar Ean 
+- [x] Possui método ``setEan()`` que define Ean 
+- [x] Possui método ``getFlavor()`` para acessar Flavor 
+- [x] Possui método ``setFlavor()`` que define Flavor 
+- [x] Possui método ``getGrossUnitValue()`` para acessar GrossUnitValue 
+- [x] Possui método ``setGrossUnitValue()`` que define GrossUnitValue 
+- [x] Possui método ``getItemId()`` para acessar ItemId 
+- [x] Possui método ``setItemId()`` que define ItemId 
+- [x] Possui método ``getManufacturerCode()`` para acessar ManufacturerCode 
+- [x] Possui método ``setManufacturerCode()`` que define ManufacturerCode 
+- [x] Possui método ``getName()`` para acessar Name 
+- [x] Possui método ``setName()`` que define Name 
+- [x] Possui método ``getNetUnitValue()`` para acessar NetUnitValue 
+- [x] Possui método ``setNetUnitValue()`` que define NetUnitValue 
+- [x] Possui método ``getQuantity()`` para acessar Quantity 
+- [x] Possui método ``setQuantity()`` que define Quantity 
+- [x] Possui método ``getSize()`` para acessar Size 
+- [x] Possui método ``setSize()`` que define Size 
+- [x] Possui método ``getSku()`` para acessar Sku 
+- [x] Possui método ``setSku()`` que define Sku 
+- [x] Possui método ``getStatus()`` para acessar Status 
+- [x] Possui método ``setStatus()`` que define Status 
+- [x] Possui método ``getTotalCommission()`` para acessar TotalCommission 
+- [x] Possui método ``setTotalCommission()`` que define TotalCommission 
+- [x] Possui método ``getTotalDiscount()`` para acessar TotalDiscount 
+- [x] Possui método ``setTotalDiscount()`` que define TotalDiscount 
+- [x] Possui método ``getTotalFreight()`` para acessar TotalFreight 
+- [x] Possui método ``setTotalFreight()`` que define TotalFreight 
+- [x] Possui método ``getTotalGross()`` para acessar TotalGross 
+- [x] Possui método ``setTotalGross()`` que define TotalGross 
+- [x] Possui método ``getTotalNet()`` para acessar TotalNet 
+- [x] Possui método ``setTotalNet()`` que define TotalNet 
+- [x] Possui método ``getCheckInData()`` para acessar CheckInData 
+- [x] Possui método ``setCheckInData()`` que define CheckInData 
+- [x] Possui método ``getDevolutionData()`` para acessar DevolutionData 
+- [x] Possui método ``setDevolutionData()`` que define DevolutionData 
+- [x] Possui método ``getDevolutionExchangeStatus()`` para acessar DevolutionExchangeStatus 
+- [x] Possui método ``setDevolutionExchangeStatus()`` que define DevolutionExchangeStatus 
+- [x] Possui método ``getExchangeProcessCode()`` para acessar ExchangeProcessCode 
+- [x] Possui método ``setExchangeProcessCode()`` que define ExchangeProcessCode 
+- [x] Entidade é uma Coleção 
+
+### NetshoesSdk\Entity\Order\Shippings\Items
+
+
+- [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item``
+
+
+
 ### NetshoesSdk\Entity\Order\Shippings\Shipping
 
 
@@ -359,6 +463,13 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``getDevolutionItems()`` para acessar DevolutionItems 
 - [x] Possui método ``setDevolutionItems()`` que define DevolutionItems 
 - [x] Entidade é uma Coleção 
+
+### NetshoesSdk\Entity\Order\Shippings\Shippings
+
+
+- [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping``
+
+
 
 ### NetshoesSdk\Entity\Product\Manager
 

@@ -17,6 +17,24 @@ namespace Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+/**
+ * @method string getCity()    Acesso a city
+ * @method setCity(string $city)    Define city
+ * @method string getComplement()    Acesso a complement
+ * @method setComplement(string $complement)    Define complement
+ * @method string getNeighborhood()    Acesso a neighborhood
+ * @method setNeighborhood(string $neighborhood)    Define neighborhood
+ * @method string getNumber()    Acesso a number
+ * @method setNumber(string $number)    Define number
+ * @method string getPostalCode()    Acesso a postalCode
+ * @method setPostalCode(string $postalCode)    Define postalCode
+ * @method string getReference()    Acesso a reference
+ * @method setReference(string $reference)    Define reference
+ * @method string getState()    Acesso a state
+ * @method setState(string $state)    Define state
+ * @method string getStreet()    Acesso a street
+ * @method setStreet(string $street)    Define street
+ */
 class Address extends EntityAbstract implements EntityInterface
 {
     /**

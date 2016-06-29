@@ -17,6 +17,24 @@ namespace Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+/**
+ * @method Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer\Address getAddress()    Acesso a address
+ * @method setAddress(Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer\Address $address)    Define address
+ * @method string getCellPhone()    Acesso a cellPhone
+ * @method setCellPhone(string $cellPhone)    Define cellPhone
+ * @method string getCustomerName()    Acesso a customerName
+ * @method setCustomerName(string $customerName)    Define customerName
+ * @method string getDocument()    Acesso a document
+ * @method setDocument(string $document)    Define document
+ * @method string getLandLine()    Acesso a landLine
+ * @method setLandLine(string $landLine)    Define landLine
+ * @method string getRecipientName()    Acesso a recipientName
+ * @method setRecipientName(string $recipientName)    Define recipientName
+ * @method string getStateInscription()    Acesso a stateInscription
+ * @method setStateInscription(string $stateInscription)    Define stateInscription
+ * @method string getTradeName()    Acesso a tradeName
+ * @method setTradeName(string $tradeName)    Define tradeName
+ */
 class Customer extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'document';
