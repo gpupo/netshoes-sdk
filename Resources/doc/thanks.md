@@ -1,5 +1,3 @@
-<!-- thanks -->
-
 ---
 
 ## Agradecimentos

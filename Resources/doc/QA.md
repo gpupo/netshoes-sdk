@@ -1,5 +1,3 @@
-<!-- qa -->
-
 ---
 
 ## Indicadores de qualidade

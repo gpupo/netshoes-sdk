@@ -1,5 +1,3 @@
-<!-- dev -->
-
 ---
 
 ## Desenvolvimento
@@ -17,7 +15,3 @@ Personalize os parâmetros!
 
 
 *Dica*: Verifique os logs gerados em ``var/log/main.log``
-
----
-
-## Propriedades dos objetos

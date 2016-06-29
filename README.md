@@ -1,8 +1,12 @@
+
+<!-- main -->
+
 # Netshoes-SDK
 
 SDK Não Oficial para integração a partir de aplicações PHP com as APIs da Netshoes Marketplace
 
 [![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EK6F2WRKG7GNN&item_name=netshoes-sdk)
+
 <!-- require -->
 
 ## Requisitos para uso
@@ -20,10 +24,7 @@ desenvolvimento.
 
 A documentação mais importante está nos testes unitários. Se você não consegue ler os testes unitários, eu recomendo que não utilize esta biblioteca.
 
-
-<!-- //require -->
-
-<!-- licence -->
+<!-- license -->
 
 ## Direitos autorais e de licença
 
@@ -50,8 +51,7 @@ Proibido:
 
 - Responsabilidade Assegurada
 
-<!-- //licence -->
-<!-- qa -->
+<!-- QA -->
 
 ---
 
@@ -66,6 +66,7 @@ Proibido:
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2/big.png)](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2)
 
 [![StyleCI](https://styleci.io/repos/61658580/shield)](https://styleci.io/repos/61658580)
+
 <!-- thanks -->
 
 ---
@@ -77,6 +78,7 @@ Proibido:
 * Aos desenvolvedores que criaram as [bibliotecas utilizadas neste componente](https://github.com/gpupo/netshoes-sdk/blob/master/Resources/doc/libraries-list.md).
 
  _- [Gilmar Pupo](http://www.g1mr.com/)_
+
 <!-- install -->
 
 ---
@@ -165,6 +167,7 @@ $logger = new Logger('foo');
 $logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
 $sdk->setLogger($logger);
 ```
+
 <!-- console -->
 
 ---
@@ -214,6 +217,7 @@ Você poder criar um arquivo chamado ``app.json`` com suas configurações perso
 ```
 
 Utilize como modelo o arquivo ``app.json.dist``
+
 <!-- links -->
 
 ---
@@ -225,6 +229,10 @@ Utilize como modelo o arquivo ``app.json.dist``
 * [SDK Oficial](https://github.com/netshoes/marketplace-api-sdk-php)
 * [Marketplace-bundle Composer Package](http://www.g1mr.com/MarkethubBundle/) - Integração deste pacote com Symfony
 * [Outras SDKs para o Ecommerce do Brasil](http://www.g1mr.com/common-sdk/)
+
+<!-- links-common -->
+
+
 <!-- dev -->
 
 ---
@@ -245,10 +253,11 @@ Personalize os parâmetros!
 
 *Dica*: Verifique os logs gerados em ``var/log/main.log``
 
----
+<!-- \ -->
 
-## Propriedades dos objetos
+
 <!-- todo -->
+
 ## Todo
 
 1) Atualmente os a estrutura de Produtos está relacionando cada SKU a um Product com o mesmo Id,
@@ -256,7 +265,15 @@ ou seja, não há agrupamento de SKUs em um único Product, por conta da estrutu
 de produtos no marketplace da Netshoes. No futuro, quando o agrupamento for implementado,
 as rotas de Entity/Product/Sku precisam ser revistas.
 
-<!-- //todo -->
+<!-- dev-common -->
+
+
+---
+
+## Propriedades dos objetos
+
+<!-- testdox -->
+
 
 ### NetshoesSdk\Client\Client
 
@@ -456,6 +473,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Centraliza criacao de objetos 
 
 
+<!-- libraries-table -->
+
+
 ## Lista de dependências (libraries)
 
 Name | Version | Description
@@ -508,5 +528,9 @@ symfony/stopwatch | v3.1.1 | Symfony Stopwatch Component
 symfony/yaml | v3.1.1 | Symfony Yaml Component
 twig/twig | v1.24.1 | Twig, the flexible, fast, and secure template language for PHP
 webmozart/assert | 1.0.2 | Assertions to validate method input/output with nice error messages.
+
+
+
+<!-- footer-common -->
 
 
