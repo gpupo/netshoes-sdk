@@ -21,6 +21,9 @@ class Customer extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = '';
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return [

@@ -45,6 +45,9 @@ class Shipping extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'shippingCode';
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return [

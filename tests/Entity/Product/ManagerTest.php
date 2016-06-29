@@ -57,6 +57,10 @@ class ManagerTest extends TestCaseAbstract
      * @depends testManager
      * @testdox Obtem a lista de produtos cadastrados
      * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::fetch
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::execute
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::factoryMap
+     * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
     public function testFetch($manager)
     {
@@ -69,6 +73,10 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @testdox Recupera informações de um produto especifico a partir de Id
      * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::findById
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::execute
+     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::factoryMap
+     * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
     public function testFindBy()
     {

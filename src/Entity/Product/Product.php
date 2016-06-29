@@ -37,6 +37,9 @@ class Product extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'productId';
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getSchema()
     {
         return [
