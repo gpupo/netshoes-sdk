@@ -14,6 +14,7 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order;
 
+use Gpupo\NetshoesSdk\Entity\Order\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
@@ -21,16 +22,50 @@ use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
  */
 class ManagerTest extends TestCaseAbstract
 {
+    protected function getManager($filename = null)
+    {
+        $manager = $this->getFactory()->factoryManager('order');
+        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Order/list.json'));
+
+        return $manager;
+    }
+
+    /**
+     * @testdox Administra operações de SKUs
+     * @test
+     */
+    public function testManager()
+    {
+        $manager = $this->getManager();
+
+        $this->assertInstanceOf(Manager::class, $manager);
+
+        return $manager;
+    }
+
+    /**
+     * @depends testManager
+     * @covers ::getClient
+     */
+    public function testPossuiObjetoClient($manager)
+    {
+        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Client\Client', $manager->getClient());
+    }
+
     /**
      * @testdox Get a list of Orders
      * @test
+     * @depends testManager
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
      */
-    public function fetch()
+    public function fetch(Manager $manager)
     {
-        $this->markTestIncomplete();
+        $list = $manager->fetch();
+        $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Order\OrderCollection', $list);
+
+        return $list;
     }
 
     /**

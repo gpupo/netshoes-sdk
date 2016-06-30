@@ -12,11 +12,11 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\NetshoesSdk\Entity\Product;
+namespace Gpupo\NetshoesSdk\Entity\Order;
 
 use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 
-class ProductCollection extends AbstractMetadata
+class OrderCollection extends AbstractMetadata
 {
     /**
      * @codeCoverageIgnore
@@ -28,6 +28,6 @@ class ProductCollection extends AbstractMetadata
 
     protected function factoryEntity(array $data)
     {
-        return new Product($data);
+        return new Order($data);
     }
 }

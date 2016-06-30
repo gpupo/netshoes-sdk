@@ -20,16 +20,31 @@ abstract class AbstractMetadata extends MetadataContainerAbstract
 {
     protected function cutMetadata($raw)
     {
+        if (array_key_exists('_links', $raw)) {
+            foreach ($raw['_links'] as $k => $v) {
+                $raw['links'][] = [
+                    'rel'  => $k,
+                    'href' => current($v),
+                ];
+            }
+        }
+
         return  $this->dataPiece('links', $raw);
     }
 
     protected function normalizeMetas($metas)
     {
         $data = [];
+        $rm = [
+            'http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs',
+            'http://api-sandbox.netshoes.com.br/api',
+        ];
 
         if (is_array($metas)) {
             foreach ($metas as $meta) {
-                $data[$meta['rel']] = str_replace('http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs', '', $meta['href']);
+                if (array_key_exists('rel', $meta)) {
+                    $data[$meta['rel']] = str_replace($rm, '', $meta['href']);
+                }
             }
         }
 

@@ -15,8 +15,13 @@
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\SkuCollection;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\SkuCollection
+ */
 class SkuCollectionTest extends TestCaseAbstract
 {
     public function testLinks()
@@ -30,11 +35,24 @@ class SkuCollectionTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox É uma coleção de objetos ``\Gpupo\NetshoesSdk\Entity\Product\Sku\Item``
      * @depends testLinks
+     * @covers ::factoryEntity
      */
-    public function testInstance(MetadataContainerAbstract $container)
+    public function testfactoryEntity(MetadataContainerAbstract $container)
     {
-        $this->assertInstanceOf('\Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract', $container);
+        $this->assertInstanceOf(MetadataContainerAbstract::class, $container);
+
+        $simple = new SkuCollection(['items' => [['foo' => 'bar']]]);
+
+        foreach ([$simple, $container] as $o) {
+            foreach ($o as $s) {
+                $this->assertInstanceOf(Item::class, $s);
+            }
+        }
+
+        $this->assertInstanceOf(Item::class, $o->first());
+        $this->assertInstanceOf(Item::class, $o->last());
     }
 
     /**

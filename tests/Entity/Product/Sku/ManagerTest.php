@@ -14,8 +14,12 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
+use Gpupo\NetshoesSdk\Entity\Product\Sku\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager
+ */
 class ManagerTest extends TestCaseAbstract
 {
     protected function getManager($filename = null)
@@ -34,16 +38,16 @@ class ManagerTest extends TestCaseAbstract
     {
         $manager = $this->getManager();
 
-        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Sku\Manager', $manager);
+        $this->assertInstanceOf(Manager::class, $manager);
 
         return $manager;
     }
 
     /**
      * @depends testManager
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager::getClient
+     * @covers ::getClient
      */
-    public function testPossuiObjetoClient($manager)
+    public function testPossuiObjetoClient(Manager $manager)
     {
         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Client\Client', $manager->getClient());
     }
@@ -51,13 +55,13 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @testdox Dá Acesso a lista de SKUs de um Product
      * @depends testManager
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager::fetch
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager::execute
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager::factoryMap
+     * @covers ::fetch
+     * @covers ::execute
+     * @covers ::factoryMap
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
-    public function testFetch($manager)
+    public function testFetch(Manager $manager)
     {
         $list = $manager->findById(14080);
         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Sku\SkuCollection', $list);
