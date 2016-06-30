@@ -15,17 +15,17 @@
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\Status;
 
 use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTest;
-use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved;
+use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Invoiced;
 
 /**
- * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Invoiced
  */
-class ApprovedTest extends AbstractDecoratorTest
+class InvoicedTest extends AbstractDecoratorTest
 {
-    protected $target = 'approved';
+    protected $target = 'invoiced';
 
     protected function factory()
     {
-        return new Approved();
+        return new Invoiced();
     }
 }

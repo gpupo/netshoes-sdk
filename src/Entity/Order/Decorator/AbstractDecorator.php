@@ -12,20 +12,31 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\Status;
+namespace Gpupo\NetshoesSdk\Entity\Order\Decorator;
 
-use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTest;
-use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved;
+use Gpupo\Common\Entity\Collection;
+use Gpupo\NetshoesSdk\Entity\Order\Order;
 
-/**
- * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved
- */
-class ApprovedTest extends AbstractDecoratorTest
+abstract class AbstractDecorator extends Collection
 {
-    protected $target = 'approved';
-
-    protected function factory()
+    public function setOrder(Order $order)
     {
-        return new Approved();
+        $this->set('order', $order);
+
+        return $this;
     }
+
+    public function validate()
+    {
+        try {
+            $this->getOrder();
+        } catch (\Exception $e) {
+            error_log('Order decorator validation:' . $e->getMessage());
+
+            return false;
+        }
+
+        return true;
+    }
+
 }
