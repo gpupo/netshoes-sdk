@@ -85,7 +85,6 @@ class ItemTest extends TestCaseAbstract
         $this->assertSame(['priceTo' => 0.99], $item->toPriceSchedule());
     }
 
-
     /**
      * @testdox Prepara o Json para gravação de Estoque
      * @covers ::beforeConstruct

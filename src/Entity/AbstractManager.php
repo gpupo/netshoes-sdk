@@ -49,6 +49,11 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
         return $this->factoryNeighborObject($this->getEntityName().'Collection', $data);
     }
 
+    public function save(EntityInterface $entity, $route = 'save')
+    {
+        return $this->execute($this->factoryMap($route), $entity->toJson($route));
+    }
+
     /**
      * @return Gpupo\Common\Entity\CollectionAbstract|false
      */

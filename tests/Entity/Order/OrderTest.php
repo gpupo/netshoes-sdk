@@ -18,6 +18,9 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Order
+ */
 class OrderTest extends TestCaseAbstract
 {
     use EntityTrait;
@@ -59,8 +62,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getAgreedDate()`` para acessar AgreedDate
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getAgreedDate
+     * @cover ::get
+     * @cover ::getAgreedDate
      * @test
      */
     public function getterAgreedDate(EntityInterface $object, $expected = null)
@@ -71,8 +74,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setAgreedDate()`` que define AgreedDate
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setAgreedDate
+     * @cover ::set
+     * @cover ::setAgreedDate
      * @test
      */
     public function setterAgreedDate(EntityInterface $object, $expected = null)
@@ -83,8 +86,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getBusinessUnit()`` para acessar BusinessUnit
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getBusinessUnit
+     * @cover ::get
+     * @cover ::getBusinessUnit
      * @test
      */
     public function getterBusinessUnit(EntityInterface $object, $expected = null)
@@ -95,8 +98,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setBusinessUnit()`` que define BusinessUnit
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setBusinessUnit
+     * @cover ::set
+     * @cover ::setBusinessUnit
      * @test
      */
     public function setterBusinessUnit(EntityInterface $object, $expected = null)
@@ -107,8 +110,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getDevolutionRequested()`` para acessar DevolutionRequested
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getDevolutionRequested
+     * @cover ::get
+     * @cover ::getDevolutionRequested
      * @test
      */
     public function getterDevolutionRequested(EntityInterface $object, $expected = null)
@@ -119,8 +122,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setDevolutionRequested()`` que define DevolutionRequested
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setDevolutionRequested
+     * @cover ::set
+     * @cover ::setDevolutionRequested
      * @test
      */
     public function setterDevolutionRequested(EntityInterface $object, $expected = null)
@@ -131,8 +134,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getExchangeRequested()`` para acessar ExchangeRequested
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getExchangeRequested
+     * @cover ::get
+     * @cover ::getExchangeRequested
      * @test
      */
     public function getterExchangeRequested(EntityInterface $object, $expected = null)
@@ -143,8 +146,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setExchangeRequested()`` que define ExchangeRequested
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setExchangeRequested
+     * @cover ::set
+     * @cover ::setExchangeRequested
      * @test
      */
     public function setterExchangeRequested(EntityInterface $object, $expected = null)
@@ -155,8 +158,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getOrderDate()`` para acessar OrderDate
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getOrderDate
+     * @cover ::get
+     * @cover ::getOrderDate
      * @test
      */
     public function getterOrderDate(EntityInterface $object, $expected = null)
@@ -167,8 +170,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setOrderDate()`` que define OrderDate
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setOrderDate
+     * @cover ::set
+     * @cover ::setOrderDate
      * @test
      */
     public function setterOrderDate(EntityInterface $object, $expected = null)
@@ -179,8 +182,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getOrderNumber()`` para acessar OrderNumber
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getOrderNumber
+     * @cover ::get
+     * @cover ::getOrderNumber
      * @test
      */
     public function getterOrderNumber(EntityInterface $object, $expected = null)
@@ -191,8 +194,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setOrderNumber()`` que define OrderNumber
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setOrderNumber
+     * @cover ::set
+     * @cover ::setOrderNumber
      * @test
      */
     public function setterOrderNumber(EntityInterface $object, $expected = null)
@@ -203,8 +206,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getOrderStatus()`` para acessar OrderStatus
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getOrderStatus
+     * @cover ::get
+     * @cover ::getOrderStatus
      * @test
      */
     public function getterOrderStatus(EntityInterface $object, $expected = null)
@@ -215,8 +218,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setOrderStatus()`` que define OrderStatus
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setOrderStatus
+     * @cover ::set
+     * @cover ::setOrderStatus
      * @test
      */
     public function setterOrderStatus(EntityInterface $object, $expected = null)
@@ -227,8 +230,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getOrderType()`` para acessar OrderType
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getOrderType
+     * @cover ::get
+     * @cover ::getOrderType
      * @test
      */
     public function getterOrderType(EntityInterface $object, $expected = null)
@@ -239,8 +242,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setOrderType()`` que define OrderType
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setOrderType
+     * @cover ::set
+     * @cover ::setOrderType
      * @test
      */
     public function setterOrderType(EntityInterface $object, $expected = null)
@@ -251,8 +254,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getOriginNumber()`` para acessar OriginNumber
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getOriginNumber
+     * @cover ::get
+     * @cover ::getOriginNumber
      * @test
      */
     public function getterOriginNumber(EntityInterface $object, $expected = null)
@@ -263,8 +266,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setOriginNumber()`` que define OriginNumber
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setOriginNumber
+     * @cover ::set
+     * @cover ::setOriginNumber
      * @test
      */
     public function setterOriginNumber(EntityInterface $object, $expected = null)
@@ -275,8 +278,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getOriginSite()`` para acessar OriginSite
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getOriginSite
+     * @cover ::get
+     * @cover ::getOriginSite
      * @test
      */
     public function getterOriginSite(EntityInterface $object, $expected = null)
@@ -287,8 +290,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setOriginSite()`` que define OriginSite
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setOriginSite
+     * @cover ::set
+     * @cover ::setOriginSite
      * @test
      */
     public function setterOriginSite(EntityInterface $object, $expected = null)
@@ -299,8 +302,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getPaymentDate()`` para acessar PaymentDate
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getPaymentDate
+     * @cover ::get
+     * @cover ::getPaymentDate
      * @test
      */
     public function getterPaymentDate(EntityInterface $object, $expected = null)
@@ -311,8 +314,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setPaymentDate()`` que define PaymentDate
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setPaymentDate
+     * @cover ::set
+     * @cover ::setPaymentDate
      * @test
      */
     public function setterPaymentDate(EntityInterface $object, $expected = null)
@@ -323,8 +326,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getShippings()`` para acessar Shippings
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getShippings
+     * @cover ::get
+     * @cover ::getShippings
      * @test
      */
     public function getterShippings(EntityInterface $object, $expected = null)
@@ -335,8 +338,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setShippings()`` que define Shippings
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setShippings
+     * @cover ::set
+     * @cover ::setShippings
      * @test
      */
     public function setterShippings(EntityInterface $object, $expected = null)
@@ -347,8 +350,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalCommission()`` para acessar TotalCommission
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getTotalCommission
+     * @cover ::get
+     * @cover ::getTotalCommission
      * @test
      */
     public function getterTotalCommission(EntityInterface $object, $expected = null)
@@ -359,8 +362,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalCommission()`` que define TotalCommission
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setTotalCommission
+     * @cover ::set
+     * @cover ::setTotalCommission
      * @test
      */
     public function setterTotalCommission(EntityInterface $object, $expected = null)
@@ -371,8 +374,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalDiscount()`` para acessar TotalDiscount
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getTotalDiscount
+     * @cover ::get
+     * @cover ::getTotalDiscount
      * @test
      */
     public function getterTotalDiscount(EntityInterface $object, $expected = null)
@@ -383,8 +386,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalDiscount()`` que define TotalDiscount
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setTotalDiscount
+     * @cover ::set
+     * @cover ::setTotalDiscount
      * @test
      */
     public function setterTotalDiscount(EntityInterface $object, $expected = null)
@@ -395,8 +398,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalFreight()`` para acessar TotalFreight
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getTotalFreight
+     * @cover ::get
+     * @cover ::getTotalFreight
      * @test
      */
     public function getterTotalFreight(EntityInterface $object, $expected = null)
@@ -407,8 +410,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalFreight()`` que define TotalFreight
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setTotalFreight
+     * @cover ::set
+     * @cover ::setTotalFreight
      * @test
      */
     public function setterTotalFreight(EntityInterface $object, $expected = null)
@@ -419,8 +422,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalGross()`` para acessar TotalGross
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getTotalGross
+     * @cover ::get
+     * @cover ::getTotalGross
      * @test
      */
     public function getterTotalGross(EntityInterface $object, $expected = null)
@@ -431,8 +434,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalGross()`` que define TotalGross
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setTotalGross
+     * @cover ::set
+     * @cover ::setTotalGross
      * @test
      */
     public function setterTotalGross(EntityInterface $object, $expected = null)
@@ -443,8 +446,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalNet()`` para acessar TotalNet
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getTotalNet
+     * @cover ::get
+     * @cover ::getTotalNet
      * @test
      */
     public function getterTotalNet(EntityInterface $object, $expected = null)
@@ -455,8 +458,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalNet()`` que define TotalNet
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setTotalNet
+     * @cover ::set
+     * @cover ::setTotalNet
      * @test
      */
     public function setterTotalNet(EntityInterface $object, $expected = null)
@@ -467,8 +470,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalQuantity()`` para acessar TotalQuantity
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::getTotalQuantity
+     * @cover ::get
+     * @cover ::getTotalQuantity
      * @test
      */
     public function getterTotalQuantity(EntityInterface $object, $expected = null)
@@ -479,8 +482,8 @@ class OrderTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalQuantity()`` que define TotalQuantity
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Order::setTotalQuantity
+     * @cover ::set
+     * @cover ::setTotalQuantity
      * @test
      */
     public function setterTotalQuantity(EntityInterface $object, $expected = null)

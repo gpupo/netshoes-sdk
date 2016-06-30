@@ -37,11 +37,6 @@ class Manager extends AbstractManager
         'getStatus'         => ['GET', '/skus/{sku}/bus/{buId}/status'], //Get Status
     ];
 
-    public function save(EntityInterface $product, $route = 'save')
-    {
-        return $this->execute($this->factoryMap($route), $product->toJson());
-    }
-
     /**
      * @return Gpupo\Common\Entity\CollectionAbstract|null
      */
