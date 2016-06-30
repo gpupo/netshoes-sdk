@@ -14,7 +14,6 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
-use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
 class Manager extends AbstractManager
@@ -31,9 +30,4 @@ class Manager extends AbstractManager
         'update'   => ['PUT', '/products/{itemId}'],
         'fetch'    => ['GET', '/products?page={offset}&size={limit}'],
     ];
-
-    public function save(EntityInterface $product, $route = 'save')
-    {
-        return $this->execute($this->factoryMap($route), $product->toJson());
-    }
 }
