@@ -271,7 +271,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 <!-- testdox -->
 
-
 ### NetshoesSdk\Client\Client
 
 
@@ -635,10 +634,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Centraliza acesso a managers 
 - [x] Centraliza criacao de objetos 
 
-
-Generating code coverage report in Clover XML format ... done
-
-Generating code coverage report in HTML format ... done
 
 <!-- libraries-table -->
 

@@ -1,4 +1,3 @@
-
 ### NetshoesSdk\Client\Client
 
 
@@ -362,7 +361,3 @@
 - [x] Centraliza acesso a managers 
 - [x] Centraliza criacao de objetos 
 
-
-Generating code coverage report in Clover XML format ... done
-
-Generating code coverage report in HTML format ... done

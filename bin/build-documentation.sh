@@ -2,7 +2,7 @@
 # @Date:   2016-06-24T09:45:16-03:00
 # @Modified at 2016-06-24T09:45:37-03:00
 
-vendor/bin/phpunit --testdox | grep -vi php |  sed "s/.*\[/-&/" | \
+cat build/logs/testdox.txt | grep -vi php |  sed "s/.*\[/-&/" | \
 sed 's/.*Gpupo.*/&\'$'\n/g' | sed 's/.*Gpupo.*/&\'$'\n/g' |\
 sed 's/Gpupo\\Tests\\/### /g' > Resources/doc/testdox.md;
 
