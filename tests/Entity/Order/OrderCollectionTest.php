@@ -12,23 +12,23 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
+namespace Gpupo\Tests\NetshoesSdk\Entity\Order;
 
 use Gpupo\CommonSdk\Entity\Metadata\Metadata;
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
-use Gpupo\NetshoesSdk\Entity\Product\Product;
-use Gpupo\NetshoesSdk\Entity\Product\ProductCollection;
+use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Order\OrderCollection;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
- * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\ProductCollection
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\OrderCollection
  */
-class ProductCollectionTest extends TestCaseAbstract
+class OrderCollectionTest extends TestCaseAbstract
 {
     public function testLinks()
     {
-        $manager = $this->getFactory()->factoryManager('product');
-        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/list.json'));
+        $manager = $this->getFactory()->factoryManager('order');
+        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Order/list.json'));
 
         $collection = $manager->fetch();
 
@@ -36,24 +36,24 @@ class ProductCollectionTest extends TestCaseAbstract
     }
 
     /**
-     * @testdox É uma coleção de objetos ``\Gpupo\NetshoesSdk\Entity\Product\Product``
-     * @depends testLinks
+     * @testdox É uma coleção de objetos ``\Gpupo\NetshoesSdk\Entity\Order\Order``
      * @covers ::factoryEntity
+     * @depends testLinks
      */
     public function testfactoryEntity(MetadataContainerAbstract $container)
     {
         $this->assertInstanceOf(MetadataContainerAbstract::class, $container);
 
-        $simple = new ProductCollection(['items' => [['foo' => 'bar']]]);
+        $simple = new OrderCollection(['items' => [['foo' => 'bar']]]);
 
         foreach ([$simple, $container] as $o) {
             foreach ($o as $s) {
-                $this->assertInstanceOf(Product::class, $s);
+                $this->assertInstanceOf(Order::class, $s);
             }
         }
 
-        $this->assertInstanceOf(Product::class, $o->first());
-        $this->assertInstanceOf(Product::class, $o->last());
+        $this->assertInstanceOf(Order::class, $o->first());
+        $this->assertInstanceOf(Order::class, $o->last());
     }
 
     /**
@@ -71,7 +71,7 @@ class ProductCollectionTest extends TestCaseAbstract
      */
     public function testMetadataSelf(MetadataContainerAbstract $container)
     {
-        $this->assertSame($container->getMetadata()->getSelf(), '/v1/products/?page=0&size=20');
+        $this->assertSame($container->getMetadata()->getSelf(), '/v1/orders?page=0&size=20');
     }
 
     /**
@@ -81,7 +81,7 @@ class ProductCollectionTest extends TestCaseAbstract
      */
     public function testMetadataFirst(MetadataContainerAbstract $container)
     {
-        $this->assertSame($container->getMetadata()->getFirst(), '/v1/products/?page=0&size=20');
+        $this->assertSame($container->getMetadata()->getFirst(), '/v1/orders?page=0&size=20');
     }
 
     /**
@@ -91,6 +91,6 @@ class ProductCollectionTest extends TestCaseAbstract
      */
     public function testMetadataLast(MetadataContainerAbstract $container)
     {
-        $this->assertSame($container->getMetadata()->getLast(), '/v1/products/?page=0&size=20');
+        $this->assertSame($container->getMetadata()->getLast(), '/v1/orders?page=0&size=20');
     }
 }

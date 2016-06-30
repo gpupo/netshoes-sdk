@@ -12,22 +12,40 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\NetshoesSdk\Entity\Product;
+namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\Status;
 
-use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
+use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+use Gpupo\NetshoesSdk\Entity\Order\Order;
 
-class ProductCollection extends AbstractMetadata
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved
+ */
+class ApprovedTest extends TestCaseAbstract
 {
     /**
-     * @codeCoverageIgnore
+     * @testdox
+     * @test
      */
-    protected function getKey()
+    public function constructor(Order $order)
     {
-        return 'items';
+
     }
 
-    protected function factoryEntity(array $data)
+    /**
+     * @testdox
+     * @test
+     */
+    public function validate()
     {
-        return new Product($data);
+
+    }
+
+    /**
+     * @testdox
+     * @test
+     */
+    public function toJson()
+    {
+
     }
 }
