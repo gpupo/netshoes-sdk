@@ -9,8 +9,6 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 
 <!-- require -->
 
-<!-- require -->
-
 ## Requisitos para uso
 
 * PHP >= *5.6*
@@ -27,13 +25,7 @@ desenvolvimento.
 
 A documentação mais importante está nos testes unitários. Se você não consegue ler os testes unitários, eu recomendo que não utilize esta biblioteca.
 
-
-<!-- //require -->
-
 <!-- license -->
-
-
-<!-- licence -->
 
 ## Direitos autorais e de licença
 
@@ -54,13 +46,10 @@ Permitido:
 - Modificação
 - Distribuição
 - Sublicenciamento
-- Proibido
 
 Proibido:
 
 - Responsabilidade Assegurada
-
-<!-- //licence -->
 
 <!-- QA -->
 
@@ -289,8 +278,16 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Sucesso ao definir options
 - [x] Gerencia uri de recurso
 - [x] Objeto request possui header
-- [ ] Acesso a lista de pedidos
+- [x] Acesso a lista de pedidos
 - [x] Acesso a lista de produtos
+- [x] Render authorization
+- [x] Falha ao ser usado sem credenciais
+
+### NetshoesSdk\Console\Application
+
+
+- [x] Factory sdk
+- [x] Append command
 
 ### NetshoesSdk\Entity\Order\Order
 
@@ -471,6 +468,13 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 
 
+### NetshoesSdk\Entity\Product\Attributes\Attributes
+
+
+- [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Product\Attributes\Attribute``
+
+
+
 ### NetshoesSdk\Entity\Product\Manager
 
 
@@ -517,9 +521,20 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setUrl()`` que define Url 
 - [x] Entidade é uma Coleção 
 
+### NetshoesSdk\Entity\Product\Sku\Images
+
+
+- [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Product\Sku\Image``
+
+
+
 ### NetshoesSdk\Entity\Product\Sku\Item
 
 
+- [x] Prepara o Json para gravação de preço
+- [x] Prepara o Json para gravação de preço promocional
+- [x] Prepara o Json para gravação de Estoque
+- [x] Prepara o Json para gravação de Situação (disponibilidade)
 - [x] Possui método ``getId()`` para acessar Sku Id 
 - [x] Possui método ``getSku()`` para acessar Sku 
 - [x] Possui método ``setSku()`` que define Sku 
@@ -616,9 +631,14 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 ### NetshoesSdk\Factory
 
 
+- [x] Set client
 - [x] Centraliza acesso a managers 
 - [x] Centraliza criacao de objetos 
 
+
+Generating code coverage report in Clover XML format ... done
+
+Generating code coverage report in HTML format ... done
 
 <!-- libraries-table -->
 

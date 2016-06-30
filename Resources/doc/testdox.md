@@ -5,8 +5,16 @@
 - [x] Sucesso ao definir options
 - [x] Gerencia uri de recurso
 - [x] Objeto request possui header
-- [ ] Acesso a lista de pedidos
+- [x] Acesso a lista de pedidos
 - [x] Acesso a lista de produtos
+- [x] Render authorization
+- [x] Falha ao ser usado sem credenciais
+
+### NetshoesSdk\Console\Application
+
+
+- [x] Factory sdk
+- [x] Append command
 
 ### NetshoesSdk\Entity\Order\Order
 
@@ -187,6 +195,13 @@
 
 
 
+### NetshoesSdk\Entity\Product\Attributes\Attributes
+
+
+- [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Product\Attributes\Attribute``
+
+
+
 ### NetshoesSdk\Entity\Product\Manager
 
 
@@ -233,9 +248,20 @@
 - [x] Possui método ``setUrl()`` que define Url 
 - [x] Entidade é uma Coleção 
 
+### NetshoesSdk\Entity\Product\Sku\Images
+
+
+- [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Product\Sku\Image``
+
+
+
 ### NetshoesSdk\Entity\Product\Sku\Item
 
 
+- [x] Prepara o Json para gravação de preço
+- [x] Prepara o Json para gravação de preço promocional
+- [x] Prepara o Json para gravação de Estoque
+- [x] Prepara o Json para gravação de Situação (disponibilidade)
 - [x] Possui método ``getId()`` para acessar Sku Id 
 - [x] Possui método ``getSku()`` para acessar Sku 
 - [x] Possui método ``setSku()`` que define Sku 
@@ -332,6 +358,11 @@
 ### NetshoesSdk\Factory
 
 
+- [x] Set client
 - [x] Centraliza acesso a managers 
 - [x] Centraliza criacao de objetos 
 
+
+Generating code coverage report in Clover XML format ... done
+
+Generating code coverage report in HTML format ... done

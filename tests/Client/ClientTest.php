@@ -21,7 +21,6 @@ use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 class ClientTest extends TestCaseAbstract
 {
     /**
-     * @testdox
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
@@ -63,7 +62,12 @@ class ClientTest extends TestCaseAbstract
      */
     public function testAcessoAListaDePedidos()
     {
-        $this->markIncomplete('Não implementado');
+        if (!$this->hasToken()) {
+            return $this->markSkipped('API Token ausente');
+        }
+
+        $response = $this->factoryClient()->get('/orders');
+        $this->assertSame(200, $response->getHttpStatusCode());
     }
 
     /**
@@ -97,7 +101,7 @@ class ClientTest extends TestCaseAbstract
     }
 
     /**
-     * @test Falha ao ser usado em credenciais
+     * @testdox Falha ao ser usado sem credenciais
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      * @expectedException InvalidArgumentException
      * @test

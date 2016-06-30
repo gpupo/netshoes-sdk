@@ -18,6 +18,9 @@ use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\Item
+ */
 class ItemTest extends TestCaseAbstract
 {
     use EntityTrait;
@@ -58,15 +61,10 @@ class ItemTest extends TestCaseAbstract
         return $o;
     }
 
-    public function beforeConstruct()
-    {
-    }
-
     /**
      * @testdox Prepara o Json para gravação de preço
-     * @dataProvider dataProviderObject
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::beforeConstruct
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::toPrice
+     * @covers ::beforeConstruct
+     * @covers ::toPrice
      * @test
      */
     public function toPrice()
@@ -76,13 +74,25 @@ class ItemTest extends TestCaseAbstract
     }
 
     /**
-     * @testdox Prepara o Json para gravação de Estoque
-     * @dataProvider dataProviderObject
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::beforeConstruct
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::toStock
+     * @testdox Prepara o Json para gravação de preço promocional
+     * @covers ::beforeConstruct
+     * @covers ::toPriceSchedule
      * @test
      */
-    public function toStock(Item $object)
+    public function toPriceSchedule()
+    {
+        $item = $this->proxy(new Item($this->array));
+        $this->assertSame(['priceTo' => 0.99], $item->toPriceSchedule());
+    }
+
+
+    /**
+     * @testdox Prepara o Json para gravação de Estoque
+     * @covers ::beforeConstruct
+     * @covers ::toStock
+     * @test
+     */
+    public function toStock()
     {
         $item = $this->proxy(new Item($this->array));
         $this->assertSame(['available' => 20], $item->toStock());
@@ -90,12 +100,11 @@ class ItemTest extends TestCaseAbstract
 
     /**
      * @testdox Prepara o Json para gravação de Situação (disponibilidade)
-     * @dataProvider dataProviderObject
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::beforeConstruct
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Sku\Item::toStatus
+     * @covers ::beforeConstruct
+     * @covers ::toStatus
      * @test
      */
-    public function toStatus(Item $object)
+    public function toStatus()
     {
         $item = $this->proxy(new Item($this->array));
         $this->assertSame(['active' => true], $item->toStatus());

@@ -64,7 +64,7 @@
         "supplierName": "string"
       },
       "shippingCode": 1,
-      "status": "active"
+      "status": "approved"
     }
   ],
   "totalCommission": 0,
