@@ -12,20 +12,13 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\Status;
+namespace Gpupo\NetshoesSdk\Entity\Order\Decorator;
 
-use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTest;
-use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved;
+use Gpupo\NetshoesSdk\Entity\Order\Order;
 
-/**
- * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved
- */
-class ApprovedTest extends AbstractDecoratorTest
+interface DecoratorInterface
 {
-    protected $target = 'approved';
+    public function setOrder(Order $order);
 
-    protected function factory()
-    {
-        return new Approved();
-    }
+    public function validate();
 }
