@@ -16,6 +16,9 @@ namespace Gpupo\Tests\NetshoesSdk\Entity\Templates;
 
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Templates\Manager
+ */
 class BrandTest extends TestCaseAbstract
 {
     protected function factory($data)
@@ -27,6 +30,7 @@ class BrandTest extends TestCaseAbstract
      * @testdox Possui Acesso a lista de marcas cadastradas
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
+     * @covers ::fetchByRoute
      */
     public function testList()
     {
