@@ -14,9 +14,14 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
+use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule
+ */
 class PriceScheduleTest extends TestCaseAbstract
 {
     use EntityTrait;
@@ -29,8 +34,12 @@ class PriceScheduleTest extends TestCaseAbstract
         parent::setUpBeforeClass();
     }
 
-    public function dataProviderObject()
+    /**
+     * @return \Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule
+     */
+    public function dataProviderPriceSchedule()
     {
+
         $expected = [
             'priceFrom' => 100.10,
             'priceTo'   => 80.80,
@@ -39,5 +48,110 @@ class PriceScheduleTest extends TestCaseAbstract
         ];
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
+    }
+
+
+    /**
+     * @testdox Possui método ``getPriceFrom()`` para acessar PriceFrom
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::get
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function getPriceFrom(PriceSchedule $priceSchedule, $expected = null)
+    {
+        $this->assertSchemaGetter('priceFrom', 'number', $priceSchedule, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setPriceFrom()`` que define PriceFrom
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::set
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function setPriceFrom(PriceSchedule $priceSchedule, $expected = null)
+    {
+        $this->assertSchemaSetter('priceFrom', 'number', $priceSchedule);
+    }
+
+    /**
+     * @testdox Possui método ``getPriceTo()`` para acessar PriceTo
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::get
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function getPriceTo(PriceSchedule $priceSchedule, $expected = null)
+    {
+        $this->assertSchemaGetter('priceTo', 'number', $priceSchedule, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setPriceTo()`` que define PriceTo
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::set
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function setPriceTo(PriceSchedule $priceSchedule, $expected = null)
+    {
+        $this->assertSchemaSetter('priceTo', 'number', $priceSchedule);
+    }
+
+    /**
+     * @testdox Possui método ``getDateInit()`` para acessar DateInit
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::get
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function getDateInit(PriceSchedule $priceSchedule, $expected = null)
+    {
+        $this->assertSchemaGetter('dateInit', 'string', $priceSchedule, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setDateInit()`` que define DateInit
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::set
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function setDateInit(PriceSchedule $priceSchedule, $expected = null)
+    {
+        $this->assertSchemaSetter('dateInit', 'string', $priceSchedule);
+    }
+
+    /**
+     * @testdox Possui método ``getDateEnd()`` para acessar DateEnd
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::get
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function getDateEnd(PriceSchedule $priceSchedule, $expected = null)
+    {
+        $this->assertSchemaGetter('dateEnd', 'string', $priceSchedule, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setDateEnd()`` que define DateEnd
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::set
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function setDateEnd(PriceSchedule $priceSchedule, $expected = null)
+    {
+        $this->assertSchemaSetter('dateEnd', 'string', $priceSchedule);
     }
 }

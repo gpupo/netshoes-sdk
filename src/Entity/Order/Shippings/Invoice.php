@@ -31,7 +31,6 @@ class Invoice extends EntityAbstract implements EntityInterface
             'line'      => 'integer',
             'accessKey' => 'string',
             'issueDate' => 'string',
-            'date'      => 'string',
             'shipDate'  => 'string',
             'url'       => 'string',
       ];

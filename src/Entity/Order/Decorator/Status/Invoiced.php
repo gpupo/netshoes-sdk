@@ -25,7 +25,6 @@ class Invoiced extends AbstractDecorator implements DecoratorInterface
      */
     public function validate()
     {
-
         if (true !== parent::validate()) {
             return $this->invalid('order');
         }
