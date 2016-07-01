@@ -17,6 +17,12 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Attributes;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+/**
+ * @method string getName()    Acesso a name
+ * @method setName(string $name)    Define name
+ * @method string getValue()    Acesso a value
+ * @method setValue(string $value)    Define value
+ */
 class Attribute extends EntityAbstract implements EntityInterface
 {
     /**
