@@ -14,7 +14,9 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order;
 
-use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Invoice;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Items;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
@@ -60,15 +62,37 @@ class OrderTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Possui método ``getInvoice()`` que é um atalho para ``->getShippings()->first()->getInvoice()``
+     * @dataProvider dataProviderObject
+     * @cover ::getInvoice
+     * @test
+     */
+    public function getInvoice(Order $order, $expected = null)
+    {
+        $this->assertInstanceOf(Invoice::class, $order->getInvoice());
+    }
+
+    /**
+     * @testdox Possui método ``getItems()`` que é um atalho para ``->getShippings()->first()->getItems()``
+     * @dataProvider dataProviderObject
+     * @cover ::getItems
+     * @test
+     */
+    public function getItems(Order $order, $expected = null)
+    {
+        $this->assertInstanceOf(Items::class, $order->getItems());
+    }
+
+    /**
      * @testdox Possui método ``getAgreedDate()`` para acessar AgreedDate
      * @dataProvider dataProviderObject
      * @cover ::get
      * @cover ::getAgreedDate
      * @test
      */
-    public function getterAgreedDate(EntityInterface $object, $expected = null)
+    public function getterAgreedDate(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('agreedDate', 'string', $object, $expected);
+        $this->assertSchemaGetter('agreedDate', 'string', $order, $expected);
     }
 
     /**
@@ -78,9 +102,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setAgreedDate
      * @test
      */
-    public function setterAgreedDate(EntityInterface $object, $expected = null)
+    public function setterAgreedDate(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('agreedDate', 'string', $object);
+        $this->assertSchemaSetter('agreedDate', 'string', $order);
     }
 
     /**
@@ -90,9 +114,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getBusinessUnit
      * @test
      */
-    public function getterBusinessUnit(EntityInterface $object, $expected = null)
+    public function getterBusinessUnit(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('businessUnit', 'string', $object, $expected);
+        $this->assertSchemaGetter('businessUnit', 'string', $order, $expected);
     }
 
     /**
@@ -102,9 +126,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setBusinessUnit
      * @test
      */
-    public function setterBusinessUnit(EntityInterface $object, $expected = null)
+    public function setterBusinessUnit(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('businessUnit', 'string', $object);
+        $this->assertSchemaSetter('businessUnit', 'string', $order);
     }
 
     /**
@@ -114,9 +138,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getDevolutionRequested
      * @test
      */
-    public function getterDevolutionRequested(EntityInterface $object, $expected = null)
+    public function getterDevolutionRequested(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('devolutionRequested', 'boolean', $object, $expected);
+        $this->assertSchemaGetter('devolutionRequested', 'boolean', $order, $expected);
     }
 
     /**
@@ -126,9 +150,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setDevolutionRequested
      * @test
      */
-    public function setterDevolutionRequested(EntityInterface $object, $expected = null)
+    public function setterDevolutionRequested(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('devolutionRequested', 'boolean', $object);
+        $this->assertSchemaSetter('devolutionRequested', 'boolean', $order);
     }
 
     /**
@@ -138,9 +162,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getExchangeRequested
      * @test
      */
-    public function getterExchangeRequested(EntityInterface $object, $expected = null)
+    public function getterExchangeRequested(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('exchangeRequested', 'boolean', $object, $expected);
+        $this->assertSchemaGetter('exchangeRequested', 'boolean', $order, $expected);
     }
 
     /**
@@ -150,9 +174,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setExchangeRequested
      * @test
      */
-    public function setterExchangeRequested(EntityInterface $object, $expected = null)
+    public function setterExchangeRequested(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('exchangeRequested', 'boolean', $object);
+        $this->assertSchemaSetter('exchangeRequested', 'boolean', $order);
     }
 
     /**
@@ -162,9 +186,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getOrderDate
      * @test
      */
-    public function getterOrderDate(EntityInterface $object, $expected = null)
+    public function getterOrderDate(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('orderDate', 'string', $object, $expected);
+        $this->assertSchemaGetter('orderDate', 'string', $order, $expected);
     }
 
     /**
@@ -174,9 +198,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setOrderDate
      * @test
      */
-    public function setterOrderDate(EntityInterface $object, $expected = null)
+    public function setterOrderDate(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('orderDate', 'string', $object);
+        $this->assertSchemaSetter('orderDate', 'string', $order);
     }
 
     /**
@@ -186,9 +210,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getOrderNumber
      * @test
      */
-    public function getterOrderNumber(EntityInterface $object, $expected = null)
+    public function getterOrderNumber(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('orderNumber', 'string', $object, $expected);
+        $this->assertSchemaGetter('orderNumber', 'string', $order, $expected);
     }
 
     /**
@@ -198,9 +222,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setOrderNumber
      * @test
      */
-    public function setterOrderNumber(EntityInterface $object, $expected = null)
+    public function setterOrderNumber(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('orderNumber', 'string', $object);
+        $this->assertSchemaSetter('orderNumber', 'string', $order);
     }
 
     /**
@@ -210,9 +234,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getOrderStatus
      * @test
      */
-    public function getterOrderStatus(EntityInterface $object, $expected = null)
+    public function getterOrderStatus(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('orderStatus', 'string', $object, $expected);
+        $this->assertSchemaGetter('orderStatus', 'string', $order, $expected);
     }
 
     /**
@@ -222,9 +246,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setOrderStatus
      * @test
      */
-    public function setterOrderStatus(EntityInterface $object, $expected = null)
+    public function setterOrderStatus(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('orderStatus', 'string', $object);
+        $this->assertSchemaSetter('orderStatus', 'string', $order);
     }
 
     /**
@@ -234,9 +258,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getOrderType
      * @test
      */
-    public function getterOrderType(EntityInterface $object, $expected = null)
+    public function getterOrderType(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('orderType', 'string', $object, $expected);
+        $this->assertSchemaGetter('orderType', 'string', $order, $expected);
     }
 
     /**
@@ -246,9 +270,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setOrderType
      * @test
      */
-    public function setterOrderType(EntityInterface $object, $expected = null)
+    public function setterOrderType(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('orderType', 'string', $object);
+        $this->assertSchemaSetter('orderType', 'string', $order);
     }
 
     /**
@@ -258,9 +282,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getOriginNumber
      * @test
      */
-    public function getterOriginNumber(EntityInterface $object, $expected = null)
+    public function getterOriginNumber(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('originNumber', 'string', $object, $expected);
+        $this->assertSchemaGetter('originNumber', 'string', $order, $expected);
     }
 
     /**
@@ -270,9 +294,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setOriginNumber
      * @test
      */
-    public function setterOriginNumber(EntityInterface $object, $expected = null)
+    public function setterOriginNumber(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('originNumber', 'string', $object);
+        $this->assertSchemaSetter('originNumber', 'string', $order);
     }
 
     /**
@@ -282,9 +306,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getOriginSite
      * @test
      */
-    public function getterOriginSite(EntityInterface $object, $expected = null)
+    public function getterOriginSite(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('originSite', 'string', $object, $expected);
+        $this->assertSchemaGetter('originSite', 'string', $order, $expected);
     }
 
     /**
@@ -294,9 +318,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setOriginSite
      * @test
      */
-    public function setterOriginSite(EntityInterface $object, $expected = null)
+    public function setterOriginSite(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('originSite', 'string', $object);
+        $this->assertSchemaSetter('originSite', 'string', $order);
     }
 
     /**
@@ -306,9 +330,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getPaymentDate
      * @test
      */
-    public function getterPaymentDate(EntityInterface $object, $expected = null)
+    public function getterPaymentDate(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('paymentDate', 'string', $object, $expected);
+        $this->assertSchemaGetter('paymentDate', 'string', $order, $expected);
     }
 
     /**
@@ -318,9 +342,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setPaymentDate
      * @test
      */
-    public function setterPaymentDate(EntityInterface $object, $expected = null)
+    public function setterPaymentDate(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('paymentDate', 'string', $object);
+        $this->assertSchemaSetter('paymentDate', 'string', $order);
     }
 
     /**
@@ -330,9 +354,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getShippings
      * @test
      */
-    public function getterShippings(EntityInterface $object, $expected = null)
+    public function getterShippings(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('shippings', 'object', $object, $expected);
+        $this->assertSchemaGetter('shippings', 'object', $order, $expected);
     }
 
     /**
@@ -342,9 +366,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setShippings
      * @test
      */
-    public function setterShippings(EntityInterface $object, $expected = null)
+    public function setterShippings(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('shippings', 'object', $object);
+        $this->assertSchemaSetter('shippings', 'object', $order);
     }
 
     /**
@@ -354,9 +378,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getTotalCommission
      * @test
      */
-    public function getterTotalCommission(EntityInterface $object, $expected = null)
+    public function getterTotalCommission(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('totalCommission', 'number', $object, $expected);
+        $this->assertSchemaGetter('totalCommission', 'number', $order, $expected);
     }
 
     /**
@@ -366,9 +390,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setTotalCommission
      * @test
      */
-    public function setterTotalCommission(EntityInterface $object, $expected = null)
+    public function setterTotalCommission(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('totalCommission', 'number', $object);
+        $this->assertSchemaSetter('totalCommission', 'number', $order);
     }
 
     /**
@@ -378,9 +402,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getTotalDiscount
      * @test
      */
-    public function getterTotalDiscount(EntityInterface $object, $expected = null)
+    public function getterTotalDiscount(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('totalDiscount', 'number', $object, $expected);
+        $this->assertSchemaGetter('totalDiscount', 'number', $order, $expected);
     }
 
     /**
@@ -390,9 +414,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setTotalDiscount
      * @test
      */
-    public function setterTotalDiscount(EntityInterface $object, $expected = null)
+    public function setterTotalDiscount(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('totalDiscount', 'number', $object);
+        $this->assertSchemaSetter('totalDiscount', 'number', $order);
     }
 
     /**
@@ -402,9 +426,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getTotalFreight
      * @test
      */
-    public function getterTotalFreight(EntityInterface $object, $expected = null)
+    public function getterTotalFreight(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('totalFreight', 'number', $object, $expected);
+        $this->assertSchemaGetter('totalFreight', 'number', $order, $expected);
     }
 
     /**
@@ -414,9 +438,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setTotalFreight
      * @test
      */
-    public function setterTotalFreight(EntityInterface $object, $expected = null)
+    public function setterTotalFreight(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('totalFreight', 'number', $object);
+        $this->assertSchemaSetter('totalFreight', 'number', $order);
     }
 
     /**
@@ -426,9 +450,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getTotalGross
      * @test
      */
-    public function getterTotalGross(EntityInterface $object, $expected = null)
+    public function getterTotalGross(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('totalGross', 'number', $object, $expected);
+        $this->assertSchemaGetter('totalGross', 'number', $order, $expected);
     }
 
     /**
@@ -438,9 +462,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setTotalGross
      * @test
      */
-    public function setterTotalGross(EntityInterface $object, $expected = null)
+    public function setterTotalGross(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('totalGross', 'number', $object);
+        $this->assertSchemaSetter('totalGross', 'number', $order);
     }
 
     /**
@@ -450,9 +474,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getTotalNet
      * @test
      */
-    public function getterTotalNet(EntityInterface $object, $expected = null)
+    public function getterTotalNet(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('totalNet', 'number', $object, $expected);
+        $this->assertSchemaGetter('totalNet', 'number', $order, $expected);
     }
 
     /**
@@ -462,9 +486,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setTotalNet
      * @test
      */
-    public function setterTotalNet(EntityInterface $object, $expected = null)
+    public function setterTotalNet(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('totalNet', 'number', $object);
+        $this->assertSchemaSetter('totalNet', 'number', $order);
     }
 
     /**
@@ -474,9 +498,9 @@ class OrderTest extends TestCaseAbstract
      * @cover ::getTotalQuantity
      * @test
      */
-    public function getterTotalQuantity(EntityInterface $object, $expected = null)
+    public function getterTotalQuantity(Order $order, $expected = null)
     {
-        $this->assertSchemaGetter('totalQuantity', 'number', $object, $expected);
+        $this->assertSchemaGetter('totalQuantity', 'number', $order, $expected);
     }
 
     /**
@@ -486,8 +510,8 @@ class OrderTest extends TestCaseAbstract
      * @cover ::setTotalQuantity
      * @test
      */
-    public function setterTotalQuantity(EntityInterface $object, $expected = null)
+    public function setterTotalQuantity(Order $order, $expected = null)
     {
-        $this->assertSchemaSetter('totalQuantity', 'number', $object);
+        $this->assertSchemaSetter('totalQuantity', 'number', $order);
     }
 }

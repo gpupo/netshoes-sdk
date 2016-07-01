@@ -14,18 +14,18 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\Status;
 
-use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTest;
 use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Invoiced;
+use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTestCase;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Invoiced
  */
-class InvoicedTest extends AbstractDecoratorTest
+class InvoicedTest extends AbstractDecoratorTestCase
 {
     protected $target = 'invoiced';
 
-    protected function factory()
+    protected function factory($data = [])
     {
-        return new Invoiced();
+        return new Invoiced($data);
     }
 }

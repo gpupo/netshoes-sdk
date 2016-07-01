@@ -19,7 +19,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Sender extends EntityAbstract implements EntityInterface
 {
-    protected $primaryKey = '';
+    protected $primaryKey = 'sellerCode';
 
     /**
      * @codeCoverageIgnore
@@ -31,6 +31,6 @@ class Sender extends EntityAbstract implements EntityInterface
               'sellerName'   => 'string',
               'supplierCnpj' => 'string',
               'supplierName' => 'string',
-      ];
+        ];
     }
 }

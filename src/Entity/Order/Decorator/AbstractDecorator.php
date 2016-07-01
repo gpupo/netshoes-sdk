@@ -15,28 +15,54 @@
 namespace Gpupo\NetshoesSdk\Entity\Order\Decorator;
 
 use Gpupo\Common\Entity\Collection;
+use Gpupo\CommonSdk\Traits\LoggerTrait;
 use Gpupo\NetshoesSdk\Entity\Order\Order;
 
 abstract class AbstractDecorator extends Collection
 {
+    use LoggerTrait;
+
+    protected function fail($string = '')
+    {
+        $message = 'Order incomplete for status ['.$string.']';
+        $this->log('error', $message, [
+            'order' => $this->getOrder(),
+        ]);
+
+        throw new \InvalidArgumentException($message);
+    }
+
+    protected function invalid($string = '')
+    {
+        $message = 'Attribute invalid: '.$string.' ';
+        $this->log('warning', $message, [
+            'order' => $this->getOrder(),
+        ]);
+
+        return false;
+    }
+
     public function setOrder(Order $order)
     {
         $this->set('order', $order);
+        $this->initLogger($order->getLogger());
 
         return $this;
     }
 
+    public function getOrder()
+    {
+        return $this->get('order');
+    }
+
     public function validate()
     {
-        try {
-            $this->getOrder();
-        } catch (\Exception $e) {
-            error_log('Order decorator validation:' . $e->getMessage());
+        $order = $this->getOrder();
 
+        if (empty($order)) {
             return false;
         }
 
         return true;
     }
-
 }

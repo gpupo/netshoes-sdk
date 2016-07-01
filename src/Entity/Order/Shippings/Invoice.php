@@ -19,7 +19,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Invoice extends EntityAbstract implements EntityInterface
 {
-    protected $primaryKey = '';
+    protected $primaryKey = 'number';
 
     /**
      * @codeCoverageIgnore
@@ -27,6 +27,13 @@ class Invoice extends EntityAbstract implements EntityInterface
     public function getSchema()
     {
         return [
+            'number'    => 'string',
+            'line'      => 'integer',
+            'accessKey' => 'string',
+            'issueDate' => 'string',
+            'date'      => 'string',
+            'shipDate'  => 'string',
+            'url'       => 'string',
       ];
     }
 }
