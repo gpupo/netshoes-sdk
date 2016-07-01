@@ -1,0 +1,32 @@
+{
+    "expands": [
+        "shippings",
+        "items",
+        "devolutionItems"
+    ],
+    "agreedDate": 1467298898833,
+    "paymentDate": 1467298898833,
+    "orderDate": 1467298898833,
+    "orderNumber": "111111",
+    "originNumber": "22222222",
+    "totalQuantity": 1,
+    "originSite": "ZT",
+    "businessUnit": "ZT",
+    "orderStatus": "Created",
+    "orderType": "Normal",
+    "devolutionRequested": false,
+    "exchangeRequested": false,
+    "totalGross": 10,
+    "totalCommission": 0,
+    "totalDiscount": 0,
+    "totalFreight": 0,
+    "totalNet": 10,
+    "_links": {
+        "self": {
+            "href": "http://api-sandbox.netshoes.com.br/api/v1/orders/111111"
+        },
+        "shippings": {
+            "href": "http://api-sandbox.netshoes.com.br/api/v1/orders/111111/shippings"
+        }
+    }
+}

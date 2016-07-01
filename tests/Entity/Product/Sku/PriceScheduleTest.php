@@ -14,10 +14,9 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
-use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
-use Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule
@@ -39,7 +38,6 @@ class PriceScheduleTest extends TestCaseAbstract
      */
     public function dataProviderPriceSchedule()
     {
-
         $expected = [
             'priceFrom' => 100.10,
             'priceTo'   => 80.80,
@@ -49,7 +47,6 @@ class PriceScheduleTest extends TestCaseAbstract
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
     }
-
 
     /**
      * @testdox Possui método ``getPriceFrom()`` para acessar PriceFrom
