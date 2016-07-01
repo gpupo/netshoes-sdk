@@ -73,6 +73,30 @@ class OrderTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Possui método ``setInvoice()`` que é um atalho para ``->getShippings()->first()->setInvoice()``
+     * @dataProvider dataProviderObject
+     * @cover ::setInvoice
+     * @test
+     */
+    public function setInvoice(Order $order, $expected = null)
+    {
+        $order->setInvoice(false);
+        $this->assertNotInstanceOf(Invoice::class, $order->setInvoice());
+
+        $invoice = new Invoice([
+            'number'    => 'string',
+            'line'      => 1,
+            'accessKey' => 'string',
+            'issueDate' => 'string',
+            'shipDate'  => 'string',
+            'url'       => 'string',
+        ]);
+
+        $order->setInvoice($invoice);
+        $this->assertInstanceOf(Invoice::class, $order->getInvoice());
+    }
+
+    /**
      * @testdox Possui método ``getItems()`` que é um atalho para ``->getShippings()->first()->getItems()``
      * @dataProvider dataProviderObject
      * @cover ::getItems

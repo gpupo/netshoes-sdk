@@ -30,23 +30,44 @@ class Manager extends AbstractManager
         'findById'              => ['GET', '/orders/{orderNumber}'], // Get a order based on order number.
         'fetchShippings'        => ['GET', '/orders/{orderNumber}/shippings'], // Get a list of shippings by order number.
         'findShippingById'      => ['GET', '/orders/{orderNumber}/shippings/{shippingCode}'], // Get a shipping based on order number and shipping code.
-        'saveStatus'            => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/approved'], // Update the shipping status to Approved.
+        'saveStatusToApproved'  => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/approved'], // Update the shipping status to Approved.
         'saveStatusToCanceled'  => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/canceled'], // Update the shipping status to Canceled.
         'saveStatusToDelivered' => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/delivered'], // Update the shipping status to Delivered.
         'saveStatusToInvoiced'  => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/invoiced'], // Update the shipping status to Invoiced.
         'saveStatusToShipped'   => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/shipped'], // Update the shipping status to Shipped
     ];
 
+    protected function factoryDecorator(Order $order, $decoratorName)
+    {
+        $className = __NAMESPACE__.'\\Decorator\\'.$decoratorName;
+        $instance = new $className();
+        $instance->setOrder($order);
+
+        return $instance;
+    }
+
     public function updateStatus(Order $order)
     {
         $status = $order->getOrderStatus();
 
-        if (in_array($statusTo, ['approved', 'canceled', 'delivered', 'invoiced', 'shipped'], true)) {
+        if (in_array($status, ['approved', 'canceled', 'delivered', 'invoiced', 'shipped'], true)) {
+            $decorator = $this->factoryDecorator($order, 'Status\\'.ucfirst($status));
+
+            $json = $decorator->toJson();
+            $mapKey = 'saveStatusTo'.ucfirst($status);
+
+            $map = $this->factoryMap($mapKey, [
+                'orderNumber'  => $order->getOrderNumber(),
+                'shippingCode' => $order->getShippings()->first()->getShippingCode(),
+            ]);
+
+            $response = $this->execute($map, $json);
+
+            return true;
         }
 
         throw new \InvalidArgumentException('Order Status não suportado', 1);
     }
-
 
     /**
      * @return Gpupo\Common\Entity\CollectionAbstract|null
@@ -72,8 +93,8 @@ class Manager extends AbstractManager
     public function findShippingById($orderNumber, $shippingCode)
     {
         $response = $this->perform($this->factoryMap('findShippingById', [
-            'orderNumber' => $orderNumber,
-            'shippingCode'=> $shippingCode,
+            'orderNumber'  => $orderNumber,
+            'shippingCode' => $shippingCode,
         ]));
 
         $data = $this->processResponse($response);
@@ -84,5 +105,4 @@ class Manager extends AbstractManager
 
         return new Shipping($data->toArray());
     }
-
 }

@@ -49,10 +49,10 @@ class InvoiceTest extends TestCaseAbstract
     public function dataProviderObject()
     {
         $expected = [
-            'number'    => 'string',
+            'number'    => 4003,
             'line'      => 1,
-            'accessKey' => 'string',
-            'issueDate' => 'string',
+            'accessKey' => '1789616901235555001000004003000004003',
+            'issueDate' => '2016-05-10T09:44:54.000-03:00',
             'shipDate'  => 'string',
             'url'       => 'string',
         ];
