@@ -16,16 +16,21 @@ namespace Gpupo\Tests\NetshoesSdk\Entity\Order;
 
 use Gpupo\NetshoesSdk\Entity\Order\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+use Gpupo\NetshoesSdk\Client\Client;
+use Gpupo\NetshoesSdk\Entity\Order\OrderCollection;
+use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shippings;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Manager
  */
 class ManagerTest extends TestCaseAbstract
 {
-    protected function getManager($filename = null)
+    protected function getManager($filename = 'item.json')
     {
         $manager = $this->getFactory()->factoryManager('order');
-        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Order/list.json'));
+        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Order/'.$filename));
 
         return $manager;
     }
@@ -49,7 +54,7 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testPossuiObjetoClient($manager)
     {
-        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Client\Client', $manager->getClient());
+        $this->assertInstanceOf(Client::class, $manager->getClient());
     }
 
     /**
@@ -63,21 +68,26 @@ class ManagerTest extends TestCaseAbstract
     public function fetch(Manager $manager)
     {
         $list = $manager->fetch();
-        $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Order\OrderCollection', $list);
+        $this->assertInstanceOf(OrderCollection::class, $list);
 
         return $list;
     }
 
     /**
-     * @testdox Get a order based on order number.
-     * @test
-     * @covers ::fetch
-     * @covers ::execute
-     * @covers ::factoryMap
+     * @testdox Get a order based on order number
+     * @covers \Gpupo\NetshoesSdk\Entity\Order\Manager::findById
+     * @covers \Gpupo\NetshoesSdk\Entity\Order\Manager::execute
+     * @covers \Gpupo\NetshoesSdk\Entity\Order\Manager::factoryMap
+     * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
+     * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
-    public function findById()
+    public function testFindBy()
     {
-        $this->markTestIncomplete();
+        $manager = $this->getManager('item.json');
+        $order = $manager->findById(111111);
+        $this->assertInstanceOf(Order::class, $order);
+        $this->assertSame('111111', $order->getOrderNumber());
+        $this->assertSame('111111', $order->getId());
     }
 
     /**
@@ -89,7 +99,9 @@ class ManagerTest extends TestCaseAbstract
      */
     public function fetchShippings()
     {
-        $this->markTestIncomplete();
+        $manager = $this->getManager('shippings.json');
+        $list = $manager->fetchShippings(111111);
+        $this->assertInstanceOf(Shippings::class, $list);
     }
 
     /**
@@ -101,19 +113,24 @@ class ManagerTest extends TestCaseAbstract
      */
     public function findShippingById()
     {
-        $this->markTestIncomplete();
+        $manager = $this->getManager('shippings.json');
+        $item = $manager->findShippingById(111111, 1);
+        $this->assertInstanceOf(Shipping::class, $item);
     }
 
     /**
      * @testdox Update the shipping status to Approved
      * @test
+     * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
      */
-    public function saveStatusToApproved()
+    public function saveStatusToApproved(Order $order)
     {
-        $this->markTestIncomplete();
+        $manager = $this->getManager();
+        $order->setOrderStatus('approved');
+        $this->assertTrue($manager->updateStatus($order));
     }
 
     /**
@@ -125,7 +142,9 @@ class ManagerTest extends TestCaseAbstract
      */
     public function saveStatusToCanceled()
     {
-        $this->markTestIncomplete();
+        $manager = $this->getManager();
+        $order->setOrderStatus('canceled');
+        $this->assertTrue($manager->updateStatus($order));
     }
 
     /**
@@ -149,7 +168,9 @@ class ManagerTest extends TestCaseAbstract
      */
     public function saveStatusToInvoiced()
     {
-        $this->markTestIncomplete();
+        $manager = $this->getManager();
+        $order->setOrderStatus('invoiced');
+        $this->assertTrue($manager->updateStatus($order));
     }
 
     /**

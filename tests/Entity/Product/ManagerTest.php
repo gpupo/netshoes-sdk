@@ -17,6 +17,9 @@ namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 use Gpupo\NetshoesSdk\Entity\Product\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Manager
+ */
 class ManagerTest extends TestCaseAbstract
 {
     protected function getManager($filename = null, $code = 200)
