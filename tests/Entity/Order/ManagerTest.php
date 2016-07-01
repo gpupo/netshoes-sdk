@@ -14,13 +14,14 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order;
 
-use Gpupo\NetshoesSdk\Entity\Order\Manager;
-use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 use Gpupo\NetshoesSdk\Client\Client;
-use Gpupo\NetshoesSdk\Entity\Order\OrderCollection;
+use Gpupo\NetshoesSdk\Entity\Order\Manager;
 use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Order\OrderCollection;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Invoice;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shippings;
+use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Manager
@@ -125,6 +126,7 @@ class ManagerTest extends TestCaseAbstract
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
+     * @covers ::factoryDecorator
      */
     public function saveStatusToApproved(Order $order)
     {
@@ -134,13 +136,55 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
-     * @testdox Update the shipping status to Canceled
+     * @testdox Falha ao tentar mover o status de um pedido para invoiced sem informar NF
      * @test
+     * @dataProvider dataProviderOrders
+     * @covers ::fetch
+     * @covers ::execute
+     * @covers ::factoryMap
+     * @expectedException InvalidArgumentException
+     */
+    public function saveStatusToInvoicedFail(Order $order)
+    {
+        $manager = $this->getManager();
+        $order->setOrderStatus('invoiced');
+        $manager->updateStatus($order);
+    }
+
+    /**
+     * @testdox Update the shipping status to Invoiced
+     * @test
+     * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
      */
-    public function saveStatusToCanceled()
+    public function saveStatusToInvoiced(Order $order)
+    {
+        $manager = $this->getManager();
+        $order->setOrderStatus('invoiced');
+
+        $invoice = new Invoice([
+            'number'    => 4003,
+            'line'      => 1,
+            'accessKey' => '1789616901235555001000004003000004003',
+            'issueDate' => '2016-05-10T09:44:54.000-03:00',
+        ]);
+
+        $order->setInvoice($invoice);
+
+        $this->assertTrue($manager->updateStatus($order));
+    }
+
+    /**
+     * @testdox Update the shipping status to Canceled
+     * @test
+     * @dataProvider dataProviderOrders
+     * @covers ::fetch
+     * @covers ::execute
+     * @covers ::factoryMap
+     */
+    public function saveStatusToCanceled(Order $order)
     {
         $manager = $this->getManager();
         $order->setOrderStatus('canceled');
@@ -157,20 +201,6 @@ class ManagerTest extends TestCaseAbstract
     public function saveStatusToDelivered()
     {
         $this->markTestIncomplete();
-    }
-
-    /**
-     * @testdox Update the shipping status to Invoiced
-     * @test
-     * @covers ::fetch
-     * @covers ::execute
-     * @covers ::factoryMap
-     */
-    public function saveStatusToInvoiced()
-    {
-        $manager = $this->getManager();
-        $order->setOrderStatus('invoiced');
-        $this->assertTrue($manager->updateStatus($order));
     }
 
     /**
