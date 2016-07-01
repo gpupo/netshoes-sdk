@@ -85,4 +85,14 @@ class Order extends EntityAbstract implements EntityInterface
             'totalQuantity'       => 'number',
         ];
     }
+
+    public function getInvoice()
+    {
+        return $this->getShippings()->first()->getInvoice();
+    }
+
+    public function getItems()
+    {
+        return $this->getShippings()->first()->getItems();
+    }
 }

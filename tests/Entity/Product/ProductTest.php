@@ -14,11 +14,13 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
-use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\Product\Product;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Product
+ */
 class ProductTest extends TestCaseAbstract
 {
     use EntityTrait;
@@ -70,7 +72,7 @@ class ProductTest extends TestCaseAbstract
      */
     public function testPossuiPropriedadesEObjetos(Product $product)
     {
-        $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Product\Product', $product);
+        $this->assertInstanceOf(Product::class, $product);
     }
 
     /**
@@ -102,9 +104,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterProductId(EntityInterface $object, $expected = null)
+    public function getterProductId(Product $product, $expected = null)
     {
-        $this->assertSchemaGetter('productId', 'string', $object, $expected);
+        $this->assertSchemaGetter('productId', 'string', $product, $expected);
     }
 
     /**
@@ -112,9 +114,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterProductId(EntityInterface $object, $expected = null)
+    public function setterProductId(Product $product, $expected = null)
     {
-        $this->assertSchemaSetter('productId', 'string', $object);
+        $this->assertSchemaSetter('productId', 'string', $product);
     }
 
     /**
@@ -122,9 +124,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterSkus(EntityInterface $object, $expected = null)
+    public function getterSkus(Product $product, $expected = null)
     {
-        $this->assertSchemaGetter('skus', 'object', $object, $expected);
+        $this->assertSchemaGetter('skus', 'object', $product, $expected);
     }
 
     /**
@@ -132,9 +134,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterSkus(EntityInterface $object, $expected = null)
+    public function setterSkus(Product $product, $expected = null)
     {
-        $this->assertSchemaSetter('skus', 'object', $object);
+        $this->assertSchemaSetter('skus', 'object', $product);
     }
 
     /**
@@ -142,9 +144,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterDepartment(EntityInterface $object, $expected = null)
+    public function getterDepartment(Product $product, $expected = null)
     {
-        $this->assertSchemaGetter('department', 'string', $object, $expected);
+        $this->assertSchemaGetter('department', 'string', $product, $expected);
     }
 
     /**
@@ -152,9 +154,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterDepartment(EntityInterface $object, $expected = null)
+    public function setterDepartment(Product $product, $expected = null)
     {
-        $this->assertSchemaSetter('department', 'string', $object);
+        $this->assertSchemaSetter('department', 'string', $product);
     }
 
     /**
@@ -162,9 +164,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterProductType(EntityInterface $object, $expected = null)
+    public function getterProductType(Product $product, $expected = null)
     {
-        $this->assertSchemaGetter('productType', 'string', $object, $expected);
+        $this->assertSchemaGetter('productType', 'string', $product, $expected);
     }
 
     /**
@@ -172,9 +174,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterProductType(EntityInterface $object, $expected = null)
+    public function setterProductType(Product $product, $expected = null)
     {
-        $this->assertSchemaSetter('productType', 'string', $object);
+        $this->assertSchemaSetter('productType', 'string', $product);
     }
 
     /**
@@ -182,9 +184,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterBrand(EntityInterface $object, $expected = null)
+    public function getterBrand(Product $product, $expected = null)
     {
-        $this->assertSchemaGetter('brand', 'string', $object, $expected);
+        $this->assertSchemaGetter('brand', 'string', $product, $expected);
     }
 
     /**
@@ -192,9 +194,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterBrand(EntityInterface $object, $expected = null)
+    public function setterBrand(Product $product, $expected = null)
     {
-        $this->assertSchemaSetter('brand', 'string', $object);
+        $this->assertSchemaSetter('brand', 'string', $product);
     }
 
     /**
@@ -202,9 +204,9 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function getterAttributes(EntityInterface $object, $expected = null)
+    public function getterAttributes(Product $product, $expected = null)
     {
-        $this->assertSchemaGetter('attributes', 'object', $object, $expected);
+        $this->assertSchemaGetter('attributes', 'object', $product, $expected);
     }
 
     /**
@@ -212,8 +214,8 @@ class ProductTest extends TestCaseAbstract
      * @dataProvider dataProviderObject
      * @test
      */
-    public function setterAttributes(EntityInterface $object, $expected = null)
+    public function setterAttributes(Product $product, $expected = null)
     {
-        $this->assertSchemaSetter('attributes', 'object', $object);
+        $this->assertSchemaSetter('attributes', 'object', $product);
     }
 }

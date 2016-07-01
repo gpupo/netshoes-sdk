@@ -14,18 +14,18 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\Status;
 
-use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTest;
 use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved;
+use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTestCase;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Approved
  */
-class ApprovedTest extends AbstractDecoratorTest
+class ApprovedTest extends AbstractDecoratorTestCase
 {
     protected $target = 'approved';
 
-    protected function factory()
+    protected function factory($data = [])
     {
-        return new Approved();
+        return new Approved($data);
     }
 }

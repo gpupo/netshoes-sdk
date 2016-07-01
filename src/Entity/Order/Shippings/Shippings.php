@@ -22,4 +22,21 @@ class Shippings extends CollectionAbstract
     {
         return new Shipping($data);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function first()
+    {
+        $f = parent::first();
+
+        if (empty($f)) {
+            $o = $this->factoryElement([]);
+            $this->addElement($o);
+
+            return $o;
+        }
+
+        return $f;
+    }
 }

@@ -22,11 +22,11 @@ class Approved extends AbstractDecorator implements DecoratorInterface
     public function toArray()
     {
         if (true !== $this->validate()) {
-            throw new \InvalidArgumentException("Order incompleta para esta mudanca de Status");
+            $this->fail('Approved');
         }
 
         return [
-            "status" => "Approved",
+            'status' => 'Approved',
         ];
     }
 }
