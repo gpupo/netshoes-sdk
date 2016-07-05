@@ -25,6 +25,8 @@ use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
  * @method setCarrier(string $carrier)    Define carrier
  * @method string getDeliveryDate()    Acesso a deliveryDate
  * @method setDeliveryDate(string $deliveryDate)    Define deliveryDate
+ * @method string getEstimatedDeliveryDate()    Acesso a estimatedDeliveryDate
+ * @method setEstimatedDeliveryDate(string $estimatedDeliveryDate)    Define estimatedDeliveryDate
  * @method string getDeliveryService()    Acesso a deliveryService
  * @method setDeliveryService(string $deliveryService)    Define deliveryService
  * @method string getShipDate()    Acesso a shipDate
@@ -48,24 +50,42 @@ class TransportTest extends TestCaseAbstract
         parent::setUpBeforeClass();
     }
 
-    public function dataProviderObject()
+    /**
+     * @return \Gpupo\NetshoesSdk\Entity\Order\Shippings\Transport
+     */
+    public function dataProviderTransport()
     {
         $expected = [
-            'carrier'          => 'string',
-            'deliveryDate'     => 'string',
-            'deliveryService'  => 'string',
-            'shipDate'         => 'string',
-            'trackingLink'     => 'string',
-            'trackingNumber'   => 'string',
-            'trackingShipDate' => 'string',
+            'carrier'               => 'string',
+            'deliveryDate'          => 'string',
+            'estimatedDeliveryDate' => 'string',
+            'deliveryService'       => 'string',
+            'shipDate'              => 'string',
+            'trackingLink'          => 'string',
+            'trackingNumber'        => 'string',
+            'trackingShipDate'      => 'string',
         ];
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
     }
 
     /**
+     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
+     * @testdox Não é validado se data de entrega ausente
+     * @dataProvider dataProviderTransport
+     * @small
+     * @test
+     */
+    public function deliveryDateFail(Transport $invoice)
+    {
+        $invoice->setDeliveryDate('');
+        $invoice->check();
+        $invoice->toJson();
+    }
+
+    /**
      * @testdox Possui método ``getCarrier()`` para acessar Carrier
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::get
      * @cover ::getSchema
      * @small
@@ -78,7 +98,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``setCarrier()`` que define Carrier
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::set
      * @cover ::getSchema
      * @small
@@ -91,7 +111,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``getDeliveryDate()`` para acessar DeliveryDate
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::get
      * @cover ::getSchema
      * @small
@@ -104,7 +124,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``setDeliveryDate()`` que define DeliveryDate
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::set
      * @cover ::getSchema
      * @small
@@ -116,8 +136,34 @@ class TransportTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Possui método ``getEstimatedDeliveryDate()`` para acessar EstimatedDeliveryDate
+     * @dataProvider dataProviderTransport
+     * @cover ::get
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function getEstimatedDeliveryDate(Transport $transport, $expected = null)
+    {
+        $this->assertSchemaGetter('estimatedDeliveryDate', 'string', $transport, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``setEstimatedDeliveryDate()`` que define EstimatedDeliveryDate
+     * @dataProvider dataProviderTransport
+     * @cover ::set
+     * @cover ::getSchema
+     * @small
+     * @test
+     */
+    public function setEstimatedDeliveryDate(Transport $transport, $expected = null)
+    {
+        $this->assertSchemaSetter('estimatedDeliveryDate', 'string', $transport);
+    }
+
+    /**
      * @testdox Possui método ``getDeliveryService()`` para acessar DeliveryService
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::get
      * @cover ::getSchema
      * @small
@@ -130,7 +176,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``setDeliveryService()`` que define DeliveryService
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::set
      * @cover ::getSchema
      * @small
@@ -143,7 +189,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``getShipDate()`` para acessar ShipDate
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::get
      * @cover ::getSchema
      * @small
@@ -156,7 +202,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``setShipDate()`` que define ShipDate
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::set
      * @cover ::getSchema
      * @small
@@ -169,7 +215,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``getTrackingLink()`` para acessar TrackingLink
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::get
      * @cover ::getSchema
      * @small
@@ -182,7 +228,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``setTrackingLink()`` que define TrackingLink
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::set
      * @cover ::getSchema
      * @small
@@ -195,7 +241,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``getTrackingNumber()`` para acessar TrackingNumber
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::get
      * @cover ::getSchema
      * @small
@@ -208,7 +254,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``setTrackingNumber()`` que define TrackingNumber
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::set
      * @cover ::getSchema
      * @small
@@ -221,7 +267,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``getTrackingShipDate()`` para acessar TrackingShipDate
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::get
      * @cover ::getSchema
      * @small
@@ -234,7 +280,7 @@ class TransportTest extends TestCaseAbstract
 
     /**
      * @testdox Possui método ``setTrackingShipDate()`` que define TrackingShipDate
-     * @dataProvider dataProviderObject
+     * @dataProvider dataProviderTransport
      * @cover ::set
      * @cover ::getSchema
      * @small

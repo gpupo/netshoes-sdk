@@ -15,7 +15,6 @@
 namespace Gpupo\NetshoesSdk\Entity\Order;
 
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
-use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shippings;
 
 class Manager extends AbstractManager
@@ -24,18 +23,12 @@ class Manager extends AbstractManager
 
     /**
      * @codeCoverageIgnore
+     * @SuppressWarnings(PHPMD.cpd)
      */
-    protected $maps = [
-        'fetch'                 => ['GET', '/orders?page={offset}&size={limit}'], // Get a list of Orders.
-        'findById'              => ['GET', '/orders/{orderNumber}'], // Get a order based on order number.
-        'fetchShippings'        => ['GET', '/orders/{orderNumber}/shippings'], // Get a list of shippings by order number.
-        'findShippingById'      => ['GET', '/orders/{orderNumber}/shippings/{shippingCode}'], // Get a shipping based on order number and shipping code.
-        'saveStatusToApproved'  => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/approved'], // Update the shipping status to Approved.
-        'saveStatusToCanceled'  => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/canceled'], // Update the shipping status to Canceled.
-        'saveStatusToDelivered' => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/delivered'], // Update the shipping status to Delivered.
-        'saveStatusToInvoiced'  => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/invoiced'], // Update the shipping status to Invoiced.
-        'saveStatusToShipped'   => ['PUT', '/orders/{orderNumber}/shippings/{shippingCode}/status/shipped'], // Update the shipping status to Shipped
-    ];
+    protected function setUp()
+    {
+        $this->maps = include 'map.php';
+    }
 
     protected function factoryDecorator(Order $order, $decoratorName)
     {
@@ -54,11 +47,16 @@ class Manager extends AbstractManager
             $decorator = $this->factoryDecorator($order, 'Status\\'.ucfirst($status));
 
             $json = $decorator->toJson();
-            $mapKey = 'saveStatusTo'.ucfirst($status);
+            $mapKey = 'to'.ucfirst($status);
+
+            $shipping = $order->getShipping();
+            $code = $shipping->getShippingCode();
+
+            $shipping->toJson();
 
             $map = $this->factoryMap($mapKey, [
                 'orderNumber'  => $order->getOrderNumber(),
-                'shippingCode' => $order->getShippings()->first()->getShippingCode(),
+                'shippingCode' => $code,
             ]);
 
             $response = $this->execute($map, $json);
@@ -85,24 +83,5 @@ class Manager extends AbstractManager
         }
 
         return new Shippings($data->toArray());
-    }
-
-    /**
-     * @return Gpupo\Common\Entity\CollectionAbstract|null
-     */
-    public function findShippingById($orderNumber, $shippingCode)
-    {
-        $response = $this->perform($this->factoryMap('findShippingById', [
-            'orderNumber'  => $orderNumber,
-            'shippingCode' => $shippingCode,
-        ]));
-
-        $data = $this->processResponse($response);
-
-        if (empty($data)) {
-            return;
-        }
-
-        return new Shipping($data->toArray());
     }
 }

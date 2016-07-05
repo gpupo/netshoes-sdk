@@ -14,25 +14,24 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\Status;
 
-use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Invoiced;
+use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Shipped;
 use Gpupo\NetshoesSdk\Entity\Order\Order;
 use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTestCase;
 
 /**
- * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Invoiced
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Shipped
  */
-class InvoicedTest extends AbstractDecoratorTestCase
+class ShippedTest extends AbstractDecoratorTestCase
 {
-    protected $target = 'invoiced';
+    protected $target = 'shipped';
 
     protected function factoryDecorator(Order $order, $data = [])
     {
-        if (array_key_exists('number', $data)) {
-            $order->getShipping()->getInvoice()
-                ->setNumber($data['number'])
-                ->setLine($data['line'])
-                ->setAccessKey($data['key'])
-                ->setIssueDate($data['issueDate']);
+        if (array_key_exists('carrier', $data)) {
+            $order->getShipping()->getTransport()->setCarrier($data['carrier'])
+                ->setTrackingNumber($data['trackingNumber'])
+                ->setShipDate($data['deliveredCarrierDate'])
+                ->setEstimatedDeliveryDate($data['estimatedDelivery']);
         }
 
         return parent::factoryDecorator($order, $data);
@@ -40,6 +39,6 @@ class InvoicedTest extends AbstractDecoratorTestCase
 
     protected function factory($data = [])
     {
-        return new Invoiced($data);
+        return new Shipped($data);
     }
 }

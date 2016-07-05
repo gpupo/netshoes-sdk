@@ -33,18 +33,18 @@ class ManagerTest extends TestCaseAbstract
 
         return $manager;
     }
-     /**
-      * @testdox Administra operações de Products
-      * @test
-      */
-     public function testManager()
-     {
-         $manager = $this->getManager();
+    /**
+     * @testdox Administra operações de Products
+     * @test
+     */
+    public function testManager()
+    {
+        $manager = $this->getManager();
 
-         $this->assertInstanceOf(Manager::class, $manager);
+        $this->assertInstanceOf(Manager::class, $manager);
 
-         return $manager;
-     }
+        return $manager;
+    }
 
     /**
      * @depends testManager

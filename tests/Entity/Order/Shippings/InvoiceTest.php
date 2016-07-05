@@ -61,6 +61,73 @@ class InvoiceTest extends TestCaseAbstract
     }
 
     /**
+     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
+     * @testdox Não é validado se número da nota fiscal ausente
+     * @dataProvider dataProviderObject
+     * @small
+     * @test
+     */
+    public function numberFail(Invoice $invoice)
+    {
+        $invoice->setNumber('');
+        $invoice->check();
+        $invoice->toJson();
+    }
+
+    /**
+     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
+     * @testdox Não é validado se linha da nota fiscal ausente
+     * @dataProvider dataProviderObject
+     * @small
+     * @test
+     */
+    public function lineFail(Invoice $invoice)
+    {
+        $invoice->setLine('');
+        $invoice->check();
+        $invoice->toJson();
+    }
+
+    /**
+     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
+     * @testdox Não é validado se data de emissão da nota fiscal ausente
+     * @dataProvider dataProviderObject
+     * @small
+     * @test
+     */
+    public function issueDateFail(Invoice $invoice)
+    {
+        $invoice->setIssueDate('');
+        $invoice->check();
+        $invoice->toJson();
+    }
+
+    /**
+     * @expectedException \Gpupo\CommonSdk\Exception\ExceptionInterface
+     * @testdox Não é validado se chave da nota fiscal ausente
+     * @dataProvider dataProviderObject
+     * @small
+     * @test
+     */
+    public function invoiceFail(Invoice $invoice)
+    {
+        $invoice->setAccessKey('');
+        $invoice->check();
+        $invoice->toJson();
+    }
+
+    /**
+     * @testdox É valido se dados da nota fiscal presente
+     * @dataProvider dataProviderObject
+     * @small
+     * @test
+     */
+    public function invoiceSuccess(Invoice $invoice)
+    {
+        $this->assertContains('accessKey', $invoice->toJson());
+    }
+
+    /**
      * @testdox Possui método ``getNumber()`` para acessar Number
      * @dataProvider dataProviderObject
      * @cover ::get

@@ -23,6 +23,10 @@ class Manager extends AbstractManager
 
     protected $entity = 'Templates';
 
+    /**
+     * @codeCoverageIgnore
+     * @SuppressWarnings(PHPMD.cpd)
+     */
     public $maps = [
         'brands'       => ['GET', '/brands'],
         'flavors'      => ['GET', '/flavors'],

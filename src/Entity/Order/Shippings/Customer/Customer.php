@@ -53,6 +53,6 @@ class Customer extends EntityAbstract implements EntityInterface
               'recipientName'    => 'string',
               'stateInscription' => 'string',
               'tradeName'        => 'string',
-      ];
+        ];
     }
 }

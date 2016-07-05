@@ -21,21 +21,14 @@ class Manager extends AbstractManager
 {
     protected $entity = 'SkuCollection';
 
-    protected $maps = [
-        'save'              => ['POST', '/products/{productId}/skus'], //Create a new sku for a product
-        'findSkuById'       => ['GET', '/products/{productId}/skus/{itemId}'], // Get the a sku by product Id and sku Id
-        'update'            => ['PUT', '/products/{productId}/skus/{itemId}'], //Update a product based on SKU
-        'findById'          => ['GET', '/products/{itemId}/skus'], //Get the list of product skus
-        'saveStatus'        => ['PUT', '/skus/{sku}/bus/{buId}/status'], //Enable or disable sku for sale
-        'savePriceSchedule' => ['POST', '/skus/{sku}/priceSchedules'], //Save a price schedule
-        'getPriceSchedule'  => ['GET', '/skus/{sku}/priceSchedules'], //Get PriceSchedule
-        'getPrice'          => ['GET', '/skus/{sku}/prices'], //Get a base price
-        'savePrice'         => ['PUT', '/skus/{sku}/prices'], //Save a base price
-        'saveStock'         => ['PUT', '/skus/{sku}/stocks'], //Update stock quantity by sku
-        'getStock'          => ['GET', '/skus/{sku}/stocks'], //Get Stock
-        'saveStatus'        => ['GET', '/skus/{sku}/bus/{buId}/status'], //Save Status
-        'getStatus'         => ['GET', '/skus/{sku}/bus/{buId}/status'], //Get Status
-    ];
+    /**
+     * @codeCoverageIgnore
+     * @SuppressWarnings(PHPMD.cpd)
+     */
+    protected function setUp()
+    {
+        $this->maps = include 'map.php';
+    }
 
     /**
      * @return Gpupo\Common\Entity\CollectionAbstract|null

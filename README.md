@@ -288,9 +288,89 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Factory sdk
 - [x] Append command
 
+### NetshoesSdk\Entity\Order\Decorator\Status\Approved
+
+
+- [x] Recebe o objeto ``Order`` 
+- [x] Falha ao validar ``Order`` com informações mínimas requeridas ausentes
+- [x] Falha ao tentar submeter uma ordem incompleta para mudança de status
+- [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
+- [x] Prepara as informações como de acordo com o pedido na mudança de status 
+- [x] Prepara JSON de acordo com o pedido na mudança de status 
+
+### NetshoesSdk\Entity\Order\Decorator\Status\Canceled
+
+
+- [x] Recebe o objeto ``Order`` 
+- [x] Falha ao validar ``Order`` com informações mínimas requeridas ausentes
+- [x] Falha ao tentar submeter uma ordem incompleta para mudança de status
+- [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
+- [x] Prepara as informações como de acordo com o pedido na mudança de status 
+- [x] Prepara JSON de acordo com o pedido na mudança de status 
+
+### NetshoesSdk\Entity\Order\Decorator\Status\Delivered
+
+
+- [x] Recebe o objeto ``Order`` 
+- [x] Falha ao validar ``Order`` com informações mínimas requeridas ausentes
+- [x] Falha ao tentar submeter uma ordem incompleta para mudança de status
+- [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
+- [x] Prepara as informações como de acordo com o pedido na mudança de status 
+- [x] Prepara JSON de acordo com o pedido na mudança de status 
+
+### NetshoesSdk\Entity\Order\Decorator\Status\Invoiced
+
+
+- [x] Recebe o objeto ``Order`` 
+- [x] Falha ao validar ``Order`` com informações mínimas requeridas ausentes
+- [x] Falha ao tentar submeter uma ordem incompleta para mudança de status
+- [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
+- [x] Prepara as informações como de acordo com o pedido na mudança de status 
+- [x] Prepara JSON de acordo com o pedido na mudança de status 
+
+### NetshoesSdk\Entity\Order\Decorator\Status\Shipped
+
+
+- [x] Recebe o objeto ``Order`` 
+- [x] Falha ao validar ``Order`` com informações mínimas requeridas ausentes
+- [x] Falha ao tentar submeter uma ordem incompleta para mudança de status
+- [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
+- [x] Prepara as informações como de acordo com o pedido na mudança de status 
+- [x] Prepara JSON de acordo com o pedido na mudança de status 
+
+### NetshoesSdk\Entity\Order\Manager
+
+
+- [x] Administra operações de SKUs
+- [x] Possui objeto client
+- [x] Get a list of Orders
+- [x] Get a order based on order number
+- [x] Update the shipping status to Approved 
+- [x] Falha ao tentar mover o status de um pedido para invoiced sem informar NF 
+- [x] Update the shipping status to Invoiced 
+- [x] Update the shipping status to Canceled - Require ``Shipping Cancellation Reason`` 
+- [x] Update the shipping status to Delivered - Require ``Transport Delivery Date`` 
+- [x] Update the shipping status to Shipped - Require ``Transport Info`` 
+
+### NetshoesSdk\Entity\Order\OrderCollection
+
+
+- [x] Links
+- [x] É uma coleção de objetos ``\Gpupo\NetshoesSdk\Entity\Order\Order``
+
+
+- [x] É possui ``count()`` que é um indicador de quantidade de Pedidos
+- [x] Possui objeto metadata
+- [x] Metadata self
+- [x] Metadata first
+- [x] Metadata last
+
 ### NetshoesSdk\Entity\Order\Order
 
 
+- [x] Possui método ``getInvoice()`` que é um atalho para ``->getShippings()->first()->getInvoice()`` 
+- [x] Possui método ``setInvoice()`` que é um atalho para ``->getShippings()->first()->setInvoice()`` 
+- [x] Possui método ``getItems()`` que é um atalho para ``->getShippings()->first()->getItems()`` 
 - [x] Possui método ``getAgreedDate()`` para acessar AgreedDate 
 - [x] Possui método ``setAgreedDate()`` que define AgreedDate 
 - [x] Possui método ``getBusinessUnit()`` para acessar BusinessUnit 
@@ -327,7 +407,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setTotalNet()`` que define TotalNet 
 - [x] Possui método ``getTotalQuantity()`` para acessar TotalQuantity 
 - [x] Possui método ``setTotalQuantity()`` que define TotalQuantity 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Order\Shippings\Customer\Address
 
@@ -348,7 +427,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setState()`` que define State 
 - [x] Possui método ``getStreet()`` para acessar Street 
 - [x] Possui método ``setStreet()`` que define Street 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Order\Shippings\Customer\Customer
 
@@ -369,7 +447,27 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setStateInscription()`` que define StateInscription 
 - [x] Possui método ``getTradeName()`` para acessar TradeName 
 - [x] Possui método ``setTradeName()`` que define TradeName 
-- [x] Entidade é uma Coleção 
+
+### NetshoesSdk\Entity\Order\Shippings\Invoice
+
+
+- [x] Não é validado se número da nota fiscal ausente 
+- [x] Não é validado se linha da nota fiscal ausente 
+- [x] Não é validado se data de emissão da nota fiscal ausente 
+- [x] Não é validado se chave da nota fiscal ausente 
+- [x] É valido se dados da nota fiscal presente 
+- [x] Possui método ``getNumber()`` para acessar Number 
+- [x] Possui método ``setNumber()`` que define Number 
+- [x] Possui método ``getLine()`` para acessar Line 
+- [x] Possui método ``setLine()`` que define Line 
+- [x] Possui método ``getAccessKey()`` para acessar AccessKey 
+- [x] Possui método ``setAccessKey()`` que define AccessKey 
+- [x] Possui método ``getIssueDate()`` para acessar IssueDate 
+- [x] Possui método ``setIssueDate()`` que define IssueDate 
+- [x] Possui método ``getShipDate()`` para acessar ShipDate 
+- [x] Possui método ``setShipDate()`` que define ShipDate 
+- [x] Possui método ``getUrl()`` para acessar Url 
+- [x] Possui método ``setUrl()`` que define Url 
 
 ### NetshoesSdk\Entity\Order\Shippings\Items\Item
 
@@ -424,7 +522,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setDevolutionExchangeStatus()`` que define DevolutionExchangeStatus 
 - [x] Possui método ``getExchangeProcessCode()`` para acessar ExchangeProcessCode 
 - [x] Possui método ``setExchangeProcessCode()`` que define ExchangeProcessCode 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Order\Shippings\Items
 
@@ -432,6 +529,18 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item``
 
 
+
+### NetshoesSdk\Entity\Order\Shippings\Sender
+
+
+- [x] Possui método ``getSellerCode()`` para acessar SellerCode 
+- [x] Possui método ``setSellerCode()`` que define SellerCode 
+- [x] Possui método ``getSellerName()`` para acessar SellerName 
+- [x] Possui método ``setSellerName()`` que define SellerName 
+- [x] Possui método ``getSupplierCnpj()`` para acessar SupplierCnpj 
+- [x] Possui método ``setSupplierCnpj()`` que define SupplierCnpj 
+- [x] Possui método ``getSupplierName()`` para acessar SupplierName 
+- [x] Possui método ``setSupplierName()`` que define SupplierName 
 
 ### NetshoesSdk\Entity\Order\Shippings\Shipping
 
@@ -458,7 +567,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setCancellationReason()`` que define CancellationReason 
 - [x] Possui método ``getDevolutionItems()`` para acessar DevolutionItems 
 - [x] Possui método ``setDevolutionItems()`` que define DevolutionItems 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Order\Shippings\Shippings
 
@@ -466,6 +574,35 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping``
 
 
+
+### NetshoesSdk\Entity\Order\Shippings\Transport
+
+
+- [x] Não é validado se data de entrega ausente 
+- [x] Possui método ``getCarrier()`` para acessar Carrier 
+- [x] Possui método ``setCarrier()`` que define Carrier 
+- [x] Possui método ``getDeliveryDate()`` para acessar DeliveryDate 
+- [x] Possui método ``setDeliveryDate()`` que define DeliveryDate 
+- [x] Possui método ``getEstimatedDeliveryDate()`` para acessar EstimatedDeliveryDate 
+- [x] Possui método ``setEstimatedDeliveryDate()`` que define EstimatedDeliveryDate 
+- [x] Possui método ``getDeliveryService()`` para acessar DeliveryService 
+- [x] Possui método ``setDeliveryService()`` que define DeliveryService 
+- [x] Possui método ``getShipDate()`` para acessar ShipDate 
+- [x] Possui método ``setShipDate()`` que define ShipDate 
+- [x] Possui método ``getTrackingLink()`` para acessar TrackingLink 
+- [x] Possui método ``setTrackingLink()`` que define TrackingLink 
+- [x] Possui método ``getTrackingNumber()`` para acessar TrackingNumber 
+- [x] Possui método ``setTrackingNumber()`` que define TrackingNumber 
+- [x] Possui método ``getTrackingShipDate()`` para acessar TrackingShipDate 
+- [x] Possui método ``setTrackingShipDate()`` que define TrackingShipDate 
+
+### NetshoesSdk\Entity\Product\Attributes\Attribute
+
+
+- [x] Possui método ``getName()`` para acessar Name 
+- [x] Possui método ``setName()`` que define Name 
+- [x] Possui método ``getValue()`` para acessar Value 
+- [x] Possui método ``setValue()`` que define Value 
 
 ### NetshoesSdk\Entity\Product\Attributes\Attributes
 
@@ -487,7 +624,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 
 - [x] Links
-- [x] Instance
+- [x] É uma coleção de objetos ``\Gpupo\NetshoesSdk\Entity\Product\Product``
+
+
 - [x] Possui objeto metadata
 - [x] Metadata self
 - [x] Metadata first
@@ -511,14 +650,12 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setBrand()`` que define Brand 
 - [x] Possui método ``getAttributes()`` para acessar Attributes 
 - [x] Possui método ``setAttributes()`` que define Attributes 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Product\Sku\Image
 
 
 - [x] Possui método ``getUrl()`` para acessar Url 
 - [x] Possui método ``setUrl()`` que define Url 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Product\Sku\Images
 
@@ -559,7 +696,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setDepth()`` que define Depth 
 - [x] Possui método ``getWeight()`` para acessar Weight 
 - [x] Possui método ``setWeight()`` que define Weight 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Product\Sku\Manager
 
@@ -571,20 +707,28 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 ### NetshoesSdk\Entity\Product\Sku\PriceSchedule
 
 
-- [x] Entidade é uma Coleção 
+- [x] Possui método ``getPriceFrom()`` para acessar PriceFrom 
+- [x] Possui método ``setPriceFrom()`` que define PriceFrom 
+- [x] Possui método ``getPriceTo()`` para acessar PriceTo 
+- [x] Possui método ``setPriceTo()`` que define PriceTo 
+- [x] Possui método ``getDateInit()`` para acessar DateInit 
+- [x] Possui método ``setDateInit()`` que define DateInit 
+- [x] Possui método ``getDateEnd()`` para acessar DateEnd 
+- [x] Possui método ``setDateEnd()`` que define DateEnd 
 
 ### NetshoesSdk\Entity\Product\Sku\Price
 
 
 - [x] Possui método ``getPrice()`` para acessar Price 
 - [x] Possui método ``setPrice()`` que define Price 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Product\Sku\SkuCollection
 
 
 - [x] Links
-- [x] Instance
+- [x] É uma coleção de objetos ``\Gpupo\NetshoesSdk\Entity\Product\Sku\Item``
+
+
 - [x] Possui objeto metadata
 - [x] Metadata self
 
@@ -593,14 +737,12 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Possui método ``getActive()`` para acessar Active 
 - [x] Possui método ``setActive()`` que define Active 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Product\Sku\Stock
 
 
 - [x] Possui método ``getAvailable()`` para acessar Available 
 - [x] Possui método ``setAvailable()`` que define Available 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Templates\Brand
 
@@ -617,7 +759,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setName()`` que define Name 
 - [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
 - [x] Possui método ``setExternalCode()`` que define ExternalCode 
-- [x] Entidade é uma Coleção 
 
 ### NetshoesSdk\Entity\Templates\TemplatesCollection
 

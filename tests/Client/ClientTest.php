@@ -37,8 +37,10 @@ class ClientTest extends TestCaseAbstract
      */
     public function testGerenciaUriDeRecurso(ClientInterface $client)
     {
-        $this->assertSame('http://api-sandbox.netshoes.com.br/api/v1/sku',
-            $client->getResourceUri('/sku'));
+        $this->assertSame(
+            'http://api-sandbox.netshoes.com.br/api/v1/sku',
+            $client->getResourceUri('/sku')
+        );
     }
 
     /**

@@ -17,23 +17,51 @@ namespace Gpupo\NetshoesSdk\Entity\Order\Shippings;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
+/**
+ * @method string getCarrier()    Acesso a carrier
+ * @method setCarrier(string $carrier)    Define carrier
+ * @method string getDeliveryDate()    Acesso a deliveryDate
+ * @method setDeliveryDate(string $deliveryDate)    Define deliveryDate
+ * @method string getDeliveryService()    Acesso a deliveryService
+ * @method setDeliveryService(string $deliveryService)    Define deliveryService
+ * @method string getShipDate()    Acesso a shipDate
+ * @method setShipDate(string $shipDate)    Define shipDate
+ * @method string getTrackingLink()    Acesso a trackingLink
+ * @method setTrackingLink(string $trackingLink)    Define trackingLink
+ * @method string getTrackingNumber()    Acesso a trackingNumber
+ * @method setTrackingNumber(string $trackingNumber)    Define trackingNumber
+ * @method string getTrackingShipDate()    Acesso a trackingShipDate
+ * @method setTrackingShipDate(string $trackingShipDate)    Define trackingShipDate
+ */
 class Transport extends EntityAbstract implements EntityInterface
 {
-    protected $primaryKey = '';
-
     /**
      * @codeCoverageIgnore
      */
     public function getSchema()
     {
         return [
-            'carrier'          => 'string',
-            'deliveryDate'     => 'string',
-            'deliveryService'  => 'string',
-            'shipDate'         => 'string',
-            'trackingLink'     => 'string',
-            'trackingNumber'   => 'string',
-            'trackingShipDate' => 'string',
-      ];
+            'carrier'               => 'string',
+            'deliveryDate'          => 'string',
+            'estimatedDeliveryDate' => 'string',
+            'deliveryService'       => 'string',
+            'shipDate'              => 'string',
+            'trackingLink'          => 'string',
+            'trackingNumber'        => 'string',
+            'trackingShipDate'      => 'string',
+        ];
+    }
+
+    public function check($status = null)
+    {
+        $list = ['deliveryDate'];
+
+        if ('shipped' === $status) {
+            $list = ['carrier', 'trackingNumber', 'deliveredDate', 'estimatedDelivery'];
+        }
+
+        $this->setRequiredSchema($list);
+
+        return $this->validate();
     }
 }

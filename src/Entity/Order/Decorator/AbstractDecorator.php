@@ -35,11 +35,8 @@ abstract class AbstractDecorator extends Collection
     protected function invalid($string = '')
     {
         $message = 'Attribute invalid: '.$string.' ';
-        $this->log('warning', $message, [
-            'order' => $this->getOrder(),
-        ]);
 
-        return false;
+        throw new \InvalidArgumentException($message);
     }
 
     public function setOrder(Order $order)
@@ -60,9 +57,11 @@ abstract class AbstractDecorator extends Collection
         $order = $this->getOrder();
 
         if (empty($order)) {
-            return false;
+            $this->invalid('Order');
         }
 
-        return true;
+        $this->getOrder()->check();
+
+        return $this;
     }
 }
