@@ -86,13 +86,31 @@ class Order extends EntityAbstract implements EntityInterface
         ];
     }
 
+    public function getShipping()
+    {
+        $shipping = $this->getShippings()->first();
+
+        if (empty($shipping)) {
+            throw new \Exception('Shipping Missed!');
+        }
+
+        return $shipping;
+    }
+
     public function getInvoice()
     {
-        return $this->getShippings()->first()->getInvoice();
+        return $this->getShipping()->getInvoice();
     }
 
     public function getItems()
     {
-        return $this->getShippings()->first()->getItems();
+        return $this->getShipping()->getItems();
+    }
+
+    public function check()
+    {
+        $this->setRequiredSchema(['businessUnit', 'orderDate', 'orderNumber']);
+
+        return $this->isValid();
     }
 }

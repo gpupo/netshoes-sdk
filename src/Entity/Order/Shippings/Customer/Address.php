@@ -51,6 +51,6 @@ class Address extends EntityAbstract implements EntityInterface
               'reference'    => 'string',
               'state'        => 'string',
               'street'       => 'string',
-      ];
+        ];
     }
 }

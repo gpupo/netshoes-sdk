@@ -48,8 +48,8 @@ class ApplicationTest extends TestCaseAbstract
 
         $app->appendCommand('foo:bar', 'Test')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-            $output->writeln('Hello World');
-        });
+                $output->writeln('Hello World');
+            });
 
         $command = $app->find('foo:bar');
         $commandTester = new CommandTester($command);

@@ -57,6 +57,17 @@ class OrderCollectionTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox É possui ``count()`` que é um indicador de quantidade de Pedidos
+     * @covers ::factoryEntity
+     * @depends testLinks
+     * @test
+     */
+    public function testCount(MetadataContainerAbstract $container)
+    {
+        $this->assertSame(1, $container->count());
+    }
+
+    /**
      * @depends testLinks
      */
     public function testPossuiObjetoMetadata(MetadataContainerAbstract $container)

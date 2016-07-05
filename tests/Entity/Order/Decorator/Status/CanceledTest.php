@@ -14,25 +14,21 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\Status;
 
-use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Invoiced;
+use Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Canceled;
 use Gpupo\NetshoesSdk\Entity\Order\Order;
 use Gpupo\Tests\NetshoesSdk\Entity\Order\Decorator\AbstractDecoratorTestCase;
 
 /**
- * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Invoiced
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status\Canceled
  */
-class InvoicedTest extends AbstractDecoratorTestCase
+class CanceledTest extends AbstractDecoratorTestCase
 {
-    protected $target = 'invoiced';
+    protected $target = 'canceled';
 
     protected function factoryDecorator(Order $order, $data = [])
     {
-        if (array_key_exists('number', $data)) {
-            $order->getShipping()->getInvoice()
-                ->setNumber($data['number'])
-                ->setLine($data['line'])
-                ->setAccessKey($data['key'])
-                ->setIssueDate($data['issueDate']);
+        if (array_key_exists('cancellationReason', $data)) {
+            $order->getShipping()->setCancellationReason($data['cancellationReason']);
         }
 
         return parent::factoryDecorator($order, $data);
@@ -40,6 +36,6 @@ class InvoicedTest extends AbstractDecoratorTestCase
 
     protected function factory($data = [])
     {
-        return new Invoiced($data);
+        return new Canceled($data);
     }
 }

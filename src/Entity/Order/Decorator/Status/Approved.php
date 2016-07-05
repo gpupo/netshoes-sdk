@@ -21,12 +21,14 @@ class Approved extends AbstractDecorator implements DecoratorInterface
 {
     public function toArray()
     {
-        if (true !== $this->validate()) {
-            $this->fail('Approved');
-        }
+        try {
+            $this->validate();
 
-        return [
-            'status' => 'Approved',
-        ];
+            return [
+                'status' => 'Approved',
+            ];
+        } catch (\Exception $e) {
+            $this->fail('Approved ('.$e->getMessage().')');
+        }
     }
 }

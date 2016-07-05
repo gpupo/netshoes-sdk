@@ -23,6 +23,79 @@
             "totalDiscount": 0,
             "totalFreight": 0,
             "totalNet": 10,
+            "shippings": [
+                {
+                    "expands": [
+                        "items",
+                        "devolutionItems"
+                    ],
+                    "shippingCode": 1,
+                    "status": "Approved",
+                    "cancellationReason": "string",
+                    "freightAmount": 0,
+                    "country": "string",
+                    "customer": {
+                        "expands": [],
+                        "document": "string",
+                        "stateInscription": "string",
+                        "customerName": "string",
+                        "recipientName": "string",
+                        "tradeName": "string",
+                        "cellPhone": "string",
+                        "landLine": "string",
+                        "address": {
+                            "expands": [],
+                            "neighborhood": "string",
+                            "postalCode": "string",
+                            "city": "string",
+                            "complement": "string",
+                            "state": "string",
+                            "street": "string",
+                            "number": "string",
+                            "reference": "string"
+                        }
+                    },
+                    "sender": {
+                        "expands": [],
+                        "supplierCnpj": "string",
+                        "sellerCode": 1,
+                        "sellerName": "string",
+                        "supplierName": "string"
+                    },
+                    "items": [
+                        {
+                            "expands": [],
+                            "itemId": 1,
+                            "ean": "3380811244105",
+                            "brand": "Nike",
+                            "name": "Gentle Refiner Unissex 50ml Clarins",
+                            "quantity": 1,
+                            "sku": "14080",
+                            "departmentName": "Feminino",
+                            "departmentCode": 9,
+                            "totalGross": 10,
+                            "totalCommission": 0,
+                            "totalDiscount": 0,
+                            "totalFreight": 0,
+                            "totalNet": 10,
+                            "grossUnitValue": 10,
+                            "discountUnitValue": 0,
+                            "netUnitValue": 10,
+                            "color": "Incolor",
+                            "flavor": "false",
+                            "size": "P"
+                        }
+                    ],
+                    "_links": {
+                        "self": {
+                            "href": "http://api-sandbox.netshoes.com.br/api/v1/orders/111111/shippings/1"
+                        },
+                        "order": {
+                            "href": "http://api-sandbox.netshoes.com.br/api/v1/orders/111111"
+                        }
+                    }
+                }
+            ],
             "_links": {
                 "self": {
                     "href": "http://api-sandbox.netshoes.com.br/api/v1/orders/111111"

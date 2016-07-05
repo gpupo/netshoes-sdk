@@ -33,6 +33,14 @@ class Invoice extends EntityAbstract implements EntityInterface
             'issueDate' => 'string',
             'shipDate'  => 'string',
             'url'       => 'string',
-      ];
+        ];
+    }
+
+    public function check()
+    {
+        $this->setRequiredSchema(['number', 'line', 'accessKey', 'issueDate']);
+        $this->setOptionalSchema(['shipDate', 'url']);
+
+        return $this->isValid();
     }
 }

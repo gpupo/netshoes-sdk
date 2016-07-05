@@ -29,13 +29,19 @@ abstract class AbstractDecoratorTestCase extends TestCaseAbstract
 
     protected function getExpectedJson()
     {
-        return $this->getResourceContent('fixture/Order/Status/'.$this->target.'.json');
+        return trim($this->getResourceContent('fixture/Order/Status/'.$this->target.'.json'));
     }
 
     protected function getDecorator($data = [])
     {
         return $this->factory($data)->setLogger($this->getLogger());
     }
+
+    protected function factoryDecorator(Order $order, $data = [])
+    {
+        return $this->getDecorator($data)->setOrder($order);
+    }
+
     /**
      * @testdox Recebe o objeto ``Order``
      * @test
@@ -51,12 +57,12 @@ abstract class AbstractDecoratorTestCase extends TestCaseAbstract
     /**
      * @testdox Falha ao validar ``Order`` com informações mínimas requeridas ausentes
      * @test
+     * @expectedException Exception
      */
     public function validateFail()
     {
         $decorator = $this->getDecorator();
-
-        $this->assertFalse($decorator->validate());
+        $decorator->validate();
     }
 
     /**
@@ -76,10 +82,9 @@ abstract class AbstractDecoratorTestCase extends TestCaseAbstract
      */
     public function validate(Order $order)
     {
-        return $this->markTestIncomplete();
         $decorator = $this->getDecorator($this->getExpectedArray())->setOrder($order);
-
-        $this->assertTrue($decorator->validate());
+        $decorator->validate();
+        $this->assertInstanceOf(Order::class, $decorator->getOrder());
     }
 
     /**
@@ -89,11 +94,18 @@ abstract class AbstractDecoratorTestCase extends TestCaseAbstract
      */
     public function toArray(Order $order)
     {
-        return $this->markTestIncomplete();
-
-        $decorator = $this->getDecorator($this->getExpectedArray())->setOrder($order);
-
+        $decorator = $this->factoryDecorator($order, $this->getExpectedArray());
         $this->assertSame($this->getExpectedArray(), $decorator->toArray());
+    }
+
+    /**
+     * @testdox Prepara JSON de acordo com o pedido na mudança de status
+     * @test
+     * @dataProvider dataProviderOrders
+     */
+    public function toJson(Order $order)
+    {
+        $decorator = $this->factoryDecorator($order, $this->getExpectedArray());
         $this->assertSame($this->getExpectedJson(), $decorator->toJson());
     }
 }

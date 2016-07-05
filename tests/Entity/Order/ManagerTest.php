@@ -20,7 +20,6 @@ use Gpupo\NetshoesSdk\Entity\Order\Order;
 use Gpupo\NetshoesSdk\Entity\Order\OrderCollection;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Invoice;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping;
-use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shippings;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
@@ -36,13 +35,19 @@ class ManagerTest extends TestCaseAbstract
         return $manager;
     }
 
+    protected function commonAsserts(Order $order)
+    {
+        $this->assertSame('111111', $order->getOrderNumber());
+        $this->assertSame('111111', $order->getId());
+        $this->assertSame(1, $order->getShipping()->getShippingCode());
+    }
     /**
      * @testdox Administra operações de SKUs
      * @test
      */
     public function testManager()
     {
-        $manager = $this->getManager();
+        $manager = $this->getManager('list.json');
 
         $this->assertInstanceOf(Manager::class, $manager);
 
@@ -71,14 +76,20 @@ class ManagerTest extends TestCaseAbstract
         $list = $manager->fetch();
         $this->assertInstanceOf(OrderCollection::class, $list);
 
+        $this->assertSame(1, $list->count());
+
+        foreach ($list as $order) {
+            $this->commonAsserts($order);
+        }
+
         return $list;
     }
 
     /**
      * @testdox Get a order based on order number
-     * @covers \Gpupo\NetshoesSdk\Entity\Order\Manager::findById
-     * @covers \Gpupo\NetshoesSdk\Entity\Order\Manager::execute
-     * @covers \Gpupo\NetshoesSdk\Entity\Order\Manager::factoryMap
+     * @covers ::findById
+     * @covers ::execute
+     * @covers ::factoryMap
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
@@ -87,36 +98,7 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager('item.json');
         $order = $manager->findById(111111);
         $this->assertInstanceOf(Order::class, $order);
-        $this->assertSame('111111', $order->getOrderNumber());
-        $this->assertSame('111111', $order->getId());
-    }
-
-    /**
-     * @testdox Get a list of shippings by order number
-     * @test
-     * @covers ::fetch
-     * @covers ::execute
-     * @covers ::factoryMap
-     */
-    public function fetchShippings()
-    {
-        $manager = $this->getManager('shippings.json');
-        $list = $manager->fetchShippings(111111);
-        $this->assertInstanceOf(Shippings::class, $list);
-    }
-
-    /**
-     * @testdox Get a shipping based on order number and shipping code
-     * @test
-     * @covers ::fetch
-     * @covers ::execute
-     * @covers ::factoryMap
-     */
-    public function findShippingById()
-    {
-        $manager = $this->getManager('shippings.json');
-        $item = $manager->findShippingById(111111, 1);
-        $this->assertInstanceOf(Shipping::class, $item);
+        $this->commonAsserts($order);
     }
 
     /**
@@ -171,13 +153,13 @@ class ManagerTest extends TestCaseAbstract
             'issueDate' => '2016-05-10T09:44:54.000-03:00',
         ]);
 
-        $order->setInvoice($invoice);
+        $order->getShipping()->setInvoice($invoice);
 
         $this->assertTrue($manager->updateStatus($order));
     }
 
     /**
-     * @testdox Update the shipping status to Canceled
+     * @testdox Update the shipping status to Canceled - Require ``Shipping Cancellation Reason``
      * @test
      * @dataProvider dataProviderOrders
      * @covers ::fetch
@@ -188,30 +170,39 @@ class ManagerTest extends TestCaseAbstract
     {
         $manager = $this->getManager();
         $order->setOrderStatus('canceled');
+        $order->getShipping()->setCancellationReason('Solicitação do cliente');
         $this->assertTrue($manager->updateStatus($order));
     }
 
     /**
-     * @testdox Update the shipping status to Delivered
+     * @testdox Update the shipping status to Delivered - Require ``Transport Delivery Date``
      * @test
+     * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
      */
-    public function saveStatusToDelivered()
+    public function saveStatusToDelivered(Order $order)
     {
-        $this->markTestIncomplete();
+        $manager = $this->getManager();
+        $order->setOrderStatus('delivered');
+        $order->getShipping()->getTransport()->setDeliveryDate('2016-05-10T09:44:54.000-03:00');
+        $this->assertTrue($manager->updateStatus($order));
     }
 
     /**
-     * @testdox Update the shipping status to Shipped
+     * @testdox Update the shipping status to Shipped - Require ``Transport Info``
      * @test
+     * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
      */
-    public function saveStatusToShipped()
+    public function saveStatusToShipped(Order $order)
     {
-        $this->markTestIncomplete();
+        $manager = $this->getManager();
+        $order->setOrderStatus('delivered');
+        $order->getShipping()->getTransport()->setDeliveryDate('2016-05-10T09:44:54.000-03:00');
+        $this->assertTrue($manager->updateStatus($order));
     }
 }

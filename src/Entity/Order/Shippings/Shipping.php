@@ -38,8 +38,8 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setCountry(string $country)    Define country
  * @method string getCancellationReason()    Acesso a cancellationReason
  * @method setCancellationReason(string $cancellationReason)    Define cancellationReason
- * @method Gpupo\NetshoesSdk\Entity\Order\Shippings\DevolutionItems getDevolutionItems()    Acesso a devolutionItems
- * @method setDevolutionItems(Gpupo\NetshoesSdk\Entity\Order\Shippings\DevolutionItems $devolutionItems)    Define devolutionItems
+ * @method DevolutionItems getDevolutionItems()    Acesso a devolutionItems
+ * @method setDevolutionItems(DevolutionItems $devolutionItems)    Define devolutionItems
  */
 class Shipping extends EntityAbstract implements EntityInterface
 {
@@ -62,6 +62,6 @@ class Shipping extends EntityAbstract implements EntityInterface
           'country'            => 'string',
           'cancellationReason' => 'string',
           'devolutionItems'    => 'object',
-      ];
+        ];
     }
 }

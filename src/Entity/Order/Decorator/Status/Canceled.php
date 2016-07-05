@@ -17,24 +17,25 @@ namespace Gpupo\NetshoesSdk\Entity\Order\Decorator\Status;
 use Gpupo\NetshoesSdk\Entity\Order\Decorator\AbstractDecorator;
 use Gpupo\NetshoesSdk\Entity\Order\Decorator\DecoratorInterface;
 
-class Invoiced extends AbstractDecorator implements DecoratorInterface
+class Canceled extends AbstractDecorator implements DecoratorInterface
 {
     public function toArray()
     {
         try {
             $this->validate();
-            $invoice = $this->getOrder()->getInvoice();
-            $invoice->check();
+
+            $reason = $this->getOrder()->getShipping()->getCancellationReason();
+
+            if (empty($reason)) {
+                $this->fail('Cancellation Reason');
+            }
 
             return [
-                'status'    => 'Invoiced',
-                'number'    => $invoice->getNumber(),
-                'line'      => $invoice->getLine(),
-                'key'       => $invoice->getAccessKey(),
-                'issueDate' => $invoice->getIssueDate(),
+                'status'             => 'Canceled',
+                'cancellationReason' => $reason,
             ];
         } catch (\Exception $e) {
-            $this->fail('Invoiced ('.$e->getMessage().')');
+            $this->fail('Canceled ('.$e->getMessage().')');
         }
     }
 }
