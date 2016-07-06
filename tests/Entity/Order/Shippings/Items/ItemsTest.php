@@ -15,8 +15,12 @@
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings;
 
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Items;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Items
+ */
 class ItemsTest extends TestCaseAbstract
 {
     /**
@@ -53,7 +57,21 @@ class ItemsTest extends TestCaseAbstract
         );
 
         foreach ($o as $s) {
-            $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item', $s);
+            $this->assertInstanceOf(Item::class, $s);
         }
+
+        return $o;
+    }
+
+    /**
+     * @testdox Possui métodos especiais para output de informações
+     * @depends testFactoryElement
+     * @covers ::toLog
+     */
+    public function testOutput(Items $object)
+    {
+        $this->assertTrue(is_array($object->toLog()));
+        $this->assertTrue(is_array($object->toArray()));
+        $this->assertInternalType('string', $object->__toString());
     }
 }

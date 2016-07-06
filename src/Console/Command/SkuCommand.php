@@ -18,11 +18,11 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class SkuCommand extends AbstractCommand
 {
-    /**
-     * @codeCoverageIgnore
-     */
     public function main($app)
     {
         $this->getApp()->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')

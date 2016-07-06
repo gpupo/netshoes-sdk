@@ -19,6 +19,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class OrderCommand extends AbstractCommand
 {
     protected $list = ['view', 'update'];
@@ -31,9 +34,6 @@ class OrderCommand extends AbstractCommand
         $this->factoryUpdate($app, 'delivered');
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
     protected function factoryUpdate($app, $type, Closure $orderDecorator = null)
     {
         $insertOptions = [
@@ -73,9 +73,6 @@ class OrderCommand extends AbstractCommand
         });
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
     protected function view($app)
     {
         $this->getApp()->appendCommand('order:view', 'Mostra detalhes de um pedido')
