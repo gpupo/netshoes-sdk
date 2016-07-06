@@ -18,13 +18,13 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ProductCommand extends AbstractCommand
 {
     protected $list = ['view', 'insert'];
 
-    /**
-     * @codeCoverageIgnore
-     */
     public function insert($app)
     {
         $insertOptions = [
@@ -54,9 +54,6 @@ class ProductCommand extends AbstractCommand
             });
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
     public function view($app)
     {
         $this->getApp()->appendCommand('product:view', 'Consulta a situação de um produto')

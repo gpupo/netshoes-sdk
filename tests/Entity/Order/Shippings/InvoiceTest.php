@@ -20,19 +20,6 @@ use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Shippings\Invoice
- *
- * @method string getNumber()    Acesso a number
- * @method setNumber(string $number)    Define number
- * @method int getLine()    Acesso a line
- * @method setLine(integer $line)    Define line
- * @method string getAccessKey()    Acesso a accessKey
- * @method setAccessKey(string $accessKey)    Define accessKey
- * @method string getIssueDate()    Acesso a issueDate
- * @method setIssueDate(string $issueDate)    Define issueDate
- * @method string getShipDate()    Acesso a shipDate
- * @method setShipDate(string $shipDate)    Define shipDate
- * @method string getUrl()    Acesso a url
- * @method setUrl(string $url)    Define url
  */
 class InvoiceTest extends TestCaseAbstract
 {

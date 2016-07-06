@@ -19,6 +19,8 @@ use Gpupo\NetshoesSdk\Entity\Order\Decorator\DecoratorInterface;
 
 class Canceled extends AbstractDecorator implements DecoratorInterface
 {
+    protected $name = 'Canceled';
+
     public function validate()
     {
         parent::validate();
@@ -30,17 +32,11 @@ class Canceled extends AbstractDecorator implements DecoratorInterface
         }
     }
 
-    public function toArray()
+    protected function factoryArray()
     {
-        try {
-            $this->validate();
-
-            return [
-                'status'             => 'Canceled',
-                'cancellationReason' => $this->getOrder()->getShipping()->getCancellationReason(),
-            ];
-        } catch (\Exception $e) {
-            $this->fail('Canceled ('.$e->getMessage().')');
-        }
+        return [
+            'status'             => 'Canceled',
+            'cancellationReason' => $this->getOrder()->getShipping()->getCancellationReason(),
+        ];
     }
 }

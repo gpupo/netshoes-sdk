@@ -57,6 +57,7 @@ abstract class AbstractDecoratorTestCase extends TestCaseAbstract
     /**
      * @testdox Falha ao validar ``Order`` com informações mínimas requeridas ausentes
      * @test
+     * @covers ::factoryArray
      * @expectedException Exception
      */
     public function validateFail()
@@ -68,16 +69,24 @@ abstract class AbstractDecoratorTestCase extends TestCaseAbstract
     /**
      * @testdox Falha ao tentar submeter uma ordem incompleta para mudança de status
      * @expectedException Exception
+     * @expectedExceptionMessage Attribute invalid: Order
+     * @covers ::factoryArray
+     * @covers ::toArray
      * @test
      */
     public function toArrayFail()
     {
-        $this->getDecorator()->toJson();
+        $o = $this->proxy($this->getDecorator());
+        $o->set('order', '');
+        $o->toArray();
     }
 
     /**
      * @testdox Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status
      * @test
+     * @covers \Gpupo\NetshoesSdk\Entity\Order\Decorator\AbstractDecorator::validate
+     * @covers ::validate
+     * @covers ::toArray
      * @dataProvider dataProviderOrders
      */
     public function validate(Order $order)
@@ -91,6 +100,9 @@ abstract class AbstractDecoratorTestCase extends TestCaseAbstract
      * @testdox Prepara as informações como de acordo com o pedido na mudança de status
      * @test
      * @dataProvider dataProviderOrders
+     * @covers \Gpupo\NetshoesSdk\Entity\Order\Decorator\AbstractDecorator
+     * @covers ::toArray
+     * @covers ::factoryArray
      */
     public function toArray(Order $order)
     {
@@ -101,11 +113,50 @@ abstract class AbstractDecoratorTestCase extends TestCaseAbstract
     /**
      * @testdox Prepara JSON de acordo com o pedido na mudança de status
      * @test
+     * @covers ::toArray
+     * @covers ::toJson
+     * @covers ::factoryArray
      * @dataProvider dataProviderOrders
      */
     public function toJson(Order $order)
     {
         $decorator = $this->factoryDecorator($order, $this->getExpectedArray());
         $this->assertSame($this->getExpectedJson(), $decorator->toJson());
+    }
+
+    /**
+     * @testdox Lida com as mensagens de validação
+     * @expectedException InvalidArgumentException
+     * @covers ::fail
+     */
+    public function testFailMessage()
+    {
+        $o = $this->proxy($this->getDecorator());
+        $o->fail();
+    }
+
+    /**
+     * @testdox Lida com as mensagens de validação especificando o atributo com problemas
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Attribute invalid: foo
+     * @covers ::invalid
+     */
+    public function testInvalidMessage()
+    {
+        $o = $this->proxy($this->getDecorator());
+        $o->invalid('foo');
+    }
+
+    /**
+     * @testdox Possui validação de Order
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Attribute invalid: Order
+     * @covers ::validate
+     */
+    public function testBasicValidate()
+    {
+        $o = $this->proxy($this->getDecorator());
+        $o->set('order', '');
+        $o->validate();
     }
 }

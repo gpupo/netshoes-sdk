@@ -19,22 +19,19 @@ use Gpupo\NetshoesSdk\Entity\Order\Decorator\DecoratorInterface;
 
 class Invoiced extends AbstractDecorator implements DecoratorInterface
 {
-    public function toArray()
-    {
-        try {
-            $this->validate();
-            $invoice = $this->getOrder()->getInvoice();
-            $invoice->check();
+    protected $name = 'Invoiced';
 
-            return [
-                'status'    => 'Invoiced',
-                'number'    => $invoice->getNumber(),
-                'line'      => $invoice->getLine(),
-                'key'       => $invoice->getAccessKey(),
-                'issueDate' => $invoice->getIssueDate(),
-            ];
-        } catch (\Exception $e) {
-            $this->fail('Invoiced ('.$e->getMessage().')');
-        }
+    protected function factoryArray()
+    {
+        $invoice = $this->getOrder()->getInvoice();
+        $invoice->check();
+
+        return [
+            'status'    => 'Invoiced',
+            'number'    => $invoice->getNumber(),
+            'line'      => $invoice->getLine(),
+            'key'       => $invoice->getAccessKey(),
+            'issueDate' => $invoice->getIssueDate(),
+        ];
     }
 }

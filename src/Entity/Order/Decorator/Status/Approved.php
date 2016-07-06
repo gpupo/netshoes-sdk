@@ -19,16 +19,12 @@ use Gpupo\NetshoesSdk\Entity\Order\Decorator\DecoratorInterface;
 
 class Approved extends AbstractDecorator implements DecoratorInterface
 {
-    public function toArray()
-    {
-        try {
-            $this->validate();
+    protected $name = 'Approved';
 
-            return [
-                'status' => 'Approved',
-            ];
-        } catch (\Exception $e) {
-            $this->fail('Approved ('.$e->getMessage().')');
-        }
+    protected function factoryArray()
+    {
+        return [
+            'status' => 'Approved',
+        ];
     }
 }

@@ -19,21 +19,17 @@ use Gpupo\NetshoesSdk\Entity\Order\Decorator\DecoratorInterface;
 
 class Delivered extends AbstractDecorator implements DecoratorInterface
 {
-    public function toArray()
+    protected $name = 'Delivered';
+
+    protected function factoryArray()
     {
-        try {
-            $this->validate();
-            $transport = $this->getOrder()->getShipping()->getTransport();
-            $transport->check('delivered');
+        $transport = $this->getOrder()->getShipping()->getTransport();
+        $transport->check('delivered');
+        $deliveryDate = $transport->getDeliveryDate();
 
-            $deliveryDate = $transport->getDeliveryDate();
-
-            return [
-                'status'       => 'Delivered',
-                'deliveryDate' => $deliveryDate,
-            ];
-        } catch (\Exception $e) {
-            $this->fail('Delivered ('.$e->getMessage().')');
-        }
+        return [
+            'status'       => 'Delivered',
+            'deliveryDate' => $deliveryDate,
+        ];
     }
 }
