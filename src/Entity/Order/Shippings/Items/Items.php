@@ -22,4 +22,14 @@ class Items extends CollectionAbstract
     {
         return new Item($data);
     }
+
+    public function toLog()
+    {
+        $array = [];
+        foreach($this->all() as $item) {
+            $array[] = $item->toLog();
+        }
+
+        return $array;
+    }
 }

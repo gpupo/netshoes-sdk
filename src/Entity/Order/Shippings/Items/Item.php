@@ -106,4 +106,14 @@ class Item extends EntityAbstract implements EntityInterface
             'exchangeProcessCode'      => 'integer',
         ];
     }
+
+    public function toLog()
+    {
+        return $this->partitionByArrayKey([
+            'sku',
+            'ean',
+            'name',
+            'quantity',
+        ]);
+    }
 }

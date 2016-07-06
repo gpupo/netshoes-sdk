@@ -14,43 +14,25 @@
 
 namespace Gpupo\NetshoesSdk\Console\Command;
 
-use Gpupo\NetshoesSdk\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ProductCommand extends AbstractCommand
 {
+    protected $list = ['view', 'insert'];
+
     /**
      * @codeCoverageIgnore
      */
-    public static function append(Application $app)
+    public function insert($app)
     {
-        $app->appendCommand('product:view', 'Consulta a situação de um produto')
-            ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-                $list = $app->processInputParameters([], $input, $output);
-
-                $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
-
-                $app->displayTableResults($output, [[
-                    'Id'           => $p->getProductId(),
-                    'Brand'        => $p->getBrand(),
-                    'Department'   => $p->getDepartment(),
-                    'Product Type' => $p->getProductType(),
-                ]]);
-
-                $output->writeln('<fg=yellow>Skus</>');
-
-                $app->displayTableResults($output, $p->getSkus());
-            });
-
         $insertOptions = [
             ['key' => 'file'],
         ];
 
-        $app->appendCommand('product:insert', 'Insere um produto a partir do Json de um arquivo')
-            ->setDefinition($app->factoryDefinition($insertOptions))
+        $this->getApp()->appendCommand('product:insert', 'Insere um produto a partir do Json de um arquivo')
+            ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
                 $list = $app->processInputParameters($insertOptions, $input, $output);
 
@@ -70,7 +52,30 @@ class ProductCommand extends AbstractCommand
                     $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
             });
+    }
 
-        return $app;
+    /**
+     * @codeCoverageIgnore
+     */
+    public function view($app)
+    {
+        $this->getApp()->appendCommand('product:view', 'Consulta a situação de um produto')
+            ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+
+                $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
+
+                $app->displayTableResults($output, [[
+                    'Id'           => $p->getProductId(),
+                    'Brand'        => $p->getBrand(),
+                    'Department'   => $p->getDepartment(),
+                    'Product Type' => $p->getProductType(),
+                ]]);
+
+                $output->writeln('<fg=yellow>Skus</>');
+
+                $app->displayTableResults($output, $p->getSkus());
+            });
     }
 }

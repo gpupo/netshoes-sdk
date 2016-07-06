@@ -86,6 +86,22 @@ class Order extends EntityAbstract implements EntityInterface
         ];
     }
 
+    public function toLog()
+    {
+        return $this->partitionByArrayKey([
+            'orderDate',
+            'orderNumber',
+            'orderStatus',
+            'orderType',
+            'originNumber',
+            'originSite',
+            'paymentDate',
+            'totalFreight',
+            'totalNet',
+            'totalQuantity',
+        ]);
+    }
+
     public function getShipping()
     {
         $shipping = $this->getShippings()->first();

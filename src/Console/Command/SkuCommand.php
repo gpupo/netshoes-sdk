@@ -14,7 +14,6 @@
 
 namespace Gpupo\NetshoesSdk\Console\Command;
 
-use Gpupo\NetshoesSdk\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,11 +21,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SkuCommand extends AbstractCommand
 {
     /**
-     * @codeCoverageIgnore
-     */
-    public static function append(Application $app)
-    {
-        $app->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')
+      * @codeCoverageIgnore
+      */
+     public function main($app)
+     {
+         $this->getApp()->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')
             ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
@@ -36,7 +35,7 @@ class SkuCommand extends AbstractCommand
                 $app->displayTableResults($output, $p);
             });
 
-        $app->appendCommand('product:sku:details', 'Mostra preço, estoque e situação de um SKU')
+         $this->getApp()->appendCommand('product:sku:details', 'Mostra preço, estoque e situação de um SKU')
             ->addArgument('skuId', InputArgument::REQUIRED, 'Sku ID')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
@@ -51,12 +50,12 @@ class SkuCommand extends AbstractCommand
                 $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
             });
 
-        $insertOptions = [
+         $insertOptions = [
             ['key' => 'file'],
         ];
 
-        $app->appendCommand('product:sku:update', 'Atualiza um SKU')
-            ->setDefinition($app->factoryDefinition($insertOptions))
+         $this->getApp()->appendCommand('product:sku:update', 'Atualiza um SKU')
+            ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
                 $list = $app->processInputParameters($insertOptions, $input, $output);
 
@@ -75,7 +74,5 @@ class SkuCommand extends AbstractCommand
                     $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
             });
-
-        return $app;
-    }
+     }
 }

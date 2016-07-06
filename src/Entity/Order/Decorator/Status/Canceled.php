@@ -19,20 +19,25 @@ use Gpupo\NetshoesSdk\Entity\Order\Decorator\DecoratorInterface;
 
 class Canceled extends AbstractDecorator implements DecoratorInterface
 {
+    public function validate()
+    {
+        parent::validate();
+
+        $reason = $this->getOrder()->getShipping()->getCancellationReason();
+
+        if (empty($reason)) {
+            $this->fail('Cancellation Reason');
+        }
+    }
+
     public function toArray()
     {
         try {
             $this->validate();
 
-            $reason = $this->getOrder()->getShipping()->getCancellationReason();
-
-            if (empty($reason)) {
-                $this->fail('Cancellation Reason');
-            }
-
             return [
                 'status'             => 'Canceled',
-                'cancellationReason' => $reason,
+                'cancellationReason' => $this->getOrder()->getShipping()->getCancellationReason(),
             ];
         } catch (\Exception $e) {
             $this->fail('Canceled ('.$e->getMessage().')');

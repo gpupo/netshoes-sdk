@@ -14,7 +14,6 @@
 
 namespace Gpupo\NetshoesSdk\Console\Command;
 
-use Gpupo\NetshoesSdk\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,7 +23,7 @@ class TemplatesCommand extends AbstractCommand
     /**
      * @codeCoverageIgnore
      */
-    public static function append(Application $app)
+    public function main($app)
     {
         foreach ([
             'brands',
@@ -32,7 +31,7 @@ class TemplatesCommand extends AbstractCommand
             'colors',
             'sizes',
         ] as $templateKey) {
-            $app->appendCommand('templates:'.$templateKey, 'List of '.$templateKey)
+            $this->getApp()->appendCommand('templates:'.$templateKey, 'List of '.$templateKey)
                 ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $templateKey) {
                     $list = $app->processInputParameters([], $input, $output);
                     $responseList = $app->factorySdk($list)->factoryManager('templates')->fetchByRoute($templateKey);
@@ -40,7 +39,7 @@ class TemplatesCommand extends AbstractCommand
                 });
         }
 
-        $app->appendCommand('templates:departments', 'List of departments')
+        $this->getApp()->appendCommand('templates:departments', 'List of departments')
             ->addArgument('buId', InputArgument::REQUIRED, 'Business unit id - NS = Netshoes e ZT = Zattini')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
@@ -51,7 +50,7 @@ class TemplatesCommand extends AbstractCommand
                 $app->displayTableResults($output, $responseList);
             });
 
-        $app->appendCommand('templates:productTypes', 'List of productTypes')
+        $this->getApp()->appendCommand('templates:productTypes', 'List of productTypes')
             ->addArgument('departmentCode', InputArgument::REQUIRED, 'Id do departamento')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
@@ -62,7 +61,7 @@ class TemplatesCommand extends AbstractCommand
                 $app->displayTableResults($output, $responseList);
             });
 
-        $app->appendCommand('templates:attributes', 'List of attributes')
+        $this->getApp()->appendCommand('templates:attributes', 'List of attributes')
             ->addArgument('departmentCode', InputArgument::REQUIRED, 'Id do departamento')
             ->addArgument('productTypeCode', InputArgument::REQUIRED, 'Id do Product Type')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
@@ -75,7 +74,7 @@ class TemplatesCommand extends AbstractCommand
                 $app->displayTableResults($output, $responseList);
             });
 
-        $app->appendCommand('templates:tree', 'Tree of templates')
+        $this->getApp()->appendCommand('templates:tree', 'Tree of templates')
             ->addArgument('buId', InputArgument::REQUIRED, 'Business unit id - NS = Netshoes e ZT = Zattini')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
