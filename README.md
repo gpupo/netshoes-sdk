@@ -183,50 +183,50 @@ Created --> Approved --> Invoiced --> Shipped --> Delivered
 
 Para informações do formato de ``$data`` veja o arquivo ``Resources/fixtures/Order/new.json``
 
+A seguir seguem exemplos de mudanças de status de um pedido:
 
-Movendo um pedido para ``Invoiced``:
+### Invoiced
 
 ```php
 <?php
 //..
-
-	$order = $sdk->createOrder($data);
-    $order->setOrderStatus('invoiced');
-
-	$invoice = $sdk->createInvoice([
-		'number'    => 4003,
-		'line'      => 1,
-		'accessKey' => '1789616901235555001000004003000004003',
-		'issueDate' => '2016-05-10T09:44:54.000-03:00',
-	]);
-
-	$order->getShipping()->setInvoice($invoice);
-
-	echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
-}
+$order = $sdk->createOrder($data)->setOrderStatus('invoiced');
+$invoice = $sdk->createInvoice([
+	'number'    => 4003,
+	'line'      => 1,
+	'accessKey' => '1789616901235555001000004003000004003',
+	'issueDate' => '2016-05-10T09:44:54.000-03:00',
+]);
+$order->getShipping()->setInvoice($invoice);
+echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
 ```
 
-
-Movendo um pedido para ``Shipped``:
+### Shipped
 
 ```php
 <?php
 //..
+$order = $sdk->createOrder($data)->setOrderStatus('shipped');
+$transport = $sdk->createTransport([
+    "carrier":"Correios",
+    "trackingNumber":"PJ521644335BR",
+    "shipDate":"2016-05-10T10:46:00.000-03:00",
+    "estimatedDeliveryDate":"2016-05-10T10:46:00.000-03:00"
+]);
+$order->getShipping()->setTransport($transport);
+echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+```
 
-	$order = $sdk->createOrder($data);
-    $order->setOrderStatus('shipped');
+### Delivered
 
-	$transport = $sdk->createTransport([
-        "carrier":"Correios",
-        "trackingNumber":"PJ521644335BR",
-        "shipDate":"2016-05-10T10:46:00.000-03:00",
-        "estimatedDeliveryDate":"2016-05-10T10:46:00.000-03:00"
-	]);
-
-	$order->getShipping()->setTransport($transport);
-
-	echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
-}
+```php
+<?php
+//..
+$order = $sdk->createOrder($data)
+	->setOrderStatus('delivered')
+	->getShipping()->getTransport()
+	->setDeliveryDate("2016-05-10T10:53:00.000-03:00");
+echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
 ```
 
 <!-- console -->
@@ -266,33 +266,41 @@ Lista de Departamentos:
 
 ### Order
 
-Detalhes de um pedido:
+Detalhes de um pedido
 
-    ./bin/console order:view 111111
-
-Movendo um pedido para ``Approved`` a partir de seu número e informações contidas em arquivo:
-
-``` bash
-
-./bin/console order:update:to:approved 111111 --file=Resources/fixture/Order/Status/Request/toApproved.json
-
+```bash
+$./bin/console order:view 111111
 ```
 
-Movendo um pedido para ``Invoiced`` a partir de seu número e informações contidas em arquivo:
+Movendo um pedido para ``Approved`` a partir de seu número e informações contidas em arquivo
 
-    ./bin/console order:update:to:invoiced 111111 --file=Resources/fixture/Order/Status/Request/toInvoiced.json
+```bash
+$ ./bin/console order:update:to:approved 111111 --file=Resources/fixture/Order/Status/Request/toApproved.json
+```
 
-Movendo um pedido para ``Shipped`` a partir de seu número e informações contidas em arquivo:
+Movendo um pedido para ``Invoiced`` a partir de seu número e informações contidas em arquivo
 
-    ./bin/console order:update:to:shipped 111111 --file=Resources/fixture/Order/Status/Request/toShipped.json
+```bash
+$ ./bin/console order:update:to:invoiced 111111 --file=Resources/fixture/Order/Status/Request/toInvoiced.json
+```
 
+Movendo um pedido para ``Shipped`` a partir de seu número e informações contidas em arquivo
 
+```bash
+$ ./bin/console order:update:to:shipped 111111 --file=Resources/fixture/Order/Status/Request/toShipped.json
+```
+
+Movendo um pedido para ``Delivered`` a partir de seu número e informações contidas em arquivo
+
+```bash
+$ ./bin/console order:update:to:delivered 111111 --file=Resources/fixture/Order/Status/Request/toDelivered.json
+```
 
 ### Configurações
 
-Você poder criar um arquivo chamado ``app.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando:
+Você poder criar um arquivo chamado ``app.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando
 
-``` JSON
+```JSON
 {
     "client_id": "foo",
     "access_token": "bar"
@@ -380,6 +388,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Canceled
 
@@ -391,6 +402,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Delivered
 
@@ -401,6 +415,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Invoiced
 
@@ -411,6 +428,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Shipped
 
@@ -421,6 +441,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Manager
 
@@ -453,6 +476,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 ### NetshoesSdk\Entity\Order\Order
 
 
+- [x] Possui validação
 - [x] Possui método ``getShipping()`` que é um atalho para ``->getShippings()->first()`` 
 - [x] Falha ao acessar ``getShipping()`` quando não houver nenhum objeto 
 - [x] Possui método ``getInvoice()`` que é um atalho para ``->getShippings()->first()->getInvoice()`` 
@@ -621,6 +645,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item``
 
 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Sender
 
@@ -668,6 +693,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping``
 
 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Transport
 

@@ -46,6 +46,9 @@ class OrderCommand extends AbstractCommand
         ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions, $type, $orderDecorator) {
             $list = $app->processInputParameters($insertOptions, $input, $output);
             $id = $input->getArgument('orderId');
+            if (!file_exists($list['file'])) {
+                throw new \InvalidArgumentException("O arquivo [".$list['file']."] não existe!");
+            }
             $data = json_decode(file_get_contents($list['file']), true);
             $sdk = $app->factorySdk($list);
             $manager = $sdk->factoryManager('order');

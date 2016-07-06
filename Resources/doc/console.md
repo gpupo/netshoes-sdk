@@ -60,7 +60,7 @@ $ ./bin/console order:update:to:shipped 111111 --file=Resources/fixture/Order/St
 Movendo um pedido para ``Delivered`` a partir de seu número e informações contidas em arquivo
 
 ```bash
-$ ./bin/console order:update:to:shipped 111111 --file=Resources/fixture/Order/Status/Request/toShipped.json
+$ ./bin/console order:update:to:delivered 111111 --file=Resources/fixture/Order/Status/Request/toDelivered.json
 ```
 
 ### Configurações

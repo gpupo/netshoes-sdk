@@ -24,6 +24,9 @@
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Canceled
 
@@ -35,6 +38,9 @@
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Delivered
 
@@ -45,6 +51,9 @@
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Invoiced
 
@@ -55,6 +64,9 @@
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Shipped
 
@@ -65,6 +77,9 @@
 - [x] Tem sucesso ao validar as informações mínimas requeridas para uma mudança de status 
 - [x] Prepara as informações como de acordo com o pedido na mudança de status 
 - [x] Prepara JSON de acordo com o pedido na mudança de status 
+- [x] Lida com as mensagens de validação
+- [x] Lida com as mensagens de validação especificando o atributo com problemas
+- [x] Possui validação de Order
 
 ### NetshoesSdk\Entity\Order\Manager
 
@@ -97,6 +112,7 @@
 ### NetshoesSdk\Entity\Order\Order
 
 
+- [x] Possui validação
 - [x] Possui método ``getShipping()`` que é um atalho para ``->getShippings()->first()`` 
 - [x] Falha ao acessar ``getShipping()`` quando não houver nenhum objeto 
 - [x] Possui método ``getInvoice()`` que é um atalho para ``->getShippings()->first()->getInvoice()`` 
@@ -265,6 +281,7 @@
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item``
 
 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Sender
 
@@ -312,6 +329,7 @@
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping``
 
 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Transport
 
