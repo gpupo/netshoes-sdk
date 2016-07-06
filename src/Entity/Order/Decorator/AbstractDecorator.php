@@ -73,7 +73,7 @@ abstract class AbstractDecorator extends Collection
             $this->validate();
             $array = $this->factoryArray();
         } catch (\Exception $e) {
-            $this->fail($this->name . ' ('.$e->getMessage().')');
+            $this->fail($this->name.' ('.$e->getMessage().')');
         }
 
         return $array;
