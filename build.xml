@@ -44,12 +44,9 @@
   </exec>
   <delete dir="${basedir}/build"/>
  </target>
- <target name="daily" depends="composer-rebuild" description="Rebuild for new day!">
-  <exec executable="php-cs-fixer">
-    <arg value="fix"/>
-    <arg value="."/>
-  </exec>
-  <exec executable="${basedir}/bin/build-documentation.sh">
+ <target name="build-documentation" description="Build documentation">
+  <exec executable="${basedir}/vendor/gpupo/common-sdk/bin/build-documentation.sh">
+    <arg value="${project.name}"/>
   </exec>
  </target>
  <target name="libraries" description="List dependencies">

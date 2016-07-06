@@ -47,7 +47,7 @@ class OrderCommand extends AbstractCommand
             $list = $app->processInputParameters($insertOptions, $input, $output);
             $id = $input->getArgument('orderId');
             if (!file_exists($list['file'])) {
-                throw new \InvalidArgumentException("O arquivo [".$list['file']."] não existe!");
+                throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
             }
             $data = json_decode(file_get_contents($list['file']), true);
             $sdk = $app->factorySdk($list);

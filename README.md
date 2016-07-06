@@ -179,7 +179,7 @@ $sdk->factoryManager('product')->save($product);
 
 Fluxo de status dos pedidos:
 
-Created --> Approved --> Invoiced --> Shipped --> Delivered
+``Created`` --> ``Approved`` --> ``Invoiced`` --> ``Shipped`` --> ``Delivered``
 
 Para informações do formato de ``$data`` veja o arquivo ``Resources/fixtures/Order/new.json``
 

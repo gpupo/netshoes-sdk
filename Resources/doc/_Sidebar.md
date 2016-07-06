@@ -3,6 +3,7 @@
 * [coverage](coverage)
 * [dev](dev)
 * [install](install)
+* [usage](usage)
 * [libraries-table](libraries-table)
 * [libraries-tree](libraries-tree)
 * [links](links)
