@@ -51,13 +51,12 @@ class Manager extends AbstractManager
             $code = $shipping->getShippingCode();
             $shipping->toJson();
             $map = $this->factoryMap($mapKey, [
-                'orderNumber'  => $order->getOrderNumber(),
-                'shippingCode' => $code,
+                'orderNumber'   => $order->getOrderNumber(),
+                'itemId'        => $order->getOrderNumber(),
+                'shippingCode'  => $code,
             ]);
 
-            $this->execute($map, $json);
-
-            return true;
+            return $this->execute($map, $json);
         }
 
         throw new \InvalidArgumentException('Order Status não suportado', 1);

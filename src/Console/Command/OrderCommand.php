@@ -17,7 +17,6 @@ namespace Gpupo\NetshoesSdk\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Gpupo\NetshoesSdk\Entity\Order\Order;
 
 class OrderCommand extends AbstractCommand
 {
@@ -33,6 +32,7 @@ class OrderCommand extends AbstractCommand
         ];
 
         $this->getApp()->appendCommand('order:update:to:invoiced', 'Move um pedido para a situação [Invoiced]')
+        ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
         ->addArgument('orderId', InputArgument::REQUIRED, 'Product ID')
         ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
             $list = $app->processInputParameters($insertOptions, $input, $output);
@@ -41,9 +41,21 @@ class OrderCommand extends AbstractCommand
             $sdk = $app->factorySdk($list);
             $manager = $sdk->factoryManager('order');
             $order = $sdk->createOrder($data);
-            $order->setOrderStatus('invoiced');
 
-            $manager->updateStatus($order);
+            $order->setOrderNumber($id)
+                ->setOrderStatus('invoiced');
+
+            try {
+                $operation = $manager->updateStatus($order);
+
+                if (200 === $operation->getHttpStatusCode()) {
+                    $output->writeln('<info>Successo!</info>');
+                }
+            } catch (\Exception $e) {
+                $output->writeln('<error>Erro na mudança de status</error>');
+                $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
+                $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
+            }
         });
     }
 
@@ -68,5 +80,4 @@ class OrderCommand extends AbstractCommand
                 $app->displayTableResults($output, $p->getShipping()->getItems()->toLog());
             });
     }
-
 }

@@ -129,7 +129,7 @@ class ManagerTest extends TestCaseAbstract
     {
         $manager = $this->getManager();
         $order->setOrderStatus('approved');
-        $this->assertTrue($manager->updateStatus($order));
+        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
     }
 
     /**
@@ -172,7 +172,7 @@ class ManagerTest extends TestCaseAbstract
 
         $order->getShipping()->setInvoice($invoice);
 
-        $this->assertTrue($manager->updateStatus($order));
+        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
     }
 
     /**
@@ -189,7 +189,7 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager();
         $order->setOrderStatus('canceled');
         $order->getShipping()->setCancellationReason('Solicitação do cliente');
-        $this->assertTrue($manager->updateStatus($order));
+        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
     }
 
     /**
@@ -206,7 +206,7 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager();
         $order->setOrderStatus('delivered');
         $order->getShipping()->getTransport()->setDeliveryDate('2016-05-10T09:44:54.000-03:00');
-        $this->assertTrue($manager->updateStatus($order));
+        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
     }
 
     /**
@@ -223,6 +223,6 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager();
         $order->setOrderStatus('delivered');
         $order->getShipping()->getTransport()->setDeliveryDate('2016-05-10T09:44:54.000-03:00');
-        $this->assertTrue($manager->updateStatus($order));
+        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
     }
 }
