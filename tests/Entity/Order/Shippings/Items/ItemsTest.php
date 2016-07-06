@@ -14,8 +14,8 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings;
 
-use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Items;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Items;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**

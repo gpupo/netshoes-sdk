@@ -63,6 +63,24 @@ class OrderTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Possui validação
+     * @covers ::check
+     */
+    public function testCheck()
+    {
+        $o = new Order();
+        $this->assertFalse($o->check());
+
+        $o = new Order([
+            'businessUnit' => 'string',
+            'orderDate'    => 'string',
+            'orderNumber'  => 'string',
+        ]);
+
+        $this->assertTrue($o->check());
+    }
+
+    /**
      * @testdox Possui método ``getShipping()`` que é um atalho para ``->getShippings()->first()``
      * @dataProvider dataProviderObject
      * @cover ::getShipping
