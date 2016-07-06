@@ -9,6 +9,8 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
+namespace Gpupo\NetshoesSdk\Console\Command;
+
 require __DIR__.'/../vendor/autoload.php';
 
 use Gpupo\NetshoesSdk\Console\Application;
@@ -21,10 +23,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 $app = new Application("netshoes-sdk");
 $app->findConfig([__DIR__.'/../']);
 
-$app = \Gpupo\NetshoesSdk\Console\Command\ProductCommand::append($app);
-$app = \Gpupo\NetshoesSdk\Console\Command\SkuCommand::append($app);
-$app = \Gpupo\NetshoesSdk\Console\Command\DetailCommand::append($app);
-$app = \Gpupo\NetshoesSdk\Console\Command\TemplatesCommand::append($app);
+foreach (['Product', 'Sku', 'Detail', 'Templates', 'Order'] as $className) {
+    $n =  __NAMESPACE__.'\\'.$className . 'Command';
+    $o = new $n;
+    $app = $o->append($app);
+}
+
 
 $app->appendCommand('credential:test', 'Testa a validade de suas credenciais')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {

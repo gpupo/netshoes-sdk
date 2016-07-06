@@ -100,6 +100,20 @@ class ManagerTest extends TestCaseAbstract
         $this->assertInstanceOf(Order::class, $order);
         $this->commonAsserts($order);
     }
+    /**
+     * @testdox A atualização de status falha quando status não reconhecido
+     * @test
+     * @dataProvider dataProviderOrders
+     * @expectedException InvalidArgumentException
+     * @covers ::factoryDecorator
+     * @covers ::updateStatus
+     */
+    public function updateStatusFail(Order $order)
+    {
+        $manager = $this->getManager();
+        $order->setOrderStatus('abductee');
+        $manager->updateStatus($order);
+    }
 
     /**
      * @testdox Update the shipping status to Approved
@@ -109,6 +123,7 @@ class ManagerTest extends TestCaseAbstract
      * @covers ::execute
      * @covers ::factoryMap
      * @covers ::factoryDecorator
+     * @covers ::updateStatus
      */
     public function saveStatusToApproved(Order $order)
     {
@@ -124,6 +139,7 @@ class ManagerTest extends TestCaseAbstract
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
+     * @covers ::updateStatus
      * @expectedException InvalidArgumentException
      */
     public function saveStatusToInvoicedFail(Order $order)
@@ -139,6 +155,7 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
+     * @covers ::updateStatus
      * @covers ::factoryMap
      */
     public function saveStatusToInvoiced(Order $order)
@@ -164,6 +181,7 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
+     * @covers ::updateStatus
      * @covers ::factoryMap
      */
     public function saveStatusToCanceled(Order $order)
@@ -180,6 +198,7 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
+     * @covers ::updateStatus
      * @covers ::factoryMap
      */
     public function saveStatusToDelivered(Order $order)
@@ -196,6 +215,7 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
+     * @covers ::updateStatus
      * @covers ::factoryMap
      */
     public function saveStatusToShipped(Order $order)

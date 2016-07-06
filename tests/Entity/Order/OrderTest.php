@@ -17,6 +17,7 @@ namespace Gpupo\Tests\NetshoesSdk\Entity\Order;
 use Gpupo\NetshoesSdk\Entity\Order\Order;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Invoice;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Items;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
@@ -59,6 +60,30 @@ class OrderTest extends TestCaseAbstract
         ];
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
+    }
+
+    /**
+     * @testdox Possui método ``getShipping()`` que é um atalho para ``->getShippings()->first()``
+     * @dataProvider dataProviderObject
+     * @cover ::getShipping
+     * @test
+     */
+    public function getShipping(Order $order, $expected = null)
+    {
+        $this->assertInstanceOf(Shipping::class, $order->getShipping());
+    }
+
+    /**
+     * @testdox Falha ao acessar ``getShipping()`` quando não houver nenhum objeto
+     * @test
+     * @expectedException Exception
+     * @expectedExceptionMessage Shipping Missed!
+     * @dataProvider dataProviderOrders
+     */
+    public function failShipping(Order $order)
+    {
+        $order->getShippings()->clear();
+        $order->getInvoice();
     }
 
     /**

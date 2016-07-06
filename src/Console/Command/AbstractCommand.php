@@ -14,6 +14,33 @@
 
 namespace Gpupo\NetshoesSdk\Console\Command;
 
+use Gpupo\NetshoesSdk\Console\Application;
+
 abstract class AbstractCommand
 {
+    protected $list = ['main'];
+
+    protected $app;
+    
+    /**
+     * @codeCoverageIgnore
+     */
+    protected function getApp()
+    {
+        return $this->app;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function append(Application $app)
+    {
+        $this->app = $app;
+
+        foreach ($this->list as $i) {
+            $this->$i($this->getApp());
+        }
+
+        return $this->getApp();
+    }
 }

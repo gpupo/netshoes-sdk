@@ -38,4 +38,20 @@ class CanceledTest extends AbstractDecoratorTestCase
     {
         return new Canceled($data);
     }
+
+    /**
+     * @testdox Falha ao validar ``Order`` sem ``Cancellation Reason``
+     * @test
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Order incomplete for status [Cancellation Reason]
+     * @dataProvider dataProviderOrders
+     * @covers ::toArray
+     * @covers ::validate
+     */
+    public function validateCancellationReason(Order $order)
+    {
+        $decorator = $this->factoryDecorator($order, $this->getExpectedArray());
+        $decorator->getOrder()->getShippings()->first()->setCancellationReason('');
+        $decorator->validate();
+    }
 }

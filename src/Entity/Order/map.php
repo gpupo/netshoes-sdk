@@ -15,7 +15,7 @@
 $put = function ($name) {
     return [
         'PUT',
-        '/orders/{orderNumber}/shippings/{shippingCode}/status/'.$name,
+        '/orders/{itemId}/shippings/{shippingCode}/status/'.$name,
     ];
 };
 
@@ -26,7 +26,7 @@ return [
     ],
     'findById' => [
         'GET',
-        '/orders/{orderNumber}?expand=items,shippings,devolutionItems',
+        '/orders/{itemId}?expand=items,shippings,devolutionItems',
     ],
     'toApproved'  => $put('approved'),
     'toCanceled'  => $put('canceled'),

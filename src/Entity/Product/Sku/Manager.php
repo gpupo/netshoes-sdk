@@ -23,7 +23,6 @@ class Manager extends AbstractManager
 
     /**
      * @codeCoverageIgnore
-     * @SuppressWarnings(PHPMD.cpd)
      */
     protected function setUp()
     {

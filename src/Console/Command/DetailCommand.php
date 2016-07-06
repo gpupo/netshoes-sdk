@@ -14,7 +14,6 @@
 
 namespace Gpupo\NetshoesSdk\Console\Command;
 
-use Gpupo\NetshoesSdk\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -23,7 +22,7 @@ class DetailCommand extends AbstractCommand
     /**
      * @codeCoverageIgnore
      */
-    public static function append(Application $app)
+    public function main($app)
     {
         $insertOptions = [
             ['key' => 'file'],
@@ -34,8 +33,8 @@ class DetailCommand extends AbstractCommand
             ],
         ];
 
-        $app->appendCommand('product:sku:detail:update', 'Atualiza detalhes de um SKU')
-            ->setDefinition($app->factoryDefinition($insertOptions))
+        $this->getApp()->appendCommand('product:sku:detail:update', 'Atualiza detalhes de um SKU')
+            ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
                 $list = $app->processInputParameters($insertOptions, $input, $output);
 
@@ -57,7 +56,5 @@ class DetailCommand extends AbstractCommand
                     $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
             });
-
-        return $app;
     }
 }

@@ -301,6 +301,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 ### NetshoesSdk\Entity\Order\Decorator\Status\Canceled
 
 
+- [x] Falha ao validar ``Order`` sem ``Cancellation Reason`` 
 - [x] Recebe o objeto ``Order`` 
 - [x] Falha ao validar ``Order`` com informações mínimas requeridas ausentes
 - [x] Falha ao tentar submeter uma ordem incompleta para mudança de status
@@ -345,6 +346,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui objeto client
 - [x] Get a list of Orders
 - [x] Get a order based on order number
+- [x] A atualização de status falha quando status não reconhecido 
 - [x] Update the shipping status to Approved 
 - [x] Falha ao tentar mover o status de um pedido para invoiced sem informar NF 
 - [x] Update the shipping status to Invoiced 
@@ -368,6 +370,8 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 ### NetshoesSdk\Entity\Order\Order
 
 
+- [x] Possui método ``getShipping()`` que é um atalho para ``->getShippings()->first()`` 
+- [x] Falha ao acessar ``getShipping()`` quando não houver nenhum objeto 
 - [x] Possui método ``getInvoice()`` que é um atalho para ``->getShippings()->first()->getInvoice()`` 
 - [x] Possui método ``setInvoice()`` que é um atalho para ``->getShippings()->first()->setInvoice()`` 
 - [x] Possui método ``getItems()`` que é um atalho para ``->getShippings()->first()->getItems()`` 

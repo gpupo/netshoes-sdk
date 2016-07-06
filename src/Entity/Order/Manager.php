@@ -15,7 +15,6 @@
 namespace Gpupo\NetshoesSdk\Entity\Order;
 
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
-use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shippings;
 
 class Manager extends AbstractManager
 {
@@ -23,7 +22,6 @@ class Manager extends AbstractManager
 
     /**
      * @codeCoverageIgnore
-     * @SuppressWarnings(PHPMD.cpd)
      */
     protected function setUp()
     {
@@ -43,45 +41,25 @@ class Manager extends AbstractManager
     {
         $status = $order->getOrderStatus();
 
-        if (in_array($status, ['approved', 'canceled', 'delivered', 'invoiced', 'shipped'], true)) {
-            $decorator = $this->factoryDecorator($order, 'Status\\'.ucfirst($status));
+        $list = ['approved', 'canceled', 'delivered', 'invoiced', 'shipped'];
 
+        if (in_array($status, $list, true)) {
+            $decorator = $this->factoryDecorator($order, 'Status\\'.ucfirst($status));
             $json = $decorator->toJson();
             $mapKey = 'to'.ucfirst($status);
-
             $shipping = $order->getShipping();
             $code = $shipping->getShippingCode();
-
             $shipping->toJson();
-
             $map = $this->factoryMap($mapKey, [
                 'orderNumber'  => $order->getOrderNumber(),
                 'shippingCode' => $code,
             ]);
 
-            $response = $this->execute($map, $json);
+            $this->execute($map, $json);
 
             return true;
         }
 
         throw new \InvalidArgumentException('Order Status não suportado', 1);
-    }
-
-    /**
-     * @return Gpupo\Common\Entity\CollectionAbstract|null
-     */
-    public function fetchShippings($orderNumber)
-    {
-        $response = $this->perform($this->factoryMap('fetchShippings', [
-            'orderNumber' => $orderNumber,
-        ]));
-
-        $data = $this->processResponse($response);
-
-        if (empty($data)) {
-            return;
-        }
-
-        return new Shippings($data->toArray());
     }
 }

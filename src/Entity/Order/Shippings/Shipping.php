@@ -64,4 +64,13 @@ class Shipping extends EntityAbstract implements EntityInterface
           'devolutionItems'    => 'object',
         ];
     }
+
+    public function toLog()
+    {
+        return $this->partitionByArrayKey([
+            'shippingCode',
+            'status',
+            'cancellationReason'
+        ]);
+    }
 }
