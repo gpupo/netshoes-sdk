@@ -31,6 +31,11 @@ Lista de Departamentos:
 
     ./bin/console templates:departments NS
 
+### Order
+
+Movendo um pedido para ``Invoiced`` a partir de seu número e informações contidas em arquivo:
+
+    ./bin/console order:update:to:invoiced 111111 --file=Resources/fixture/Order/Status/Request/toInvoiced.json
 
 
 ### Configurações

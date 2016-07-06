@@ -21,7 +21,7 @@ abstract class AbstractCommand
     protected $list = ['main'];
 
     protected $app;
-    
+
     /**
      * @codeCoverageIgnore
      */

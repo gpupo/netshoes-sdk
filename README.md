@@ -89,9 +89,25 @@ Adicione o pacote ``netshoes-sdk`` ao seu projeto utilizando [composer](http://g
 
     composer require gpupo/netshoes-sdk
 
+### Registro (log)
+
+```php
+<?php
+//..
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+//..
+$logger = new Logger('foo');
+$logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
+$sdk->setLogger($logger);
+```
+
+<!-- usage -->
+
+
 ---
 
-## Uso
+## Uso para administração de Produtos
 
 Este exemplo demonstra o uso simplificado a partir do ``Factory``:
 
@@ -155,18 +171,11 @@ $product = $sdk->createProduct($data);
 $sdk->factoryManager('product')->save($product);
 ```
 
-### Registro (log)
+## Uso para administração de Pedidos
 
-```php
-<?php
-//..
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-//..
-$logger = new Logger('foo');
-$logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
-$sdk->setLogger($logger);
-```
+Fluxo de status dos pedidos:
+
+Created --> Approved --> Invoiced --> Shipped --> Delivered
 
 <!-- console -->
 
@@ -203,6 +212,11 @@ Lista de Departamentos:
 
     ./bin/console templates:departments NS
 
+### Order
+
+Movendo um pedido para ``Invoiced`` a partir de seu número e informações contidas em arquivo:
+
+    ./bin/console order:update:to:invoiced 111111 --file=Resources/fixture/Order/Status/Request/toInvoiced.json
 
 
 ### Configurações
@@ -411,6 +425,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setTotalNet()`` que define TotalNet 
 - [x] Possui método ``getTotalQuantity()`` para acessar TotalQuantity 
 - [x] Possui método ``setTotalQuantity()`` que define TotalQuantity 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Customer\Address
 
@@ -431,6 +446,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setState()`` que define State 
 - [x] Possui método ``getStreet()`` para acessar Street 
 - [x] Possui método ``setStreet()`` que define Street 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Customer\Customer
 
@@ -451,6 +467,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setStateInscription()`` que define StateInscription 
 - [x] Possui método ``getTradeName()`` para acessar TradeName 
 - [x] Possui método ``setTradeName()`` que define TradeName 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Invoice
 
@@ -472,6 +489,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setShipDate()`` que define ShipDate 
 - [x] Possui método ``getUrl()`` para acessar Url 
 - [x] Possui método ``setUrl()`` que define Url 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Items\Item
 
@@ -526,6 +544,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setDevolutionExchangeStatus()`` que define DevolutionExchangeStatus 
 - [x] Possui método ``getExchangeProcessCode()`` para acessar ExchangeProcessCode 
 - [x] Possui método ``setExchangeProcessCode()`` que define ExchangeProcessCode 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Items
 
@@ -545,6 +564,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setSupplierCnpj()`` que define SupplierCnpj 
 - [x] Possui método ``getSupplierName()`` para acessar SupplierName 
 - [x] Possui método ``setSupplierName()`` que define SupplierName 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Shipping
 
@@ -571,6 +591,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setCancellationReason()`` que define CancellationReason 
 - [x] Possui método ``getDevolutionItems()`` para acessar DevolutionItems 
 - [x] Possui método ``setDevolutionItems()`` que define DevolutionItems 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Order\Shippings\Shippings
 
@@ -599,6 +620,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setTrackingNumber()`` que define TrackingNumber 
 - [x] Possui método ``getTrackingShipDate()`` para acessar TrackingShipDate 
 - [x] Possui método ``setTrackingShipDate()`` que define TrackingShipDate 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Attributes\Attribute
 
@@ -607,6 +629,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setName()`` que define Name 
 - [x] Possui método ``getValue()`` para acessar Value 
 - [x] Possui método ``setValue()`` que define Value 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Attributes\Attributes
 
@@ -654,12 +677,14 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setBrand()`` que define Brand 
 - [x] Possui método ``getAttributes()`` para acessar Attributes 
 - [x] Possui método ``setAttributes()`` que define Attributes 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Sku\Image
 
 
 - [x] Possui método ``getUrl()`` para acessar Url 
 - [x] Possui método ``setUrl()`` que define Url 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Sku\Images
 
@@ -700,6 +725,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setDepth()`` que define Depth 
 - [x] Possui método ``getWeight()`` para acessar Weight 
 - [x] Possui método ``setWeight()`` que define Weight 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Sku\Manager
 
@@ -719,12 +745,14 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setDateInit()`` que define DateInit 
 - [x] Possui método ``getDateEnd()`` para acessar DateEnd 
 - [x] Possui método ``setDateEnd()`` que define DateEnd 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Sku\Price
 
 
 - [x] Possui método ``getPrice()`` para acessar Price 
 - [x] Possui método ``setPrice()`` que define Price 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Sku\SkuCollection
 
@@ -741,12 +769,14 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Possui método ``getActive()`` para acessar Active 
 - [x] Possui método ``setActive()`` que define Active 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Sku\Stock
 
 
 - [x] Possui método ``getAvailable()`` para acessar Available 
 - [x] Possui método ``setAvailable()`` que define Available 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Templates\Brand
 
@@ -763,6 +793,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setName()`` que define Name 
 - [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
 - [x] Possui método ``setExternalCode()`` que define ExternalCode 
+- [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Templates\TemplatesCollection
 
