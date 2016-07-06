@@ -1,0 +1,13 @@
+{
+  "shippings":[
+    {
+      "shippingCode":1,
+      "transport":{
+        "carrier":"Correios",
+        "trackingNumber":"PJ521644335BR",
+        "shipDate":"2016-05-10T10:46:00.000-03:00",
+        "estimatedDeliveryDate":"2016-05-10T10:46:00.000-03:00"
+      }
+    }
+  ]
+}

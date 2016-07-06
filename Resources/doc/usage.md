@@ -3,33 +3,11 @@
 
 ## Uso para administração de Produtos
 
-Este exemplo demonstra o uso simplificado a partir do ``Factory``:
-
-```php
-<?php
-
-use Gpupo\NetshoesSdk\Factory;
-
-$sdk = Factory::getInstance()->setup([
-    'client_id'     => 'foo',
-    'access_token'  => 'bar',
-    'version'       => 'sandbox',
- ]);
-
-$manager = $sdk->factoryManager('product');
-```
-
-Parâmetro | Descrição | Valores possíveis
-----------|-----------|------------------
-``client_id``|Chave da loja| string
-``access_token``|Token de autorização da aplicação| string
-``version``|Identificação do Ambiente| sandbox, prod (produção)
-``registerPath``|Quando informado, registra no diretório informado, os dados de cada requisição executada
-
+Para informações do formato de ``$data`` veja o arquivo ``Resources/fixtures/Product/new.json``
 
 ### Acesso a lista de produtos cadastrados:
 
-```php
+``` php
 <?php
 //..
 $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection de Objetos Product
@@ -39,7 +17,7 @@ $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection d
 ### Acesso a informações de um produto cadastrado e com identificador conhecido:
 
 
-```php
+``` php
 <?php
 //..
 $produto = $sdk->factoryManager('product')->findById(9)); // Objeto Produto
@@ -52,7 +30,6 @@ echo $product->getName(); // Acesso ao nome do produto de Id 9
 ```php
 <?php
 //..
-$data = []; // Veja o formato de $data em Resources/fixture/Product/ProductId.json
 $product = $sdk->createProduct($data);
 ```
 
@@ -94,3 +71,27 @@ Movendo um pedido para ``Invoiced``:
 
 	echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
 }
+```
+
+
+Movendo um pedido para ``Shipped``:
+
+```php
+<?php
+//..
+
+	$order = $sdk->createOrder($data);
+    $order->setOrderStatus('shipped');
+
+	$transport = $sdk->createTransport([
+        "carrier":"Correios",
+        "trackingNumber":"PJ521644335BR",
+        "shipDate":"2016-05-10T10:46:00.000-03:00",
+        "estimatedDeliveryDate":"2016-05-10T10:46:00.000-03:00"
+	]);
+
+	$order->getShipping()->setTransport($transport);
+
+	echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+}
+```

@@ -21,40 +21,40 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SkuCommand extends AbstractCommand
 {
     /**
-      * @codeCoverageIgnore
-      */
-     public function main($app)
-     {
-         $this->getApp()->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')
-            ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-                $list = $app->processInputParameters([], $input, $output);
+     * @codeCoverageIgnore
+     */
+    public function main($app)
+    {
+        $this->getApp()->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')
+          ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
+          ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+              $list = $app->processInputParameters([], $input, $output);
 
-                $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
+              $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
 
-                $app->displayTableResults($output, $p);
-            });
+              $app->displayTableResults($output, $p);
+          });
 
-         $this->getApp()->appendCommand('product:sku:details', 'Mostra preço, estoque e situação de um SKU')
-            ->addArgument('skuId', InputArgument::REQUIRED, 'Sku ID')
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-                $list = $app->processInputParameters([], $input, $output);
+        $this->getApp()->appendCommand('product:sku:details', 'Mostra preço, estoque e situação de um SKU')
+           ->addArgument('skuId', InputArgument::REQUIRED, 'Sku ID')
+           ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+               $list = $app->processInputParameters([], $input, $output);
 
-                $sku = $app->factorySdk($list)
-                    ->factoryManager('sku')
-                    ->findSkuById($input->getArgument('skuId'));
+               $sku = $app->factorySdk($list)
+                   ->factoryManager('sku')
+                   ->findSkuById($input->getArgument('skuId'));
 
-                $output->writeln('Price: R$<info>'.$sku->getPrice()->getPrice().'</info>');
-                $output->writeln('Price Schedule: R$<info>'.$sku->getPriceSchedule()->getPriceTo().'</info>');
-                $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
-                $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
-            });
+               $output->writeln('Price: R$<info>'.$sku->getPrice()->getPrice().'</info>');
+               $output->writeln('Price Schedule: R$<info>'.$sku->getPriceSchedule()->getPriceTo().'</info>');
+               $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
+               $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
+           });
 
-         $insertOptions = [
+        $insertOptions = [
             ['key' => 'file'],
-        ];
+            ];
 
-         $this->getApp()->appendCommand('product:sku:update', 'Atualiza um SKU')
+        $this->getApp()->appendCommand('product:sku:update', 'Atualiza um SKU')
             ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
                 $list = $app->processInputParameters($insertOptions, $input, $output);
@@ -74,5 +74,5 @@ class SkuCommand extends AbstractCommand
                     $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
             });
-     }
+    }
 }

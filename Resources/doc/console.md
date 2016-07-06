@@ -33,9 +33,18 @@ Lista de Departamentos:
 
 ### Order
 
+Detalhes de um pedido:
+
+    ./bin/console order:view 111111
+
 Movendo um pedido para ``Invoiced`` a partir de seu número e informações contidas em arquivo:
 
     ./bin/console order:update:to:invoiced 111111 --file=Resources/fixture/Order/Status/Request/toInvoiced.json
+
+Movendo um pedido para ``Shipped`` a partir de seu número e informações contidas em arquivo:
+
+    ./bin/console order:update:to:shipped 111111 --file=Resources/fixture/Order/Status/Request/toShipped.json
+
 
 
 ### Configurações

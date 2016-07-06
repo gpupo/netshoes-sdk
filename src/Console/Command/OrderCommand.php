@@ -14,6 +14,7 @@
 
 namespace Gpupo\NetshoesSdk\Console\Command;
 
+use Closure;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,30 +23,43 @@ class OrderCommand extends AbstractCommand
 {
     protected $list = ['view', 'update'];
 
+    protected function update($app)
+    {
+        $this->factoryUpdate($app, 'approved');
+        $this->factoryUpdate($app, 'invoiced');
+        $this->factoryUpdate($app, 'shipped');
+        $this->factoryUpdate($app, 'delivered');
+    }
+
     /**
      * @codeCoverageIgnore
      */
-    protected function update($app)
+    protected function factoryUpdate($app, $type, Closure $orderDecorator = null)
     {
         $insertOptions = [
             ['key' => 'file'],
         ];
 
-        $this->getApp()->appendCommand('order:update:to:invoiced', 'Move um pedido para a situação [Invoiced]')
+        $this->getApp()->appendCommand('order:update:to:'.$type, 'Move um pedido para a situação ['.$type.']')
         ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
         ->addArgument('orderId', InputArgument::REQUIRED, 'Product ID')
-        ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
+        ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions, $type, $orderDecorator) {
             $list = $app->processInputParameters($insertOptions, $input, $output);
             $id = $input->getArgument('orderId');
             $data = json_decode(file_get_contents($list['file']), true);
             $sdk = $app->factorySdk($list);
             $manager = $sdk->factoryManager('order');
             $order = $sdk->createOrder($data);
+            $order->setOrderNumber($id)->setOrderStatus($type);
 
-            $order->setOrderNumber($id)
-                ->setOrderStatus('invoiced');
+            if (!empty($orderDecorator)) {
+                $order = $orderDecorator($order);
+            }
 
             try {
+                $output->writeln('Iniciando mudança de status do pedido #<info>'
+                    .$id.'</info> => <comment>'.$type.'</comment>');
+
                 $operation = $manager->updateStatus($order);
 
                 if (200 === $operation->getHttpStatusCode()) {

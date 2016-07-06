@@ -45,7 +45,10 @@ class Factory extends FactoryAbstract
                 'manager' => $namespace.'Order\Manager',
             ],
             'invoice' => [
-                'class'   => $namespace.'Order\Shippings\Invoice',
+                'class' => $namespace.'Order\Shippings\Invoice',
+            ],
+            'transport' => [
+                'class' => $namespace.'Order\Shippings\Transport',
             ],
             'templates' => [
                 'class'   => $namespace.'Templates\Templates',

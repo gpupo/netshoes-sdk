@@ -26,7 +26,7 @@ class Items extends CollectionAbstract
     public function toLog()
     {
         $array = [];
-        foreach($this->all() as $item) {
+        foreach ($this->all() as $item) {
             $array[] = $item->toLog();
         }
 

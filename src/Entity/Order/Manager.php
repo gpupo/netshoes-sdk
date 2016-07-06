@@ -51,9 +51,9 @@ class Manager extends AbstractManager
             $code = $shipping->getShippingCode();
             $shipping->toJson();
             $map = $this->factoryMap($mapKey, [
-                'orderNumber'   => $order->getOrderNumber(),
-                'itemId'        => $order->getOrderNumber(),
-                'shippingCode'  => $code,
+                'orderNumber'  => $order->getOrderNumber(),
+                'itemId'       => $order->getOrderNumber(),
+                'shippingCode' => $code,
             ]);
 
             return $this->execute($map, $json);
