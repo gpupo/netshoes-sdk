@@ -70,7 +70,7 @@ class Shipping extends EntityAbstract implements EntityInterface
         return $this->partitionByArrayKey([
             'shippingCode',
             'status',
-            'cancellationReason'
+            'cancellationReason',
         ]);
     }
 }

@@ -89,27 +89,8 @@ Adicione o pacote ``netshoes-sdk`` ao seu projeto utilizando [composer](http://g
 
     composer require gpupo/netshoes-sdk
 
-### Registro (log)
 
-```php
-<?php
-//..
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-//..
-$logger = new Logger('foo');
-$logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
-$sdk->setLogger($logger);
-```
-
-<!-- usage -->
-
-
----
-
-## Uso para administração de Produtos
-
-Este exemplo demonstra o uso simplificado a partir do ``Factory``:
+Acesso ao componente:
 
 ```php
 <?php
@@ -133,9 +114,33 @@ Parâmetro | Descrição | Valores possíveis
 ``registerPath``|Quando informado, registra no diretório informado, os dados de cada requisição executada
 
 
+### Registro (log)
+
+Adicione log para as atividades do componente:
+    
+```php
+<?php
+//..
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+//..
+$logger = new Logger('foo');
+$logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
+$sdk->setLogger($logger);
+```
+
+<!-- usage -->
+
+
+---
+
+## Uso para administração de Produtos
+
+Para informações do formato de ``$data`` veja o arquivo ``Resources/fixtures/Product/new.json``
+
 ### Acesso a lista de produtos cadastrados:
 
-```php
+``` php
 <?php
 //..
 $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection de Objetos Product
@@ -145,7 +150,7 @@ $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection d
 ### Acesso a informações de um produto cadastrado e com identificador conhecido:
 
 
-```php
+``` php
 <?php
 //..
 $produto = $sdk->factoryManager('product')->findById(9)); // Objeto Produto
@@ -158,7 +163,6 @@ echo $product->getName(); // Acesso ao nome do produto de Id 9
 ```php
 <?php
 //..
-$data = []; // Veja o formato de $data em Resources/fixture/Product/ProductId.json
 $product = $sdk->createProduct($data);
 ```
 
@@ -176,6 +180,54 @@ $sdk->factoryManager('product')->save($product);
 Fluxo de status dos pedidos:
 
 Created --> Approved --> Invoiced --> Shipped --> Delivered
+
+Para informações do formato de ``$data`` veja o arquivo ``Resources/fixtures/Order/new.json``
+
+
+Movendo um pedido para ``Invoiced``:
+
+```php
+<?php
+//..
+
+	$order = $sdk->createOrder($data);
+    $order->setOrderStatus('invoiced');
+
+	$invoice = $sdk->createInvoice([
+		'number'    => 4003,
+		'line'      => 1,
+		'accessKey' => '1789616901235555001000004003000004003',
+		'issueDate' => '2016-05-10T09:44:54.000-03:00',
+	]);
+
+	$order->getShipping()->setInvoice($invoice);
+
+	echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+}
+```
+
+
+Movendo um pedido para ``Shipped``:
+
+```php
+<?php
+//..
+
+	$order = $sdk->createOrder($data);
+    $order->setOrderStatus('shipped');
+
+	$transport = $sdk->createTransport([
+        "carrier":"Correios",
+        "trackingNumber":"PJ521644335BR",
+        "shipDate":"2016-05-10T10:46:00.000-03:00",
+        "estimatedDeliveryDate":"2016-05-10T10:46:00.000-03:00"
+	]);
+
+	$order->getShipping()->setTransport($transport);
+
+	echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+}
+```
 
 <!-- console -->
 
@@ -214,9 +266,18 @@ Lista de Departamentos:
 
 ### Order
 
+Detalhes de um pedido:
+
+    ./bin/console order:view 111111
+
 Movendo um pedido para ``Invoiced`` a partir de seu número e informações contidas em arquivo:
 
     ./bin/console order:update:to:invoiced 111111 --file=Resources/fixture/Order/Status/Request/toInvoiced.json
+
+Movendo um pedido para ``Shipped`` a partir de seu número e informações contidas em arquivo:
+
+    ./bin/console order:update:to:shipped 111111 --file=Resources/fixture/Order/Status/Request/toShipped.json
+
 
 
 ### Configurações
