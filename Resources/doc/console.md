@@ -37,6 +37,14 @@ Detalhes de um pedido:
 
     ./bin/console order:view 111111
 
+Movendo um pedido para ``Approved`` a partir de seu número e informações contidas em arquivo:
+
+``` bash
+
+./bin/console order:update:to:approved 111111 --file=Resources/fixture/Order/Status/Request/toApproved.json
+
+```
+
 Movendo um pedido para ``Invoiced`` a partir de seu número e informações contidas em arquivo:
 
     ./bin/console order:update:to:invoiced 111111 --file=Resources/fixture/Order/Status/Request/toInvoiced.json
