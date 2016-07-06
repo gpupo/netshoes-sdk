@@ -175,6 +175,30 @@ $product = $sdk->createProduct($data);
 $sdk->factoryManager('product')->save($product);
 ```
 
+
+### Atualização de um SKU
+
+```php
+<?php
+//..
+$manager = $sdk->factoryManager('sku');
+$previous = $manager->findSkuById(14080);
+$data = [
+	'sku' => '14080',
+	'sellPrice'=> 100,
+	'listPrice' => 90,
+	'stock' => 20,
+	'status' => true,
+];
+$sku = $sdk->createSku($data);
+$manager->update($sku, $previous);
+```
+
+A atualização compara o SKU atual com ``$previous`` é uma instância de Sku
+para identificar apenas os campos que precisam de atualização;
+
+Importante: `$previous`` deve ser armazenada localmente, diferente do exemplo acima, para reduzir a quantidade de requisições à API;
+
 ## Uso para administração de Pedidos
 
 Fluxo de status dos pedidos:
@@ -235,32 +259,54 @@ echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); 
 
 ## Console
 
-Lista de comandos disponíveis:
+Lista de comandos disponíveis
 
-    ./bin/console
+```bash
+$ ./bin/console
+```
 
-Verificar suas credenciais Netshoes na linha de comando:
+Verificar suas credenciais Netshoes na linha de comando
 
-    ./bin/console credential:test
+```bash
+$ ./bin/console credential:test
+```
 
-Verificar a situação de um produto:
+### Product
 
-    ./bin/console produto:view [id do produto]
+Verificar a situação de um produto
 
-Inserir um produto a partir de um arquivo json:
+```bash
+$ ./bin/console produto:view [id do produto]
+```
 
-    ./bin/console  product:insert --file=Resources/fixture/Product/new.json
+Inserir um produto a partir de um arquivo json
 
-Exibe os SKUs de um produto:
+```bash
+$ ./bin/console  product:insert --file=Resources/fixture/Product/new.json
+```
 
-    ./bin/console product:sku:view 14080
+Exibe os SKUs de um produto
 
-Mostra preço, estoque e situação de um SKU:
+```bash
+$ ./bin/console product:sku:view 14080
+```
 
-    ./bin/console product:sku:details 14080
+Mostra preço, estoque e situação de um SKU
+
+```bash
+$ ./bin/console product:sku:details 14080
+```
+
+Atualizar um produto a partir de um arquivo json
+
+```bash
+$ ./bin/console  product:sku:update --file=Resources/fixture/Product/Sku/update.json
+```
 
 
-Lista de Departamentos:
+### Templates
+
+Lista de Departamentos
 
     ./bin/console templates:departments NS
 
@@ -348,10 +394,12 @@ Personalize os parâmetros!
 
 ## Todo
 
-1) Atualmente os a estrutura de Produtos está relacionando cada SKU a um Product com o mesmo Id,
+* Atualmente os a estrutura de Produtos está relacionando cada SKU a um Product com o mesmo Id,
 ou seja, não há agrupamento de SKUs em um único Product, por conta da estrutura atual de apresentação
 de produtos no marketplace da Netshoes. No futuro, quando o agrupamento for implementado,
 as rotas de Entity/Product/Sku precisam ser revistas.
+
+* Apesar do preço promocional comportar agendamento, as datas de início e fim de uma promoção estão fixas.
 
 <!-- dev-common -->
 

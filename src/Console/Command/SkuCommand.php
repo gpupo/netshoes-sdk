@@ -23,18 +23,28 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class SkuCommand extends AbstractCommand
 {
-    public function main($app)
+    protected $list = ['view', 'details', 'update'];
+
+    public function view($app)
     {
         $this->getApp()->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')
           ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
           ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
               $list = $app->processInputParameters([], $input, $output);
+              $id = $input->getArgument('productId');
+              $output->writeln('Exibindo informações do SKU #<info>'.$id.'</info>');
+              $p = $app->factorySdk($list)->factoryManager('sku')->findById($id);
 
-              $p = $app->factorySdk($list)->factoryManager('sku')->findById($input->getArgument('productId'));
+              if(empty($p)) {
+                  return $output->writeln('<error>Sku não encontrado!</error>');
+              }
 
               $app->displayTableResults($output, $p);
           });
+    }
 
+    public function details($app)
+    {
         $this->getApp()->appendCommand('product:sku:details', 'Mostra preço, estoque e situação de um SKU')
            ->addArgument('skuId', InputArgument::REQUIRED, 'Sku ID')
            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
@@ -49,7 +59,10 @@ class SkuCommand extends AbstractCommand
                $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
                $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
            });
+    }
 
+    public function update($app)
+    {
         $insertOptions = [
             ['key' => 'file'],
             ];
@@ -59,7 +72,12 @@ class SkuCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
                 $list = $app->processInputParameters($insertOptions, $input, $output);
 
+                if (!file_exists($list['file'])) {
+                    throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
+                }
+
                 $data = json_decode(file_get_contents($list['file']), true);
+
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
                 $manager = $sdk->factoryManager('sku');

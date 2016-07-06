@@ -13,7 +13,7 @@
  */
 
 $s = '/skus/{sku}';
-$p = '/products/{productId}/skus';
+$p = '/products/{itemId}/skus';
 
 return [
     'save'              => ['POST', $p], //Create a new sku for a product
