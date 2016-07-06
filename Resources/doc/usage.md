@@ -42,6 +42,30 @@ $product = $sdk->createProduct($data);
 $sdk->factoryManager('product')->save($product);
 ```
 
+
+### Atualização de um SKU
+
+```php
+<?php
+//..
+$manager = $sdk->factoryManager('sku');
+$previous = $manager->findSkuById(14080);
+$data = [
+	'sku' => '14080',
+	'sellPrice'=> 100,
+	'listPrice' => 90,
+	'stock' => 20,
+	'status' => true,
+];
+$sku = $sdk->createSku($data);
+$manager->update($sku, $previous);
+```
+
+A atualização compara o SKU atual com ``$previous`` é uma instância de Sku
+para identificar apenas os campos que precisam de atualização;
+
+Importante: `$previous`` deve ser armazenada localmente, diferente do exemplo acima, para reduzir a quantidade de requisições à API;
+
 ## Uso para administração de Pedidos
 
 Fluxo de status dos pedidos:

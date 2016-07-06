@@ -2,32 +2,54 @@
 
 ## Console
 
-Lista de comandos disponíveis:
+Lista de comandos disponíveis
 
-    ./bin/console
+```bash
+$ ./bin/console
+```
 
-Verificar suas credenciais Netshoes na linha de comando:
+Verificar suas credenciais Netshoes na linha de comando
 
-    ./bin/console credential:test
+```bash
+$ ./bin/console credential:test
+```
 
-Verificar a situação de um produto:
+### Product
 
-    ./bin/console produto:view [id do produto]
+Verificar a situação de um produto
 
-Inserir um produto a partir de um arquivo json:
+```bash
+$ ./bin/console produto:view [id do produto]
+```
 
-    ./bin/console  product:insert --file=Resources/fixture/Product/new.json
+Inserir um produto a partir de um arquivo json
 
-Exibe os SKUs de um produto:
+```bash
+$ ./bin/console  product:insert --file=Resources/fixture/Product/new.json
+```
 
-    ./bin/console product:sku:view 14080
+Exibe os SKUs de um produto
 
-Mostra preço, estoque e situação de um SKU:
+```bash
+$ ./bin/console product:sku:view 14080
+```
 
-    ./bin/console product:sku:details 14080
+Mostra preço, estoque e situação de um SKU
+
+```bash
+$ ./bin/console product:sku:details 14080
+```
+
+Atualizar um produto a partir de um arquivo json
+
+```bash
+$ ./bin/console  product:sku:update --file=Resources/fixture/Product/Sku/update.json
+```
 
 
-Lista de Departamentos:
+### Templates
+
+Lista de Departamentos
 
     ./bin/console templates:departments NS
 

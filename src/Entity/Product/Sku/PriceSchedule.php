@@ -46,4 +46,17 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
     {
         $this->setOptionalSchema(['priceFrom', 'dateInit', 'dateEnd']);
     }
+
+    /**
+     * @todo Apesar do preço promocional comportar agendamento, as datas de início e fim de uma promoção estão fixas
+     */
+    public function toArray()
+    {
+        $array = array_merge(parent::toArray(), [
+            'dateInit'  => "2016-01-01T00:00:01.000Z",
+            'dateEnd'  => "2018-01-01T00:00:01.000Z",
+        ]);
+
+        return $array;
+    }
 }
