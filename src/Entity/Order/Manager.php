@@ -25,7 +25,7 @@ class Manager extends AbstractManager
      */
     protected function setUp()
     {
-        $this->maps = include 'map.php';
+        $this->maps = include 'map.config.php';
     }
 
     protected function factoryDecorator(Order $order, $decoratorName)

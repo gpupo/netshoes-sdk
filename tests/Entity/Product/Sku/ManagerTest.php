@@ -16,6 +16,7 @@ namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager
@@ -53,7 +54,7 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
-     * @testdox Dá Acesso a lista de SKUs de um Product
+     * @testdox Dá Acesso a detalhes de um SKU
      * @depends testManager
      * @covers ::fetch
      * @covers ::execute
@@ -61,10 +62,10 @@ class ManagerTest extends TestCaseAbstract
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
-    public function testFetch(Manager $manager)
+    public function findById(Manager $manager)
     {
         $list = $manager->findById(14080);
-        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Sku\SkuCollection', $list);
+        $this->assertInstanceOf(Item::class, $list);
 
         return $list;
     }
