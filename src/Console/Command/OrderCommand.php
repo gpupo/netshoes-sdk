@@ -34,18 +34,17 @@ class OrderCommand extends AbstractCommand
         $this->factoryUpdate($app, 'delivered');
     }
 
-    protected function factoryUpdate($app, $type, Closure $orderDecorator = null)
+    protected function factoryUpdate($app, $type, Closure $decorator = null)
     {
-        $insertOptions = [
+        $opts = [
             ['key' => 'file'],
         ];
 
         $this->getApp()->appendCommand('order:update:to:'.$type, 'Move um pedido para a situação ['.$type.']')
-        ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
+        ->setDefinition($this->getApp()->factoryDefinition($opts))
         ->addArgument('orderId', InputArgument::REQUIRED, 'Product ID')
-        ->setCode(function (InputInterface $input, OutputInterface $output)
-            use ($app, $insertOptions, $type, $orderDecorator) {
-            $list = $app->processInputParameters($insertOptions, $input, $output);
+        ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts, $type, $decorator) {
+            $list = $app->processInputParameters($opts, $input, $output);
             $id = $input->getArgument('orderId');
             if (!file_exists($list['file'])) {
                 throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
@@ -56,8 +55,8 @@ class OrderCommand extends AbstractCommand
             $order = $sdk->createOrder($data);
             $order->setOrderNumber($id)->setOrderStatus($type);
 
-            if (!empty($orderDecorator)) {
-                $order = $orderDecorator($order);
+            if (!empty($decorator)) {
+                $order = $decorator($order);
             }
 
             try {

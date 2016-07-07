@@ -24,7 +24,7 @@ class DetailCommand extends AbstractCommand
 {
     public function main($app)
     {
-        $insertOptions = [
+        $opts = [
             ['key' => 'file'],
             [
                 'key'     => 'type',
@@ -34,9 +34,9 @@ class DetailCommand extends AbstractCommand
         ];
 
         $this->getApp()->appendCommand('product:sku:detail:update', 'Atualiza detalhes de um SKU')
-            ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
-                $list = $app->processInputParameters($insertOptions, $input, $output);
+            ->setDefinition($this->getApp()->factoryDefinition($opts))
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
+                $list = $app->processInputParameters($opts, $input, $output);
 
                 $data = json_decode(file_get_contents($list['file']), true);
                 $sdk = $app->factorySdk($list);

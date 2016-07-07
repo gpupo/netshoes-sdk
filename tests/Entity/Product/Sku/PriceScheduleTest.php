@@ -25,7 +25,7 @@ class PriceScheduleTest extends TestCaseAbstract
 {
     use EntityTrait;
 
-    const QUALIFIED = 'Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule';
+    const QUALIFIED = PriceSchedule::class;
 
     public static function setUpBeforeClass()
     {
@@ -46,6 +46,63 @@ class PriceScheduleTest extends TestCaseAbstract
         ];
 
         return $this->dataProviderEntitySchema(self::QUALIFIED, $expected);
+    }
+
+    protected $dateFormatList = [
+        '2016-06-24 00:00:00',
+        '2016/06/24 00:00:00',
+        '24-06-2016',
+        '2016/06/24',
+    ];
+    /**
+     * @testdox Formata entradas de data em ``ISO 8601 date format``
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::set
+     * @cover ::dateFormat
+     * @small
+     * @test
+     */
+    public function dateFormat(PriceSchedule $rawPriceSchedule, $expected = null)
+    {
+        $priceSchedule = $this->proxy($rawPriceSchedule);
+
+        foreach ($this->dateFormatList as $string) {
+            $this->assertSame('2016-06-24T00:00:00+00:00', $priceSchedule->dateFormat($string));
+        }
+    }
+
+    /**
+     * @testdox Possui método ``setDateInit()`` que define DateInit
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::set
+     * @cover ::getSchema
+     * @cover ::dateFormat
+     * @small
+     * @test
+     */
+    public function setDateInit(PriceSchedule $priceSchedule, $expected = null)
+    {
+        foreach ($this->dateFormatList as $string) {
+            $priceSchedule->setDateInit($string);
+            $this->assertSame('2016-06-24T00:00:00+00:00', $priceSchedule->getDateInit());
+        }
+    }
+
+    /**
+     * @testdox Possui método ``setDateEnd()`` que define DateEnd
+     * @dataProvider dataProviderPriceSchedule
+     * @cover ::set
+     * @cover ::getSchema
+     * @cover ::dateFormat
+     * @small
+     * @test
+     */
+    public function setDateEnd(PriceSchedule $priceSchedule, $expected = null)
+    {
+        foreach ($this->dateFormatList as $string) {
+            $priceSchedule->setDateEnd($string);
+            $this->assertSame('2016-06-24T00:00:00+00:00', $priceSchedule->getDateEnd());
+        }
     }
 
     /**
@@ -114,19 +171,6 @@ class PriceScheduleTest extends TestCaseAbstract
     }
 
     /**
-     * @testdox Possui método ``setDateInit()`` que define DateInit
-     * @dataProvider dataProviderPriceSchedule
-     * @cover ::set
-     * @cover ::getSchema
-     * @small
-     * @test
-     */
-    public function setDateInit(PriceSchedule $priceSchedule, $expected = null)
-    {
-        $this->assertSchemaSetter('dateInit', 'string', $priceSchedule);
-    }
-
-    /**
      * @testdox Possui método ``getDateEnd()`` para acessar DateEnd
      * @dataProvider dataProviderPriceSchedule
      * @cover ::get
@@ -137,18 +181,5 @@ class PriceScheduleTest extends TestCaseAbstract
     public function getDateEnd(PriceSchedule $priceSchedule, $expected = null)
     {
         $this->assertSchemaGetter('dateEnd', 'string', $priceSchedule, $expected);
-    }
-
-    /**
-     * @testdox Possui método ``setDateEnd()`` que define DateEnd
-     * @dataProvider dataProviderPriceSchedule
-     * @cover ::set
-     * @cover ::getSchema
-     * @small
-     * @test
-     */
-    public function setDateEnd(PriceSchedule $priceSchedule, $expected = null)
-    {
-        $this->assertSchemaSetter('dateEnd', 'string', $priceSchedule);
     }
 }

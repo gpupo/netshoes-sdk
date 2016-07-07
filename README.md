@@ -370,6 +370,9 @@ Utilize como modelo o arquivo ``app.json.dist``
 <!-- links-common -->
 
 
+* [Github Repository](https://github.com/gpupo/netshoes-sdk/);
+* [Bitbucket Repository](https://bitbucket.org/gpupo/netshoes-sdk/);
+
 <!-- dev -->
 
 ---
@@ -398,8 +401,6 @@ Personalize os parâmetros!
 ou seja, não há agrupamento de SKUs em um único Product, por conta da estrutura atual de apresentação
 de produtos no marketplace da Netshoes. No futuro, quando o agrupamento for implementado,
 as rotas de Entity/Product/Sku precisam ser revistas.
-
-* Apesar do preço promocional comportar agendamento, as datas de início e fim de uma promoção estão fixas.
 
 <!-- dev-common -->
 
@@ -880,14 +881,15 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 ### NetshoesSdk\Entity\Product\Sku\PriceSchedule
 
 
+- [x] Formata entradas de data em ``ISO 8601 date format`` 
+- [x] Possui método ``setDateInit()`` que define DateInit 
+- [x] Possui método ``setDateEnd()`` que define DateEnd 
 - [x] Possui método ``getPriceFrom()`` para acessar PriceFrom 
 - [x] Possui método ``setPriceFrom()`` que define PriceFrom 
 - [x] Possui método ``getPriceTo()`` para acessar PriceTo 
 - [x] Possui método ``setPriceTo()`` que define PriceTo 
 - [x] Possui método ``getDateInit()`` para acessar DateInit 
-- [x] Possui método ``setDateInit()`` que define DateInit 
 - [x] Possui método ``getDateEnd()`` para acessar DateEnd 
-- [x] Possui método ``setDateEnd()`` que define DateEnd 
 - [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Sku\Price
