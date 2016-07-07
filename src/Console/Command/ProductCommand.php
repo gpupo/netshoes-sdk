@@ -14,6 +14,7 @@
 
 namespace Gpupo\NetshoesSdk\Console\Command;
 
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -23,7 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ProductCommand extends AbstractCommand
 {
-    protected $list = ['view', 'insert'];
+    protected $list = ['view', 'insert', 'update'];
 
     public function insert($app)
     {
@@ -60,8 +61,8 @@ class ProductCommand extends AbstractCommand
             ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
-
-                $p = $app->factorySdk($list)->factoryManager('product')->findById($input->getArgument('productId'));
+                $id = $input->getArgument('productId');
+                $p = $app->factorySdk($list)->factoryManager('product')->findById($id);
 
                 $app->displayTableResults($output, [[
                     'Id'           => $p->getProductId(),
@@ -73,6 +74,54 @@ class ProductCommand extends AbstractCommand
                 $output->writeln('<fg=yellow>Skus</>');
 
                 $app->displayTableResults($output, $p->getSkus());
+
+                $output->writeln('<fg=yellow>Detalhes</>');
+
+                $command = $app->find('product:sku:details');
+                $t = new ArrayInput([
+                    'command' => 'product:sku:details',
+                    'skuId'   => $id,
+
+                ]);
+                $command->run($t, $output);
+            });
+    }
+
+    public function update($app)
+    {
+        $opts = [
+            ['key' => 'file-previous'],
+            ['key' => 'file-current'],
+        ];
+
+        $this->getApp()->appendCommand('product:update', 'Atualiza um SKU')
+            ->setDefinition($this->getApp()->factoryDefinition($opts))
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
+                $list = $app->processInputParameters($opts, $input, $output);
+
+                $data = [];
+
+                foreach (['previous', 'current'] as $i) {
+                    if (!file_exists($list['file-'.$i])) {
+                        throw new \InvalidArgumentException('O arquivo ['.$list['file-'.$i].'] não existe!');
+                    }
+
+                    $data[$i] = json_decode(file_get_contents($list['file-'.$i]), true);
+                }
+
+                $sdk = $app->factorySdk($list);
+                $current = $sdk->createProduct($data['current']);
+                $previous = $sdk->createProduct($data['previous']);
+                $manager = $sdk->factoryManager('product');
+
+                try {
+                    $operation = $manager->update($current, $previous);
+                    $app->displayTableResults($output, [$operation]);
+                } catch (\Exception $e) {
+                    $output->writeln('<error>Erro na criação</error>');
+                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
+                    $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
+                }
             });
     }
 }

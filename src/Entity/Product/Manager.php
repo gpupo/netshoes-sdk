@@ -14,7 +14,9 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
+use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
+use Gpupo\NetshoesSdk\Factory;
 
 class Manager extends AbstractManager
 {
@@ -30,4 +32,25 @@ class Manager extends AbstractManager
         'update'   => ['PUT', '/products/{itemId}'],
         'fetch'    => ['GET', '/products?page={offset}&size={limit}'],
     ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function update(EntityInterface $entity, EntityInterface $existent = null)
+    {
+        $previous = null;
+
+        if ($existent) {
+            $previous = $existent->getSkus()->first();
+        }
+
+        if (0 === $entity->getSkus()->count()) {
+            throw new \InvalidArgumentException('Product precisa conter SKU!');
+        }
+
+        Factory::getInstance()->factoryManager('sku')
+            ->update($entity->getSkus()->first(), $previous);
+
+        return true;
+    }
 }

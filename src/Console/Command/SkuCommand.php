@@ -37,7 +37,7 @@ class SkuCommand extends AbstractCommand
                 if (empty($p)) {
                     return $output->writeln('<error>Sku não encontrado!</error>');
                 }
-                $app->displayTableResults($output, $p);
+                $app->displayTableResults($output, [$p]);
             });
     }
 

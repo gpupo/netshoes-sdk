@@ -118,12 +118,31 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
-     * @testdox Quando um produto já existe utiliza Sku::update
-     * @covers ::save
+     * @testdox A Atualização de um Product requer que ele contenha Skus
+     * @covers ::update
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Product precisa conter SKU!
      * @test
      */
-    public function saveOrUpdate()
+    public function testUpdateFailSku()
     {
-        $this->markIncomplete();
+        $manager = $this->getManager();
+        $product = $this->getFactory()->createProduct();
+        $manager->update($product, $product);
+    }
+
+    /**
+     * @testdox Atualiza o SKU de um produto
+     * @covers ::update
+     * @test
+     */
+    public function testUpdate()
+    {
+        $manager = $this->getManager('item.json', 202);
+        $previousArray = $this->getResourceJson('fixture/Product/Update/previous.json');
+        $currentArray = $this->getResourceJson('fixture/Product/Update/current.json');
+        $previous = $this->getFactory()->createProduct($previousArray);
+        $product = $this->getFactory()->createProduct($currentArray);
+        $this->assertTrue($manager->update($product, $previous));
     }
 }

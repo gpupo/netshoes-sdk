@@ -28,6 +28,14 @@ Inserir um produto a partir de um arquivo json
 $ ./vendor/bin/netshoes-sdk  product:insert --file=vendor/gpupo/netshoes-sdk/Resources/fixture/Product/new.json
 ```
 
+Atualizar um produto a partir de dois arquivos
+
+```bash
+$ ./vendor/bin/netshoes-sdk   product:update \
+    --file-previous=Resources/fixture/Product/Update/previous.json \
+    --file-current=Resources/fixture/Product/Update/current.json
+```
+
 Exibe os SKUs de um produto
 
 ```bash

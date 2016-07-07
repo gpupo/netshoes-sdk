@@ -14,6 +14,7 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
+use Gpupo\NetshoesSdk\Entity\Product\Attributes\Attribute;
 use Gpupo\NetshoesSdk\Entity\Product\Product;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
@@ -83,7 +84,7 @@ class ProductTest extends TestCaseAbstract
     public function testPossuiUmaColecaoAttributes(Product $product)
     {
         foreach ($product->getAttributes() as $attribute) {
-            $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Product\Attributes\Attribute', $attribute);
+            $this->assertInstanceOf(Attribute::class, $attribute);
         }
     }
 

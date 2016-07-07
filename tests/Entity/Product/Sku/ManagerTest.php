@@ -59,6 +59,7 @@ class ManagerTest extends TestCaseAbstract
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
+     * @covers ::findById
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
