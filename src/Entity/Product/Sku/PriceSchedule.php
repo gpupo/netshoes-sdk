@@ -69,7 +69,7 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
 
     public function toArray()
     {
-        $d = parent::getDateInit();
+        $d = $this->getDateInit();
 
         if (empty($d)) {
             $this->setDateInit('');

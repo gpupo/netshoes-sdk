@@ -14,10 +14,11 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
-use Gpupo\NetshoesSdk\Entity\Product\Sku\PriceScheduleCollection;
-use Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule;
-use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\PriceSchedule;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\PriceScheduleCollection;
+use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\PriceScheduleCollection
  */
@@ -35,7 +36,7 @@ class PriceScheduleCollectionTest extends TestCaseAbstract
         $manager = $this->proxy($manager);
 
         $sku = new Item([
-            'sku'   => '14080',
+            'sku' => '14080',
         ]);
 
         $collection = $manager->getPriceScheduleCollection($sku);
@@ -63,5 +64,4 @@ class PriceScheduleCollectionTest extends TestCaseAbstract
         $container->clear();
         $this->assertNull($container->getCurrent());
     }
-
 }

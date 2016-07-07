@@ -876,7 +876,92 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
-- [ ] Dá Acesso a lista de SKUs de um Product
+- [x] Dá Acesso a detalhes de um SKU
+
+### NetshoesSdk\Entity\Product\Sku\PriceScheduleCollection
+
+
+- [x] É uma coleção de objetos ``PriceSchedule``
+- [x] ``getCurrent()`` Calcula o agendamento válido
+- [x] ``getCurrent()`` retorna null quando a lista está vazia
+
+### NetshoesSdk\Entity\Product\Sku\PriceSchedule
+
+
+- [x] Formata entradas de data em ``ISO 8601 date format`` 
+- [x] Possui método ``setDateInit()`` que define DateInit 
+- [x] Possui método ``setDateEnd()`` que define DateEnd 
+- [x] A data de início de uma promoção é o momento atual quando não informado
+- [x] Possui método ``getPriceFrom()`` para acessar PriceFrom 
+- [x] Possui método ``setPriceFrom()`` que define PriceFrom 
+- [x] Possui método ``getPriceTo()`` para acessar PriceTo 
+- [x] Possui método ``setPriceTo()`` que define PriceTo 
+- [x] Possui método ``getDateInit()`` para acessar DateInit 
+- [x] Possui método ``getDateEnd()`` para acessar DateEnd 
+- [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Product\Sku\Price
+
+
+- [x] Possui método ``getPrice()`` para acessar Price 
+- [x] Possui método ``setPrice()`` que define Price 
+- [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Product\Sku\SkuCollection
+
+
+- [x] Links
+- [x] É uma coleção de objetos ``\Gpupo\NetshoesSdk\Entity\Product\Sku\Item``
+
+
+- [x] Possui objeto metadata
+- [x] Metadata self
+
+### NetshoesSdk\Entity\Product\Sku\Status
+
+
+- [x] Possui método ``getActive()`` para acessar Active 
+- [x] Possui método ``setActive()`` que define Active 
+- [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Product\Sku\Stock
+
+
+- [x] Possui método ``getAvailable()`` para acessar Available 
+- [x] Possui método ``setAvailable()`` que define Available 
+- [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Templates\Brand
+
+
+- [x] Possui Acesso a lista de marcas cadastradas
+- [x] Cada objeto da lista é uma instância de Item
+
+### NetshoesSdk\Entity\Templates\Item
+
+
+- [x] Possui método ``getCode()`` para acessar Code 
+- [x] Possui método ``setCode()`` que define Code 
+- [x] Possui método ``getName()`` para acessar Name 
+- [x] Possui método ``setName()`` que define Name 
+- [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
+- [x] Possui método ``setExternalCode()`` que define ExternalCode 
+- [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Templates\TemplatesCollection
+
+
+- [x] Links
+- [x] Instance
+- [x] Possui objeto metadata
+- [x] Metadata self
+
+### NetshoesSdk\Factory
+
+
+- [x] Set client
+- [x] Centraliza acesso a managers 
+- [x] Centraliza criacao de objetos 
 
 
 
