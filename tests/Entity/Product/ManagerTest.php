@@ -138,11 +138,15 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testUpdate()
     {
-        $manager = $this->getManager('item.json', 202);
+        if (!$this->hasToken()) {
+            return $this->markSkipped('API Token ausente');
+        }
+        $manager = $this->getFactory()->factoryManager('product');
         $previousArray = $this->getResourceJson('fixture/Product/Update/previous.json');
         $currentArray = $this->getResourceJson('fixture/Product/Update/current.json');
         $previous = $this->getFactory()->createProduct($previousArray);
         $product = $this->getFactory()->createProduct($currentArray);
-        $this->assertTrue($manager->update($product, $previous));
+
+        $operation = $manager->update($product, $previous);
     }
 }
