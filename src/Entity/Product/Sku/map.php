@@ -17,9 +17,8 @@ $p = '/products/{itemId}/skus';
 
 return [
     'save'              => ['POST', $p], //Create a new sku for a product
-    'findSkuById'       => ['GET', $p.'/{itemId}'], // Get the a sku by product Id and sku Id
+    'findById'          => ['GET', $p.'/{itemId}'], // Get the a sku by product Id and sku Id
     'update'            => ['PUT', $p.'/{itemId}'], //Update a product based on SKU
-    'findById'          => ['GET', $p], //Get the list of product skus
     'saveStatus'        => ['PUT', $s.'/bus/{buId}/status'], //Enable or disable sku for sale
     'savePriceSchedule' => ['POST', $s.'/priceSchedules'], //Save a price schedule
     'getPriceSchedule'  => ['GET', $s.'/priceSchedules'], //Get PriceSchedule

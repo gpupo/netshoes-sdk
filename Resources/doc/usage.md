@@ -42,14 +42,13 @@ $product = $sdk->createProduct($data);
 $sdk->factoryManager('product')->save($product);
 ```
 
-
 ### Atualização de um SKU
 
 ```php
 <?php
 //..
 $manager = $sdk->factoryManager('sku');
-$previous = $manager->findSkuById(14080);
+$previous = $manager->findById(14080);
 $data = [
 	'sku' => '14080',
 	'sellPrice'=> 100,

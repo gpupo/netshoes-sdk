@@ -49,7 +49,7 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @depends testManager
      * @testdox Possui objeto Client
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::getClient
+     * @covers ::getClient
      */
     public function testGetClient($manager)
     {
@@ -59,9 +59,9 @@ class ManagerTest extends TestCaseAbstract
     /**
      * @depends testManager
      * @testdox Obtem a lista de produtos cadastrados
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::fetch
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::execute
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::factoryMap
+     * @covers ::fetch
+     * @covers ::execute
+     * @covers ::factoryMap
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
@@ -75,9 +75,9 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @testdox Recupera informações de um produto especifico a partir de Id
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::findById
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::execute
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::factoryMap
+     * @covers ::findById
+     * @covers ::execute
+     * @covers ::factoryMap
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
@@ -92,9 +92,9 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @testdox Recebe false em caso de produto inexistente
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::findById
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::execute
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::factoryMap
+     * @covers ::findById
+     * @covers ::execute
+     * @covers ::factoryMap
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
@@ -107,7 +107,7 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @testdox Recebe false em caso de produto inexistente
-     * @covers \Gpupo\NetshoesSdk\Entity\Product\Manager::save
+     * @covers ::save
      * @test
      */
     public function save()
@@ -115,5 +115,15 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager('item.json', 202);
         $product = $this->getFactory()->createProduct();
         $this->assertSame(202, $manager->save($product)->getHttpStatusCode());
+    }
+
+    /**
+     * @testdox Quando um produto já existe utiliza Sku::update
+     * @covers ::save
+     * @test
+     */
+    public function saveOrUpdate()
+    {
+        $this->markIncomplete();
     }
 }

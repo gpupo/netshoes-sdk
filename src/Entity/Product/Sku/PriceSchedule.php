@@ -46,7 +46,7 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
 
     protected function setUp()
     {
-        $this->setOptionalSchema(['priceFrom', 'dateInit', 'dateEnd']);
+        $this->setOptionalSchema(['priceFrom', 'dateEnd']);
     }
 
     protected function dateFormat($string)
@@ -65,5 +65,16 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
     public function setDateEnd($string)
     {
         return parent::setDateEnd($this->dateFormat($string));
+    }
+
+    public function toArray()
+    {
+        $d = parent::getDateInit();
+
+        if (empty($d)) {
+            $this->setDateInit('');
+        }
+
+        return parent::toArray();
     }
 }
