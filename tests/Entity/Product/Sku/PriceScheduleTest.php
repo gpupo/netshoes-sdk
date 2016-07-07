@@ -106,6 +106,19 @@ class PriceScheduleTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox A data de início de uma promoção é o momento atual quando não informado
+     * @cover ::toArray
+     * @small
+     * @test
+     */
+    public function defaultDateInit()
+    {
+        $priceSchedule = new PriceSchedule();
+        $date = $priceSchedule->toArray()['dateInit'];
+        $this->assertStringStartsWith(date('Y-d-m'), $date);
+    }
+
+    /**
      * @testdox Possui método ``getPriceFrom()`` para acessar PriceFrom
      * @dataProvider dataProviderPriceSchedule
      * @cover ::get

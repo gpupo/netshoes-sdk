@@ -48,11 +48,13 @@ class SkuCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
                 $sku = $app->factorySdk($list)->factoryManager('sku')
-                    ->findSkuById($input->getArgument('skuId'));
-                $output->writeln('Price: R$<info>'.$sku->getPrice()->getPrice().'</info>');
-                $output->writeln('Price Schedule: R$<info>'.$sku->getPriceSchedule()->getPriceTo().'</info>');
+                    ->findById($input->getArgument('skuId'));
                 $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
                 $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
+                $output->writeln('Price: R$<info>'.$sku->getPrice()->getPrice().'</info>');
+                if ($sku->getPriceSchedule()) {
+                    $app->displayTableResults($output, [$sku->getPriceSchedule()->toArray()]);
+                }
             });
     }
 
@@ -73,7 +75,7 @@ class SkuCommand extends AbstractCommand
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
                 $manager = $sdk->factoryManager('sku');
-                $previous = $manager->findSkuById($sku->getId());
+                $previous = $manager->findById($sku->getId());
                 try {
                     $operation = $manager->update($sku, $previous);
                     $app->displayTableResults($output, [$operation]);

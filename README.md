@@ -1,5 +1,5 @@
 
-<!-- main -->
+
 
 # Netshoes-SDK
 
@@ -7,7 +7,7 @@ SDK Não Oficial para integração a partir de aplicações PHP com as APIs da N
 
 [![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EK6F2WRKG7GNN&item_name=netshoes-sdk)
 
-<!-- require -->
+
 
 ## Requisitos para uso
 
@@ -25,7 +25,7 @@ desenvolvimento.
 
 A documentação mais importante está nos testes unitários. Se você não consegue ler os testes unitários, eu recomendo que não utilize esta biblioteca.
 
-<!-- license -->
+
 
 ## Direitos autorais e de licença
 
@@ -51,7 +51,7 @@ Proibido:
 
 - Responsabilidade Assegurada
 
-<!-- QA -->
+
 
 ---
 
@@ -67,7 +67,7 @@ Proibido:
 
 [![StyleCI](https://styleci.io/repos/61658580/shield)](https://styleci.io/repos/61658580)
 
-<!-- thanks -->
+
 
 ---
 
@@ -79,7 +79,7 @@ Proibido:
 
  _- [Gilmar Pupo](http://www.g1mr.com/)_
 
-<!-- install -->
+
 
 ---
 
@@ -129,7 +129,7 @@ $logger->pushHandler(new StreamHandler('var/log/main.log', Logger::DEBUG));
 $sdk->setLogger($logger);
 ```
 
-<!-- usage -->
+
 
 
 ---
@@ -175,14 +175,13 @@ $product = $sdk->createProduct($data);
 $sdk->factoryManager('product')->save($product);
 ```
 
-
 ### Atualização de um SKU
 
 ```php
 <?php
 //..
 $manager = $sdk->factoryManager('sku');
-$previous = $manager->findSkuById(14080);
+$previous = $manager->findById(14080);
 $data = [
 	'sku' => '14080',
 	'sellPrice'=> 100,
@@ -253,7 +252,7 @@ $order = $sdk->createOrder($data)
 echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
 ```
 
-<!-- console -->
+
 
 ---
 
@@ -355,7 +354,7 @@ Você poder criar um arquivo chamado ``app.json`` com suas configurações perso
 
 Utilize como modelo o arquivo ``app.json.dist``
 
-<!-- links -->
+
 
 ---
 
@@ -367,13 +366,13 @@ Utilize como modelo o arquivo ``app.json.dist``
 * [Marketplace-bundle Composer Package](http://www.g1mr.com/MarkethubBundle/) - Integração deste pacote com Symfony
 * [Outras SDKs para o Ecommerce do Brasil](http://www.g1mr.com/common-sdk/)
 
-<!-- links-common -->
+
 
 
 * [Github Repository](https://github.com/gpupo/netshoes-sdk/);
 * [Bitbucket Repository](https://bitbucket.org/gpupo/netshoes-sdk/);
 
-<!-- dev -->
+
 
 ---
 
@@ -393,7 +392,7 @@ Personalize os parâmetros!
 
 *Dica*: Verifique os logs gerados em ``var/log/main.log``
 
-<!-- todo -->
+
 
 ## Todo
 
@@ -402,14 +401,14 @@ ou seja, não há agrupamento de SKUs em um único Product, por conta da estrutu
 de produtos no marketplace da Netshoes. No futuro, quando o agrupamento for implementado,
 as rotas de Entity/Product/Sku precisam ser revistas.
 
-<!-- dev-common -->
+
 
 
 ---
 
 ## Propriedades dos objetos
 
-<!-- testdox -->
+
 
 ### NetshoesSdk\Client\Client
 
@@ -790,6 +789,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Obtem a lista de produtos cadastrados
 - [x] Recupera informações de um produto especifico a partir de Id
 - [x] Recebe false em caso de produto inexistente
+- [ ] Quando um produto já existe utiliza Sku::update
 
 ### NetshoesSdk\Entity\Product\ProductCollection
 
@@ -876,87 +876,10 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
-- [x] Dá Acesso a lista de SKUs de um Product
-
-### NetshoesSdk\Entity\Product\Sku\PriceSchedule
+- [ ] Dá Acesso a lista de SKUs de um Product
 
 
-- [x] Formata entradas de data em ``ISO 8601 date format`` 
-- [x] Possui método ``setDateInit()`` que define DateInit 
-- [x] Possui método ``setDateEnd()`` que define DateEnd 
-- [x] Possui método ``getPriceFrom()`` para acessar PriceFrom 
-- [x] Possui método ``setPriceFrom()`` que define PriceFrom 
-- [x] Possui método ``getPriceTo()`` para acessar PriceTo 
-- [x] Possui método ``setPriceTo()`` que define PriceTo 
-- [x] Possui método ``getDateInit()`` para acessar DateInit 
-- [x] Possui método ``getDateEnd()`` para acessar DateEnd 
-- [x] Possui métodos especiais para output de informações
 
-### NetshoesSdk\Entity\Product\Sku\Price
-
-
-- [x] Possui método ``getPrice()`` para acessar Price 
-- [x] Possui método ``setPrice()`` que define Price 
-- [x] Possui métodos especiais para output de informações
-
-### NetshoesSdk\Entity\Product\Sku\SkuCollection
-
-
-- [x] Links
-- [x] É uma coleção de objetos ``\Gpupo\NetshoesSdk\Entity\Product\Sku\Item``
-
-
-- [x] Possui objeto metadata
-- [x] Metadata self
-
-### NetshoesSdk\Entity\Product\Sku\Status
-
-
-- [x] Possui método ``getActive()`` para acessar Active 
-- [x] Possui método ``setActive()`` que define Active 
-- [x] Possui métodos especiais para output de informações
-
-### NetshoesSdk\Entity\Product\Sku\Stock
-
-
-- [x] Possui método ``getAvailable()`` para acessar Available 
-- [x] Possui método ``setAvailable()`` que define Available 
-- [x] Possui métodos especiais para output de informações
-
-### NetshoesSdk\Entity\Templates\Brand
-
-
-- [x] Possui Acesso a lista de marcas cadastradas
-- [x] Cada objeto da lista é uma instância de Item
-
-### NetshoesSdk\Entity\Templates\Item
-
-
-- [x] Possui método ``getCode()`` para acessar Code 
-- [x] Possui método ``setCode()`` que define Code 
-- [x] Possui método ``getName()`` para acessar Name 
-- [x] Possui método ``setName()`` que define Name 
-- [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
-- [x] Possui método ``setExternalCode()`` que define ExternalCode 
-- [x] Possui métodos especiais para output de informações
-
-### NetshoesSdk\Entity\Templates\TemplatesCollection
-
-
-- [x] Links
-- [x] Instance
-- [x] Possui objeto metadata
-- [x] Metadata self
-
-### NetshoesSdk\Factory
-
-
-- [x] Set client
-- [x] Centraliza acesso a managers 
-- [x] Centraliza criacao de objetos 
-
-
-<!-- libraries-table -->
 
 
 ## Lista de dependências (libraries)
@@ -1014,6 +937,6 @@ webmozart/assert | 1.0.2 | Assertions to validate method input/output with nice 
 
 
 
-<!-- footer-common -->
+
 
 

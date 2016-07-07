@@ -25,7 +25,7 @@ class ProductTest extends TestCaseAbstract
 {
     use EntityTrait;
 
-    const QUALIFIED = 'Gpupo\NetshoesSdk\Entity\Product\Product';
+    const QUALIFIED = Product::class;
 
     public static function setUpBeforeClass()
     {

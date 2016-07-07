@@ -32,9 +32,9 @@ class Manager extends AbstractManager
     /**
      * @return Gpupo\Common\Entity\CollectionAbstract|null
      */
-    public function findSkuById($itemId)
+    public function findById($itemId)
     {
-        $response = $this->perform($this->factoryMap('findSkuById', [
+        $response = $this->perform($this->factoryMap('findById', [
             'productId' => $itemId,
             'itemId'    => $itemId,
         ]));
@@ -69,6 +69,20 @@ class Manager extends AbstractManager
         return $o;
     }
 
+    protected function getPriceScheduleCollection(EntityInterface $sku)
+    {
+        $response = $this->perform($this->factoryMap('getPriceSchedule', ['sku' => $sku->getId()]));
+        $data = $this->processResponse($response);
+
+        if (empty($data)) {
+            return;
+        }
+
+        $collection = new PriceScheduleCollection($data->toArray());
+
+        return $collection;
+    }
+
     public function saveDetail(Item $sku, $type)
     {
         $json = $sku->toJson($type);
@@ -80,7 +94,7 @@ class Manager extends AbstractManager
     protected function hydrate(EntityInterface $sku)
     {
         $sku->setPrice($this->getDetail($sku, 'Price'))
-            ->setPriceSchedule($this->getDetail($sku, 'PriceSchedule'))
+            ->setPriceSchedule($this->getPriceScheduleCollection($sku)->getCurrent())
             ->setStock($this->getDetail($sku, 'Stock'))
             ->setStatus($this->getDetail($sku, 'Status'));
 
