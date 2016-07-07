@@ -14,9 +14,9 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
+use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
-use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\Manager
