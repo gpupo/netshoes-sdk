@@ -118,7 +118,7 @@ class ProductCommand extends AbstractCommand
                     $operation = $manager->update($current, $previous);
                     $app->displayTableResults($output, [$operation]);
                 } catch (\Exception $e) {
-                    $output->writeln('<error>Erro na criação</error>');
+                    $output->writeln('<error>Erro na atualização</error>');
                     $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
                     $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
                 }
