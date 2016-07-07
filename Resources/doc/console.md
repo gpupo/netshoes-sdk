@@ -5,13 +5,13 @@
 Lista de comandos disponíveis
 
 ```bash
-$ ./bin/console
+$ ./vendor/bin/netshoes-sdk
 ```
 
 Verificar suas credenciais Netshoes na linha de comando
 
 ```bash
-$ ./bin/console credential:test
+$ ./vendor/bin/netshoes-sdk credential:test
 ```
 
 ### Product
@@ -19,31 +19,31 @@ $ ./bin/console credential:test
 Verificar a situação de um produto
 
 ```bash
-$ ./bin/console produto:view [id do produto]
+$ ./vendor/bin/netshoes-sdk produto:view [id]
 ```
 
 Inserir um produto a partir de um arquivo json
 
 ```bash
-$ ./bin/console  product:insert --file=Resources/fixture/Product/new.json
+$ ./vendor/bin/netshoes-sdk  product:insert --file=vendor/gpupo/netshoes-sdk/Resources/fixture/Product/new.json
 ```
 
 Exibe os SKUs de um produto
 
 ```bash
-$ ./bin/console product:sku:view 14080
+$ ./vendor/bin/netshoes-sdk product:sku:view 14080
 ```
 
 Mostra preço, estoque e situação de um SKU
 
 ```bash
-$ ./bin/console product:sku:details 14080
+$ ./vendor/bin/netshoes-sdk product:sku:details 14080
 ```
 
 Atualizar um produto a partir de um arquivo json
 
 ```bash
-$ ./bin/console  product:sku:update --file=Resources/fixture/Product/Sku/update.json
+$ ./vendor/bin/netshoes-sdk  product:sku:update --file=vendor/gpupo/netshoes-sdk/Resources/fixture/Product/Sku/update.json
 ```
 
 
@@ -51,38 +51,38 @@ $ ./bin/console  product:sku:update --file=Resources/fixture/Product/Sku/update.
 
 Lista de Departamentos
 
-    ./bin/console templates:departments NS
+    ./vendor/bin/netshoes-sdk templates:departments NS
 
 ### Order
 
 Detalhes de um pedido
 
 ```bash
-$./bin/console order:view 111111
+$./vendor/bin/netshoes-sdk order:view 111111
 ```
 
 Movendo um pedido para ``Approved`` a partir de seu número e informações contidas em arquivo
 
 ```bash
-$ ./bin/console order:update:to:approved 111111 --file=Resources/fixture/Order/Status/Request/toApproved.json
+$ ./vendor/bin/netshoes-sdk order:update:to:approved 111111 --file=vendor/gpupo/netshoes-sdk/Resources/fixture/Order/Status/Request/toApproved.json
 ```
 
 Movendo um pedido para ``Invoiced`` a partir de seu número e informações contidas em arquivo
 
 ```bash
-$ ./bin/console order:update:to:invoiced 111111 --file=Resources/fixture/Order/Status/Request/toInvoiced.json
+$ ./vendor/bin/netshoes-sdk order:update:to:invoiced 111111 --file=vendor/gpupo/netshoes-sdk/Resources/fixture/Order/Status/Request/toInvoiced.json
 ```
 
 Movendo um pedido para ``Shipped`` a partir de seu número e informações contidas em arquivo
 
 ```bash
-$ ./bin/console order:update:to:shipped 111111 --file=Resources/fixture/Order/Status/Request/toShipped.json
+$ ./vendor/bin/netshoes-sdk order:update:to:shipped 111111 --file=vendor/gpupo/netshoes-sdk/Resources/fixture/Order/Status/Request/toShipped.json
 ```
 
 Movendo um pedido para ``Delivered`` a partir de seu número e informações contidas em arquivo
 
 ```bash
-$ ./bin/console order:update:to:delivered 111111 --file=Resources/fixture/Order/Status/Request/toDelivered.json
+$ ./vendor/bin/netshoes-sdk order:update:to:delivered 111111 --file=vendor/gpupo/netshoes-sdk/Resources/fixture/Order/Status/Request/toDelivered.json
 ```
 
 ### Configurações

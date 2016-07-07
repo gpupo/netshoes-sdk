@@ -3,7 +3,7 @@
 
 ## Uso para administração de Produtos
 
-Para informações do formato de ``$data`` veja o arquivo ``Resources/fixtures/Product/new.json``
+Para informações do formato de ``$data`` veja o arquivo ``vendor/gpupo/netshoes-sdk/Resources/fixture/Product/new.json``
 
 ### Acesso a lista de produtos cadastrados:
 
@@ -64,7 +64,7 @@ $manager->update($sku, $previous);
 A atualização compara o SKU atual com ``$previous`` é uma instância de Sku
 para identificar apenas os campos que precisam de atualização;
 
-Importante: `$previous`` deve ser armazenada localmente, diferente do exemplo acima, para reduzir a quantidade de requisições à API;
+Importante: ``$previous`` deve ser armazenada localmente, diferente do exemplo acima, para reduzir a quantidade de requisições à API;
 
 ## Uso para administração de Pedidos
 
@@ -72,7 +72,7 @@ Fluxo de status dos pedidos:
 
 ``Created`` --> ``Approved`` --> ``Invoiced`` --> ``Shipped`` --> ``Delivered``
 
-Para informações do formato de ``$data`` veja o arquivo ``Resources/fixtures/Order/new.json``
+Para informações do formato de ``$data`` veja o arquivo ``vendor/gpupo/netshoes-sdk/Resources/fixture/Order/new.json``
 
 A seguir seguem exemplos de mudanças de status de um pedido:
 

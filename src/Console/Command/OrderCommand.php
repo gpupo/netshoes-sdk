@@ -43,7 +43,8 @@ class OrderCommand extends AbstractCommand
         $this->getApp()->appendCommand('order:update:to:'.$type, 'Move um pedido para a situação ['.$type.']')
         ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
         ->addArgument('orderId', InputArgument::REQUIRED, 'Product ID')
-        ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions, $type, $orderDecorator) {
+        ->setCode(function (InputInterface $input, OutputInterface $output)
+            use ($app, $insertOptions, $type, $orderDecorator) {
             $list = $app->processInputParameters($insertOptions, $input, $output);
             $id = $input->getArgument('orderId');
             if (!file_exists($list['file'])) {

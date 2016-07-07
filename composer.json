@@ -25,6 +25,7 @@
             "Gpupo\\Tests\\NetshoesSdk\\": "tests"
         }
     },
+    "bin": ["bin/netshoes-sdk"],
     "scripts": {
     },
     "config": {
