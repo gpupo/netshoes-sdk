@@ -14,6 +14,8 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
+use DateTime;
+use DateTimeZone;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
@@ -47,16 +49,21 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
         $this->setOptionalSchema(['priceFrom', 'dateInit', 'dateEnd']);
     }
 
-    /**
-     * @todo Melhorar datas início e fim da promoção que estão fixas
-     */
-    public function toArray()
+    protected function dateFormat($string)
     {
-        $array = array_merge(parent::toArray(), [
-            'dateInit' => '2016-01-01T00:00:01.000Z',
-            'dateEnd'  => '2018-01-01T00:00:01.000Z',
-        ]);
+        $timezone = new DateTimeZone('UTC');
+        $datetime = new DateTime($string, $timezone);
 
-        return $array;
+        return $datetime->format('c');
+    }
+
+    public function setDateInit($string)
+    {
+        return parent::setDateInit($this->dateFormat($string));
+    }
+
+    public function setDateEnd($string)
+    {
+        return parent::setDateEnd($this->dateFormat($string));
     }
 }

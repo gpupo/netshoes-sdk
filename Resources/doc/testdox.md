@@ -468,14 +468,15 @@
 ### NetshoesSdk\Entity\Product\Sku\PriceSchedule
 
 
+- [x] Formata entradas de data em ``ISO 8601 date format`` 
+- [x] Possui método ``setDateInit()`` que define DateInit 
+- [x] Possui método ``setDateEnd()`` que define DateEnd 
 - [x] Possui método ``getPriceFrom()`` para acessar PriceFrom 
 - [x] Possui método ``setPriceFrom()`` que define PriceFrom 
 - [x] Possui método ``getPriceTo()`` para acessar PriceTo 
 - [x] Possui método ``setPriceTo()`` que define PriceTo 
 - [x] Possui método ``getDateInit()`` para acessar DateInit 
-- [x] Possui método ``setDateInit()`` que define DateInit 
 - [x] Possui método ``getDateEnd()`` para acessar DateEnd 
-- [x] Possui método ``setDateEnd()`` que define DateEnd 
 - [x] Possui métodos especiais para output de informações
 
 ### NetshoesSdk\Entity\Product\Sku\Price

@@ -38,7 +38,7 @@ class SkuCommand extends AbstractCommand
                     return $output->writeln('<error>Sku não encontrado!</error>');
                 }
                 $app->displayTableResults($output, $p);
-          });
+            });
     }
 
     public function details($app)
@@ -53,19 +53,19 @@ class SkuCommand extends AbstractCommand
                 $output->writeln('Price Schedule: R$<info>'.$sku->getPriceSchedule()->getPriceTo().'</info>');
                 $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
                 $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
-           });
+            });
     }
 
     public function update($app)
     {
-        $insertOptions = [
+        $opts = [
             ['key' => 'file'],
         ];
 
         $this->getApp()->appendCommand('product:sku:update', 'Atualiza um SKU')
-            ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
-                $list = $app->processInputParameters($insertOptions, $input, $output);
+            ->setDefinition($this->getApp()->factoryDefinition($opts))
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
+                $list = $app->processInputParameters($opts, $input, $output);
                 if (!file_exists($list['file'])) {
                     throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
                 }

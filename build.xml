@@ -29,8 +29,6 @@
   <mkdir dir="${basedir}/var/logs"/>
   <touch file="${basedir}/var/logs/test.log"/>
   <exec executable="${basedir}/vendor/bin/phpunit" outputproperty="log">
-    <arg value="-c"/>
-    <arg value="phpunit.xml.dist"/>
    </exec>
   <echo message="${log}"/>
   <condition property="onSuccess">
@@ -44,7 +42,10 @@
   </exec>
   <delete dir="${basedir}/build"/>
  </target>
- <target name="build-documentation" description="Build documentation">
+ <target name="rev" description="Build documentation">
+   <exec executable="${basedir}/../files-common-projects/cs-fix.sh">
+     <arg value="${project.name}"/>
+   </exec>
   <exec executable="${basedir}/vendor/gpupo/common-sdk/bin/build-documentation.sh">
     <arg value="${project.name}"/>
   </exec>

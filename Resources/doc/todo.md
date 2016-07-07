@@ -4,5 +4,3 @@
 ou seja, não há agrupamento de SKUs em um único Product, por conta da estrutura atual de apresentação
 de produtos no marketplace da Netshoes. No futuro, quando o agrupamento for implementado,
 as rotas de Entity/Product/Sku precisam ser revistas.
-
-* Apesar do preço promocional comportar agendamento, as datas de início e fim de uma promoção estão fixas.
