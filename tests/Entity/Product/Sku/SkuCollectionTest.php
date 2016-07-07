@@ -29,7 +29,7 @@ class SkuCollectionTest extends TestCaseAbstract
         $manager = $this->getFactory()->factoryManager('sku');
         $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/Sku/list.json'));
 
-        $collection = $manager->findById(14080);
+        $collection = $manager->fetch(14080);
 
         return $collection;
     }

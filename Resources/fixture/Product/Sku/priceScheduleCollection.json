@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "priceFrom": 99.99,
+            "priceTo": 79.00,
+            "dateInit": 1466780497000,
+            "dateEnd": 1466780498000
+        },
+        {
+            "priceFrom": 99.99,
+            "priceTo": 88.89,
+            "dateInit": 1466780498000,
+            "dateEnd": 1466780498000
+        },
+        {
+            "priceTo": 100
+        }
+    ]
+}

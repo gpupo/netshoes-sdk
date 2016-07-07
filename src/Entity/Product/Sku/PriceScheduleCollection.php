@@ -18,6 +18,9 @@ use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 
 class PriceScheduleCollection extends AbstractMetadata
 {
+    /**
+     * @codeCoverageIgnore
+     */
     protected function getKey()
     {
         return 'items';

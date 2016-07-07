@@ -19,14 +19,14 @@ use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
 class Manager extends AbstractManager
 {
-    protected $entity = 'SkuCollection';
+    protected $entity = 'Sku';
 
     /**
      * @codeCoverageIgnore
      */
     protected function setUp()
     {
-        $this->maps = include 'map.php';
+        $this->maps = include 'map.config.php';
     }
 
     /**

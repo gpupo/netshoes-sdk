@@ -17,6 +17,7 @@ $p = '/products/{itemId}/skus';
 
 return [
     'save'              => ['POST', $p], //Create a new sku for a product
+    'fetch'             => ['GET', $p], // list of SKUs
     'findById'          => ['GET', $p.'/{itemId}'], // Get the a sku by product Id and sku Id
     'update'            => ['PUT', $p.'/{itemId}'], //Update a product based on SKU
     'saveStatus'        => ['PUT', $s.'/bus/{buId}/status'], //Enable or disable sku for sale
