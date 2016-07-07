@@ -24,17 +24,15 @@ $produto = $sdk->factoryManager('product')->findById(9)); // Objeto Produto
 echo $product->getName(); // Acesso ao nome do produto de Id 9
 ```
 
-### Criação de um produto:
+### Criação de um produto
 
 
 ```php
 <?php
-//..
 $product = $sdk->createProduct($data);
 ```
 
-### Envio do produto para o Marketplace:
-
+### Gravação de Product
 
 ```php
 <?php
@@ -42,20 +40,27 @@ $product = $sdk->createProduct($data);
 $sdk->factoryManager('product')->save($product);
 ```
 
-### Atualização de um SKU
+### Atualização de Product
 
-```php
+``` php
 <?php
-//..
+$manager = $sdk->factoryManager('product');
+$previous = $sdk->createProduct($previousData);
+$product = $sdk->createPrevious($data);
+$manager->update($$product, $previous);
+```
+
+A atualização compara ``$product`` com ``$previous`` é uma instância de Product
+para identificar apenas os campos que precisam de atualização;
+
+Importante: ``$previous`` deve ser armazenada localmente, para reduzir a quantidade de requisições à API;
+
+### Atualização de Sku
+
+``` php
+<?php
 $manager = $sdk->factoryManager('sku');
-$previous = $manager->findById(14080);
-$data = [
-	'sku' => '14080',
-	'sellPrice'=> 100,
-	'listPrice' => 90,
-	'stock' => 20,
-	'status' => true,
-];
+$previous = $sdk->createSku($previousData);
 $sku = $sdk->createSku($data);
 $manager->update($sku, $previous);
 ```
@@ -63,7 +68,7 @@ $manager->update($sku, $previous);
 A atualização compara o SKU atual com ``$previous`` é uma instância de Sku
 para identificar apenas os campos que precisam de atualização;
 
-Importante: ``$previous`` deve ser armazenada localmente, diferente do exemplo acima, para reduzir a quantidade de requisições à API;
+Importante: ``$previous`` deve ser armazenada localmente, para reduzir a quantidade de requisições à API;
 
 ## Uso para administração de Pedidos
 
