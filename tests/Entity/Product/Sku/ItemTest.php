@@ -83,9 +83,9 @@ class ItemTest extends TestCaseAbstract
     {
         $item = $this->proxy(new Item($this->array));
         $this->assertSame([
-            'priceTo' => 0.99,
+            'priceTo'  => 0.99,
             'dateInit' => '2016-01-01T00:00:01.000Z',
-            'dateEnd' => '2018-01-01T00:00:01.000Z',
+            'dateEnd'  => '2018-01-01T00:00:01.000Z',
         ], $item->toPriceSchedule());
     }
 

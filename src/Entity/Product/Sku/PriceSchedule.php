@@ -48,13 +48,13 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
     }
 
     /**
-     * @todo Apesar do preço promocional comportar agendamento, as datas de início e fim de uma promoção estão fixas
+     * @todo Melhorar datas início e fim da promoção que estão fixas
      */
     public function toArray()
     {
         $array = array_merge(parent::toArray(), [
-            'dateInit'  => "2016-01-01T00:00:01.000Z",
-            'dateEnd'  => "2018-01-01T00:00:01.000Z",
+            'dateInit' => '2016-01-01T00:00:01.000Z',
+            'dateEnd'  => '2018-01-01T00:00:01.000Z',
         ]);
 
         return $array;

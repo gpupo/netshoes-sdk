@@ -28,36 +28,31 @@ class SkuCommand extends AbstractCommand
     public function view($app)
     {
         $this->getApp()->appendCommand('product:sku:view', 'Mostra os SKUs de um Produto')
-          ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
-          ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-              $list = $app->processInputParameters([], $input, $output);
-              $id = $input->getArgument('productId');
-              $output->writeln('Exibindo informações do SKU #<info>'.$id.'</info>');
-              $p = $app->factorySdk($list)->factoryManager('sku')->findById($id);
-
-              if(empty($p)) {
-                  return $output->writeln('<error>Sku não encontrado!</error>');
-              }
-
-              $app->displayTableResults($output, $p);
+            ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $id = $input->getArgument('productId');
+                $output->writeln('Exibindo informações do SKU #<info>'.$id.'</info>');
+                $p = $app->factorySdk($list)->factoryManager('sku')->findById($id);
+                if (empty($p)) {
+                    return $output->writeln('<error>Sku não encontrado!</error>');
+                }
+                $app->displayTableResults($output, $p);
           });
     }
 
     public function details($app)
     {
         $this->getApp()->appendCommand('product:sku:details', 'Mostra preço, estoque e situação de um SKU')
-           ->addArgument('skuId', InputArgument::REQUIRED, 'Sku ID')
-           ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-               $list = $app->processInputParameters([], $input, $output);
-
-               $sku = $app->factorySdk($list)
-                   ->factoryManager('sku')
-                   ->findSkuById($input->getArgument('skuId'));
-
-               $output->writeln('Price: R$<info>'.$sku->getPrice()->getPrice().'</info>');
-               $output->writeln('Price Schedule: R$<info>'.$sku->getPriceSchedule()->getPriceTo().'</info>');
-               $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
-               $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
+            ->addArgument('skuId', InputArgument::REQUIRED, 'Sku ID')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $sku = $app->factorySdk($list)->factoryManager('sku')
+                    ->findSkuById($input->getArgument('skuId'));
+                $output->writeln('Price: R$<info>'.$sku->getPrice()->getPrice().'</info>');
+                $output->writeln('Price Schedule: R$<info>'.$sku->getPriceSchedule()->getPriceTo().'</info>');
+                $output->writeln('Stock: <info>'.$sku->getStock()->getAvailable().'</info>');
+                $output->writeln('Status: <info>'.$sku->getStatus()->getActive().'</info>');
            });
     }
 
@@ -65,24 +60,20 @@ class SkuCommand extends AbstractCommand
     {
         $insertOptions = [
             ['key' => 'file'],
-            ];
+        ];
 
         $this->getApp()->appendCommand('product:sku:update', 'Atualiza um SKU')
             ->setDefinition($this->getApp()->factoryDefinition($insertOptions))
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $insertOptions) {
                 $list = $app->processInputParameters($insertOptions, $input, $output);
-
                 if (!file_exists($list['file'])) {
                     throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
                 }
-
                 $data = json_decode(file_get_contents($list['file']), true);
-
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
                 $manager = $sdk->factoryManager('sku');
                 $previous = $manager->findSkuById($sku->getId());
-
                 try {
                     $operation = $manager->update($sku, $previous);
                     $app->displayTableResults($output, [$operation]);
