@@ -49,7 +49,6 @@ class Product extends EntityAbstract implements EntityInterface
             'productType' => 'string',
             'brand'       => 'string',
             'attributes'  => 'object',
-            //'links'         => 'object',
         ];
     }
 }

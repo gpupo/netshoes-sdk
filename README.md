@@ -284,6 +284,14 @@ Inserir um produto a partir de um arquivo json
 $ ./vendor/bin/netshoes-sdk  product:insert --file=vendor/gpupo/netshoes-sdk/Resources/fixture/Product/new.json
 ```
 
+Atualizar um produto a partir de dois arquivos
+
+```bash
+$ ./vendor/bin/netshoes-sdk   product:update \
+    --file-previous=Resources/fixture/Product/Update/previous.json \
+    --file-current=Resources/fixture/Product/Update/current.json
+```
+
 Exibe os SKUs de um produto
 
 ```bash
@@ -789,7 +797,8 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Obtem a lista de produtos cadastrados
 - [x] Recupera informações de um produto especifico a partir de Id
 - [x] Recebe false em caso de produto inexistente
-- [ ] Quando um produto já existe utiliza Sku::update
+- [x] A Atualização de um Product requer que ele contenha Skus
+- [x] Atualiza o SKU de um produto
 
 ### NetshoesSdk\Entity\Product\ProductCollection
 

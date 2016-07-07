@@ -377,7 +377,8 @@
 - [x] Obtem a lista de produtos cadastrados
 - [x] Recupera informações de um produto especifico a partir de Id
 - [x] Recebe false em caso de produto inexistente
-- [ ] Quando um produto já existe utiliza Sku::update
+- [x] A Atualização de um Product requer que ele contenha Skus
+- [x] Atualiza o SKU de um produto
 
 ### NetshoesSdk\Entity\Product\ProductCollection
 
