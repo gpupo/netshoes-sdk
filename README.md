@@ -134,7 +134,7 @@ $sdk->setLogger($logger);
 
 ---
 
-## Uso para administração de Produtos
+## Administração de Produtos
 
 Para informações do formato de ``$data`` veja o arquivo ``vendor/gpupo/netshoes-sdk/Resources/fixture/Product/new.json``
 
@@ -180,7 +180,7 @@ $sdk->factoryManager('product')->save($product);
 $manager = $sdk->factoryManager('product');
 $previous = $sdk->createProduct($previousData);
 $product = $sdk->createPrevious($data);
-$manager->update($$product, $previous);
+$manager->update($product, $previous);
 ```
 
 A atualização compara ``$product`` com ``$previous`` é uma instância de Product
@@ -203,7 +203,7 @@ para identificar apenas os campos que precisam de atualização;
 
 Importante: ``$previous`` deve ser armazenada localmente, para reduzir a quantidade de requisições à API;
 
-## Uso para administração de Pedidos
+## Administração de Pedidos
 
 Fluxo de status dos pedidos:
 
@@ -407,7 +407,7 @@ Personalize os parâmetros!
 
 
 
-## Todo
+## Todo list
 
 * Atualmente os a estrutura de Produtos está relacionando cada SKU a um Product com o mesmo Id,
 ou seja, não há agrupamento de SKUs em um único Product, por conta da estrutura atual de apresentação
@@ -906,6 +906,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setDateInit()`` que define DateInit 
 - [x] Possui método ``setDateEnd()`` que define DateEnd 
 - [x] A data de início de uma promoção é o momento atual quando não informado
+- [x] A data de término de uma promoção é após 1 mês no futuro quando não informado
 - [x] Possui método ``getPriceFrom()`` para acessar PriceFrom 
 - [x] Possui método ``setPriceFrom()`` que define PriceFrom 
 - [x] Possui método ``getPriceTo()`` para acessar PriceTo 

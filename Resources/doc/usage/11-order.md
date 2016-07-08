@@ -1,5 +1,5 @@
 
-## Uso para administração de Pedidos
+## Administração de Pedidos
 
 Fluxo de status dos pedidos:
 

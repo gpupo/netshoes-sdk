@@ -115,7 +115,20 @@ class PriceScheduleTest extends TestCaseAbstract
     {
         $priceSchedule = new PriceSchedule();
         $date = $priceSchedule->toArray()['dateInit'];
-        $this->assertStringStartsWith(date('Y-d-m'), $date);
+        $this->assertStringStartsWith(date('Y-m-d'), $date);
+    }
+
+    /**
+     * @testdox A data de término de uma promoção é após 1 mês no futuro quando não informado
+     * @cover ::toArray
+     * @small
+     * @test
+     */
+    public function defaultDateEnd()
+    {
+        $priceSchedule = new PriceSchedule();
+        $date = $priceSchedule->toArray()['dateEnd'];
+        $this->assertStringStartsWith(date('Y-m-d', strtotime('+1 month', strtotime('NOW'))), $date);
     }
 
     /**

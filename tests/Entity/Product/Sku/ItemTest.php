@@ -88,6 +88,7 @@ class ItemTest extends TestCaseAbstract
         $this->assertSame([
             'priceTo'  => 0.99,
             'dateInit' => $array['dateInit'],
+            'dateEnd'  => $array['dateEnd'],
         ], $array);
     }
 

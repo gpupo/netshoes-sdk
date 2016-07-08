@@ -1,7 +1,7 @@
 
 ---
 
-## Uso para administração de Produtos
+## Administração de Produtos
 
 Para informações do formato de ``$data`` veja o arquivo ``vendor/gpupo/netshoes-sdk/Resources/fixture/Product/new.json``
 
@@ -47,7 +47,7 @@ $sdk->factoryManager('product')->save($product);
 $manager = $sdk->factoryManager('product');
 $previous = $sdk->createProduct($previousData);
 $product = $sdk->createPrevious($data);
-$manager->update($$product, $previous);
+$manager->update($product, $previous);
 ```
 
 A atualização compara ``$product`` com ``$previous`` é uma instância de Product
@@ -70,7 +70,7 @@ para identificar apenas os campos que precisam de atualização;
 
 Importante: ``$previous`` deve ser armazenada localmente, para reduzir a quantidade de requisições à API;
 
-## Uso para administração de Pedidos
+## Administração de Pedidos
 
 Fluxo de status dos pedidos:
 
