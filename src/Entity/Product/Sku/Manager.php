@@ -122,14 +122,16 @@ class Manager extends AbstractManager
             'PriceSchedule' => ['priceTo'],
         ] as $key => $attributes) {
             $getter = 'get'.$key;
-            $diff = $this->attributesDiff($entity->$getter(), $existent->$getter(), $attributes);
-            if (!empty($diff)) {
-                $response['code'][$key] = $this->saveDetail($entity, $key)->getHttpStatusCode();
 
-                $response['updated'][] = $key;
-            } else {
-                $response['bypassed'][] = $key;
+            if (!empty($existent)) {
+                if (false === $this->attributesDiff($entity->$getter(), $existent->$getter(), $attributes)) {
+                    $response['bypassed'][] = $key;
+                    continue;
+                }
             }
+
+            $response['code'][$key] = $this->saveDetail($entity, $key)->getHttpStatusCode();
+            $response['updated'][] = $key;
         }
 
         $this->log('info', 'Operação de Atualização de entity '
