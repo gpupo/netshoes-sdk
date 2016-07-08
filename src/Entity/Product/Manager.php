@@ -48,7 +48,7 @@ class Manager extends AbstractManager
             throw new \InvalidArgumentException('Product precisa conter SKU!');
         }
 
-        return Factory::getInstance()->factoryManager('sku')
+        return $this->factorySubManager(Factory::getInstance(), 'sku')
             ->update($entity->getSkus()->first(), $previous);
     }
 }
