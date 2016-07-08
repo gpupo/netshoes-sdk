@@ -24,9 +24,70 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ScreenplayCommand extends AbstractCommand
 {
-    protected $list = [];
+    protected $list = ['all', 'productPostSimple','productPostMultiple', 'productUpdate',
+        'productUpdateFull'];
+
+    protected function runIfExists($name, $input, $output)
+    {
+       try {
+           $c = $this->getApp()->find($name);
+           $this->sendInfo('<fg=cyan>'.$name.'</fg=cyan>()');
+
+           return $c->run($input, $output);
+       } catch (\Exception $e) {
+           $this->getLogger()->addDebug($e->getMessage());
+       }
+   }
+
+   public function all($app)
+   {
+      $this->getApp()->appendCommand('screenplay:run', 'Run all');
+   }
+
+    public function productPostSimple($app)
+    {
+        $this->getApp()->appendCommand('screenplay:product:post:simple', '')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $output->writeln('Cadastro de quatro produtos contendo apenas um Sku');
 
 
+                throw new \Exception("Implementar!");
+            });
+    }
 
+    public function productPostMultiple($app)
+    {
+        $this->getApp()->appendCommand('screenplay:product:post:multiple', '')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $output->writeln('Cadastro de quatro produtos contendo mais de um Sku');
+
+                throw new \Exception("Implementar!");
+            });
+    }
+
+    public function productUpdate($app)
+    {
+        $this->getApp()->appendCommand('screenplay:product:update', '')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $output->writeln('Atualizar parcialmente no mínimo quatro produtos criados. As alterações devem incluir department, productType e attibutes');
+
+                throw new \Exception("Implementar!");
+            });
+    }
+
+
+    public function productUpdateFull($app)
+    {
+        $this->getApp()->appendCommand('screenplay:product:update:full', '')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $output->writeln('Atualizar três produtos cadastrados. As atualizações devem mudar o produto por completo exceto ID e SKU');
+
+                throw new \Exception("Implementar!");
+            });
+    }
 
 }

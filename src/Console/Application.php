@@ -16,9 +16,29 @@ namespace Gpupo\NetshoesSdk\Console;
 
 use Gpupo\CommonSdk\Console\AbstractApplication;
 use Gpupo\NetshoesSdk\Factory;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+
+use Exception;
 
 class Application extends AbstractApplication
 {
+
+    public function doRun(InputInterface $input, OutputInterface $output)
+    {
+        $output->writeln('<bg=green;options=bold>gpupo/netshoes-sdk</>');
+        $output->writeln('<options=bold>'
+        . "Atenção! Esta aplicação é apenas uma "
+        . 'ferramenta de apoio ao desenvolvedor e não deve ser usada no ambiente de produção!'
+        ."\n"
+        . '</>'
+        ."\n"
+        );
+
+        return parent::doRun($input, $output);
+    }
+
     protected $commonParameters = [
         [
             'key' => 'client_id',
@@ -62,5 +82,12 @@ class Application extends AbstractApplication
         return $this->register($name)
             ->setDescription($description)
             ->setDefinition($this->factoryDefinition($definition));
+    }
+
+    public function showException(Exception $e, OutputInterface $output, $description = 'Erro')
+    {
+        $output->writeln('<error>'.$description .'</error>');
+        $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
+        $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
     }
 }

@@ -33,8 +33,7 @@ class DetailCommand extends AbstractCommand
             ],
         ];
 
-        $this->getApp()->appendCommand('product:sku:detail:update', 'Atualiza detalhes de um SKU')
-            ->setDefinition($this->getApp()->factoryDefinition($opts))
+        $this->getApp()->appendCommand('product:sku:detail:update', 'Atualiza detalhes de um SKU', $opts)
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
                 $list = $app->processInputParameters($opts, $input, $output);
 
@@ -51,9 +50,7 @@ class DetailCommand extends AbstractCommand
                         $output->writeln('<info>Successo!</info>');
                     }
                 } catch (\Exception $e) {
-                    $output->writeln('<error>Erro na criação</error>');
-                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                    $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
+                    $app->showException($e,  $output);                    
                 }
             });
     }
