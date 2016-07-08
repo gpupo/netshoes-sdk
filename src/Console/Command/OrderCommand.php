@@ -40,10 +40,9 @@ class OrderCommand extends AbstractCommand
             ['key' => 'file'],
         ];
 
-        $this->getApp()->appendCommand('order:update:to:'.$type, 'Move um pedido para a situação ['.$type.']')
-        ->setDefinition($this->getApp()->factoryDefinition($opts))
-        ->addArgument('orderId', InputArgument::REQUIRED, 'Product ID')
-        ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts, $type, $decorator) {
+        $this->getApp()->appendCommand('order:update:to:'.$type, 'Move um pedido para a situação ['.$type.']', $opts)
+            ->addArgument('orderId', InputArgument::REQUIRED, 'Product ID')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts, $type, $decorator) {
             $list = $app->processInputParameters($opts, $input, $output);
             $id = $input->getArgument('orderId');
             if (!file_exists($list['file'])) {
@@ -69,9 +68,7 @@ class OrderCommand extends AbstractCommand
                     $output->writeln('<info>Successo!</info>');
                 }
             } catch (\Exception $e) {
-                $output->writeln('<error>Erro na mudança de status</error>');
-                $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
+                $app->showException($e,  $output, 'Erro na mudança de status');
             }
         });
     }

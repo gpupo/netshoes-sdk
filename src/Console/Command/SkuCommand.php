@@ -64,8 +64,7 @@ class SkuCommand extends AbstractCommand
             ['key' => 'file'],
         ];
 
-        $this->getApp()->appendCommand('product:sku:update', 'Atualiza um SKU')
-            ->setDefinition($this->getApp()->factoryDefinition($opts))
+        $this->getApp()->appendCommand('product:sku:update', 'Atualiza um SKU', $opts)
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
                 $list = $app->processInputParameters($opts, $input, $output);
                 if (!file_exists($list['file'])) {
@@ -80,9 +79,7 @@ class SkuCommand extends AbstractCommand
                     $operation = $manager->update($sku, $previous);
                     $app->displayTableResults($output, [$operation]);
                 } catch (\Exception $e) {
-                    $output->writeln('<error>Erro na criação</error>');
-                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                    $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
+                    $app->showException($e,  $output);
                 }
             });
     }

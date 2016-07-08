@@ -32,8 +32,7 @@ class ProductCommand extends AbstractCommand
             ['key' => 'file'],
         ];
 
-        $this->getApp()->appendCommand('product:insert', 'Insere um produto a partir do Json de um arquivo')
-            ->setDefinition($this->getApp()->factoryDefinition($opts))
+        $this->getApp()->appendCommand('product:insert', 'Insere um produto a partir do Json de um arquivo', $opts)
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
                 $list = $app->processInputParameters($opts, $input, $output);
 
@@ -48,9 +47,7 @@ class ProductCommand extends AbstractCommand
                         $output->writeln('<info>Successo!</info>');
                     }
                 } catch (\Exception $e) {
-                    $output->writeln('<error>Erro na criação</error>');
-                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                    $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
+                    $app->showException($e, $output);
                 }
             });
     }
@@ -63,6 +60,10 @@ class ProductCommand extends AbstractCommand
                 $list = $app->processInputParameters([], $input, $output);
                 $id = $input->getArgument('productId');
                 $p = $app->factorySdk($list)->factoryManager('product')->findById($id);
+
+                if (empty($p)) {
+                    return $output->writeln('<error>Produto não encontrado!</error>');
+                }
 
                 $app->displayTableResults($output, [[
                     'Id'           => $p->getProductId(),
@@ -94,8 +95,7 @@ class ProductCommand extends AbstractCommand
             ['key' => 'file-current'],
         ];
 
-        $this->getApp()->appendCommand('product:update', 'Atualiza um SKU')
-            ->setDefinition($this->getApp()->factoryDefinition($opts))
+        $this->getApp()->appendCommand('product:update', 'Atualiza um SKU', $opts)
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
                 $list = $app->processInputParameters($opts, $input, $output);
 
@@ -118,9 +118,7 @@ class ProductCommand extends AbstractCommand
                     $operation = $manager->update($current, $previous);
                     $app->displayTableResults($output, [$operation]);
                 } catch (\Exception $e) {
-                    $output->writeln('<error>Erro na atualização</error>');
-                    $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-                    $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
+                    $app->showException($e,  $output);
                 }
             });
     }
