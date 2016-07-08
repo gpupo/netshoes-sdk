@@ -23,7 +23,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 $app = new Application("netshoes-sdk");
 $app->findConfig(['./']);
 
-foreach (['Product', 'Sku', 'Detail', 'Templates', 'Order'] as $className) {
+foreach (['Product', 'Sku', 'Detail', 'Templates', 'Order', 'Screenplay'] as $className) {
     $n =  __NAMESPACE__.'\\'.$className . 'Command';
     $o = new $n;
     $app = $o->append($app);
