@@ -18,76 +18,74 @@ use Closure;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\ArrayInput;
 
 /**
  * @codeCoverageIgnore
  */
 class ScreenplayCommand extends AbstractCommand
 {
-    protected $list = ['all', 'productPostSimple','productPostMultiple', 'productUpdate',
-        'productUpdateFull'];
+    protected $list = ['all', 'main'];
 
-    protected function runIfExists($name, $input, $output)
+    protected function screenplayList()
     {
-       try {
-           $c = $this->getApp()->find($name);
-           $this->sendInfo('<fg=cyan>'.$name.'</fg=cyan>()');
-
-           return $c->run($input, $output);
-       } catch (\Exception $e) {
-           $this->getLogger()->addDebug($e->getMessage());
-       }
-   }
+        return  include 'screenplay.config.php';
+    }
 
    public function all($app)
    {
-      $this->getApp()->appendCommand('screenplay:run', 'Run all');
+       $screenplayList = $this->screenplayList();
+
+       $this->getApp()->appendCommand('screenplay:run', 'Run all scripts')
+       ->addArgument('path', InputArgument::REQUIRED, 'Script Directory')
+       ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $screenplayList) {
+           $list = $app->processInputParameters([], $input, $output);
+           $path =  $input->getArgument('path');
+           $output->writeln('Utilizando arquivos do diretório [' . $path . ']');
+
+           foreach($screenplayList as $key => $value) {
+               $s = 'screenplay:'.$key;
+               $command = $app->find($s);
+               $t = new ArrayInput([
+                   'command' => $s,
+                   'path'   => $path,
+               ]);
+               $command->run($t, $output);
+           }
+       });
    }
 
-    public function productPostSimple($app)
+    public function main($app)
     {
-        $this->getApp()->appendCommand('screenplay:product:post:simple', '')
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-                $list = $app->processInputParameters([], $input, $output);
-                $output->writeln('Cadastro de quatro produtos contendo apenas um Sku');
+        foreach($this->screenplayList() as $key => $todo) {
+            $cname = 'screenplay:' . $key;
+            $filename = str_replace(':', '.', $cname) . '.php';
+            $this->getApp()->appendCommand($cname, $todo)
+                ->addArgument('path', InputArgument::REQUIRED, 'Script Directory')
+                ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $filename, $todo) {
+                    $list = $app->processInputParameters([], $input, $output);
+                    $path =  $input->getArgument('path');
 
+                    $filePath = $path . $filename;
+                    $output->writeln('- <info>'.$todo.'</info>');
+                    $output->writeln('Executando ' . $filePath);
 
-                throw new \Exception("Implementar!");
-            });
+                    if (!file_exists($filePath)) {
+                        copy(__DIR__ . '/screenplay.template.php', $filePath);
+                    }
+
+                    $sdk = $app->factorySdk($list);
+                    $implemented = false;
+
+                    include $filePath;
+
+                    if(empty($implemented)) {
+                        $output->writeln('- <error>'.$filePath.' FAIL!</>');
+
+                        throw new \Exception("Abort");
+
+                    }
+                });
+        }
     }
-
-    public function productPostMultiple($app)
-    {
-        $this->getApp()->appendCommand('screenplay:product:post:multiple', '')
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-                $list = $app->processInputParameters([], $input, $output);
-                $output->writeln('Cadastro de quatro produtos contendo mais de um Sku');
-
-                throw new \Exception("Implementar!");
-            });
-    }
-
-    public function productUpdate($app)
-    {
-        $this->getApp()->appendCommand('screenplay:product:update', '')
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-                $list = $app->processInputParameters([], $input, $output);
-                $output->writeln('Atualizar parcialmente no mínimo quatro produtos criados. As alterações devem incluir department, productType e attibutes');
-
-                throw new \Exception("Implementar!");
-            });
-    }
-
-
-    public function productUpdateFull($app)
-    {
-        $this->getApp()->appendCommand('screenplay:product:update:full', '')
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-                $list = $app->processInputParameters([], $input, $output);
-                $output->writeln('Atualizar três produtos cadastrados. As atualizações devem mudar o produto por completo exceto ID e SKU');
-
-                throw new \Exception("Implementar!");
-            });
-    }
-
 }
