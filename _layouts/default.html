@@ -27,7 +27,12 @@
       <div id="banner">
         <span id="logo"></span>
         <a href="{{ site.github.repository_url }}" class="button fork"><strong>Source Code</strong></a>
-        <img title="Stable Version" src="https://poser.pugx.org/gpupo/{{ site.github.project_title }}/v/stable">
+
+        <div class=badges>
+            <img title="Stable Version" src="https://poser.pugx.org/gpupo/{{ site.github.project_title }}/v/stable">
+            <img title="Total de downloads" src="https://poser.pugx.org/gpupo/{{ site.github.project_title }}/downloads">
+            <img title="License" src="https://poser.pugx.org/gpupo/{{ site.github.project_title }}/license">
+        </div>
         <div class="downloads">
           <ul>
             <li><a href="{{ site.github.wiki_url }}" class="button">Wiki</a></li>
@@ -45,15 +50,9 @@
       </section>
       <footer>
 
-        <div class=badges>
-            <img title="Total de downloads" src="https://poser.pugx.org/gpupo/{{ site.github.project_title }}/downloads">
-            <img title="License" src="https://poser.pugx.org/gpupo/{{ site.github.project_title }}/license">
-        </div>
-
-        <ul class=coverage>
-          <li class="button"><a href="coverage/">Coverage</a></li>
-          <li class="button"><a href="coverage/testdox.html">Testdox</a></li>
-        </ul>
+        <p class=coverage>
+          <a href="coverage/">Coverage</a> | <a href="coverage/testdox.html">Testdox</a>
+        </p>
 
         <p>
           <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=EK6F2WRKG7GNN&amp;item_name={{ site.github.project_title }}">
