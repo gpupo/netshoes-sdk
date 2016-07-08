@@ -69,10 +69,12 @@ class PriceSchedule extends EntityAbstract implements EntityInterface
 
     public function toArray()
     {
-        $d = $this->getDateInit();
-
-        if (empty($d)) {
+        if ($this->empty('dateInit')) {
             $this->setDateInit('');
+        }
+
+        if ($this->empty('dateEnd')) {
+            $this->setDateEnd(date('Y-m-d', strtotime('+1 month', strtotime('NOW'))));
         }
 
         return parent::toArray();

@@ -481,6 +481,7 @@
 - [x] Possui método ``setDateInit()`` que define DateInit 
 - [x] Possui método ``setDateEnd()`` que define DateEnd 
 - [x] A data de início de uma promoção é o momento atual quando não informado
+- [x] A data de término de uma promoção é após 1 mês no futuro quando não informado
 - [x] Possui método ``getPriceFrom()`` para acessar PriceFrom 
 - [x] Possui método ``setPriceFrom()`` que define PriceFrom 
 - [x] Possui método ``getPriceTo()`` para acessar PriceTo 
