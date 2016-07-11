@@ -30,8 +30,7 @@ class Application extends AbstractApplication
         .'ferramenta de apoio ao desenvolvedor e não deve ser usada no ambiente de produção!'
         ."\n"
         .'</>'
-        ."\n"
-        );
+        ."\n");
 
         return parent::doRun($input, $output);
     }
