@@ -11,7 +11,6 @@ $war = function ($message) use ($output) {
     $output->writeln('<options=bold> ====>  '.$message.'</>');
 };
 
-
 $makeSku = function ($id, $i, $size = "P") use ($centena) {
     return [
         "sku" => $id,
@@ -65,4 +64,9 @@ $makeProduct = function ($id, $i, $mode = 'simple', $attributesMode = 'default')
     ];
 
     return $array;
+};
+
+
+$feedback = function ($string) use ($output) {
+    return $output->writeln(date('d/m/Y H:i') .  ' - ' . $string);
 };

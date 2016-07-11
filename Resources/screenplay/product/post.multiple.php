@@ -18,6 +18,6 @@ foreach ([41, 42, 43, 44] as $i) {
     }
 
     foreach ($data['skus'] as $s) {
-        $output->writeln('Cadastrado Product /products/' . $id . '/skus/' . $s['sku']);
+        $feedback('Cadastrado Product /products/' . $id . '/skus/' . $s['sku']);
     }
 }

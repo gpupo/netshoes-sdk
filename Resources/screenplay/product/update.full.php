@@ -17,5 +17,5 @@ foreach ([35, 36, 37, 38, 39] as $i) {
 
     $operation = $manager->update($product, $previous);
 
-    $output->writeln('Atualizado Totalmente Product /products/' . $id);
+    $feedback('Atualizado Totalmente Product /products/' . $id);
 }
