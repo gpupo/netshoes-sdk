@@ -16,5 +16,5 @@ foreach ([21, 22, 23, 24] as $i) {
 
     $operation = $manager->update($sdk->createProduct($data), $sdk->createProduct([]));
 
-    $output->writeln('Atualizado parcialmente Product /products/' . $id);
+    $feedback('Atualizado parcialmente Product /products/' . $id);
 }

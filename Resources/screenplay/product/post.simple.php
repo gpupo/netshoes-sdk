@@ -16,5 +16,5 @@ foreach ([21, 22, 23, 24, 35, 36, 37, 38, 39] as $i) {
         throw new \Exception('FAIL: Cadastro Product #' . $id);
     }
 
-    $output->writeln('Cadastrado Product /products/' . $id . '/skus' . $id);
+    $feedback('Cadastrado Product /products/' . $id . '/skus' . $id);
 }
