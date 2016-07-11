@@ -139,14 +139,34 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testUpdate()
     {
-        return $this->markIncomplete();
 
-        $manager = $this->getFactory()->factoryManager('product');
+        $manager = $this->getManager('Update/info-response.json');
         $previousArray = $this->getResourceJson('fixture/Product/Update/previous.json');
         $currentArray = $this->getResourceJson('fixture/Product/Update/current.json');
         $previous = $this->getFactory()->createProduct($previousArray);
-        $product = $this->getFactory()->createProduct($currentArray);
+        $current = $this->getFactory()->createProduct($currentArray);
+        $operation = $manager->update($current, $previous);
 
-        $operation = $manager->update($product, $previous);
+        $this->assertSame([
+                'info'  => false,
+                'skus' => [[
+                    'sku' => '14080',
+                    'bypassed' => [
+                        'info',
+                        'Status',
+                        'Price',
+                    ],
+                    'code' => [
+                        'Stock'         => 200,
+                        'PriceSchedule' => 200,
+                    ],
+                    'updated' => [
+                        'Stock',
+                        'PriceSchedule',
+                    ],
+                ],
+            ]],
+            $operation
+        );
     }
 }

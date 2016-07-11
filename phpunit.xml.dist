@@ -21,6 +21,11 @@
     <filter>
         <whitelist>
             <directory>src/</directory>
+            <exclude>
+              <directory>src/Console/</directory>
+              <directory>*.config.php</directory>
+              <directory>*.template.php</directory>
+            </exclude>
         </whitelist>
     </filter>
 

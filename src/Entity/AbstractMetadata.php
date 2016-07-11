@@ -15,9 +15,12 @@
 namespace Gpupo\NetshoesSdk\Entity;
 
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
+use Gpupo\CommonSdk\Traits\FinderTrait;
 
 abstract class AbstractMetadata extends MetadataContainerAbstract
 {
+    use FinderTrait;
+    
     protected function cutMetadata($raw)
     {
         if (array_key_exists('_links', $raw)) {

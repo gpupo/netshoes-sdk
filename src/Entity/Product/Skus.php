@@ -15,9 +15,12 @@
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\CollectionAbstract;
+use Gpupo\CommonSdk\Traits\FinderTrait;
 
 class Skus extends CollectionAbstract
 {
+    use FinderTrait;
+
     public function factoryElement($data)
     {
         return new Sku\Item($data);

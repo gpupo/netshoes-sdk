@@ -35,7 +35,7 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
     /**
      * @codeCoverageIgnore
      *
-     * @return Gpupo\Common\Entity\CollectionAbstract|false
+     * @return Gpupo\Common\Entity\CollectionAbstract|null|false
      */
     protected function fetchPrepare($data)
     {

@@ -71,9 +71,9 @@ class Application extends AbstractApplication
         return 'var/logs/console.log';
     }
 
-    public function factorySdk(array $options)
+    public function factorySdk(array $options, $loggerChannel = 'bin', $verbose = false)
     {
-        return  Factory::getInstance()->setup($options, $this->factoryLogger());
+        return  Factory::getInstance()->setup($options, $this->factoryLogger($loggerChannel, $verbose));
     }
 
     public function appendCommand($name, $description, array $definition = [])
