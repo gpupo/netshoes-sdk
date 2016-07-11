@@ -61,7 +61,7 @@ class ScreenplayCommand extends AbstractCommand
             $cname = 'screenplay:'.$key;
             $pow = explode(':', $key);
             $f = current($pow);
-            $filename = str_replace([$f.':', ':'], [$f . '/', '.'], $key).'.php';
+            $filename = str_replace([$f.':', ':'], [$f.'/', '.'], $key).'.php';
             $this->getApp()->appendCommand($cname, $todo)
                 ->addArgument('path', InputArgument::REQUIRED, 'Script Directory')
                 ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $filename, $todo, $cname) {
@@ -72,7 +72,7 @@ class ScreenplayCommand extends AbstractCommand
                     $output->writeln('<options=bold>'.$todo.'</>');
 
                     if (!file_exists($filePath)) {
-                        throw new \Exception("Roteiro não implementado:" . $filePath, 1);
+                        throw new \Exception('Roteiro não implementado:'.$filePath, 1);
                     }
 
                     $sdk = $app->factorySdk($list, 'screenplay', true);

@@ -5,6 +5,6 @@ if ($dev) {
    return $pronto();
 }
 
-$responseList = $manager->fetchByRoute('brands', 0, 50);
+$responseList = $manager->fetchByRoute('flavors', 0, 50);
 
 $feedback('Concluído');
