@@ -4,7 +4,7 @@ include 'common.php';
 $implemented = true;
 $manager = $sdk->factoryManager('product');
 
-$makeSku = function($id, $i, $size = "P") use ($centena) {
+$makeSku = function ($id, $i, $size = "P") use ($centena) {
     return [
         "sku" => $id,
         "name"=> "SKU para homologação, tipo simples, Serie " . $centena . ' variação ' . $i ,
@@ -23,7 +23,7 @@ $makeSku = function($id, $i, $size = "P") use ($centena) {
     ];
 };
 
-$makeProduct = function($id, $i, $mode = 'simple') use ($centena, $makeSku) {
+$makeProduct = function ($id, $i, $mode = 'simple') use ($centena, $makeSku) {
 
     if ('simple' === $mode) {
         $skus = [

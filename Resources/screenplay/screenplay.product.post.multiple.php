@@ -2,7 +2,9 @@
 
 include 'common-product.php';
 
-if ($dev) { return $pronto(); }
+if ($dev) {
+    return $pronto();
+}
 
 foreach ([41, 42, 43, 44] as $i) {
     $id = $centena + $i;

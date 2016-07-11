@@ -7,7 +7,9 @@ include 'common-product.php';
 
 $war('Atualizar Product, Atributos');
 
-if ($dev) { return $pronto(); }
+if ($dev) {
+    return $pronto();
+}
 
 foreach ([21, 22, 23, 24] as $i) {
     $id = $centena + $i;

@@ -14,6 +14,7 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
+use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\NetshoesSdk\Entity\Product\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
@@ -53,7 +54,7 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testGetClient($manager)
     {
-        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Client\Client', $manager->getClient());
+        $this->assertInstanceOf(Client::class, $manager->getClient());
     }
 
     /**
@@ -138,9 +139,8 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testUpdate()
     {
-        if (!$this->hasToken()) {
-            return $this->markSkipped('API Token ausente');
-        }
+        return $this->markIncomplete();
+
         $manager = $this->getFactory()->factoryManager('product');
         $previousArray = $this->getResourceJson('fixture/Product/Update/previous.json');
         $currentArray = $this->getResourceJson('fixture/Product/Update/current.json');

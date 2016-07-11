@@ -14,6 +14,7 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
+use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
@@ -23,10 +24,10 @@ use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
  */
 class ManagerTest extends TestCaseAbstract
 {
-    protected function getManager($filename = null)
+    protected function getManager($filename = 'list.json')
     {
         $manager = $this->getFactory()->factoryManager('sku');
-        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/Sku/list.json'));
+        $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/Sku/'.$filename));
 
         return $manager;
     }
@@ -50,7 +51,7 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testPossuiObjetoClient(Manager $manager)
     {
-        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Client\Client', $manager->getClient());
+        $this->assertInstanceOf(Client::class, $manager->getClient());
     }
 
     /**
@@ -69,5 +70,94 @@ class ManagerTest extends TestCaseAbstract
         $this->assertInstanceOf(Item::class, $list);
 
         return $list;
+    }
+
+    protected function createAndRun($method)
+    {
+        $manager = $this->getManager('Update/info-response.json');
+        $previousArray = $this->getResourceJson('fixture/Product/Sku/Update/previous.json');
+        $currentArray = $this->getResourceJson('fixture/Product/Sku/Update/current.json');
+        $previous = $this->getFactory()->createSku($previousArray);
+        $sku = $this->getFactory()->createSku($currentArray);
+        $operation = $manager->$method($sku, $previous);
+
+        return $operation;
+    }
+
+    /**
+     * @testdox Atualiza as informações do SKU
+     * @covers ::updateInfo
+     * @test
+     */
+    public function updateInfo()
+    {
+        $this->assertSame(
+            [
+            'code' => [
+                'info' => 200,
+            ],
+            'updated' => [
+                'info',
+            ],
+
+            ],
+            $this->createAndRun('updateInfo')
+        );
+    }
+
+    /**
+     * @testdox Atualiza os detalhes do SKU
+     * @covers ::updateDetails
+     * @test
+     */
+    public function updateDetails()
+    {
+        $this->assertSame(
+            [
+            'code' => [
+                'Status'        => 200,
+                'Stock'         => 200,
+                'Price'         => 200,
+                'PriceSchedule' => 200,
+            ],
+            'updated' => [
+                'Status',
+                'Stock',
+                'Price',
+                'PriceSchedule',
+            ],
+
+            ],
+            $this->createAndRun('updateDetails')
+        );
+    }
+
+    /**
+     * @testdox Atualiza os detalhes e as informações do SKU em uma única operação
+     * @covers ::update
+     * @test
+     */
+    public function updateFull()
+    {
+        $this->assertSame([
+                'sku' => '14080',
+                'bypassed' => [],
+                'code' => [
+                    'info'          => 200,
+                    'Status'        => 200,
+                    'Stock'         => 200,
+                    'Price'         => 200,
+                    'PriceSchedule' => 200,
+                ],
+                'updated' => [
+                    'info',
+                    'Status',
+                    'Stock',
+                    'Price',
+                    'PriceSchedule',
+                ],
+            ],
+            $this->createAndRun('update')
+        );
     }
 }
