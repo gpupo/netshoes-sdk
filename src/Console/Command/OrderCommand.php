@@ -43,34 +43,34 @@ class OrderCommand extends AbstractCommand
         $this->getApp()->appendCommand('order:update:to:'.$type, 'Move um pedido para a situação ['.$type.']', $opts)
             ->addArgument('orderId', InputArgument::REQUIRED, 'Product ID')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts, $type, $decorator) {
-            $list = $app->processInputParameters($opts, $input, $output);
-            $id = $input->getArgument('orderId');
-            if (!file_exists($list['file'])) {
-                throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
-            }
-            $data = json_decode(file_get_contents($list['file']), true);
-            $sdk = $app->factorySdk($list);
-            $manager = $sdk->factoryManager('order');
-            $order = $sdk->createOrder($data);
-            $order->setOrderNumber($id)->setOrderStatus($type);
+                $list = $app->processInputParameters($opts, $input, $output);
+                $id = $input->getArgument('orderId');
+                if (!file_exists($list['file'])) {
+                    throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
+                }
+                $data = json_decode(file_get_contents($list['file']), true);
+                $sdk = $app->factorySdk($list);
+                $manager = $sdk->factoryManager('order');
+                $order = $sdk->createOrder($data);
+                $order->setOrderNumber($id)->setOrderStatus($type);
 
-            if (!empty($decorator)) {
-                $order = $decorator($order);
-            }
+                if (!empty($decorator)) {
+                    $order = $decorator($order);
+                }
 
-            try {
-                $output->writeln('Iniciando mudança de status do pedido #<info>'
+                try {
+                    $output->writeln('Iniciando mudança de status do pedido #<info>'
                     .$id.'</info> => <comment>'.$type.'</comment>');
 
-                $operation = $manager->updateStatus($order);
+                    $operation = $manager->updateStatus($order);
 
-                if (200 === $operation->getHttpStatusCode()) {
-                    $output->writeln('<info>Successo!</info>');
+                    if (200 === $operation->getHttpStatusCode()) {
+                        $output->writeln('<info>Successo!</info>');
+                    }
+                } catch (\Exception $e) {
+                    $app->showException($e, $output, 'Erro na mudança de status');
                 }
-            } catch (\Exception $e) {
-                $app->showException($e,  $output, 'Erro na mudança de status');
-            }
-        });
+            });
     }
 
     protected function view($app)

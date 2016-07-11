@@ -118,7 +118,7 @@ class ProductCommand extends AbstractCommand
                     $operation = $manager->update($current, $previous);
                     $app->displayTableResults($output, [$operation]);
                 } catch (\Exception $e) {
-                    $app->showException($e,  $output);
+                    $app->showException($e, $output);
                 }
             });
     }

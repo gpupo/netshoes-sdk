@@ -50,7 +50,7 @@ class DetailCommand extends AbstractCommand
                         $output->writeln('<info>Successo!</info>');
                     }
                 } catch (\Exception $e) {
-                    $app->showException($e,  $output);
+                    $app->showException($e, $output);
                 }
             });
     }

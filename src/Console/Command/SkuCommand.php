@@ -79,7 +79,7 @@ class SkuCommand extends AbstractCommand
                     $operation = $manager->update($sku, $previous);
                     $app->displayTableResults($output, [$operation]);
                 } catch (\Exception $e) {
-                    $app->showException($e,  $output);
+                    $app->showException($e, $output);
                 }
             });
     }

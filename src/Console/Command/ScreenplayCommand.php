@@ -36,29 +36,28 @@ class ScreenplayCommand extends AbstractCommand
         $screenplayList = $this->screenplayList();
 
         $this->getApp()->appendCommand('screenplay:run', 'Run all scripts')
-       ->addArgument('path', InputArgument::REQUIRED, 'Script Directory')
-       ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $screenplayList) {
-           $list = $app->processInputParameters([], $input, $output);
-           $path = $input->getArgument('path');
-           $output->writeln('Utilizando arquivos do diretório ['.$path.']');
+        ->addArgument('path', InputArgument::REQUIRED, 'Script Directory')
+        ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $screenplayList) {
+            $list = $app->processInputParameters([], $input, $output);
+            $path = $input->getArgument('path');
+            $output->writeln('Utilizando arquivos do diretório ['.$path.']');
 
-           foreach ($screenplayList as $key => $value) {
-               $s = 'screenplay:'.$key;
-               $command = $app->find($s);
-               $t = new ArrayInput([
+            foreach ($screenplayList as $key => $value) {
+                $s = 'screenplay:'.$key;
+                $command = $app->find($s);
+                $t = new ArrayInput([
                    'command' => $s,
                    'path'    => $path,
-               ]);
+                ]);
 
-               $output->writeln("\n");
-               $output->writeln('./bin/netshoes-sdk ' . $s);
+                $output->writeln("\n");
+                $output->writeln('./bin/netshoes-sdk ' . $s);
 
-               $command->run($t, $output);
+                $command->run($t, $output);
 
-               $output->writeln("\n------");
-
-           }
-       });
+                $output->writeln("\n------");
+            }
+        });
     }
 
     public function main($app)
