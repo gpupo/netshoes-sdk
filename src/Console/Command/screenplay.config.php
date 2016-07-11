@@ -12,9 +12,9 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
- /**
-  * @codeCoverageIgnore
-  */
+/**
+ * @codeCoverageIgnore
+ */
 $array = [
     //Product
     'product:post:simple'   => 'Cadastro de quatro produtos contendo apenas um Sku',

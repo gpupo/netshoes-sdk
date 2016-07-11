@@ -111,10 +111,41 @@ class Manager extends AbstractManager
         $response = [
             'sku'      => $entity->getId(),
             'bypassed' => [],
-            'updated'  => [],
             'code'     => [],
+            'updated'  => [],
         ];
 
+        foreach (['updateInfo', 'updateDetails'] as $method) {
+            $response = $this->$method($entity, $existent, $response);
+        }
+
+        $this->log('info', 'Operação de Atualização', $response);
+
+        return $response;
+    }
+
+    public function updateInfo(Item $entity, Item $existent = null, array $response = [])
+    {
+        $compare = $this->attributesDiff($entity, $existent, ['name', 'color',
+            'size', 'gender', 'eanIsbn', 'images', 'video', 'height',
+            'width', 'depth', 'weight', ]);
+
+        if (false === $compare) {
+            $response['bypassed'][] = $key;
+
+            return $response;
+        }
+
+        $map = $this->factoryMap('save', ['sku' => $entity->getId()]);
+        $operation = $this->execute($map, $entity->toJson());
+        $response['code']['info'] = $operation->getHttpStatusCode();
+        $response['updated'][] = 'info';
+
+        return $response;
+    }
+
+    public function updateDetails(Item $entity, Item $existent = null, array $response = [])
+    {
         foreach ([
             'Status' => ['active'],
             'Stock' => ['available'],
@@ -133,9 +164,6 @@ class Manager extends AbstractManager
             $response['code'][$key] = $this->saveDetail($entity, $key)->getHttpStatusCode();
             $response['updated'][] = $key;
         }
-
-        $this->log('info', 'Operação de Atualização de entity '
-            .$this->entity, $response);
 
         return $response;
     }

@@ -12,8 +12,8 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
- /**
-  * @codeCoverageIgnore
-  */
+/**
+ * @codeCoverageIgnore
+ */
 $output->writeln('Este roteiro contém as variáveis $sdk, $output, $app');
 $output->writeln('<options=bold> ====> Este roteiro ainda não foi implementado!</>');
