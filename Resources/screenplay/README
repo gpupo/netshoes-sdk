@@ -1,0 +1,3 @@
+Roteiro de homologação, executado da seguinte forma:
+
+./bin/netshoes-sdk screenplay:run Resources/screenplay/
