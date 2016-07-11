@@ -43,14 +43,13 @@ class Manager extends AbstractManager
         }
 
         $response = [
-            'info'  => false,
-            'skus'  => [],
+            'info' => false,
+            'skus' => [],
         ];
 
         $skuManager = $this->factorySubManager(Factory::getInstance(), 'sku');
 
-        foreach($entity->getSkus() as $sku) {
-
+        foreach ($entity->getSkus() as $sku) {
             $previous = null;
             if ($existent) {
                 $previous = $existent->getSkus()->findById($sku->getId());

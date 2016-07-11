@@ -139,7 +139,6 @@ class ManagerTest extends TestCaseAbstract
      */
     public function testUpdate()
     {
-
         $manager = $this->getManager('Update/info-response.json');
         $previousArray = $this->getResourceJson('fixture/Product/Update/previous.json');
         $currentArray = $this->getResourceJson('fixture/Product/Update/current.json');
@@ -147,10 +146,11 @@ class ManagerTest extends TestCaseAbstract
         $current = $this->getFactory()->createProduct($currentArray);
         $operation = $manager->update($current, $previous);
 
-        $this->assertSame([
-                'info'  => false,
+        $this->assertSame(
+            [
+                'info' => false,
                 'skus' => [[
-                    'sku' => '14080',
+                    'sku'      => '14080',
                     'bypassed' => [
                         'info',
                         'Status',
@@ -165,7 +165,7 @@ class ManagerTest extends TestCaseAbstract
                         'PriceSchedule',
                     ],
                 ],
-            ]],
+                ], ],
             $operation
         );
     }
