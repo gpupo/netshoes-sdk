@@ -1,9 +1,6 @@
 <?php
-
 //Atualizar três produtos cadastrados. As atualizações devem mudar o produto por completo exceto ID e SKU
-include 'common-product.php';
-
-$war('Atualizar Product, Atributos');
+include 'common.php';
 
 if ($dev) {
     return $pronto();
@@ -20,5 +17,5 @@ foreach ([35, 36, 37, 38, 39] as $i) {
 
     $operation = $manager->update($product, $previous);
 
-    $output->writeln('Atualizado Totalmente Product /products/' . $id . '/skus');
+    $output->writeln('Atualizado Totalmente Product /products/' . $id);
 }

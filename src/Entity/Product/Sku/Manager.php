@@ -83,6 +83,13 @@ class Manager extends AbstractManager
         return $collection;
     }
 
+    public function add(EntityInterface $entity, $productId)
+    {
+        return $this->execute($this->factoryMap('add',[
+            'productId' => $productId,
+        ]), $entity->toJson());
+    }
+
     public function saveDetail(Item $sku, $type)
     {
         $json = $sku->toJson($type);
@@ -136,7 +143,7 @@ class Manager extends AbstractManager
             return $response;
         }
 
-        $map = $this->factoryMap('save', ['sku' => $entity->getId()]);
+        $map = $this->factoryMap('update', ['itemId' => $entity->getId(), 'sku' => $entity->getId()]);
         $operation = $this->execute($map, $entity->toJson());
         $response['code']['info'] = $operation->getHttpStatusCode();
         $response['updated'][] = 'info';

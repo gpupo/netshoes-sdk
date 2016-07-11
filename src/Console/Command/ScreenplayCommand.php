@@ -49,12 +49,8 @@ class ScreenplayCommand extends AbstractCommand
                    'path'    => $path,
                 ]);
 
-                $output->writeln("\n");
-                $output->writeln('./bin/netshoes-sdk '.$s);
-
+                //$output->writeln('./bin/netshoes-sdk '.$s);
                 $command->run($t, $output);
-
-                $output->writeln("\n------");
             }
         });
     }
@@ -63,7 +59,9 @@ class ScreenplayCommand extends AbstractCommand
     {
         foreach ($this->screenplayList() as $key => $todo) {
             $cname = 'screenplay:'.$key;
-            $filename = str_replace(':', '.', $cname).'.php';
+            $pow = explode(':', $key);
+            $f = current($pow);
+            $filename = str_replace([$f.':', ':'], [$f . '/', '.'], $key).'.php';
             $this->getApp()->appendCommand($cname, $todo)
                 ->addArgument('path', InputArgument::REQUIRED, 'Script Directory')
                 ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $filename, $todo, $cname) {
@@ -71,13 +69,13 @@ class ScreenplayCommand extends AbstractCommand
                     $path = $input->getArgument('path');
 
                     $filePath = $path.$filename;
-                    $output->writeln('<options=bold>'.$todo.'</> | '.$filePath);
+                    $output->writeln('<options=bold>'.$todo.'</>');
 
                     if (!file_exists($filePath)) {
-                        copy(__DIR__.'/screenplay.template.php', $filePath);
+                        throw new \Exception("Roteiro não implementado:" . $filePath, 1);
                     }
 
-                    $sdk = $app->factorySdk($list, 'screenplay', true);
+                    $sdk = $app->factorySdk($list, 'screenplay', false);
 
                     $sdk->getLogger()->addDebug($cname, [
                         'file' => $filePath,
@@ -87,10 +85,6 @@ class ScreenplayCommand extends AbstractCommand
 
                     require $filePath;
 
-                    if (empty($implemented)) {
-                        $output->writeln('- <error>'.$filePath.' FAIL!</>');
-                        throw new \Exception('Abort!');
-                    }
                 });
         }
     }

@@ -1,11 +1,7 @@
 <?php
-
 //Atualizar parcialmente no mínimo quatro produtos criados.
 //As alterações devem incluir department, productType e attributes
-
-include 'common-product.php';
-
-$war('Atualizar Product, Atributos');
+include 'common.php';
 
 if ($dev) {
     return $pronto();
@@ -18,8 +14,7 @@ foreach ([21, 22, 23, 24] as $i) {
     $data['department'] = 'Beleza';
     $data['productType'] = 'Base';
 
-    $product = $sdk->createProduct($data);
-    $operation = $manager->update($product);
+    $operation = $manager->update($sdk->createProduct($data), $sdk->createProduct([]));
 
-    $output->writeln('Atualizado parcialmente Product /products/' . $id . '/skus' . $id);
+    $output->writeln('Atualizado parcialmente Product /products/' . $id);
 }
