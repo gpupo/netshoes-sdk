@@ -38,7 +38,6 @@ class ScreenplayCommand extends AbstractCommand
         $this->getApp()->appendCommand('screenplay:run', 'Run all scripts')
         ->addArgument('path', InputArgument::REQUIRED, 'Script Directory')
         ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $screenplayList) {
-            $list = $app->processInputParameters([], $input, $output);
             $path = $input->getArgument('path');
             $output->writeln('Utilizando arquivos do diretório ['.$path.']');
 
@@ -51,7 +50,7 @@ class ScreenplayCommand extends AbstractCommand
                 ]);
 
                 $output->writeln("\n");
-                $output->writeln('./bin/netshoes-sdk ' . $s);
+                $output->writeln('./bin/netshoes-sdk '.$s);
 
                 $command->run($t, $output);
 
@@ -72,7 +71,7 @@ class ScreenplayCommand extends AbstractCommand
                     $path = $input->getArgument('path');
 
                     $filePath = $path.$filename;
-                    $output->writeln('<options=bold>'.$todo.'</> | ' . $filePath);
+                    $output->writeln('<options=bold>'.$todo.'</> | '.$filePath);
 
                     if (!file_exists($filePath)) {
                         copy(__DIR__.'/screenplay.template.php', $filePath);
@@ -85,7 +84,7 @@ class ScreenplayCommand extends AbstractCommand
 
                     if (empty($implemented)) {
                         $output->writeln('- <error>'.$filePath.' FAIL!</>');
-                        throw new \Exception("Abort!");
+                        throw new \Exception('Abort!');
                     }
                 });
         }
