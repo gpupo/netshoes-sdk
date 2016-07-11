@@ -20,6 +20,9 @@ use Gpupo\NetshoesSdk\Factory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Application extends AbstractApplication
 {
     public function doRun(InputInterface $input, OutputInterface $output)
