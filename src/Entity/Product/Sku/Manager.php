@@ -85,7 +85,7 @@ class Manager extends AbstractManager
 
     public function add(EntityInterface $entity, $productId)
     {
-        return $this->execute($this->factoryMap('add',[
+        return $this->execute($this->factoryMap('add', [
             'productId' => $productId,
         ]), $entity->toJson());
     }

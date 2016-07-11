@@ -3,7 +3,7 @@
 include 'common.php';
 
 if ($dev) {
-   //return $pronto();
+   return $pronto();
 }
 
 $list = ['approved', 'invoiced', 'shipped', 'delivered', 'canceled',];
