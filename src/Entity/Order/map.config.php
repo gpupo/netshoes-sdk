@@ -20,6 +20,10 @@ $put = function ($name) {
 };
 
 return [
+    'save' => [
+        'POST',
+        '/orders',
+    ],
     'fetch' => [
         'GET',
         '/orders?expand=items,shippings,devolutionItems&page={offset}&size={limit}',

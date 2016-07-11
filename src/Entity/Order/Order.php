@@ -86,6 +86,11 @@ class Order extends EntityAbstract implements EntityInterface
         ];
     }
 
+    protected function setUp()
+    {
+        $this->setOptionalSchema(['devolutionRequested', 'exchangeRequested']);
+    }
+
     public function toLog()
     {
         return $this->partitionByArrayKey([

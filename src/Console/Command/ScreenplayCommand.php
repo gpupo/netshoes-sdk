@@ -75,7 +75,7 @@ class ScreenplayCommand extends AbstractCommand
                         throw new \Exception("Roteiro não implementado:" . $filePath, 1);
                     }
 
-                    $sdk = $app->factorySdk($list, 'screenplay', false);
+                    $sdk = $app->factorySdk($list, 'screenplay', true);
 
                     $sdk->getLogger()->addDebug($cname, [
                         'file' => $filePath,

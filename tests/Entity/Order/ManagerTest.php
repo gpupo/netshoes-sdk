@@ -221,8 +221,16 @@ class ManagerTest extends TestCaseAbstract
     public function saveStatusToShipped(Order $order)
     {
         $manager = $this->getManager();
-        $order->setOrderStatus('delivered');
-        $order->getShipping()->getTransport()->setDeliveryDate('2016-05-10T09:44:54.000-03:00');
+        $order->setOrderStatus('shipped');
+
+        $transport = $this->getFactory()->createTransport([
+            "carrier"               => "Correios",
+            "trackingNumber"        => "PJ521644335BR",
+            "shipDate"              => "2016-05-10T10:46:00.000-03:00",
+            "estimatedDeliveryDate" => "2016-05-10T10:46:00.000-03:00",
+        ]);
+
+        $order->getShipping()->setTransport($transport);
         $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
     }
 }

@@ -1,9 +1,9 @@
 <?php
-//Atualizar preço de no mínimo quatro Skus
+//Atualizar Stock de no mínimo quatro Skus
 include 'common.php';
 
 if ($dev) {
-    //return $pronto();
+    return $pronto();
 }
 
 foreach ([21, 22, 23, 24] as $i) {
