@@ -14,11 +14,11 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product\Sku;
 
+use Gpupo\CommonSdk\Entity\Metadata\Metadata;
 use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\SkuCollection;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
-use Gpupo\CommonSdk\Entity\Metadata\Metadata;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\SkuCollection

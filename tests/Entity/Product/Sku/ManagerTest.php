@@ -134,7 +134,7 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager('Update/info-response.json');
         $currentArray = $this->getResourceJson('fixture/Product/Sku/Update/current.json');
         $sku = $this->getFactory()->createSku($currentArray);
-        foreach(['Status', 'Stock', 'Price', 'PriceSchedule'] as $key) {
+        foreach (['Status', 'Stock', 'Price', 'PriceSchedule'] as $key) {
             $this->assertSame(200, $manager->saveDetail($sku, $key)->getHttpStatusCode());
         }
     }
@@ -182,7 +182,7 @@ class ManagerTest extends TestCaseAbstract
                 'Price',
                 'PriceSchedule',
             ],
-        ],
+            ],
             $this->createAndRun('updateDetails', true)
         );
     }
@@ -194,10 +194,11 @@ class ManagerTest extends TestCaseAbstract
      */
     public function updateFull()
     {
-        $this->assertSame([
-                'sku' => '14080',
+        $this->assertSame(
+            [
+                'sku'      => '14080',
                 'bypassed' => [],
-                'code' => [
+                'code'     => [
                     'info'          => 200,
                     'Status'        => 200,
                     'Stock'         => 200,

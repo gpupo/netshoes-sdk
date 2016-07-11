@@ -14,9 +14,8 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
-use Gpupo\NetshoesSdk\Entity\Product\Skus;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
-use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
+use Gpupo\NetshoesSdk\Entity\Product\Skus;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
@@ -35,18 +34,18 @@ class SkusTest extends TestCaseAbstract
 
         $list = ['1924', '5672', '9999'];
 
-        foreach($list as $id) {
+        foreach ($list as $id) {
             $array[$id] = [
-               'sku'         => $id,
-               'name'        => uniqid(),
-           ];
+               'sku'  => $id,
+               'name' => uniqid(),
+            ];
         }
 
         $skus = new Skus($array);
 
         $this->assertNull($skus->findById(1));
 
-        foreach($list as $id) {
+        foreach ($list as $id) {
             $sku = $skus->findById($id);
             $this->assertInstanceOf(Item::class, $sku);
             $this->assertSame($id, $sku->getId());
