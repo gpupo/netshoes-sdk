@@ -9,9 +9,9 @@ if ($dev) {
     return $pronto();
 }
 
-foreach ([21, 22, 23, 24] as $i) {
+foreach ([35, 36, 37, 38, 39] as $i) {
     $id = $centena + $i;
-    $previousData = $makeProduct($id, $i);
+    $previousData = $makeProduct($id, $i, 'simple', 'modify');
     $previous = $sdk->createProduct($previousData);
     $previousData['department'] = 'Beleza';
     $previousData['productType'] = 'Base';

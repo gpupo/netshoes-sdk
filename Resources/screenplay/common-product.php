@@ -23,7 +23,20 @@ $makeSku = function ($id, $i, $size = "P") use ($centena) {
     ];
 };
 
-$makeProduct = function ($id, $i, $mode = 'simple') use ($centena, $makeSku) {
+$attributes = [
+    'default' =>[
+        ["name"=>"Cores", "value"=>"Rosa"],
+        ["name"=>"Genero", "value"=>"female"],
+        ["name"=>"Sexo", "value"=>"F"],
+    ],
+    'modify' =>[
+        ["name"=>"Cores", "value"=>"Azul"],
+        ["name"=>"Genero", "value"=>"male"],
+        ["name"=>"Sexo", "value"=>"M"],
+    ],
+];
+
+$makeProduct = function ($id, $i, $mode = 'simple', $attributesMode = 'defalt') use ($centena, $makeSku, $attributes) {
 
     if ('simple' === $mode) {
         $skus = [
@@ -44,11 +57,6 @@ $makeProduct = function ($id, $i, $mode = 'simple') use ($centena, $makeSku) {
         'department'  => 'Feminino',
         'productType' => 'BCAA',
         'brand'       => 'Nike',
-        /*'attributes'  => [
-            [
-                'name'  => 'Material',
-                'value'  => 'plastico',
-            ]
-        ],*/
+        'attributes'  => $attributes[$attributesMode],
     ];
 };

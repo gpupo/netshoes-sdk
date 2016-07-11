@@ -124,7 +124,7 @@ class Manager extends AbstractManager
         return $response;
     }
 
-    public function updateInfo(Item $entity, Item $existent = null, array $response = [])
+    public function updateInfo(Item $entity, $existent = null, array $response = [])
     {
         $compare = $this->attributesDiff($entity, $existent, ['name', 'color',
             'size', 'gender', 'eanIsbn', 'images', 'video', 'height',
