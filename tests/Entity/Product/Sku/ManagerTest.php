@@ -72,12 +72,12 @@ class ManagerTest extends TestCaseAbstract
         return $list;
     }
 
-    protected function createAndRun($method)
+    protected function createAndRun($method, $same = false)
     {
         $manager = $this->getManager('Update/info-response.json');
         $previousArray = $this->getResourceJson('fixture/Product/Sku/Update/previous.json');
         $currentArray = $this->getResourceJson('fixture/Product/Sku/Update/current.json');
-        $previous = $this->getFactory()->createSku($previousArray);
+        $previous = $this->getFactory()->createSku((true === $same) ? $currentArray : $previousArray);
         $sku = $this->getFactory()->createSku($currentArray);
         $operation = $manager->$method($sku, $previous);
 
@@ -106,6 +106,40 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Não atualiza as informações do SKU desnecessariamente
+     * @covers ::updateInfo
+     * @test
+     */
+    public function updateInfoNone()
+    {
+        $this->assertSame(
+            [
+            'bypassed' => [
+                'info',
+            ],
+
+            ],
+            $this->createAndRun('updateInfo', true)
+        );
+    }
+
+    /**
+     * @testdox Atualiza os detalhes do SKU
+     * @covers ::updateDetails
+     * @covers ::saveDetail
+     * @test
+     */
+    public function saveDetail()
+    {
+        $manager = $this->getManager('Update/info-response.json');
+        $currentArray = $this->getResourceJson('fixture/Product/Sku/Update/current.json');
+        $sku = $this->getFactory()->createSku($currentArray);
+        foreach(['Status', 'Stock', 'Price', 'PriceSchedule'] as $key) {
+            $this->assertSame(200, $manager->saveDetail($sku, $key)->getHttpStatusCode());
+        }
+    }
+
+    /**
      * @testdox Atualiza os detalhes do SKU
      * @covers ::updateDetails
      * @test
@@ -129,6 +163,27 @@ class ManagerTest extends TestCaseAbstract
 
             ],
             $this->createAndRun('updateDetails')
+        );
+    }
+
+    /**
+     * @testdox Não atualiza os detalhes do SKU desnecessariamente
+     * @covers ::updateDetails
+     * @covers ::saveDetail
+     * @test
+     */
+    public function updateDetailsNone()
+    {
+        $this->assertSame(
+            [
+            'bypassed' => [
+                'Status',
+                'Stock',
+                'Price',
+                'PriceSchedule',
+            ],
+        ],
+            $this->createAndRun('updateDetails', true)
         );
     }
 

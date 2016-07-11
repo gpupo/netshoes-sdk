@@ -43,9 +43,6 @@
   <delete dir="${basedir}/build"/>
  </target>
  <target name="rev" description="Build documentation">
-   <exec executable="${basedir}/../files-common-projects/cs-fix.sh">
-     <arg value="${project.name}"/>
-   </exec>
   <exec executable="${basedir}/vendor/gpupo/common-sdk/bin/build-documentation.sh">
     <arg value="${project.name}"/>
   </exec>

@@ -466,6 +466,11 @@
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
 - [x] Dá Acesso a detalhes de um SKU
+- [x] Atualiza as informações do SKU
+- [x] Não atualiza as informações do SKU desnecessariamente
+- [x] Atualiza os detalhes do SKU
+- [x] Não atualiza os detalhes do SKU desnecessariamente
+- [x] Atualiza os detalhes e as informações do SKU em uma única operação
 
 ### NetshoesSdk\Entity\Product\Sku\PriceScheduleCollection
 
@@ -520,6 +525,11 @@
 - [x] Possui método ``getAvailable()`` para acessar Available 
 - [x] Possui método ``setAvailable()`` que define Available 
 - [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Product\Skus
+
+
+- [x] Encontra um Sku pelo Id
 
 ### NetshoesSdk\Entity\Templates\Brand
 

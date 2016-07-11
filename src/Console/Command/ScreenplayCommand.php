@@ -66,7 +66,7 @@ class ScreenplayCommand extends AbstractCommand
             $filename = str_replace(':', '.', $cname).'.php';
             $this->getApp()->appendCommand($cname, $todo)
                 ->addArgument('path', InputArgument::REQUIRED, 'Script Directory')
-                ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $filename, $todo) {
+                ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $filename, $todo, $cname) {
                     $list = $app->processInputParameters([], $input, $output);
                     $path = $input->getArgument('path');
 
@@ -77,10 +77,15 @@ class ScreenplayCommand extends AbstractCommand
                         copy(__DIR__.'/screenplay.template.php', $filePath);
                     }
 
-                    $sdk = $app->factorySdk($list);
+                    $sdk = $app->factorySdk($list, 'screenplay', true);
+
+                    $sdk->getLogger()->addDebug($cname, [
+                        'file' => $filePath,
+                    ]);
+
                     $implemented = false;
 
-                    include $filePath;
+                    require $filePath;
 
                     if (empty($implemented)) {
                         $output->writeln('- <error>'.$filePath.' FAIL!</>');

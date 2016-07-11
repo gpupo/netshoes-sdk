@@ -18,6 +18,7 @@ use Gpupo\CommonSdk\Entity\Metadata\MetadataContainerAbstract;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Item;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\SkuCollection;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+use Gpupo\CommonSdk\Entity\Metadata\Metadata;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Sku\SkuCollection
@@ -60,7 +61,7 @@ class SkuCollectionTest extends TestCaseAbstract
      */
     public function testPossuiObjetoMetadata(MetadataContainerAbstract $container)
     {
-        $this->assertInstanceOf('\Gpupo\CommonSdk\Entity\Metadata\Metadata', $container->getMetadata());
+        $this->assertInstanceOf(Metadata::class, $container->getMetadata());
     }
 
     /**

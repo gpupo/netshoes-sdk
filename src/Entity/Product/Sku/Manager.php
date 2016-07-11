@@ -131,7 +131,7 @@ class Manager extends AbstractManager
             'width', 'depth', 'weight', ]);
 
         if (false === $compare) {
-            $response['bypassed'][] = $key;
+            $response['bypassed'][] = 'info';
 
             return $response;
         }

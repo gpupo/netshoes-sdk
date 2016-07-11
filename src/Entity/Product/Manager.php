@@ -38,17 +38,27 @@ class Manager extends AbstractManager
      */
     public function update(EntityInterface $entity, EntityInterface $existent = null)
     {
-        $previous = null;
-
-        if ($existent) {
-            $previous = $existent->getSkus()->first();
-        }
-
         if (0 === $entity->getSkus()->count()) {
             throw new \InvalidArgumentException('Product precisa conter SKU!');
         }
 
-        return $this->factorySubManager(Factory::getInstance(), 'sku')
-            ->update($entity->getSkus()->first(), $previous);
+        $response = [
+            'info'  => false,
+            'skus'  => [],
+        ];
+
+        $skuManager = $this->factorySubManager(Factory::getInstance(), 'sku');
+
+        foreach($entity->getSkus() as $sku) {
+
+            $previous = null;
+            if ($existent) {
+                $previous = $existent->getSkus()->findById($sku->getId());
+            }
+
+            $response['skus'][] = $skuManager->update($sku, $previous);
+        }
+
+        return $response;
     }
 }
