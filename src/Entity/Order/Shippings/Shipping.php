@@ -65,6 +65,14 @@ class Shipping extends EntityAbstract implements EntityInterface
         ];
     }
 
+    public function toArray()
+    {
+        $array = parent::toArray();
+        unset($array['sender']);
+
+        return $array;
+    }
+
     public function toLog()
     {
         return $this->partitionByArrayKey([

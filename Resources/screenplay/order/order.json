@@ -1,0 +1,91 @@
+{
+    "agreedDate": 1467298898833,
+    "paymentDate": 1467298898833,
+    "orderDate": 1467298898833,
+    "orderNumber": "111111",
+    "originNumber": "22222222",
+    "totalQuantity": 1,
+    "originSite": "ZT",
+    "businessUnit": "ZT",
+    "orderStatus": "Created",
+    "orderType": "Normal",
+    "devolutionRequested": false,
+    "exchangeRequested": false,
+    "totalGross": 10,
+    "totalCommission": 0,
+    "totalDiscount": 0,
+    "totalFreight": 0,
+    "totalNet": 10,
+    "shippings": [
+        {
+            "shippingCode": 1,
+            "status": "Created",
+            "cancellationReason": "string",
+            "freightAmount": 0,
+            "country": "string",
+            "customer": {
+                "document": "string",
+                "stateInscription": "string",
+                "customerName": "string",
+                "recipientName": "string",
+                "tradeName": "string",
+                "cellPhone": "string",
+                "landLine": "string",
+                "address": {
+                    "neighborhood": "string",
+                    "postalCode": "string",
+                    "city": "string",
+                    "complement": "string",
+                    "state": "string",
+                    "street": "string",
+                    "number": "string",
+                    "reference": "string"
+                }
+            },
+            "items": [
+                {
+                    "itemId": 1,
+                    "ean": "46201124641",
+                    "brand": "Nike",
+                    "name": "SKU para homologação",
+                    "quantity": 1,
+                    "sku": "4641",
+                    "departmentName": "Feminino",
+                    "departmentCode": 9,
+                    "totalGross": 113,
+                    "totalCommission": 0,
+                    "totalDiscount": 0,
+                    "totalFreight": 0,
+                    "totalNet": 113,
+                    "grossUnitValue": 10,
+                    "discountUnitValue": 0,
+                    "netUnitValue": 10,
+                    "color": "Incolor",
+                    "flavor": "false",
+                    "size": "P"
+                },
+                {
+                    "itemId": 1,
+                    "ean": "46201124671",
+                    "brand": "Nike",
+                    "name": "SKU para homologação",
+                    "quantity": 1,
+                    "sku": "4641",
+                    "departmentName": "Feminino",
+                    "departmentCode": 9,
+                    "totalGross": 122,
+                    "totalCommission": 0,
+                    "totalDiscount": 0,
+                    "totalFreight": 0,
+                    "totalNet": 122,
+                    "grossUnitValue": 10,
+                    "discountUnitValue": 0,
+                    "netUnitValue": 10,
+                    "color": "Incolor",
+                    "flavor": "false",
+                    "size": "Único"
+                }
+            ]
+        }
+    ]
+}
