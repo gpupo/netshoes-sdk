@@ -24,17 +24,19 @@ class AttributesTest extends TestCaseAbstract
      */
     public function testFactoryElement()
     {
-        $o = new Attributes(
+        $array = [
             [
-                [
-                    'name'  => 'foo',
-                    'value' => 'bar',
-                ],
-            ]
-        );
+                'name'  => 'foo',
+                'value' => 'bar',
+            ],
+        ];
+
+        $o = new Attributes($array);
 
         foreach ($o as $s) {
             $this->assertInstanceOf('Gpupo\NetshoesSdk\Entity\Product\Attributes\Attribute', $s);
         }
+
+        $this->assertSame(json_encode($array), $o->toJson());
     }
 }
