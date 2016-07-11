@@ -13,7 +13,7 @@ if ($dev) {
 
 foreach ([21, 22, 23, 24] as $i) {
     $id = $centena + $i;
-    $data = $makeProduct($id, $i);
+    $data = $makeProduct($id, $i, 'simple', 'modify');
 
     $data['department'] = 'Beleza';
     $data['productType'] = 'Base';

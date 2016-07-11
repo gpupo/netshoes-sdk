@@ -1,4 +1,5 @@
 <?php
+//Cadastro de quatro produtos contendo mais de um Sku
 
 include 'common-product.php';
 

@@ -1,4 +1,5 @@
 <?php
+//Cadastro de quatro produtos contendo apenas um Sku
 
 include 'common-product.php';
 
@@ -6,7 +7,7 @@ if ($dev) {
     return $pronto();
 }
 
-foreach ([21, 22, 23, 24] as $i) {
+foreach ([21, 22, 23, 24, 35, 36, 37, 38, 39] as $i) {
     $id = $centena + $i;
     $data = $makeProduct($id, $i);
     $product = $sdk->createProduct($data);
