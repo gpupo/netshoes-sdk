@@ -1,5 +1,11 @@
 <?php
-//Cadastro de quatro produtos contendo mais de um Sku
+
+/*
+ * Este arquivo faz parte do roteiro de execuções de gpupo/netshoes-sdk
+ * see <http://www.g1mr.com/netshoes-sdk/>
+ * @version 1
+ */
+
 include 'common.php';
 
 if ($dev) {
@@ -14,10 +20,10 @@ foreach ([41, 42, 43, 44] as $i) {
     $operation = $manager->save($product);
 
     if (202 !== $operation->getHttpStatusCode()) {
-        throw new \Exception('FAIL: Cadastro Product #' . $id);
+        throw new \Exception('FAIL: Cadastro Product #'.$id);
     }
 
     foreach ($data['skus'] as $s) {
-        $feedback('Cadastrado Product /products/' . $id . '/skus/' . $s['sku']);
+        $feedback('Cadastrado Product /products/'.$id.'/skus/'.$s['sku']);
     }
 }

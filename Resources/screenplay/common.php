@@ -1,7 +1,13 @@
 <?php
 
-$dev = true;
-$centena = 4620;
+/*
+ * Este arquivo faz parte do roteiro de execuções de gpupo/netshoes-sdk
+ * see <http://www.g1mr.com/netshoes-sdk/>
+ * @version 1
+ */
+
+$dev = false;
+$centena = 3400;
 
 $pronto = function () use ($output) {
     $output->writeln('<comment>Bypassed!</>');
@@ -11,35 +17,34 @@ $war = function ($message) use ($output) {
     $output->writeln('<options=bold> ====>  '.$message.'</>');
 };
 
-$makeSku = function ($id, $i, $size = "P") use ($centena) {
+$makeSku = function ($id, $i, $size = 'P') use ($centena) {
     return [
-        "sku" => $id,
-        "name"=> "SKU para homologação, tipo simples, Serie " . $centena . ' variação ' . $i ,
-        "description"=> "SKU para homologação, descrição original",
-        "gender"=> "Unissex",
-        "eanIsbn"=> $centena . "112" . $id,
-        "size"=> $size,
-        "images"=> [
-            ["url"=> "http://static.sepha.com.br/prd/14000/14080/14080_3_lst_30.jpg"]
+        'sku'         => $id,
+        'name'        => 'SKU para homologação, tipo simples, Serie '.$centena.' variação '.$i,
+        'description' => 'SKU para homologação, descrição original',
+        'gender'      => 'Unissex',
+        'eanIsbn'     => $centena.'112'.$id,
+        'size'        => $size,
+        'images'      => [
+            ['url' => 'http://static.sepha.com.br/prd/14000/14080/14080_3_lst_30.jpg'],
         ],
-        "height"=> "10.0",
-        "width"=> "10.0",
-        "depth"=> "10.0",
-        "weight"=> 0.3,
-        "color"=> "Incolor",
+        'height' => '10.0',
+        'width'  => '10.0',
+        'depth'  => '10.0',
+        'weight' => 0.3,
+        'color'  => 'Incolor',
     ];
 };
 $makeProduct = function ($id, $i, $mode = 'simple', $attributesMode = 'default') use ($centena, $makeSku) {
 
     $attributes = [
-        'default' =>[
-            ["name"=>"Sexo", "value"=>"F"],
+        'default' => [
+            ['name' => 'Sexo', 'value' => 'F'],
         ],
-        'modify' =>[
-            ["name"=>"Sexo", "value"=>"M"],
+        'modify' => [
+            ['name' => 'Sexo', 'value' => 'M'],
         ],
     ];
-
 
     if ('simple' === $mode) {
         $skus = [
@@ -47,10 +52,10 @@ $makeProduct = function ($id, $i, $mode = 'simple', $attributesMode = 'default')
         ];
     } elseif ('multiple' === $mode) {
         $skus = [
-            $makeSku($id.'1', $i . '01', 'XG'),
-            $makeSku($id.'2', $i . '02', "M"),
-            $makeSku($id.'3', $i . '03', "G"),
-            $makeSku($id.'4', $i . '04', "GG"),
+            $makeSku($id.'1', $i.'01', 'XG'),
+            $makeSku($id.'2', $i.'02', 'M'),
+            $makeSku($id.'3', $i.'03', 'G'),
+            $makeSku($id.'4', $i.'04', 'GG'),
         ];
     }
 
@@ -66,7 +71,6 @@ $makeProduct = function ($id, $i, $mode = 'simple', $attributesMode = 'default')
     return $array;
 };
 
-
 $feedback = function ($string) use ($output) {
-    return $output->writeln(date('d/m/Y H:i') .  ' - ' . $string);
+    return $output->writeln(date('d/m/Y H:i').' - '.$string);
 };

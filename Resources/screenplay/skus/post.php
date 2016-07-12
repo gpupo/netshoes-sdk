@@ -1,5 +1,11 @@
 <?php
-//Criação de no mínimo quatro novos Skus em produtos já existentes
+
+/*
+ * Este arquivo faz parte do roteiro de execuções de gpupo/netshoes-sdk
+ * see <http://www.g1mr.com/netshoes-sdk/>
+ * @version 1
+ */
+
 include 'common.php';
 
 if ($dev) {
@@ -11,29 +17,29 @@ foreach ([21, 22, 23, 24, 35, 36, 37, 38, 39] as $i) {
 
     $id = $centena + ($i + 30);
 
-    $data =  [
-       "sku" => $id,
-       "name"=> "SKU para homologação, tipo adicional, Serie " . $centena . ' variação ' . $i ,
-       "description"=> "SKU para homologação, descrição original",
-       "gender"=> "Unissex",
-       "eanIsbn"=> $centena . "112" . $id,
-       "size"=> 'Único',
-       "images"=> [
-           ["url"=> "http://static.sepha.com.br/prd/14000/14080/14080_3_lst_30.jpg"]
+    $data = [
+       'sku'         => $id,
+       'name'        => 'SKU para homologação, tipo adicional, Serie '.$centena.' variação '.$i,
+       'description' => 'SKU para homologação, descrição original',
+       'gender'      => 'Unissex',
+       'eanIsbn'     => $centena.'112'.$id,
+       'size'        => 'Único',
+       'images'      => [
+           ['url' => 'http://static.sepha.com.br/prd/14000/14080/14080_3_lst_30.jpg'],
        ],
-       "height"=> "10.0",
-       "width"=> "10.0",
-       "depth"=> "10.0",
-       "weight"=> 0.3,
-       "color"=> "Incolor",
+       'height' => '10.0',
+       'width'  => '10.0',
+       'depth'  => '10.0',
+       'weight' => 0.3,
+       'color'  => 'Incolor',
    ];
 
     $sku = $sdk->createSku($data);
     $operation = $manager->add($sku, $productId);
 
     if (201 !== $operation->getHttpStatusCode()) {
-        throw new \Exception('FAIL: Cadastro SKU #' . $id);
+        throw new \Exception('FAIL: Cadastro SKU #'.$id);
     }
 
-    $feedback('Adicionado SKU /products/' . $productId . '/skus' . $id);
+    $feedback('Adicionado SKU /products/'.$productId.'/skus'.$id);
 }
