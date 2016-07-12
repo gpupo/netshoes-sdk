@@ -49,7 +49,6 @@ class ScreenplayCommand extends AbstractCommand
                    'path'    => $path,
                 ]);
 
-                //$output->writeln('./bin/netshoes-sdk '.$s);
                 $command->run($t, $output);
             }
         });
@@ -69,7 +68,7 @@ class ScreenplayCommand extends AbstractCommand
                     $path = $input->getArgument('path');
 
                     $filePath = $path.$filename;
-                    $output->writeln('<options=bold>'.$todo.'</>');
+                    $output->writeln("\n".'<options=bold>'.$todo.'</>');
 
                     if (!file_exists($filePath)) {
                         throw new \Exception('Roteiro não implementado:'.$filePath, 1);
@@ -84,7 +83,6 @@ class ScreenplayCommand extends AbstractCommand
                     $implemented = false;
 
                     require $filePath;
-
                 });
         }
     }
