@@ -236,10 +236,10 @@ echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); 
 //..
 $order = $sdk->createOrder($data)->setOrderStatus('shipped');
 $transport = $sdk->createTransport([
-    "carrier":"Correios",
-    "trackingNumber":"PJ521644335BR",
-    "shipDate":"2016-05-10T10:46:00.000-03:00",
-    "estimatedDeliveryDate":"2016-05-10T10:46:00.000-03:00"
+	"carrier"               => "Correios",
+	"trackingNumber"        => "PJ521644335BR",
+	"shipDate"              => "2016-05-10T10:46:00.000-03:00",
+	"estimatedDeliveryDate" => "2016-05-10T10:46:00.000-03:00",
 ]);
 $order->getShipping()->setTransport($transport);
 echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
