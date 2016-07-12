@@ -1,5 +1,11 @@
 <?php
-//Atualizar parcialmente no mínimo quatro produtos criados.
+
+/*
+ * Este arquivo faz parte do roteiro de execuções de gpupo/netshoes-sdk
+ * see <http://www.g1mr.com/netshoes-sdk/>
+ * @version 1
+ */
+
 //As alterações devem incluir department, productType e attributes
 include 'common.php';
 
@@ -16,5 +22,5 @@ foreach ([21, 22, 23, 24] as $i) {
 
     $operation = $manager->update($sdk->createProduct($data), $sdk->createProduct([]));
 
-    $feedback('Atualizado parcialmente Product /products/' . $id);
+    $feedback('Atualizado parcialmente Product /products/'.$id);
 }

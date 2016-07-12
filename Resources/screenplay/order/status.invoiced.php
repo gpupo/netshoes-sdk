@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * Este arquivo faz parte do roteiro de execuções de gpupo/netshoes-sdk
+ * see <http://www.g1mr.com/netshoes-sdk/>
+ * @version 1
+ */
+
 $invoice = $sdk->createInvoice([
     'number'    => 4003,
     'line'      => 1,
@@ -12,5 +18,5 @@ $order->getShipping()->setInvoice($invoice);
 $operation = $manager->updateStatus($order);
 
 if (200 !== $operation->getHttpStatusCode()) {
-    throw new \Exception('FAIL ['.$status.']: #' . $id);
+    throw new \Exception('FAIL ['.$status.']: #'.$id);
 }
