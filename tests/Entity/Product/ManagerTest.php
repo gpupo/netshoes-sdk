@@ -177,7 +177,7 @@ class ManagerTest extends TestCaseAbstract
      */
     public function patch()
     {
-        $manager = $this->getManager('Update/info-response.json');
+        $manager = $this->getManager('Update/patch-response.json');
         $previousArray = $this->getResourceJson('fixture/Product/Update/previous.json');
         $currentArray = $this->getResourceJson('fixture/Product/Update/patch.json');
         $previous = $this->getFactory()->createProduct($previousArray);
