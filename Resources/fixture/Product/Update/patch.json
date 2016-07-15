@@ -1,0 +1,14 @@
+{
+  "productId": "14080",
+  "department": "Beleza",
+  "productType": "Base",
+  "skus": [
+    {
+        "sku": "14080",
+        "sellPrice": 75.88,
+        "listPrice": 100,
+        "stock": 20,
+        "status": true
+    }
+  ]
+}

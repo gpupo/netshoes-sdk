@@ -148,7 +148,48 @@ class ManagerTest extends TestCaseAbstract
 
         $this->assertSame(
             [
-                'info' => false,
+                'patch' => false,
+                'skus' => [[
+                    'sku'      => '14080',
+                    'bypassed' => [
+                        'info',
+                        'Status',
+                        'Price',
+                    ],
+                    'code' => [
+                        'Stock'         => 200,
+                        'PriceSchedule' => 200,
+                    ],
+                    'updated' => [
+                        'Stock',
+                        'PriceSchedule',
+                    ],
+                ],
+                ], ],
+            $operation
+        );
+    }
+
+    /**
+     * @testdox Atualiza parcialmente as informações de um produto
+     * @covers ::patch
+     * @test
+     */
+    public function patch()
+    {
+        $manager = $this->getManager('Update/info-response.json');
+        $previousArray = $this->getResourceJson('fixture/Product/Update/previous.json');
+        $currentArray = $this->getResourceJson('fixture/Product/Update/patch.json');
+        $previous = $this->getFactory()->createProduct($previousArray);
+        $current = $this->getFactory()->createProduct($currentArray);
+        $operation = $manager->update($current, $previous);
+
+        $this->assertSame(
+            [
+                'patch' => [
+                    'fields'=> ['department','productType'],
+                    'response_code' => 200,
+                ],
                 'skus' => [[
                     'sku'      => '14080',
                     'bypassed' => [
