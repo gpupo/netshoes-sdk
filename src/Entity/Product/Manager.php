@@ -33,6 +33,27 @@ class Manager extends AbstractManager
         'fetch'    => ['GET', '/products?page={offset}&size={limit}'],
     ];
 
+
+    public function patch(EntityInterface $entity, $compare)
+    {
+        if (empty($compare)) {
+            return false;
+        }
+
+        $json = json_encode($entity->toPatch($compare));
+        $map = $this->factoryMap('patch', ['itemId' => $entity->getId()]);
+        $operation = $this->execute($map, $json);
+
+        $feedback = [
+            'fields'    => $compare,
+            'response_code' => $operation->getHttpStatusCode(),
+        ];
+
+        $this->log('info', 'Operação de Atualização de produto (PATCH)', $feedback);
+
+        return $feedback;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -42,10 +63,11 @@ class Manager extends AbstractManager
             throw new \InvalidArgumentException('Product precisa conter SKU!');
         }
 
-        $response = [
-            'info' => false,
-            'skus' => [],
-        ];
+        $response = [];
+
+        $compare = $this->attributesDiff($entity, $existent, ['department','productType']);
+        $response['patch'] = $this->patch($entity, $compare);
+        $response['skus'] = [];
 
         $skuManager = $this->factorySubManager(Factory::getInstance(), 'sku');
 
@@ -57,6 +79,7 @@ class Manager extends AbstractManager
 
             $response['skus'][] = $skuManager->update($sku, $previous);
         }
+
 
         return $response;
     }

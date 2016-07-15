@@ -135,7 +135,7 @@ class Manager extends AbstractManager
     {
         $compare = $this->attributesDiff($entity, $existent, ['name', 'color',
             'size', 'gender', 'eanIsbn', 'images', 'video', 'height',
-            'width', 'depth', 'weight', ]);
+            'width', 'depth', 'weight']);
 
         if (false === $compare) {
             $response['bypassed'][] = 'info';
