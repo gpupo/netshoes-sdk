@@ -1,0 +1,19 @@
+{
+    "productId": "3421",
+    "department": "Beleza",
+    "productType": "Base",
+    "links": [
+        {
+            "rel": "self",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/3421"
+        },
+        {
+            "rel": "skus",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/3421/skus"
+        },
+        {
+            "rel": "attributes",
+            "href": "http://sandbox-catalogo-vs.netshoes.local/mp-catalogo-api/rs/v1/products/3421/attributes"
+        }
+    ]
+}
