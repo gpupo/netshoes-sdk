@@ -27,5 +27,5 @@ foreach ([21, 22, 23, 24] as $i) {
         throw new \Exception('FAIL: Update Status SKU #'.$id);
     }
 
-    $feedback('Atualizado o Status do SKU /products/'.$id.'/skus/'.$id);
+    $feedback('Atualizado o Status do SKU /products/'.$id.'/skus/'.$id.'/bus/ZT/status');
 }
