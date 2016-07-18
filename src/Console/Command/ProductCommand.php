@@ -24,7 +24,20 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ProductCommand extends AbstractCommand
 {
-    protected $list = ['view', 'insert', 'update'];
+    protected $list = ['view', 'insert', 'update', 'list'];
+
+    public function list($app)
+    {
+        $this->getApp()->appendCommand('product:list', 'List')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $collection = $app->factorySdk($list)->factoryManager('product')->fetch(0, 50);
+                foreach ($collection as $p) {
+                    $app->displayProduct($p, $output);
+                    $output->writeln("\n\n--------------------------------------\n\n");
+                }
+            });
+    }
 
     public function insert($app)
     {
@@ -65,19 +78,9 @@ class ProductCommand extends AbstractCommand
                     return $output->writeln('<error>Produto não encontrado!</error>');
                 }
 
-                $app->displayTableResults($output, [[
-                    'Id'           => $p->getProductId(),
-                    'Brand'        => $p->getBrand(),
-                    'Department'   => $p->getDepartment(),
-                    'Product Type' => $p->getProductType(),
-                ]]);
-
-                $output->writeln('<fg=yellow>Skus</>');
-
-                $app->displayTableResults($output, $p->getSkus());
+                $app->displayProduct($p, $output);
 
                 $output->writeln('<fg=yellow>Detalhes</>');
-
                 $command = $app->find('product:sku:details');
                 $t = new ArrayInput([
                     'command' => 'product:sku:details',
