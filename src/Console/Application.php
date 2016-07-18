@@ -30,9 +30,7 @@ class Application extends AbstractApplication
         $output->writeln('<options=bold>'
         .'Atenção! Esta aplicação é apenas uma '
         .'ferramenta de apoio ao desenvolvedor e não deve ser usada no ambiente de produção!'
-        ."\n"
-        .'</>'
-        ."\n");
+        .'</>');
 
         return parent::doRun($input, $output);
     }
@@ -46,7 +44,7 @@ class Application extends AbstractApplication
         ],
         [
             'key'     => 'env',
-            'options' => ['sandbox', 'api'],
+            'options' => ['sandbox', 'marketplace'],
             'default' => 'sandbox',
             'name'    => 'Version',
         ],
@@ -64,7 +62,10 @@ class Application extends AbstractApplication
 
     public function factorySdk(array $options, $loggerChannel = 'bin', $verbose = false)
     {
+        if (array_key_exists('env', $options)) {
+            $options['version'] = $options['env'];
+        }
+
         return  Factory::getInstance()->setup($options, $this->factoryLogger($loggerChannel, $verbose));
     }
-
 }

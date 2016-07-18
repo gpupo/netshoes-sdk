@@ -95,7 +95,7 @@ $ ./vendor/bin/netshoes-sdk order:update:to:delivered 111111 --file=vendor/gpupo
 
 ### Configurações
 
-Você poder criar um arquivo chamado ``app.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando
+Você poder criar um arquivo chamado ``bin/.netshoes.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando
 
 ```JSON
 {
@@ -104,4 +104,4 @@ Você poder criar um arquivo chamado ``app.json`` com suas configurações perso
 }
 ```
 
-Utilize como modelo o arquivo ``app.json.dist``
+Utilize como modelo o arquivo ``bin/app.json.dist``
