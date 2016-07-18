@@ -19,6 +19,7 @@ use Gpupo\NetshoesSdk\Factory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Product\Product;
 
 /**
  * @codeCoverageIgnore
@@ -75,5 +76,19 @@ class Application extends AbstractApplication
 
         $output->writeln('Shipping Items - Order #<comment>'.$order->getId().'</comment>');
         $this->displayTableResults($output, $order->getShipping()->getItems()->toLog());
+    }
+
+    public function displayProduct(Product $p, OutputInterface $output)
+    {
+        $this->displayTableResults($output, [[
+            'Id'           => $p->getProductId(),
+            'Brand'        => $p->getBrand(),
+            'Department'   => $p->getDepartment(),
+            'Product Type' => $p->getProductType(),
+        ]]);
+
+        $output->writeln('<fg=yellow>Skus</>');
+
+        $this->displayTableResults($output, $p->getSkus());
     }
 }
