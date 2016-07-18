@@ -20,7 +20,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
 
 $app = new Application("netshoes-sdk");
-$app->findConfig(['./']);
+$app->findConfig(['./', 'bin/'], "netshoes-sdk");
 
 foreach (['Product', 'Sku', 'Detail', 'Templates', 'Order', 'Screenplay'] as $className) {
     $n =  __NAMESPACE__.'\\'.$className . 'Command';
@@ -32,7 +32,7 @@ $app->appendCommand('credential:test', 'Testa a validade de suas credenciais')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
         $list = $app->processInputParameters([], $input, $output);
 
-        if ($app->factorySdk($list)->factoryManager('templates')->getBrands()) {
+        if ($app->factorySdk($list)->factoryManager('templates')->fetchByRoute('brands')) {
             $output->writeln('<info>Success!</info>');
         } else {
             $output->writeln('<error>Error</error>');
