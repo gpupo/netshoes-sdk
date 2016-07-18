@@ -12,7 +12,7 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings;
+namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Items;
 
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Items;

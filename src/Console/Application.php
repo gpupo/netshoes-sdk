@@ -14,7 +14,6 @@
 
 namespace Gpupo\NetshoesSdk\Console;
 
-use Exception;
 use Gpupo\CommonSdk\Console\AbstractApplication;
 use Gpupo\NetshoesSdk\Factory;
 use Symfony\Component\Console\Input\InputInterface;
@@ -63,30 +62,9 @@ class Application extends AbstractApplication
         ],
     ];
 
-    /**
-     * @codeCoverageIgnore
-     */
-    protected function getLogFilePath()
-    {
-        return 'var/logs/console.log';
-    }
-
     public function factorySdk(array $options, $loggerChannel = 'bin', $verbose = false)
     {
         return  Factory::getInstance()->setup($options, $this->factoryLogger($loggerChannel, $verbose));
     }
 
-    public function appendCommand($name, $description, array $definition = [])
-    {
-        return $this->register($name)
-            ->setDescription($description)
-            ->setDefinition($this->factoryDefinition($definition));
-    }
-
-    public function showException(Exception $e, OutputInterface $output, $description = 'Erro')
-    {
-        $output->writeln('<error>'.$description.'</error>');
-        $output->writeln('Message: <comment>'.$e->getMessage().'</comment>');
-        $output->writeln('Error Code: <comment>'.$e->getCode().'</comment>');
-    }
 }

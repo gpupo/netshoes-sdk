@@ -19,7 +19,7 @@ use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Templates\Manager
  */
-class BrandTest extends TestCaseAbstract
+class ManagerTest extends TestCaseAbstract
 {
     protected function factory($data)
     {
