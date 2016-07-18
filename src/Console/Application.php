@@ -18,6 +18,7 @@ use Gpupo\CommonSdk\Console\AbstractApplication;
 use Gpupo\NetshoesSdk\Factory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Gpupo\NetshoesSdk\Entity\Order\Order;
 
 /**
  * @codeCoverageIgnore
@@ -62,10 +63,17 @@ class Application extends AbstractApplication
 
     public function factorySdk(array $options, $loggerChannel = 'bin', $verbose = false)
     {
-        if (array_key_exists('env', $options)) {
-            $options['version'] = $options['env'];
-        }
-
         return  Factory::getInstance()->setup($options, $this->factoryLogger($loggerChannel, $verbose));
+    }
+
+    public function displayOrder(Order $order, OutputInterface $output)
+    {
+        $output->writeln('Order #<comment>'.$order->getId().'</comment>');
+        $this->displayTableResults($output, [$order->toLog()]);
+        $output->writeln('Shipping - Order #<comment>'.$order->getId().'</comment>');
+        $this->displayTableResults($output, [$order->getShipping()->toLog()]);
+
+        $output->writeln('Shipping Items - Order #<comment>'.$order->getId().'</comment>');
+        $this->displayTableResults($output, $order->getShipping()->getItems()->toLog());
     }
 }

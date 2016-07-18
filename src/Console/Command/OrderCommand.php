@@ -24,7 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class OrderCommand extends AbstractCommand
 {
-    protected $list = ['view', 'update'];
+    protected $list = ['view', 'update', 'list'];
 
     protected function update($app)
     {
@@ -32,6 +32,15 @@ class OrderCommand extends AbstractCommand
         $this->factoryUpdate($app, 'invoiced');
         $this->factoryUpdate($app, 'shipped');
         $this->factoryUpdate($app, 'delivered');
+    }
+
+    protected function list($app)
+    {
+        $this->factoryList($app, 'approved');
+        $this->factoryList($app, 'invoiced');
+        $this->factoryList($app, 'shipped');
+        $this->factoryList($app, 'delivered');
+        $this->factoryList($app, 'canceled');
     }
 
     protected function factoryUpdate($app, $type, Closure $decorator = null)
@@ -81,14 +90,22 @@ class OrderCommand extends AbstractCommand
                 $list = $app->processInputParameters([], $input, $output);
                 $id = $input->getArgument('orderId');
                 $p = $app->factorySdk($list)->factoryManager('order')->findById($id);
+                $app->displayOrder($p, $output);
+            });
+    }
 
-                $output->writeln('Order #<comment>'.$id.'</comment>');
-                $app->displayTableResults($output, [$p->toLog()]);
-                $output->writeln('Shipping - Order #<comment>'.$id.'</comment>');
-                $app->displayTableResults($output, [$p->getShipping()->toLog()]);
+    protected function factoryList($app, $type)
+    {
+        $this->getApp()->appendCommand('order:list:'.$type, 'Mostra os pedidos mais recentes em status ['.$type.']')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $type) {
+                $list = $app->processInputParameters([], $input, $output);
+                $collection = $app->factorySdk($list)->factoryManager('order')
+                ->fetch(0, 50, ['orderStatus' => $type]);
 
-                $output->writeln('Shipping Items - Order #<comment>'.$id.'</comment>');
-                $app->displayTableResults($output, $p->getShipping()->getItems()->toLog());
+                foreach ($collection as $p) {
+                    $app->displayOrder($p, $output);
+                    $output->writeln("\n\n--------------------------------------\n\n");
+                }
             });
     }
 }
