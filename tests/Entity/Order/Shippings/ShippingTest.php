@@ -15,9 +15,9 @@
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
-use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping;
 
 class ShippingTest extends TestCaseAbstract
 {

@@ -116,4 +116,26 @@ class Item extends EntityAbstract implements EntityInterface
             'quantity',
         ]);
     }
+
+    public function toSchema()
+    {
+        $array = [
+            'itemOffered' => [
+                'name'  => $this->getName(),
+                'sku'   => $this->getSku(),
+                'url'   => '',
+                'image' => '',
+            ],
+            'price'            => $this->getTotalNet(),
+            'priceCurrency'    => 'BRL',
+            'eligibleQuantity' => [
+                'value' => $this->getQuantity(),
+            ],
+            'seller' => [
+                'name' => 'string',
+            ],
+        ];
+
+        return $array;
+    }
 }
