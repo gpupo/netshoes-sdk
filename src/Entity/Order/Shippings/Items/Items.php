@@ -23,13 +23,23 @@ class Items extends CollectionAbstract
         return new Item($data);
     }
 
-    public function toLog()
+    private function to($method)
     {
         $array = [];
         foreach ($this->all() as $item) {
-            $array[] = $item->toLog();
+            $array[] = $item->$method();
         }
 
         return $array;
+    }
+
+    public function toLog()
+    {
+        return $this->to('toLog');
+    }
+
+    public function toSchema()
+    {
+        return $this->to('toSchema');
     }
 }
