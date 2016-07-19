@@ -18,6 +18,9 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
+/**
+ * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item
+ */
 class ItemTest extends TestCaseAbstract
 {
     use EntityTrait;
@@ -66,8 +69,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getBrand()`` para acessar Brand
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterBrand(EntityInterface $object, $expected = null)
@@ -78,8 +81,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setBrand()`` que define Brand
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterBrand(EntityInterface $object, $expected = null)
@@ -90,8 +93,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getColor()`` para acessar Color
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterColor(EntityInterface $object, $expected = null)
@@ -102,8 +105,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setColor()`` que define Color
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterColor(EntityInterface $object, $expected = null)
@@ -114,8 +117,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getDepartmentCode()`` para acessar DepartmentCode
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterDepartmentCode(EntityInterface $object, $expected = null)
@@ -126,8 +129,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setDepartmentCode()`` que define DepartmentCode
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterDepartmentCode(EntityInterface $object, $expected = null)
@@ -138,8 +141,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getDepartmentName()`` para acessar DepartmentName
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterDepartmentName(EntityInterface $object, $expected = null)
@@ -150,8 +153,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setDepartmentName()`` que define DepartmentName
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterDepartmentName(EntityInterface $object, $expected = null)
@@ -162,8 +165,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getDiscountUnitValue()`` para acessar DiscountUnitValue
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterDiscountUnitValue(EntityInterface $object, $expected = null)
@@ -174,8 +177,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setDiscountUnitValue()`` que define DiscountUnitValue
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterDiscountUnitValue(EntityInterface $object, $expected = null)
@@ -186,8 +189,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getEan()`` para acessar Ean
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterEan(EntityInterface $object, $expected = null)
@@ -198,8 +201,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setEan()`` que define Ean
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterEan(EntityInterface $object, $expected = null)
@@ -210,8 +213,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getFlavor()`` para acessar Flavor
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterFlavor(EntityInterface $object, $expected = null)
@@ -222,8 +225,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setFlavor()`` que define Flavor
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterFlavor(EntityInterface $object, $expected = null)
@@ -234,8 +237,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getGrossUnitValue()`` para acessar GrossUnitValue
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterGrossUnitValue(EntityInterface $object, $expected = null)
@@ -246,8 +249,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setGrossUnitValue()`` que define GrossUnitValue
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterGrossUnitValue(EntityInterface $object, $expected = null)
@@ -258,8 +261,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getItemId()`` para acessar ItemId
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterItemId(EntityInterface $object, $expected = null)
@@ -270,8 +273,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setItemId()`` que define ItemId
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterItemId(EntityInterface $object, $expected = null)
@@ -282,8 +285,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getManufacturerCode()`` para acessar ManufacturerCode
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterManufacturerCode(EntityInterface $object, $expected = null)
@@ -294,8 +297,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setManufacturerCode()`` que define ManufacturerCode
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterManufacturerCode(EntityInterface $object, $expected = null)
@@ -306,8 +309,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getName()`` para acessar Name
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterName(EntityInterface $object, $expected = null)
@@ -318,8 +321,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setName()`` que define Name
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterName(EntityInterface $object, $expected = null)
@@ -330,8 +333,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getNetUnitValue()`` para acessar NetUnitValue
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterNetUnitValue(EntityInterface $object, $expected = null)
@@ -342,8 +345,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setNetUnitValue()`` que define NetUnitValue
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterNetUnitValue(EntityInterface $object, $expected = null)
@@ -354,8 +357,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getQuantity()`` para acessar Quantity
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterQuantity(EntityInterface $object, $expected = null)
@@ -366,8 +369,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setQuantity()`` que define Quantity
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterQuantity(EntityInterface $object, $expected = null)
@@ -378,8 +381,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getSize()`` para acessar Size
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterSize(EntityInterface $object, $expected = null)
@@ -390,8 +393,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setSize()`` que define Size
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterSize(EntityInterface $object, $expected = null)
@@ -402,8 +405,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getSku()`` para acessar Sku
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterSku(EntityInterface $object, $expected = null)
@@ -414,8 +417,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setSku()`` que define Sku
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterSku(EntityInterface $object, $expected = null)
@@ -426,8 +429,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getStatus()`` para acessar Status
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterStatus(EntityInterface $object, $expected = null)
@@ -438,8 +441,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setStatus()`` que define Status
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterStatus(EntityInterface $object, $expected = null)
@@ -450,8 +453,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalCommission()`` para acessar TotalCommission
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterTotalCommission(EntityInterface $object, $expected = null)
@@ -462,8 +465,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalCommission()`` que define TotalCommission
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterTotalCommission(EntityInterface $object, $expected = null)
@@ -474,8 +477,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalDiscount()`` para acessar TotalDiscount
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterTotalDiscount(EntityInterface $object, $expected = null)
@@ -486,8 +489,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalDiscount()`` que define TotalDiscount
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterTotalDiscount(EntityInterface $object, $expected = null)
@@ -498,8 +501,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalFreight()`` para acessar TotalFreight
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterTotalFreight(EntityInterface $object, $expected = null)
@@ -510,8 +513,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalFreight()`` que define TotalFreight
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterTotalFreight(EntityInterface $object, $expected = null)
@@ -522,8 +525,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalGross()`` para acessar TotalGross
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterTotalGross(EntityInterface $object, $expected = null)
@@ -534,8 +537,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalGross()`` que define TotalGross
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterTotalGross(EntityInterface $object, $expected = null)
@@ -546,8 +549,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getTotalNet()`` para acessar TotalNet
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterTotalNet(EntityInterface $object, $expected = null)
@@ -558,8 +561,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setTotalNet()`` que define TotalNet
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterTotalNet(EntityInterface $object, $expected = null)
@@ -570,8 +573,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getCheckInData()`` para acessar CheckInData
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterCheckInData(EntityInterface $object, $expected = null)
@@ -582,8 +585,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setCheckInData()`` que define CheckInData
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterCheckInData(EntityInterface $object, $expected = null)
@@ -594,8 +597,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getDevolutionData()`` para acessar DevolutionData
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterDevolutionData(EntityInterface $object, $expected = null)
@@ -606,8 +609,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setDevolutionData()`` que define DevolutionData
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterDevolutionData(EntityInterface $object, $expected = null)
@@ -618,8 +621,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getDevolutionExchangeStatus()`` para acessar DevolutionExchangeStatus
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterDevolutionExchangeStatus(EntityInterface $object, $expected = null)
@@ -630,8 +633,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setDevolutionExchangeStatus()`` que define DevolutionExchangeStatus
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterDevolutionExchangeStatus(EntityInterface $object, $expected = null)
@@ -642,8 +645,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``getExchangeProcessCode()`` para acessar ExchangeProcessCode
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::get
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::get
+     * @cover ::getSchema
      * @test
      */
     public function getterExchangeProcessCode(EntityInterface $object, $expected = null)
@@ -654,8 +657,8 @@ class ItemTest extends TestCaseAbstract
     /**
      * @testdox Possui método ``setExchangeProcessCode()`` que define ExchangeProcessCode
      * @dataProvider dataProviderObject
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::set
-     * @cover \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item::getSchema
+     * @cover ::set
+     * @cover ::getSchema
      * @test
      */
     public function setterExchangeProcessCode(EntityInterface $object, $expected = null)
