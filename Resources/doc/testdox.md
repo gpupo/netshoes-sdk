@@ -275,7 +275,7 @@
 - [x] Possui método ``setExchangeProcessCode()`` que define ExchangeProcessCode 
 - [x] Possui métodos especiais para output de informações
 
-### NetshoesSdk\Entity\Order\Shippings\Items
+### NetshoesSdk\Entity\Order\Shippings\Items\Items
 
 
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item``
@@ -379,6 +379,7 @@
 - [x] Recebe false em caso de produto inexistente
 - [x] A Atualização de um Product requer que ele contenha Skus
 - [x] Atualiza o SKU de um produto
+- [x] Atualiza parcialmente as informações de um produto
 
 ### NetshoesSdk\Entity\Product\ProductCollection
 
@@ -531,12 +532,6 @@
 
 - [x] Encontra um Sku pelo Id
 
-### NetshoesSdk\Entity\Templates\Brand
-
-
-- [x] Possui Acesso a lista de marcas cadastradas
-- [x] Cada objeto da lista é uma instância de Item
-
 ### NetshoesSdk\Entity\Templates\Item
 
 
@@ -547,6 +542,12 @@
 - [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
 - [x] Possui método ``setExternalCode()`` que define ExternalCode 
 - [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Templates\Manager
+
+
+- [x] Possui Acesso a lista de marcas cadastradas
+- [x] Cada objeto da lista é uma instância de Item
 
 ### NetshoesSdk\Entity\Templates\TemplatesCollection
 

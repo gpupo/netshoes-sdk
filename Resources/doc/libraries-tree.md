@@ -1,6 +1,6 @@
 ## Árvore de dependências (libraries)
 ```
-gpupo/common-sdk 2.0.11 Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
+gpupo/common-sdk 2.2.0 Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
 |--codeclimate/php-test-reporter @dev
 |  |--ext-curl *
 |  |--php >=5.3
@@ -32,45 +32,17 @@ gpupo/common-sdk 2.0.11 Componente de uso comum entre SDKs para integração a p
 |        `--php >=5.3.3
 |--gpupo/cache *
 |  |--gpupo/common *
-|  |  |--doctrine/common ~2.5.1
-|  |  |  |--doctrine/annotations 1.*
-|  |  |  |  |--doctrine/lexer 1.*
-|  |  |  |  |  `--php >=5.3.2
-|  |  |  |  `--php >=5.3.2
-|  |  |  |--doctrine/cache 1.*
-|  |  |  |  `--php ~5.5|~7.0
-|  |  |  |--doctrine/collections 1.*
-|  |  |  |  `--php >=5.3.2
-|  |  |  |--doctrine/inflector 1.*
-|  |  |  |  `--php >=5.3.2
-|  |  |  |--doctrine/lexer 1.*
-|  |  |  |  `--php >=5.3.2
-|  |  |  `--php >=5.3.2
 |  |  `--php ^5.6 || ^7.0
 |  |--php ^5.6 || ^7.0
 |  `--psr/cache 1.0.0
 |     `--php >=5.3.0
-|--gpupo/common *
-|  |--doctrine/common ~2.5.1
-|  |  |--doctrine/annotations 1.*
-|  |  |  |--doctrine/lexer 1.*
-|  |  |  |  `--php >=5.3.2
-|  |  |  `--php >=5.3.2
-|  |  |--doctrine/cache 1.*
-|  |  |  `--php ~5.5|~7.0
-|  |  |--doctrine/collections 1.*
-|  |  |  `--php >=5.3.2
-|  |  |--doctrine/inflector 1.*
-|  |  |  `--php >=5.3.2
-|  |  |--doctrine/lexer 1.*
-|  |  |  `--php >=5.3.2
-|  |  `--php >=5.3.2
+|--gpupo/common ^1.7.0
 |  `--php ^5.6 || ^7.0
 |--monolog/monolog *
 |  |--php >=5.3.0
 |  `--psr/log ~1.0
 |--php ^5.6 || ^7.0
-|--phpunit/phpunit ~5.4
+|--phpunit/phpunit ^5.4
 |  |--ext-dom *
 |  |--ext-json *
 |  |--ext-pcre *
@@ -162,10 +134,10 @@ gpupo/common-sdk 2.0.11 Componente de uso comum entre SDKs para integração a p
 |  |  `--php >=5.6
 |  `--symfony/yaml ~2.1|~3.0
 |     `--php >=5.5.9
-|--psr/log ~1.0
+|--psr/log ^1.0
 |--sebastian/peek-and-poke 1.0.x@dev
 |  `--php >=5.6.0
-|--symfony/console ~3.1
+|--symfony/console ^3.1
 |  |--php >=5.5.9
 |  `--symfony/polyfill-mbstring ~1.0
 |     `--php >=5.3.3

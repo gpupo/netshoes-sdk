@@ -356,7 +356,7 @@ $ ./vendor/bin/netshoes-sdk order:update:to:delivered 111111 --file=vendor/gpupo
 
 ### Configurações
 
-Você poder criar um arquivo chamado ``app.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando
+Você poder criar um arquivo chamado ``bin/.netshoes.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando
 
 ```JSON
 {
@@ -365,7 +365,7 @@ Você poder criar um arquivo chamado ``app.json`` com suas configurações perso
 }
 ```
 
-Utilize como modelo o arquivo ``app.json.dist``
+Utilize como modelo o arquivo ``bin/app.json.dist``
 
 
 
@@ -700,7 +700,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setExchangeProcessCode()`` que define ExchangeProcessCode 
 - [x] Possui métodos especiais para output de informações
 
-### NetshoesSdk\Entity\Order\Shippings\Items
+### NetshoesSdk\Entity\Order\Shippings\Items\Items
 
 
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item``
@@ -804,6 +804,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Recebe false em caso de produto inexistente
 - [x] A Atualização de um Product requer que ele contenha Skus
 - [x] Atualiza o SKU de um produto
+- [x] Atualiza parcialmente as informações de um produto
 
 ### NetshoesSdk\Entity\Product\ProductCollection
 
@@ -956,12 +957,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Encontra um Sku pelo Id
 
-### NetshoesSdk\Entity\Templates\Brand
-
-
-- [x] Possui Acesso a lista de marcas cadastradas
-- [x] Cada objeto da lista é uma instância de Item
-
 ### NetshoesSdk\Entity\Templates\Item
 
 
@@ -972,6 +967,12 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
 - [x] Possui método ``setExternalCode()`` que define ExternalCode 
 - [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Templates\Manager
+
+
+- [x] Possui Acesso a lista de marcas cadastradas
+- [x] Cada objeto da lista é uma instância de Item
 
 ### NetshoesSdk\Entity\Templates\TemplatesCollection
 
@@ -997,18 +998,12 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 Name | Version | Description
 -----|---------|------------------------------------------------------
 codeclimate/php-test-reporter | v0.3.2 | PHP client for reporting test coverage to Code Climate
-doctrine/annotations | v1.2.7 | Docblock Annotations Parser
-doctrine/cache | v1.6.0 | Caching library offering an object-oriented API for many cache backends
-doctrine/collections | v1.3.0 | Collections Abstraction library
-doctrine/common | v2.5.3 | Common Library for Doctrine projects
-doctrine/inflector | v1.1.0 | Common String Manipulations with regard to casing and singular/plural rules.
 doctrine/instantiator | 1.0.5 | A small, lightweight utility to instantiate objects in PHP without invoking their constructors
-doctrine/lexer | v1.0.1 | Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.
 gpupo/cache | 1.3.0 | Caching library that implements PSR-6
-gpupo/common | 1.6.6 | Common Objects
-gpupo/common-sdk | 2.0.11 | Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
+gpupo/common | 1.7.3 | Common Objects
+gpupo/common-sdk | 2.2.0 | Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
 guzzle/guzzle | v3.9.3 | PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle
-monolog/monolog | 1.19.0 | Sends your logs to files, sockets, inboxes, databases and various web services
+monolog/monolog | 1.20.0 | Sends your logs to files, sockets, inboxes, databases and various web services
 myclabs/deep-copy | 1.5.1 | Create deep copies (clones) of your objects
 phpdocumentor/reflection-common | 1.0 | Common reflection classes used by phpdocumentor to reflect the code structure
 phpdocumentor/reflection-docblock | 3.1.0 | With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.
@@ -1035,13 +1030,13 @@ sebastian/peek-and-poke | dev-master a8295 | Proxy for accessing non-public attr
 sebastian/recursion-context | 1.0.2 | Provides functionality to recursively process PHP variables
 sebastian/resource-operations | 1.0.0 | Provides a list of PHP built-in functions that operate on resources
 sebastian/version | 2.0.0 | Library that helps with managing the version number of Git-hosted PHP projects
-symfony/config | v3.1.1 | Symfony Config Component
-symfony/console | v3.1.1 | Symfony Console Component
-symfony/event-dispatcher | v2.8.7 | Symfony EventDispatcher Component
-symfony/filesystem | v3.1.1 | Symfony Filesystem Component
+symfony/config | v3.1.2 | Symfony Config Component
+symfony/console | v3.1.2 | Symfony Console Component
+symfony/event-dispatcher | v2.8.8 | Symfony EventDispatcher Component
+symfony/filesystem | v3.1.2 | Symfony Filesystem Component
 symfony/polyfill-mbstring | v1.2.0 | Symfony polyfill for the Mbstring extension
-symfony/stopwatch | v3.1.1 | Symfony Stopwatch Component
-symfony/yaml | v3.1.1 | Symfony Yaml Component
+symfony/stopwatch | v3.1.2 | Symfony Stopwatch Component
+symfony/yaml | v3.1.2 | Symfony Yaml Component
 twig/twig | v1.24.1 | Twig, the flexible, fast, and secure template language for PHP
 webmozart/assert | 1.0.2 | Assertions to validate method input/output with nice error messages.
 
