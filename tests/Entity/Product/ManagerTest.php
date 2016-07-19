@@ -149,7 +149,7 @@ class ManagerTest extends TestCaseAbstract
         $this->assertSame(
             [
                 'patch' => false,
-                'skus' => [[
+                'skus'  => [[
                     'sku'      => '14080',
                     'bypassed' => [
                         'info',
@@ -187,7 +187,7 @@ class ManagerTest extends TestCaseAbstract
         $this->assertSame(
             [
                 'patch' => [
-                    'fields'=> ['department','productType'],
+                    'fields'        => ['department', 'productType'],
                     'response_code' => 200,
                 ],
                 'skus' => [[

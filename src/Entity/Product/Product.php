@@ -55,8 +55,7 @@ class Product extends EntityAbstract implements EntityInterface
     public function toPatch(array $diff)
     {
         $diff[] = 'productId';
-        
+
         return $this->partitionByArrayKey($diff);
     }
-
 }
