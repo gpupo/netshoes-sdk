@@ -15,11 +15,11 @@
 namespace Gpupo\NetshoesSdk\Console;
 
 use Gpupo\CommonSdk\Console\AbstractApplication;
+use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Product\Product;
 use Gpupo\NetshoesSdk\Factory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Gpupo\NetshoesSdk\Entity\Order\Order;
-use Gpupo\NetshoesSdk\Entity\Product\Product;
 
 /**
  * @codeCoverageIgnore

@@ -15,6 +15,7 @@
 namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Exception\ManagerException;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
 class Manager extends AbstractManager
@@ -71,10 +72,16 @@ class Manager extends AbstractManager
 
     protected function getPriceScheduleCollection(EntityInterface $sku)
     {
-        $response = $this->perform($this->factoryMap('getPriceSchedule', ['sku' => $sku->getId()]));
-        $data = $this->processResponse($response);
+        try {
+            $response = $this->perform($this->factoryMap('getPriceSchedule', ['sku' => $sku->getId()]));
+            $data = $this->processResponse($response);
 
-        if (empty($data)) {
+            if (empty($data)) {
+                throw new ManagerException('No price schedule on SKU #'.$sku->getId());
+            }
+        } catch (ManagerException $e) {
+            $this->getLogger()->addError($e->getMessage());
+
             return;
         }
 
@@ -101,9 +108,14 @@ class Manager extends AbstractManager
     protected function hydrate(EntityInterface $sku)
     {
         $sku->setPrice($this->getDetail($sku, 'Price'))
-            ->setPriceSchedule($this->getPriceScheduleCollection($sku)->getCurrent())
             ->setStock($this->getDetail($sku, 'Stock'))
             ->setStatus($this->getDetail($sku, 'Status'));
+
+        $ps = $this->getPriceScheduleCollection($sku);
+        $sku->setPriceSchedule(false);
+        if ($ps instanceof PriceScheduleCollection) {
+            $sku->setPriceSchedule($ps->getCurrent());
+        }
 
         return $sku;
     }
@@ -135,7 +147,7 @@ class Manager extends AbstractManager
     {
         $compare = $this->attributesDiff($entity, $existent, ['name', 'color',
             'size', 'gender', 'eanIsbn', 'images', 'video', 'height',
-            'width', 'depth', 'weight']);
+            'width', 'depth', 'weight', ]);
 
         if (false === $compare) {
             $response['bypassed'][] = 'info';

@@ -33,7 +33,6 @@ class Manager extends AbstractManager
         'fetch'    => ['GET', '/products?page={offset}&size={limit}'],
     ];
 
-
     public function patch(EntityInterface $entity, $compare)
     {
         if (empty($compare)) {
@@ -45,7 +44,7 @@ class Manager extends AbstractManager
         $operation = $this->execute($map, $json);
 
         $feedback = [
-            'fields'    => $compare,
+            'fields'        => $compare,
             'response_code' => $operation->getHttpStatusCode(),
         ];
 
@@ -65,7 +64,7 @@ class Manager extends AbstractManager
 
         $response = [];
 
-        $compare = $this->attributesDiff($entity, $existent, ['department','productType']);
+        $compare = $this->attributesDiff($entity, $existent, ['department', 'productType']);
         $response['patch'] = $this->patch($entity, $compare);
         $response['skus'] = [];
 
@@ -79,7 +78,6 @@ class Manager extends AbstractManager
 
             $response['skus'][] = $skuManager->update($sku, $previous);
         }
-
 
         return $response;
     }

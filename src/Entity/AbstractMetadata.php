@@ -23,6 +23,10 @@ abstract class AbstractMetadata extends MetadataContainerAbstract
 
     protected function cutMetadata($raw)
     {
+        if (!is_array($raw)) {
+            return [[]];
+        }
+
         if (array_key_exists('_links', $raw)) {
             foreach ($raw['_links'] as $k => $v) {
                 $raw['links'][] = [
