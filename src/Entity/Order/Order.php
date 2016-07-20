@@ -16,6 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Order;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\Common\Entity\CollectionInterface;
 
 /**
  * @method string getAgreedDate()    Acesso a agreedDate
@@ -55,7 +56,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method float getTotalQuantity()    Acesso a totalQuantity
  * @method setTotalQuantity(float $totalQuantity)    Define totalQuantity
  */
-class Order extends EntityAbstract implements EntityInterface
+class Order extends EntityAbstract implements EntityInterface, CollectionInterface
 {
     protected $primaryKey = 'orderNumber';
 
