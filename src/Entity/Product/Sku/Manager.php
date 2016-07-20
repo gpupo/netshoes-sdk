@@ -105,18 +105,25 @@ class Manager extends AbstractManager
         return $this->execute($map, $json);
     }
 
+    protected function hydratePriceSchedule(EntityInterface $sku)
+    {
+        $ps = $this->getPriceScheduleCollection($sku);
+
+        $sku->setPriceSchedule(false);
+        if ($ps instanceof PriceScheduleCollection) {
+            $sku->setPriceSchedule($ps->getCurrent());
+        }
+
+        return $sku;
+    }
+
     protected function hydrate(EntityInterface $sku)
     {
         $sku->setPrice($this->getDetail($sku, 'Price'))
             ->setStock($this->getDetail($sku, 'Stock'))
             ->setStatus($this->getDetail($sku, 'Status'));
 
-        $ps = $this->getPriceScheduleCollection($sku);
-        $sku->setPriceSchedule(false);
-        if ($ps instanceof PriceScheduleCollection) {
-            $sku->setPriceSchedule($ps->getCurrent());
-        }
-
+        //return $this->hydratePriceSchedule($sku);
         return $sku;
     }
 
