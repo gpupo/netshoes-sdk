@@ -117,6 +117,11 @@ class Item extends EntityAbstract implements EntityInterface
         ]);
     }
 
+    /**
+     * Entrega array compatível com Schema Comum.
+     *
+     * @see https://github.com/gpupo/common-schema/tree/master/src/Trading
+     */
     public function toSchema()
     {
         $array = [
