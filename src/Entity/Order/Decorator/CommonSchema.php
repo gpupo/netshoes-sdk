@@ -16,8 +16,9 @@ namespace Gpupo\NetshoesSdk\Entity\Order\Decorator;
 
 use Gpupo\CommonSchema\Trading\OrderSchema;
 use Gpupo\CommonSchema\Trading\OrderTrait;
+use Gpupo\CommonSchema\Trading\TradingInterface;
 
-class CommonSchema extends AbstractDecorator implements DecoratorInterface
+class CommonSchema extends AbstractDecorator implements DecoratorInterface, TradingInterface
 {
     use OrderTrait;
 
@@ -36,28 +37,45 @@ class CommonSchema extends AbstractDecorator implements DecoratorInterface
         return $this->getOrder()->getShipping()->getCustomer()->getAddress()->toSchema();
     }
 
-    protected function callOrder($key)
+    protected function getMerchant()
     {
-        $dict = [
-            'merchant' => 'originSite',
-            'price'    => 'totalNet',
-            'discount' => 'totalDiscount',
-        ];
+        return ['name' => $this->getOrder()->getOriginSite()];
+    }
 
-        if (array_key_exists($key, $dict) && !is_array($dict[$key])) {
-            $key = $dict[$key];
-        }
+    protected function getPrice()
+    {
+        return $this->getOrder()->getTotalNet();
+    }
+
+    protected function getDiscount()
+    {
+        return $this->getOrder()->getTotalDiscount();
+    }
+
+    protected function getOrderNumber()
+    {
+        return $this->getOrder()->getOrderNumber();
+    }
+
+    protected function getOrderStatus()
+    {
+        return $this->getOrder()->getOrderStatus();
+    }
+
+    protected function getOrderDate()
+    {
+        return $this->getOrder()->getOrderDate();
+    }
+
+    public function fetch($key)
+    {
         $method = 'get'.ucfirst($key);
 
         if (method_exists(__CLASS__, $method)) {
             return $this->$method();
         }
 
-        try {
-            return $this->getOrder()->$method();
-        } catch (\BadMethodCallException $e) {
-            error_log('protected function '.$method.'(){}');
-        }
+        error_log('protected function '.$method.'(){} missed!');
     }
 
     public function toArray()
@@ -65,7 +83,7 @@ class CommonSchema extends AbstractDecorator implements DecoratorInterface
         $schema = OrderSchema::getInstance()->getSchema();
         $output = [];
         foreach ($schema as $k => $v) {
-            $output[$k] = $this->callOrder($k);
+            $output[$k] = $this->fetch($k);
         }
         OrderSchema::getInstance()->validate($output);
 
