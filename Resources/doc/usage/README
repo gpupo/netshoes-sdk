@@ -1,0 +1,2 @@
+#build:
+git add -f Resources/doc/usage/* && cat Resources/doc/usage/*.md > Resources/doc/usage.md;

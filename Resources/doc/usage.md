@@ -123,3 +123,16 @@ $order = $sdk->createOrder($data)
 	->setDeliveryDate("2016-05-10T10:53:00.000-03:00");
 echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
 ```
+## Trade Order
+
+Acesso ao output padrão [Trading Order](https://github.com/gpupo/common-schema#schemas)
+
+```php
+<?php
+//..
+use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Order\Manager;
+//...
+$manager = new Manager();
+$tradeOrder = $manager->export($order);
+```
