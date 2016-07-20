@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:      
-  2016-07-20 11:18:47      
+  2016-07-20 13:43:39      
                            
  Summary:                  
   Classes: 76.74% (33/43)  
-  Methods: 83.33% (70/84)  
-  Lines:   85.20% (282/331)
+  Methods: 77.78% (70/90)  
+  Lines:   84.94% (282/332)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)
@@ -25,7 +25,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Order\Decorator::AbstractDecorator
   Methods:  85.71% ( 6/ 7)   Lines:  95.24% ( 20/ 21)
 \Gpupo\NetshoesSdk\Entity\Order\Decorator::CommonSchema
-  Methods:  20.00% ( 1/ 5)   Lines:  31.58% (  6/ 19)
+  Methods:   9.09% ( 1/11)   Lines:  30.00% (  6/ 20)
 \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status::Approved
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status::Canceled
