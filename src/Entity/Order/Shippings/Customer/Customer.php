@@ -55,4 +55,22 @@ class Customer extends EntityAbstract implements EntityInterface
               'tradeName'        => 'string',
         ];
     }
+
+    /**
+     * Entrega array compatível com Schema Comum.
+     *
+     * @see https://github.com/gpupo/common-schema/tree/master/src/Trading
+     */
+    public function toSchema()
+    {
+        return [
+            'name'      => $this->getCustomerName(),
+            'document'  => $this->getDocument(),
+            'birthDate' => '',
+            'email'     => '',
+            'gender'    => '',
+            'telephone' => $this->getLandLine(),
+            'cellphone' => $this->getCellPhone(),
+        ];
+    }
 }

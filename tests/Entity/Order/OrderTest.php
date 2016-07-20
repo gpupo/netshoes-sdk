@@ -81,6 +81,19 @@ class OrderTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Possui output [Trading](https://github.com/gpupo/common-schema#schemas)
+     * @test
+     * @dataProvider dataProviderObject
+     * @covers ::toArray
+     */
+    public function toSchema(Order $order)
+    {
+        $manager = $this->getFactory()->factoryManager('order');
+
+        $this->assertInternalType('array', $manager->export($order));
+    }
+
+    /**
      * @testdox Possui método ``getShipping()`` que é um atalho para ``->getShippings()->first()``
      * @dataProvider dataProviderObject
      * @cover ::getShipping

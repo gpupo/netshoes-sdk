@@ -43,7 +43,7 @@ class CommonSchemaTest extends TestCaseAbstract
     }
 
     /**
-     * @testdox ``toArray()`` adequa ao schema
+     * @testdox Possui output [Trading](https://github.com/gpupo/common-schema#schemas)
      * @test
      * @dataProvider dataProviderOrders
      * @covers ::toArray

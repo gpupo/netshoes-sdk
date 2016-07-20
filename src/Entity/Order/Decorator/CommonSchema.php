@@ -15,94 +15,37 @@
 namespace Gpupo\NetshoesSdk\Entity\Order\Decorator;
 
 use Gpupo\CommonSchema\Trading\OrderSchema;
+use Gpupo\CommonSchema\Trading\OrderTrait;
 
 class CommonSchema extends AbstractDecorator implements DecoratorInterface
 {
-    protected $dict = [
-        'merchant' => [
-            'name' => 'string',
-        ],
-        'price'         => 'totalNet',
-        'acceptedOffer' => [
-            [
-                'itemOffered' => [
-                'name'  => 'string',
-                'sku'   => 'string',
-                'url'   => 'string',
-                'image' => 'string',
-                ],
-                'price'            => 'string',
-                'priceCurrency'    => 'string',
-                'eligibleQuantity' => [
-                'value' => 'string',
-                ],
-                'seller' => [
-                'name' => 'string',
-                ],
-            ],
-        ],
-        'discount' => 'totalDiscount',
-        'customer' => [
-            'name' => 'string',
-        ],
-        'billingAddress' => [
-            'name'            => 'string',
-            'streetAddress'   => 'string',
-            'addressLocality' => 'string',
-            'addressRegion'   => 'string',
-            'addressCountry'  => 'string',
-        ],
-    ];
-
-    protected function getMerchant()
-    {
-        $key = $this->callOrder('originSite');
-        $dict = [
-            ''   => '',
-            'ZT' => 'Zattini',
-            'NS' => 'Netshoes',
-        ];
-
-        return $dict[$key];
-    }
-
-    protected function getPriceCurrency()
-    {
-        'BRL';
-    }
+    use OrderTrait;
 
     protected function getAcceptedOffer()
     {
         return $this->getOrder()->getItems()->toSchema();
     }
 
-    protected function getUrl()
-    {
-    }
-
-    protected function getPaymentMethod()
-    {
-    }
-    protected function getPaymentMethodId()
-    {
-    }
-    protected function getIsGift()
-    {
-    }
-    protected function getDiscountCurrency()
-    {
-    }
     protected function getCustomer()
     {
+        return $this->getOrder()->getShipping()->getCustomer()->toSchema();
     }
+
     protected function getBillingAddress()
     {
+        return $this->getOrder()->getShipping()->getCustomer()->getAddress()->toSchema();
     }
 
     protected function callOrder($key)
     {
-        if (array_key_exists($key, $this->dict) && !is_array($this->dict[$key])) {
-            $key = $this->dict[$key];
+        $dict = [
+            'merchant' => 'originSite',
+            'price'    => 'totalNet',
+            'discount' => 'totalDiscount',
+        ];
+
+        if (array_key_exists($key, $dict) && !is_array($dict[$key])) {
+            $key = $dict[$key];
         }
         $method = 'get'.ucfirst($key);
 
