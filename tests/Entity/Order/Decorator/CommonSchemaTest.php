@@ -38,8 +38,6 @@ class CommonSchemaTest extends TestCaseAbstract
     {
         $decorator = $this->factory()->setOrder($order);
         $this->assertInstanceOf(Order::class, $decorator->getOrder());
-
-        $decorator->toArray();
     }
 
     /**
