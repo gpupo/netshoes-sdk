@@ -53,4 +53,24 @@ class Address extends EntityAbstract implements EntityInterface
               'street'       => 'string',
         ];
     }
+
+    /**
+     * Entrega array compatível com Schema Comum.
+     *
+     * @see https://github.com/gpupo/common-schema/tree/master/src/Trading
+     */
+    public function toSchema()
+    {
+        return [
+            'streetAddress'       => $this->getStreet(),
+            'addressLocality'     => $this->getCity(),
+            'addressRegion'       => $this->getState(),
+            'addressCountry'      => 'BR',
+            'postalCode'          => $this->getPostalCode(),
+            'addressComplement'   => $this->getComplement(),
+            'addressNumber'       => $this->getNumber(),
+            'addressNeighborhood' => $this->getNeighborhood(),
+            'addressReference'    => $this->getReference(),
+        ];
+    }
 }

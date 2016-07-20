@@ -37,6 +37,13 @@ class Manager extends AbstractManager
         return $instance;
     }
 
+    public function export(Order $order)
+    {
+        $decorator = $this->factoryDecorator($order, 'CommonSchema');
+
+        return $decorator->toArray();
+    }
+
     public function updateStatus(Order $order)
     {
         $status = $order->getOrderStatus();
