@@ -428,9 +428,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Sucesso ao definir options
 - [x] Gerencia uri de recurso
-- [x] Objeto request possui header
-- [x] Acesso a lista de pedidos
-- [x] Acesso a lista de produtos
+- [ ] Objeto request possui header
+- [ ] Acesso a lista de pedidos
+- [ ] Acesso a lista de produtos
 - [x] Render authorization
 - [x] Falha ao ser usado sem credenciais
 
@@ -439,6 +439,12 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Factory sdk
 - [x] Append command
+
+### NetshoesSdk\Entity\Order\Decorator\CommonSchema
+
+
+- [x] Recebe o objeto ``Order`` 
+- [x] Possui output [Trading](https://github.com/gpupo/common-schema#schemas) 
 
 ### NetshoesSdk\Entity\Order\Decorator\Status\Approved
 
@@ -512,6 +518,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
 - [x] Get a list of Orders
+- [x] Dá acesso ao output [Trading](https://github.com/gpupo/common-schema#schemas) 
 - [x] Get a order based on order number
 - [x] A atualização de status falha quando status não reconhecido 
 - [x] Update the shipping status to Approved 
@@ -538,6 +545,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 
 - [x] Possui validação
+- [x] Possui output [Trading](https://github.com/gpupo/common-schema#schemas) 
 - [x] Possui método ``getShipping()`` que é um atalho para ``->getShippings()->first()`` 
 - [x] Falha ao acessar ``getShipping()`` quando não houver nenhum objeto 
 - [x] Possui método ``getInvoice()`` que é um atalho para ``->getShippings()->first()->getInvoice()`` 
