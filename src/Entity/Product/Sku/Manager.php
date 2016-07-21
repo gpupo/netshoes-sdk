@@ -123,8 +123,7 @@ class Manager extends AbstractManager
             ->setStock($this->getDetail($sku, 'Stock'))
             ->setStatus($this->getDetail($sku, 'Status'));
 
-        //return $this->hydratePriceSchedule($sku);
-        return $sku;
+        return $this->hydratePriceSchedule($sku);
     }
 
     /**
