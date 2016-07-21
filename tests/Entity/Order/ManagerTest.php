@@ -94,8 +94,8 @@ class ManagerTest extends TestCaseAbstract
     public function export(Order $order)
     {
         $manager = $this->getFactory()->factoryManager('order');
-
-        $this->assertInternalType('array', $manager->export($order));
+        $data = $manager->export($order);
+        $this->assertInternalType('array', $data);
     }
 
     /**
