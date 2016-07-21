@@ -81,4 +81,12 @@ class Manager extends AbstractManager
 
         return $response;
     }
+
+    protected function factoryTranslator(CollectionAbstract $entity)
+    {
+        $translator = new Translator();
+        $translator->setInput($entity);
+
+        return $translator;
+    }
 }
