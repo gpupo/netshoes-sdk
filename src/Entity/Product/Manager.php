@@ -17,6 +17,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 use Gpupo\NetshoesSdk\Factory;
+use Gpupo\Common\Entity\CollectionAbstract;
 
 class Manager extends AbstractManager
 {
