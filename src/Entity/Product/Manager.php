@@ -14,11 +14,10 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
+use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 use Gpupo\NetshoesSdk\Factory;
-use Gpupo\Common\Entity\CollectionAbstract;
-use Gpupo\CommonSchema\TranslatorDataCollection;
 
 class Manager extends AbstractManager
 {

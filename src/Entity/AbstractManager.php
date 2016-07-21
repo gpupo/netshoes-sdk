@@ -14,11 +14,10 @@
 
 namespace Gpupo\NetshoesSdk\Entity;
 
-use Gpupo\Common\Entity\CollectionAbstract;
+use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Entity\ManagerAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
-use Gpupo\CommonSchema\TranslatorDataCollection;
 
 abstract class AbstractManager extends ManagerAbstract implements ManagerInterface
 {
