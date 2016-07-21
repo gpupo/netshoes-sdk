@@ -14,8 +14,8 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Order;
 
-use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 use Gpupo\Common\Entity\CollectionInterface;
+use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 
 class OrderCollection extends AbstractMetadata implements CollectionInterface
 {

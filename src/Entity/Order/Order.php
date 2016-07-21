@@ -14,9 +14,9 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Order;
 
+use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
-use Gpupo\Common\Entity\CollectionInterface;
 
 /**
  * @method string getAgreedDate()    Acesso a agreedDate
