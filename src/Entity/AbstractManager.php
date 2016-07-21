@@ -14,6 +14,7 @@
 
 namespace Gpupo\NetshoesSdk\Entity;
 
+use Gpupo\Common\Entity\CollectionAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Entity\ManagerAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
@@ -83,5 +84,21 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
             'entity'   => $entity,
             'existent' => $existent,
         ]);
+    }
+
+    protected function factoryTranslator(CollectionAbstract $entity)
+    {
+        throw new \Exception('factoryTranslator() deve ser implementado!');
+    }
+
+    public function translatorUpdate(CollectionAbstract $entity, CollectionAbstract $existent = null)
+    {
+        $product = $this->factoryTranslator($entity)->translateFrom();
+
+        if (!empty($existent)) {
+            $previous = $this->factoryTranslator($existent)->translateFrom();
+        }
+
+        return $this->update($product, empty($existent) ? $previous : null);
     }
 }

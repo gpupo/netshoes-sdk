@@ -14,8 +14,8 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
-use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 use Gpupo\Common\Entity\CollectionInterface;
+use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 
 class ProductCollection extends AbstractMetadata implements CollectionInterface
 {
