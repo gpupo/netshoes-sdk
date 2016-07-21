@@ -84,6 +84,7 @@ class TranslatorTest extends TestCaseAbstract
         $this->assertSame($sku['listPrice'], $first->getPrice()->getPrice());
         $this->assertSame($sku['sellPrice'], $first->getPriceSchedule()->getPriceTo());
         $this->assertSame($sku['stock'], $first->getStock()->getAvailable());
+        $this->assertSame($sku['status'], $first->getStatus()->getActive());
         $translator = new Translator(['native' => $product]);
         $foreign = $translator->translateTo();
         $this->assertSame($sku['listPrice'], $foreign->get('skus')[0]['listPrice']);
@@ -91,8 +92,9 @@ class TranslatorTest extends TestCaseAbstract
         $this->assertSame($sku['stock'], $foreign->get('skus')[0]['stock']);
         $translator->setForeign($foreign);
         $translated = $translator->translateFrom();
-        $this->assertSame($sku['listPrice'], $translated->getSkus()
-            ->first()->getPrice()->getPrice());
+        $tfirst = $translated->getSkus()->first();
+        $this->assertSame($sku['listPrice'], $tfirst->getPrice()->getPrice());
+        $this->assertSame($sku['status'], $tfirst->getStatus()->getActive());
     }
 
     public function dataProviderArrayExpected()
@@ -111,6 +113,7 @@ class TranslatorTest extends TestCaseAbstract
                         'listPrice' => $price,
                         'sellPrice' => ($price * rand(40, 97)) / 100,
                         'stock'     => rand(),
+                        'status'    => ($price > rand()),
                     ],
                 ],
             ]];
