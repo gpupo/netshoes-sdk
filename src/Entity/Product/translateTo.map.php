@@ -30,7 +30,7 @@ foreach ($native->getSkus() as $sku) {
         'listPrice'   => $sku->getPrice()->getPrice(),
         'sellPrice'   => $sku->getPriceSchedule()->getPriceTo(),
         'stock'       => $sku->getStock()->getAvailable(),
-        'status'      => $sku->getStatus(),
+        'status'      => $sku->getStatus()->getActive(),
     ];
 }
 

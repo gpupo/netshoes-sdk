@@ -30,7 +30,7 @@ foreach ($foreign['skus'] as $sku) {
             'listPrice'   => $sku['listPrice'],
             'sellPrice'   => $sku['sellPrice'],
             'stock'       => $sku['stock'],
-            'status'      => $sku['stock'],
+            'status'      => $sku['status'],
         ];
 }
 

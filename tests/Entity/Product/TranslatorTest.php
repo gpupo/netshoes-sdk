@@ -76,35 +76,39 @@ class TranslatorTest extends TestCaseAbstract
      * @dataProvider dataProviderArrayExpected
      * @test
      */
-    public function translatePrice($expected)
+    public function translateViceVersa($expected)
     {
         $sku = $expected['skus'][0];
         $product = new Product($expected);
 
-        $assert = function ($first, $o) use ($sku) {
-            $o->assertSame($sku['listPrice'], $first->getPrice()->getPrice());
-            $o->assertSame($sku['sellPrice'], $first->getPriceSchedule()->getPriceTo());
-            $o->assertSame($sku['stock'], $first->getStock()->getAvailable());
-            $o->assertSame($sku['status'], $first->getStatus()->getActive());
+        $assertNative = function ($first, $o, $i = 1) use ($sku) {
+            $o->assertSame($sku['listPrice'], $first->getPrice()->getPrice(), 'n)listPrice #'.$i);
+            $o->assertSame($sku['sellPrice'], $first->getPriceSchedule()->getPriceTo(), 'n)sellPrice #'.$i);
+            $o->assertSame($sku['stock'], $first->getStock()->getAvailable(), 'n)stock #'.$i);
+            $o->assertSame($sku['status'], $first->getStatus()->getActive(), 'n)status #'.$i);
         };
 
-        $assert($product->getSkus()->first(), $this);
+        $assertForeign = function ($foreign, $o) use ($sku) {
+            $o->assertSame($sku['listPrice'], $foreign->get('skus')[0]['listPrice'], 'f)listPrice');
+            $o->assertSame($sku['sellPrice'], $foreign->get('skus')[0]['sellPrice'], 'f)sellPrice');
+            $o->assertSame($sku['stock'], $foreign->get('skus')[0]['stock'], 'f)stock');
+            $o->assertSame($sku['status'], $foreign->get('skus')[0]['status'], 'f)status');
+        };
 
+        $assertNative($product->getSkus()->first(), $this);
         $translator = new Translator(['native' => $product]);
         $foreign = $translator->translateTo();
-        $this->assertSame($sku['listPrice'], $foreign->get('skus')[0]['listPrice']);
-        $this->assertSame($sku['sellPrice'], $foreign->get('skus')[0]['sellPrice']);
-        $this->assertSame($sku['stock'], $foreign->get('skus')[0]['stock']);
+        $assertForeign($foreign, $this);
         $translator->setForeign($foreign);
         $translated = $translator->translateFrom();
-        $assert($translated->getSkus()->first(), $this);
+        $assertNative($translated->getSkus()->first(), $this, 2);
     }
 
     public function dataProviderArrayExpected()
     {
         $list = [];
         $i = 1;
-        while ($i <= 10) {
+        while ($i <= 50) {
             ++$i;
             $id = rand();
             $price = rand(100, 9999) / rand(3, 55);
@@ -113,8 +117,8 @@ class TranslatorTest extends TestCaseAbstract
                 'skus'      => [
                     [
                         'id'        => $id,
-                        'listPrice' => $price,
-                        'sellPrice' => ($price * rand(40, 97)) / 100,
+                        'listPrice' => (float) $price,
+                        'sellPrice' => (float) ($price * rand(40, 97)) / 100,
                         'stock'     => rand(),
                         'status'    => ($price > rand()),
                     ],
