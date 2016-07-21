@@ -17,7 +17,9 @@ namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\Tests\CommonSdk\Traits\EntityTrait;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+use Gpupo\NetshoesSdk\Entity\Product\Product;
 use Gpupo\NetshoesSdk\Entity\Product\Translator;
+use Gpupo\CommonSchema\TranslatorDataCollection;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Translator
@@ -52,6 +54,7 @@ class TranslatorTest extends TestCaseAbstract
     public function translateTo(Translator $translator)
     {
         $translated = $translator->translateTo();
+        $this->assertInstanceOf(TranslatorDataCollection::class, $translated);
         $this->assertInternalType('array', $translated->toArray(), 'internal type');
     }
 
@@ -64,8 +67,11 @@ class TranslatorTest extends TestCaseAbstract
     public function translateFrom(Translator $translator)
     {
         $foreign = $translator->translateTo();
+        $this->assertInstanceOf(TranslatorDataCollection::class, $foreign);
         $translator->setForeign($foreign);
         $translated = $translator->translateFrom();
+        $this->assertInstanceOf(Product::class, $translated);
         $this->assertInternalType('array', $translated->toArray(), 'internal type');
+        print_r($translated->toArray());
     }
 }

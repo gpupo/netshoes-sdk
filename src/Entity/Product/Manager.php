@@ -18,6 +18,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 use Gpupo\NetshoesSdk\Factory;
 use Gpupo\Common\Entity\CollectionAbstract;
+use Gpupo\CommonSchema\TranslatorDataCollection;
 
 class Manager extends AbstractManager
 {
@@ -83,10 +84,10 @@ class Manager extends AbstractManager
         return $response;
     }
 
-    protected function factoryTranslator(CollectionAbstract $entity)
+    protected function factoryTranslator(TranslatorDataCollection $entity)
     {
         $translator = new Translator();
-        $translator->setInput($entity);
+        $translator->setForeign($entity);
 
         return $translator;
     }

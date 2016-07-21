@@ -18,6 +18,7 @@ use Gpupo\Common\Entity\CollectionAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Entity\ManagerAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
+use Gpupo\CommonSchema\TranslatorDataCollection;
 
 abstract class AbstractManager extends ManagerAbstract implements ManagerInterface
 {
@@ -86,12 +87,12 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
         ]);
     }
 
-    protected function factoryTranslator(CollectionAbstract $entity)
+    protected function factoryTranslator(TranslatorDataCollection $entity)
     {
         throw new \Exception('factoryTranslator() deve ser implementado!');
     }
 
-    public function translatorUpdate(CollectionAbstract $entity, CollectionAbstract $existent = null)
+    public function translatorUpdate(TranslatorDataCollection $entity, TranslatorDataCollection $existent = null)
     {
         $product = $this->factoryTranslator($entity)->translateFrom();
 

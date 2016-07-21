@@ -39,6 +39,6 @@ class Translator extends AbstractTranslator implements TranslatorInterface
         $foreign =  $this->getForeign();
         $array = include __DIR__ . '/translateFrom.map.php';
 
-        return $this->factoryOutputCollection($array);
+        return new Product($array);
     }
 }
