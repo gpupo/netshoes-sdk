@@ -25,6 +25,10 @@ class Translator extends AbstractTranslator implements TranslatorInterface
     public function translateTo()
     {
         $native = $this->getNative();
+        if (!$native instanceof Product) {
+            throw new \Exception("Product missed!");
+        }
+
         $array = include __DIR__.'/translateTo.map.php';
 
         return $this->factoryOutputCollection($array);
