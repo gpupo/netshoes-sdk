@@ -80,11 +80,16 @@ class TranslatorTest extends TestCaseAbstract
     {
         $sku = $expected['skus'][0];
         $product = new Product($expected);
-        $first = $product->getSkus()->first();
-        $this->assertSame($sku['listPrice'], $first->getPrice()->getPrice());
-        $this->assertSame($sku['sellPrice'], $first->getPriceSchedule()->getPriceTo());
-        $this->assertSame($sku['stock'], $first->getStock()->getAvailable());
-        $this->assertSame($sku['status'], $first->getStatus()->getActive());
+
+        $assert = function ($first, $o) use ($sku) {
+            $o->assertSame($sku['listPrice'], $first->getPrice()->getPrice());
+            $o->assertSame($sku['sellPrice'], $first->getPriceSchedule()->getPriceTo());
+            $o->assertSame($sku['stock'], $first->getStock()->getAvailable());
+            $o->assertSame($sku['status'], $first->getStatus()->getActive());
+        };
+
+        $assert($product->getSkus()->first(), $this);
+
         $translator = new Translator(['native' => $product]);
         $foreign = $translator->translateTo();
         $this->assertSame($sku['listPrice'], $foreign->get('skus')[0]['listPrice']);
@@ -92,16 +97,14 @@ class TranslatorTest extends TestCaseAbstract
         $this->assertSame($sku['stock'], $foreign->get('skus')[0]['stock']);
         $translator->setForeign($foreign);
         $translated = $translator->translateFrom();
-        $tfirst = $translated->getSkus()->first();
-        $this->assertSame($sku['listPrice'], $tfirst->getPrice()->getPrice());
-        $this->assertSame($sku['status'], $tfirst->getStatus()->getActive());
+        $assert($translated->getSkus()->first(), $this);
     }
 
     public function dataProviderArrayExpected()
     {
         $list = [];
         $i = 1;
-        while ($i <= 50) {
+        while ($i <= 10) {
             ++$i;
             $id = rand();
             $price = rand(100, 9999) / rand(3, 55);
