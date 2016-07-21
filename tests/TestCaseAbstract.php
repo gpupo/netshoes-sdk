@@ -66,14 +66,19 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
         return $this->hasConstant('ACCESS_TOKEN');
     }
 
-    public function dataProviderProducts()
+    public function providerProducts()
     {
         $manager = $this->getFactory()->factoryManager('product');
         $manager->setDryRun($this->factoryResponseFromFixture('fixture/Product/list.json'));
 
+        return $manager->fetch();
+    }
+
+    public function dataProviderProducts()
+    {
         $list = [];
 
-        foreach ($manager->fetch() as $product) {
+        foreach ($this->providerProducts() as $product) {
             $list[] = [$product];
         }
 

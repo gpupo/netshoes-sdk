@@ -19,12 +19,16 @@ use Gpupo\CommonSchema\TranslatorInterface;
 
 class Translator extends AbstractTranslator implements TranslatorInterface
 {
+
     /**
      * {@inheritdoc}
      */
     public function translateTo()
     {
-        return $this->getNative()->toArray();
+        $native =  $this->getNative();
+        $array = include __DIR__ . '/translateTo.map.php';
+
+        return $this->factoryOutputCollection($array);
     }
 
     /**
@@ -32,6 +36,9 @@ class Translator extends AbstractTranslator implements TranslatorInterface
      */
     public function translateFrom()
     {
-        return $this->getForeign()->toArray();
+        $foreign =  $this->getForeign();
+        $array = include __DIR__ . '/translateFrom.map.php';
+
+        return $this->factoryOutputCollection($array);
     }
 }
