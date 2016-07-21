@@ -17,6 +17,8 @@ namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\NetshoesSdk\Entity\Product\Manager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
+use Gpupo\CommonSchema\TranslatorDataCollection;
+use Gpupo\NetshoesSdk\Entity\Product\Product;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Manager
@@ -75,6 +77,19 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Entrega lista de produtos no padrão comum
+     * @depends testManager
+     * @covers ::translatorFetch
+     */
+    public function translatorFetch(Manager $manager)
+    {
+        $list = $manager->translatorFetch();
+        $this->assertInstanceOf(TranslatorDataCollection::class, $list);
+        $this->assertGreaterThan(1, $list->count());
+        $this->assertInstanceOf(TranslatorDataCollection::class, $list->first());
+    }
+
+    /**
      * @testdox Recupera informações de um produto especifico a partir de Id
      * @covers ::findById
      * @covers ::execute
@@ -86,9 +101,22 @@ class ManagerTest extends TestCaseAbstract
     {
         $manager = $this->getManager('item.json');
         $product = $manager->findById(14080);
-        $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\Product', $product);
+        $this->assertInstanceOf(Product::class, $product);
         $this->assertSame('14080', $product->getProductId());
         $this->assertSame('14080', $product->getId());
+    }
+
+    /**
+     * @testdox Recupera informações em padrão comum  a partir de Id
+     * @covers ::translateFindById
+     */
+    public function testTranslateFindBy()
+    {
+        $manager = $this->getManager('item.json');
+        $translated = $manager->translateFindById(14080);
+        $this->assertInstanceOf(TranslatorDataCollection::class, $translated);
+        $this->assertSame('14080', $translated->get('productId'));
+        $this->assertSame('Masculino', $translated->get('department'));
     }
 
     /**

@@ -83,10 +83,9 @@ class Manager extends AbstractManager
         return $response;
     }
 
-    protected function factoryTranslator(TranslatorDataCollection $entity)
+    protected function factoryTranslator(array $data = [])
     {
-        $translator = new Translator();
-        $translator->setForeign($entity);
+        $translator = new Translator($data);
 
         return $translator;
     }

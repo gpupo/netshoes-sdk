@@ -86,19 +86,44 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
         ]);
     }
 
-    protected function factoryTranslator(TranslatorDataCollection $entity)
+    protected function factoryTranslator(array $data = [])
     {
         throw new \Exception('factoryTranslator() deve ser implementado!');
     }
 
-    public function translatorUpdate(TranslatorDataCollection $entity, TranslatorDataCollection $existent = null)
+    public function translatorUpdate(TranslatorDataCollection $data, TranslatorDataCollection $existent = null)
     {
-        $product = $this->factoryTranslator($entity)->translateFrom();
+        $entity = $this->factoryTranslator($data)->translateFrom();
 
         if (!empty($existent)) {
             $previous = $this->factoryTranslator($existent)->translateFrom();
         }
 
-        return $this->update($product, empty($existent) ? $previous : null);
+        return $this->update($entity, empty($existent) ? $previous : null);
+    }
+
+    public function translatorFetch()
+    {
+        $dataCollection = new TranslatorDataCollection();
+        $collection = $this->fetch();
+
+        if (0 < $collection->count()) {
+            foreach ($collection as $entity) {
+                $dataCollection->add($this->factoryTranslator(['native' => $entity])->translateTo());
+            }
+        }
+
+        return $dataCollection;
+    }
+
+    public function translateFindById($itemId)
+    {
+        $collection = $this->findById($itemId);
+
+        if (empty($collection)) {
+            return false;
+        }
+
+        return $this->factoryTranslator(['native' => $collection])->translateTo();
     }
 }

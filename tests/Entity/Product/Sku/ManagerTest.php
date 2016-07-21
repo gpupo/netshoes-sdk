@@ -216,4 +216,5 @@ class ManagerTest extends TestCaseAbstract
             $this->createAndRun('update')
         );
     }
+
 }
