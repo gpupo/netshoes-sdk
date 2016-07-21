@@ -15,9 +15,9 @@ foreach ($native->getSkus() as $sku) {
         'width'       => $sku->getWidth(),
         'depth'       => $sku->getDepth(),
         'weight'      => $sku->getWeight(),
-        'listPrice'   => $sku->getPrice(),
-        'sellPrice'   => $sku->getPriceSchedule(),
-        'stock'       => $sku->getStock(),
+        'listPrice'   => $sku->getPrice()->getPrice(),
+        'sellPrice'   => $sku->getPriceSchedule()->getPriceTo(),
+        'stock'       => $sku->getStock()->getAvailable(),
         'status'      => $sku->getStatus(),
     ];
 }
