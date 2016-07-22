@@ -14,30 +14,43 @@
 
 $skusList = [];
 
+$a = function ($key, $array) {
+    if (array_key_exists($key, $array)) {
+        return $array[$key];
+    }
+};
+
 foreach ($foreign['skus'] as $sku) {
+    $f = function ($key) use ($a, $sku) {
+        return $a($key, $sku);
+    };
     $skusList[] = [
-            'sku'         => $sku['skuId'],
-            'eanIsbn'     => $sku['gtin'],
-            'name'        => $sku['name'],
-            'description' => $sku['description'],
-            'color'       => $sku['color'],
-            'size'        => $sku['size'],
-            'gender'      => $sku['gender'],
-            'height'      => $sku['height'],
-            'width'       => $sku['width'],
-            'depth'       => $sku['depth'],
-            'weight'      => $sku['weight'],
-            'listPrice'   => $sku['listPrice'],
-            'sellPrice'   => $sku['sellPrice'],
-            'stock'       => $sku['stock'],
-            'status'      => $sku['status'],
+            'sku'         => $f('skuId'),
+            'eanIsbn'     => $f('gtin'),
+            'name'        => $f('name'),
+            'description' => $f('description'),
+            'color'       => $f('color'),
+            'size'        => $f('size'),
+            'gender'      => $f('gender'),
+            'height'      => $f('height'),
+            'width'       => $f('width'),
+            'depth'       => $f('depth'),
+            'weight'      => $f('weight'),
+            'listPrice'   => $f('listPrice'),
+            'sellPrice'   => $f('sellPrice'),
+            'stock'       => $f('stock'),
+            'status'      => $f('status'),
         ];
 }
 
+$f = function ($key) use ($a, $foreign) {
+    return $a($key, $foreign);
+};
+
 return [
-     'productId'   => $foreign['productId'],
-     'department'  => $foreign['department'],
-     'productType' => $foreign['productType'],
-     'brand'       => $foreign['brand'],
+     'productId'   => $f('productId'),
+     'department'  => $f('department'),
+     'productType' => $f('productType'),
+     'brand'       => $f('brand'),
      'skus'        => $skusList,
  ];

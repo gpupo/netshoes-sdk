@@ -22,6 +22,11 @@ class Manager extends AbstractManager
 {
     protected $entity = 'Sku';
 
+    protected $strategy = [
+        'info'    => false,
+        'pricing' => 'simples',
+    ];
+
     /**
      * @codeCoverageIgnore
      */
@@ -117,13 +122,24 @@ class Manager extends AbstractManager
         return $sku;
     }
 
-    protected function hydrate(EntityInterface $sku)
+    public function hydrate(EntityInterface $sku)
     {
         $sku->setPrice($this->getDetail($sku, 'Price'))
             ->setStock($this->getDetail($sku, 'Stock'))
             ->setStatus($this->getDetail($sku, 'Status'));
 
         return $this->hydratePriceSchedule($sku);
+    }
+
+    protected function resolvePrevious(Item $entity)
+    {
+        $p = $this->findById($entity->getId());
+
+        if ($p instanceof Item) {
+            return $p;
+        }
+
+        throw new \Exception('Sku #'.$entity->getId().' not found on marketplace!');
     }
 
     /**
@@ -133,6 +149,10 @@ class Manager extends AbstractManager
     {
         parent::update($entity, $existent);
 
+        if (empty($existent)) {
+            $existent = $this->resolvePrevious($entity);
+        }
+
         $response = [
             'sku'      => $entity->getId(),
             'bypassed' => [],
@@ -140,7 +160,15 @@ class Manager extends AbstractManager
             'updated'  => [],
         ];
 
-        foreach (['updateInfo', 'updateDetails'] as $method) {
+        $list = [
+            'updateDetails',
+        ];
+
+        if (true === $this->strategy['info']) {
+            $list[] = 'updateInfo';
+        }
+
+        foreach ($list as $method) {
             $response = $this->$method($entity, $existent, $response);
         }
 
@@ -171,12 +199,17 @@ class Manager extends AbstractManager
 
     public function updateDetails(Item $entity, Item $existent = null, array $response = [])
     {
-        foreach ([
+        $list = [
             'Status' => ['active'],
-            'Stock' => ['available'],
-            'Price' => ['price'],
-            'PriceSchedule' => ['priceTo'],
-        ] as $key => $attributes) {
+            'Stock'  => ['available'],
+            'Price'  => ['price'],
+        ];
+
+        if ($this->strategy['pricing'] === 'schedule') {
+            $list['PriceSchedule'] = ['priceTo'];
+        }
+
+        foreach ($list as $key => $attributes) {
             $getter = 'get'.$key;
 
             if (!empty($existent)) {

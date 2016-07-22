@@ -17,10 +17,11 @@
  */
 $array = [
     //Product
-    'product:post:simple'   => 'Cadastro de 4 produtos contendo apenas 1 Sku',
-    'product:post:multiple' => 'Cadastro de 4 produtos contendo mais de 1 Sku',
-    'product:update'        => 'Atualizar parcialmente no mínimo 4 produtos criados. As alterações devem incluir department, productType e atributes',
-    'product:update:full'   => 'Atualizar três produtos cadastrados. As atualizações devem mudar o produto por completo exceto ID e SKU',
+    'product:post:simple'      => 'Cadastro de 4 produtos contendo apenas 1 Sku',
+    'product:post:multiple'    => 'Cadastro de 4 produtos contendo mais de 1 Sku',
+    'product:update'           => 'Atualizar parcialmente no mínimo 4 produtos criados. As alterações devem incluir department, productType e atributes',
+    'product:update:full'      => 'Atualizar três produtos cadastrados. As atualizações devem mudar o produto por completo exceto ID e SKU',
+    'product:translate:update' => 'Atualizar um produto a partir de um schema comum',
     //Sku
     'skus:post'               => 'Criação de no mínimo 4 novos Skus em produtos já existentes',
     'skus:update'             => 'Atualizar no mínimo 4 Skus existentes',

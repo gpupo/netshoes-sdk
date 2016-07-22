@@ -14,7 +14,6 @@
 
 namespace Gpupo\NetshoesSdk\Entity;
 
-use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Entity\ManagerAbstract;
 use Gpupo\CommonSdk\Entity\ManagerInterface;
@@ -84,46 +83,5 @@ abstract class AbstractManager extends ManagerAbstract implements ManagerInterfa
             'entity'   => $entity,
             'existent' => $existent,
         ]);
-    }
-
-    protected function factoryTranslator(array $data = [])
-    {
-        throw new \Exception('factoryTranslator() deve ser implementado!');
-    }
-
-    public function translatorUpdate(TranslatorDataCollection $data, TranslatorDataCollection $existent = null)
-    {
-        $entity = $this->factoryTranslator($data)->translateFrom();
-
-        if (!empty($existent)) {
-            $previous = $this->factoryTranslator($existent)->translateFrom();
-        }
-
-        return $this->update($entity, empty($existent) ? $previous : null);
-    }
-
-    public function translatorFetch()
-    {
-        $dataCollection = new TranslatorDataCollection();
-        $collection = $this->fetch();
-
-        if (0 < $collection->count()) {
-            foreach ($collection as $entity) {
-                $dataCollection->add($this->factoryTranslator(['native' => $entity])->translateTo());
-            }
-        }
-
-        return $dataCollection;
-    }
-
-    public function translateFindById($itemId)
-    {
-        $collection = $this->findById($itemId);
-
-        if (empty($collection)) {
-            return false;
-        }
-
-        return $this->factoryTranslator(['native' => $collection])->translateTo();
     }
 }

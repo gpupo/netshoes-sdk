@@ -1,0 +1,12 @@
+{
+    "productId": "14080",
+    "skus": [
+        {
+            "skuId": "14080",
+            "listPrice": 100,
+            "sellPrice": 61,
+            "stock": 320,
+            "status": false
+        }
+    ]
+}

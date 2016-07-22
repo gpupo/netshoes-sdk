@@ -14,11 +14,11 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Product;
 
+use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\NetshoesSdk\Entity\Product\Manager;
-use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
-use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\NetshoesSdk\Entity\Product\Product;
+use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Product\Manager
@@ -108,12 +108,12 @@ class ManagerTest extends TestCaseAbstract
 
     /**
      * @testdox Recupera informações em padrão comum  a partir de Id
-     * @covers ::translateFindById
+     * @covers ::translatorFindById
      */
-    public function testTranslateFindBy()
+    public function testTranslatorFindBy()
     {
         $manager = $this->getManager('item.json');
-        $translated = $manager->translateFindById(14080);
+        $translated = $manager->translatorFindById(14080);
         $this->assertInstanceOf(TranslatorDataCollection::class, $translated);
         $this->assertSame('14080', $translated->get('productId'));
         $this->assertSame('Masculino', $translated->get('department'));
@@ -174,7 +174,7 @@ class ManagerTest extends TestCaseAbstract
         $current = $this->getFactory()->createProduct($currentArray);
         $operation = $manager->update($current, $previous);
 
-        $this->assertSame(
+        $expected =
             [
                 'patch' => false,
                 'skus'  => [[
@@ -193,9 +193,10 @@ class ManagerTest extends TestCaseAbstract
                         'PriceSchedule',
                     ],
                 ],
-                ], ],
-            $operation
-        );
+                ],
+            ];
+
+        $this->assertSame($this->shift($manager, $expected), $operation);
     }
 
     /**
@@ -212,30 +213,43 @@ class ManagerTest extends TestCaseAbstract
         $current = $this->getFactory()->createProduct($currentArray);
         $operation = $manager->update($current, $previous);
 
-        $this->assertSame(
-            [
-                'patch' => [
-                    'fields'        => ['department', 'productType'],
-                    'response_code' => 200,
+        $expected = [
+            'patch' => [
+                'fields'        => ['department', 'productType'],
+                'response_code' => 200,
+            ],
+            'skus' => [[
+                'sku'      => '14080',
+                'bypassed' => [
+                    'info',
+                    'Status',
+                    'Price',
                 ],
-                'skus' => [[
-                    'sku'      => '14080',
-                    'bypassed' => [
-                        'info',
-                        'Status',
-                        'Price',
-                    ],
-                    'code' => [
-                        'Stock'         => 200,
-                        'PriceSchedule' => 200,
-                    ],
-                    'updated' => [
-                        'Stock',
-                        'PriceSchedule',
-                    ],
+                'code' => [
+                    'Stock'         => 200,
+                    'PriceSchedule' => 200,
                 ],
-                ], ],
-            $operation
-        );
+                'updated' => [
+                    'Stock',
+                    'PriceSchedule',
+                ],
+            ],
+            ],
+        ];
+
+        $this->assertSame($this->shift($manager, $expected), $operation);
+    }
+
+    protected function shift($manager, $expected)
+    {
+        $m = $this->proxy($manager);
+        if (true !== $m->strategy['info']) {
+            unset($expected['patch']);
+            array_pop($expected['skus'][0]['updated']);
+            array_shift($expected['skus'][0]['bypassed']);
+            array_pop($expected['skus'][0]['code']);
+        }
+
+        return $expected;
     }
 }

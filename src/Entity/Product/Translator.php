@@ -26,7 +26,7 @@ class Translator extends AbstractTranslator implements TranslatorInterface
     {
         $native = $this->getNative();
         if (!$native instanceof Product) {
-            throw new \Exception("Product missed!");
+            throw new \Exception('Product missed!');
         }
 
         $array = include __DIR__.'/translateTo.map.php';
@@ -40,6 +40,7 @@ class Translator extends AbstractTranslator implements TranslatorInterface
     public function translateFrom()
     {
         $foreign = $this->getForeign();
+
         $array = include __DIR__.'/translateFrom.map.php';
 
         return new Product($array);
