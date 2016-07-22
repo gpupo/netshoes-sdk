@@ -146,7 +146,7 @@ class ManagerTest extends TestCaseAbstract
      */
     public function updateDetails()
     {
-        $this->assertSame(
+        $expected =
             [
             'code' => [
                 'Status'        => 200,
@@ -161,7 +161,10 @@ class ManagerTest extends TestCaseAbstract
                 'PriceSchedule',
             ],
 
-            ],
+            ];
+
+        $this->assertSame(
+            $this->shift($expected),
             $this->createAndRun('updateDetails')
         );
     }
@@ -174,15 +177,16 @@ class ManagerTest extends TestCaseAbstract
      */
     public function updateDetailsNone()
     {
-        $this->assertSame(
-            [
+        $expected = [
             'bypassed' => [
                 'Status',
                 'Stock',
                 'Price',
                 'PriceSchedule',
             ],
-            ],
+            ];
+        $this->assertSame(
+            $this->shift($expected),
             $this->createAndRun('updateDetails', true)
         );
     }
@@ -194,27 +198,51 @@ class ManagerTest extends TestCaseAbstract
      */
     public function updateFull()
     {
-        $this->assertSame(
-            [
-                'sku'      => '14080',
-                'bypassed' => [],
-                'code'     => [
-                    'info'          => 200,
-                    'Status'        => 200,
-                    'Stock'         => 200,
-                    'Price'         => 200,
-                    'PriceSchedule' => 200,
-                ],
-                'updated' => [
-                    'info',
-                    'Status',
-                    'Stock',
-                    'Price',
-                    'PriceSchedule',
-                ],
+        $expected = [
+            'sku'      => '14080',
+            'bypassed' => [],
+            'code'     => [
+                'info'          => 200,
+                'Status'        => 200,
+                'Stock'         => 200,
+                'Price'         => 200,
+                'PriceSchedule' => 200,
             ],
+            'updated' => [
+                'info',
+                'Status',
+                'Stock',
+                'Price',
+                'PriceSchedule',
+            ],
+        ];
+
+        $this->assertSame(
+            $this->shift($expected, true),
             $this->createAndRun('update')
         );
     }
 
+    protected function shift($expected, $full = false)
+    {
+        $m = $this->proxy(new Manager());
+        if (true !== $m->strategy['info']) {
+            if (array_key_exists('updated', $expected)) {
+                array_pop($expected['updated']);
+                array_pop($expected['code']);
+
+                if ($full) {
+                    array_shift($expected['updated']);
+                    array_shift($expected['code']);
+                }
+            }
+
+            if (array_key_exists('bypassed', $expected)) {
+                array_pop($expected['bypassed']);
+            }
+            //array_shift($expected['code']);
+        }
+
+        return $expected;
+    }
 }

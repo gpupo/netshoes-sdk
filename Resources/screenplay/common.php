@@ -33,6 +33,10 @@ $makeSku = function ($id, $i, $size = 'P') use ($centena) {
         'depth'  => '10.0',
         'weight' => 0.3,
         'color'  => 'Incolor',
+        'listPrice' => '100',
+        'sellPrice' => '90',
+        'stock' => '10',
+        'status' => 'active',
     ];
 };
 $makeProduct = function ($id, $i, $mode = 'simple', $attributesMode = 'default') use ($centena, $makeSku) {

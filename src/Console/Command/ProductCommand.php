@@ -14,6 +14,7 @@
 
 namespace Gpupo\NetshoesSdk\Console\Command;
 
+use Gpupo\CommonSchema\TranslatorDataCollection;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,7 +25,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ProductCommand extends AbstractCommand
 {
-    protected $list = ['view', 'insert', 'update', 'list'];
+    protected $list = ['view', 'insert', 'update', 'list', 'translateTo', 'translateUpdate'];
 
     public function list($app)
     {
@@ -59,6 +60,55 @@ class ProductCommand extends AbstractCommand
                     if (202 === $operation->getHttpStatusCode()) {
                         $output->writeln('<info>Successo!</info>');
                     }
+                } catch (\Exception $e) {
+                    $app->showException($e, $output);
+                }
+            });
+    }
+
+    public function translateTo($app)
+    {
+        $this->getApp()->appendCommand('product:translate:to', 'Exporta o produto no padrão comum')
+            ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
+            ->addArgument('filenameOutput', InputArgument::REQUIRED, 'Caminho do arquivo que será gerado')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $id = $input->getArgument('productId');
+                $filenameOutput = $input->getArgument('filenameOutput');
+                $p = $app->factorySdk($list)->factoryManager('product')->translatorFindById($id);
+
+                if (empty($p)) {
+                    return $output->writeln('<error>Produto não encontrado!</error>');
+                }
+                $json = json_encode($p->toArray(), JSON_PRETTY_PRINT);
+                file_put_contents($filenameOutput, $json);
+
+                return $output->writeln('Arquivo <info>'.$filenameOutput.'</info> gerado.');
+            });
+    }
+
+    public function translateUpdate($app)
+    {
+        $this->getApp()->appendCommand('product:translate:update', 'Atualiza o produto (schema)')
+            ->addArgument('filenameInput', InputArgument::REQUIRED, 'Arquivo json com dados do produto')
+            ->addArgument('filenamePrevious', InputArgument::OPTIONAL, 'Previous file')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $filenameInput = $input->getArgument('filenameInput');
+                $current = new TranslatorDataCollection(json_decode(file_get_contents($filenameInput), true));
+                $previous = null;
+                $filenamePrevious = $input->getArgument('filenamePrevious');
+
+                if (!empty($filenamePrevious)) {
+                    $previous = new TranslatorDataCollection(json_decode(file_get_contents($filenamePrevious), true));
+                }
+
+                $sdk = $app->factorySdk($list);
+                $manager = $sdk->factoryManager('product');
+
+                try {
+                    $operation = $manager->translatorUpdate($current, $previous);
+                    $app->displayTableResults($output, [$operation]);
                 } catch (\Exception $e) {
                     $app->showException($e, $output);
                 }

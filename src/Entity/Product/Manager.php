@@ -14,14 +14,20 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
-use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 use Gpupo\NetshoesSdk\Factory;
 
 class Manager extends AbstractManager
 {
+    use TranslatorManagerTrait;
+
     protected $entity = 'Product';
+
+    protected $strategy = [
+        'info' => false,
+    ];
 
     /**
      * @codeCoverageIgnore
@@ -54,6 +60,11 @@ class Manager extends AbstractManager
         return $feedback;
     }
 
+    private function skuManager()
+    {
+        return $this->factorySubManager(Factory::getInstance(), 'sku');
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -65,28 +76,46 @@ class Manager extends AbstractManager
 
         $response = [];
 
-        $compare = $this->attributesDiff($entity, $existent, ['department', 'productType']);
-        $response['patch'] = $this->patch($entity, $compare);
-        $response['skus'] = [];
+        if (true === $this->strategy['info']) {
+            $compare = $this->attributesDiff($entity, $existent, ['department', 'productType']);
+            $response['patch'] = $this->patch($entity, $compare);
+        }
 
-        $skuManager = $this->factorySubManager(Factory::getInstance(), 'sku');
+        $response['skus'] = [];
 
         foreach ($entity->getSkus() as $sku) {
             $previous = null;
-            if ($existent) {
+
+            if ($existent instanceof EntityInterface) {
                 $previous = $existent->getSkus()->findById($sku->getId());
             }
 
-            $response['skus'][] = $skuManager->update($sku, $previous);
+            $response['skus'][] = $this->skuManager()->update($sku, $previous);
         }
 
         return $response;
     }
 
-    protected function factoryTranslator(array $data = [])
+    public function factoryTranslator(array $data = [])
     {
         $translator = new Translator($data);
 
         return $translator;
+    }
+
+    public function findById($itemId)
+    {
+        $product = parent::findById($itemId);
+
+        if (empty($product)) {
+            return false;
+        }
+
+        $sm = $this->skuManager();
+        $product->getSkus()->forAll(function ($key, $element) use ($sm) {
+            $sm->hydrate($element);
+        });
+
+        return $product;
     }
 }

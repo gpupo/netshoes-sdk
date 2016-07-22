@@ -1,19 +1,19 @@
 
 
 Code Coverage Report:      
-  2016-07-21 17:20:07      
+  2016-07-22 15:22:09      
                            
  Summary:                  
-  Classes: 72.73% (32/44)  
-  Methods: 74.23% (72/97)  
-  Lines:   85.43% (346/405)
+  Classes: 70.45% (31/44)  
+  Methods: 71.00% (71/100) 
+  Lines:   78.73% (348/442)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)
 \Gpupo\NetshoesSdk\Client::Client
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  7/  7)
 \Gpupo\NetshoesSdk\Entity::AbstractManager
-  Methods:  66.67% ( 6/ 9)   Lines:  73.91% ( 17/ 23)
+  Methods:  80.00% ( 4/ 5)   Lines:  87.50% (  7/  8)
 \Gpupo\NetshoesSdk\Entity::AbstractMetadata
   Methods:  50.00% ( 1/ 2)   Lines:  93.33% ( 14/ 15)
 \Gpupo\NetshoesSdk\Entity\Order::Manager
@@ -49,7 +49,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items::Items
   Methods:  50.00% ( 2/ 4)   Lines:  28.57% (  2/  7)
 \Gpupo\NetshoesSdk\Entity\Product::Manager
-  Methods:  33.33% ( 1/ 3)   Lines:  87.50% ( 21/ 24)
+  Methods:  33.33% ( 2/ 6)   Lines:  54.84% ( 17/ 31)
 \Gpupo\NetshoesSdk\Entity\Product::ProductCollection
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Product::Skus
@@ -63,7 +63,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Product\Sku::Item
   Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 24/ 24)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::Manager
-  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 34/ 34)
+  Methods:  55.56% ( 5/ 9)   Lines:  57.35% ( 39/ 68)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::PriceSchedule
   Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 12/ 12)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::PriceScheduleCollection
