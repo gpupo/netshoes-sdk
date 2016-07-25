@@ -12,7 +12,7 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
- return [
+return [
      'merchant' => [
          'name' => $native->getOriginSite(),
      ],
@@ -20,7 +20,7 @@
      'priceCurrency' => 'BRL',
      'price'         => $native->getTotalNet(),
      'acceptedOffer' => [
-         $native->getItems()->toSchema()
+         $native->getItems()->toSchema(),
      ],
      'url'              => false,
      'orderStatus'      => $native->getOrderStatus(),
@@ -31,5 +31,5 @@
      'discount'         => $native->getTotalDiscount(),
      'discountCurrency' => 'BRL',
      'customer'         => $native->getShipping()->getCustomer()->toSchema(),
-     'billingAddress' => $native->getShipping()->getCustomer()->getAddress()->toSchema(),
+     'billingAddress'   => $native->getShipping()->getCustomer()->getAddress()->toSchema(),
  ];

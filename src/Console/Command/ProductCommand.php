@@ -50,7 +50,7 @@ class ProductCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
                 $list = $app->processInputParameters($opts, $input, $output);
 
-                $data = json_decode(file_get_contents($list['file']), true);
+                $data = $app->jsonLoadFromFile($list['file']);
                 $sdk = $app->factorySdk($list);
                 $product = $sdk->createProduct($data);
 
@@ -95,12 +95,12 @@ class ProductCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
                 $filenameInput = $input->getArgument('filenameInput');
-                $current = new TranslatorDataCollection(json_decode(file_get_contents($filenameInput), true));
+                $current = new TranslatorDataCollection($app->jsonLoadFromFile($filenameInput));
                 $previous = null;
                 $filenamePrevious = $input->getArgument('filenamePrevious');
 
                 if (!empty($filenamePrevious)) {
-                    $previous = new TranslatorDataCollection(json_decode(file_get_contents($filenamePrevious), true));
+                    $previous = new TranslatorDataCollection($app->jsonLoadFromFile($filenamePrevious));
                 }
 
                 $sdk = $app->factorySdk($list);
@@ -159,7 +159,7 @@ class ProductCommand extends AbstractCommand
                         throw new \InvalidArgumentException('O arquivo ['.$list['file-'.$i].'] não existe!');
                     }
 
-                    $data[$i] = json_decode(file_get_contents($list['file-'.$i]), true);
+                    $data[$i] = $app->jsonLoadFromFile($list['file-'.$i]);
                 }
 
                 $sdk = $app->factorySdk($list);

@@ -84,6 +84,6 @@ class TranslatorTest extends TestCaseAbstract
         $translator->setForeign($foreign);
         $translated = $translator->translateFrom();
 
-        $this->assertEquals($order->getId(), $translated->getId());
+        $this->assertSame($order->getId(), $translated->getId());
     }
 }

@@ -91,4 +91,15 @@ class Application extends AbstractApplication
 
         $this->displayTableResults($output, $p->getSkus());
     }
+
+    public function jsonLoadFromFile($filename)
+    {
+        if (!file_exists($filename)) {
+            throw new \Exception('Filename '.$filename.' not exists!');
+        }
+
+        $string = file_get_contents($filename);
+
+        return json_decode($string, true);
+    }
 }

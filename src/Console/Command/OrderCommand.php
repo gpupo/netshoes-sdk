@@ -15,6 +15,7 @@
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Closure;
+use Gpupo\NetshoesSdk\Entity\Order\Schema;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -24,7 +25,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class OrderCommand extends AbstractCommand
 {
-    protected $list = ['view', 'update', 'list', 'translateTo'];
+    protected $list = ['view', 'update', 'list', 'translateTo', 'schema'];
 
     protected function update($app)
     {
@@ -57,7 +58,7 @@ class OrderCommand extends AbstractCommand
                 if (!file_exists($list['file'])) {
                     throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
                 }
-                $data = json_decode(file_get_contents($list['file']), true);
+                $data = $app->jsonLoadFromFile($list['file']);
                 $sdk = $app->factorySdk($list);
                 $manager = $sdk->factoryManager('order');
                 $order = $sdk->createOrder($data);
@@ -127,6 +128,15 @@ class OrderCommand extends AbstractCommand
                 file_put_contents($filenameOutput, $json);
 
                 return $output->writeln('Arquivo <info>'.$filenameOutput.'</info> gerado.');
+            });
+    }
+
+    public function schema($app)
+    {
+        $this->getApp()->appendCommand('order:schema', 'Exporta o schema')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $schema = new Schema();
+                $output->writeln($schema->getTemplate());
             });
     }
 }
