@@ -128,16 +128,14 @@ class Item extends EntityAbstract implements EntityInterface
             'itemOffered' => [
                 'name'  => $this->getName(),
                 'sku'   => $this->getSku(),
-                'url'   => '',
-                'image' => '',
+                'gtin'  => $this->getEan(),
+                'brand' => $this->getBrand(),
             ],
-            'price'            => $this->getTotalNet(),
+            'price'            => $this->getNetUnitValue(),
+            'discount'         => $this->getDiscountUnitValue(),
             'priceCurrency'    => 'BRL',
             'eligibleQuantity' => [
                 'value' => $this->getQuantity(),
-            ],
-            'seller' => [
-                'name' => 'string',
             ],
         ];
 
