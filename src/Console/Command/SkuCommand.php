@@ -70,7 +70,7 @@ class SkuCommand extends AbstractCommand
                 if (!file_exists($list['file'])) {
                     throw new \InvalidArgumentException('O arquivo ['.$list['file'].'] não existe!');
                 }
-                $data = json_decode(file_get_contents($list['file']), true);
+                $data = $app->jsonLoadFromFile($list['file']);
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
                 $manager = $sdk->factoryManager('sku');

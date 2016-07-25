@@ -14,8 +14,8 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Order;
 
-use Gpupo\NetshoesSdk\Entity\AbstractManager;
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
+use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
 class Manager extends AbstractManager
 {

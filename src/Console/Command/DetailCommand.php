@@ -37,7 +37,7 @@ class DetailCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $opts) {
                 $list = $app->processInputParameters($opts, $input, $output);
 
-                $data = json_decode(file_get_contents($list['file']), true);
+                $data = $app->jsonLoadFromFile($list['file']);
                 $sdk = $app->factorySdk($list);
                 $sku = $sdk->createSku($data);
 

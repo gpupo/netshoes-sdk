@@ -1,0 +1,78 @@
+{
+    "@type": "Order",
+    "agreedDate": 1467298898833,
+    "paymentDate": 1467298898833,
+    "orderDate": 1467298898833,
+    "orderNumber": "111111",
+    "originNumber": "22222222",
+    "totalQuantity": 1,
+    "originSite": "ZT",
+    "businessUnit": "ZT",
+    "orderStatus": "Created",
+    "orderType": "Normal",
+    "devolutionRequested": false,
+    "exchangeRequested": false,
+    "totalGross": 10,
+    "totalCommission": 0,
+    "totalDiscount": 0,
+    "totalFreight": 0,
+    "totalNet": 10,
+    "shippings": [
+        {
+            "shippingCode": 1,
+            "status": "Approved",
+            "cancellationReason": "string",
+            "freightAmount": 0,
+            "country": "string",
+            "customer": {
+                "document": "string",
+                "stateInscription": "string",
+                "customerName": "string",
+                "recipientName": "string",
+                "tradeName": "string",
+                "cellPhone": "string",
+                "landLine": "string",
+                "address": {
+                    "expands": [],
+                    "neighborhood": "string",
+                    "postalCode": "string",
+                    "city": "string",
+                    "complement": "string",
+                    "state": "string",
+                    "street": "string",
+                    "number": "string",
+                    "reference": "string"
+                }
+            },
+            "sender": {
+                "supplierCnpj": "string",
+                "sellerCode": 1,
+                "sellerName": "string",
+                "supplierName": "string"
+            },
+            "items": [
+                {
+                    "itemId": 1,
+                    "ean": "3380811244105",
+                    "brand": "Nike",
+                    "name": "Gentle Refiner Unissex 50ml Clarins",
+                    "quantity": 1,
+                    "sku": "14080",
+                    "departmentName": "Feminino",
+                    "departmentCode": 9,
+                    "totalGross": 10,
+                    "totalCommission": 0,
+                    "totalDiscount": 0,
+                    "totalFreight": 0,
+                    "totalNet": 10,
+                    "grossUnitValue": 10,
+                    "discountUnitValue": 0,
+                    "netUnitValue": 10,
+                    "color": "Incolor",
+                    "flavor": "false",
+                    "size": "P"
+                }
+            ]
+        }
+    ]
+}
