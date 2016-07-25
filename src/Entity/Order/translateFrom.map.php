@@ -18,79 +18,69 @@ $a = function ($key, $array) {
     }
 };
 
-return [
-'agreedDate'          => 'string',
-'paymentDate'         => 'string',
-'orderDate'           => 'string',
-'orderNumber'         => $foreign->get('orderNumber'),
-'originNumber'        => 'string',
-'totalQuantity'       => 'string',
-'originSite'          => 'string',
-'businessUnit'        => 'string',
-'orderStatus'         => 'string',
-'orderType'           => 'string',
-'devolutionRequested' => 'string',
-'exchangeRequested'   => 'string',
-'totalGross'          => 'string',
-'totalCommission'     => 'string',
-'totalDiscount'       => 'string',
-'totalFreight'        => 'string',
-'totalNet'            => 'string',
-'shippings'           => [
-    [
+$items = [];
+
+foreach ($foreign->get('acceptedOffer') as $sku) {
+    $items[] = [
+        'itemId'            => 'string',
+        'ean'               => 'string',
+        'brand'             => 'string',
+        'name'              => 'string',
+        'quantity'          => 'string',
+        'sku'               => 'string',
+        'departmentName'    => 'string',
+        'departmentCode'    => 'string',
+        'totalGross'        => 'string',
+        'totalCommission'   => 'string',
+        'totalDiscount'     => 'string',
+        'totalFreight'      => 'string',
+        'totalNet'          => 'string',
+        'grossUnitValue'    => 'string',
+        'discountUnitValue' => 'string',
+        'netUnitValue'      => 'string',
+        'color'             => 'string',
+        'flavor'            => 'string',
+        'size'              => 'string',
+    ];
+}
+
+$customer = [
+    'document'         => 'string',
+    'stateInscription' => 'string',
+    'customerName'     => 'string',
+    'recipientName'    => 'string',
+    'tradeName'        => 'string',
+    'cellPhone'        => 'string',
+    'landLine'         => 'string',
+    'address'          => [
+        'neighborhood' => 'string',
+        'postalCode'   => 'string',
+        'city'         => 'string',
+        'complement'   => 'string',
+        'state'        => 'string',
+        'street'       => 'string',
+        'number'       => 'string',
+        'reference'    => 'string',
+    ],
+];
+
+$shipping = [
     'shippingCode'       => 'string',
     'status'             => 'string',
     'cancellationReason' => 'string',
     'freightAmount'      => 'string',
     'country'            => 'string',
-    'customer'           => [
-        'document'         => 'string',
-        'stateInscription' => 'string',
-        'customerName'     => 'string',
-        'recipientName'    => 'string',
-        'tradeName'        => 'string',
-        'cellPhone'        => 'string',
-        'landLine'         => 'string',
-        'address'          => [
-            'neighborhood' => 'string',
-            'postalCode'   => 'string',
-            'city'         => 'string',
-            'complement'   => 'string',
-            'state'        => 'string',
-            'street'       => 'string',
-            'number'       => 'string',
-            'reference'    => 'string',
-        ],
-    ],
-    'sender' => [
-        'supplierCnpj' => 'string',
-        'sellerCode'   => 'string',
-        'sellerName'   => 'string',
-        'supplierName' => 'string',
-    ],
-    'items' => [
-        [
-            'itemId'            => 'string',
-            'ean'               => 'string',
-            'brand'             => 'string',
-            'name'              => 'string',
-            'quantity'          => 'string',
-            'sku'               => 'string',
-            'departmentName'    => 'string',
-            'departmentCode'    => 'string',
-            'totalGross'        => 'string',
-            'totalCommission'   => 'string',
-            'totalDiscount'     => 'string',
-            'totalFreight'      => 'string',
-            'totalNet'          => 'string',
-            'grossUnitValue'    => 'string',
-            'discountUnitValue' => 'string',
-            'netUnitValue'      => 'string',
-            'color'             => 'string',
-            'flavor'            => 'string',
-            'size'              => 'string',
-        ],
-    ],
-    ],
-],
+    'customer'           => $customer,
+    'sender' => [],
+    'items' => $items,
+];
+
+return [
+    'orderNumber'         => $foreign->get('orderNumber'),
+    'originSite'          => $foreign->get('merchant')['name'],
+    'orderStatus'         => $foreign->get('orderStatus'),
+    'orderDate'           => $foreign->get('orderDate'),
+    'totalDiscount'       => $foreign->get('discount'),
+    'totalNet'            => $foreign->get('price'),
+    'shippings'           => [$shipping],
 ];
