@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:      
-  2016-07-22 15:22:09      
+  2016-07-25 14:37:53      
                            
  Summary:                  
-  Classes: 70.45% (31/44)  
-  Methods: 71.00% (71/100) 
-  Lines:   78.73% (348/442)
+  Classes: 75.56% (34/45)  
+  Methods: 80.65% (75/93)  
+  Lines:   87.21% (409/469)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)
@@ -17,15 +17,15 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity::AbstractMetadata
   Methods:  50.00% ( 1/ 2)   Lines:  93.33% ( 14/ 15)
 \Gpupo\NetshoesSdk\Entity\Order::Manager
-  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 21/ 21)
+  Methods:  66.67% ( 2/ 3)   Lines:  90.48% ( 19/ 21)
 \Gpupo\NetshoesSdk\Entity\Order::Order
   Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 12/ 12)
 \Gpupo\NetshoesSdk\Entity\Order::OrderCollection
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+\Gpupo\NetshoesSdk\Entity\Order::Translator
+  Methods:  50.00% ( 1/ 2)   Lines:  87.50% (  7/  8)
 \Gpupo\NetshoesSdk\Entity\Order\Decorator::AbstractDecorator
   Methods:  85.71% ( 6/ 7)   Lines:  95.24% ( 20/ 21)
-\Gpupo\NetshoesSdk\Entity\Order\Decorator::CommonSchema
-  Methods:   9.09% ( 1/11)   Lines:  30.00% (  6/ 20)
 \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status::Approved
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status::Canceled
@@ -44,10 +44,14 @@ Code Coverage Report:
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings::Transport
   Methods:   0.00% ( 0/ 1)   Lines:  80.00% (  4/  5)
+\Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer::Address
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  9/  9)
+\Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer::Customer
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  7/  7)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items::Item
-  Methods:  50.00% ( 1/ 2)   Lines:  18.18% (  2/ 11)
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 11/ 11)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items::Items
-  Methods:  50.00% ( 2/ 4)   Lines:  28.57% (  2/  7)
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  7/  7)
 \Gpupo\NetshoesSdk\Entity\Product::Manager
   Methods:  33.33% ( 2/ 6)   Lines:  54.84% ( 17/ 31)
 \Gpupo\NetshoesSdk\Entity\Product::ProductCollection
