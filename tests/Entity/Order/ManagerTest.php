@@ -86,19 +86,6 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
-     * @testdox Dá acesso ao output [Trading](https://github.com/gpupo/common-schema#schemas)
-     * @test
-     * @dataProvider dataProviderOrders
-     * @covers ::export
-     */
-    public function export(Order $order)
-    {
-        $manager = $this->getFactory()->factoryManager('order');
-        $data = $manager->export($order);
-        $this->assertInternalType('array', $data);
-    }
-
-    /**
      * @testdox Get a order based on order number
      * @covers ::findById
      * @covers ::execute
