@@ -64,7 +64,7 @@ class Manager extends AbstractManager
 
         $o = new $className($data->toArray());
 
-        $this->getLogger()->addInfo('Detail', [
+        $this->log('info', 'Detail', [
             'sku'       => $sku->getId(),
             'typ'       => $type,
             'response'  => $data,
