@@ -85,14 +85,19 @@ abstract class TestCaseAbstract extends CommonSdkTestCaseAbstract
         return $list;
     }
 
-    public function dataProviderOrders()
+    public function providerOrders()
     {
         $manager = $this->getFactory()->factoryManager('order');
         $manager->setDryRun($this->factoryResponseFromFixture('fixture/Order/list.json'));
 
+        return $manager->fetch();
+    }
+
+    public function dataProviderOrders()
+    {
         $list = [];
 
-        foreach ($manager->fetch() as $order) {
+        foreach ($this->providerOrders() as $order) {
             $list[] = [$order];
         }
 
