@@ -133,13 +133,14 @@ class Manager extends AbstractManager
 
     protected function resolvePrevious(Item $entity)
     {
-        $p = $this->findById($entity->getId());
-
-        if ($p instanceof Item) {
-            return $p;
+        try {
+            $p = $this->findById($entity->getId());
+            if ($p instanceof Item) {
+                return $p;
+            }
+        } catch (\Exception $e) {
+            throw new \Exception('Sku #'.$entity->getId().' not found on marketplace!');
         }
-
-        throw new \Exception('Sku #'.$entity->getId().' not found on marketplace!');
     }
 
     /**

@@ -84,7 +84,7 @@ class TranslatorTest extends TestCaseAbstract
         $translator->setForeign($foreign);
         $translated = $translator->translateFrom();
         foreach (['getId', 'getOrderNumber', 'getTotalNet', 'getOrderStatus',
-            'getTotalDiscount', 'getOrderDate'] as $method) {
+            'getTotalDiscount', 'getOrderDate', ] as $method) {
             $this->assertSame($order->$method(), $translated->$method(), $method);
         }
     }

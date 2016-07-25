@@ -15,6 +15,7 @@
 namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Closure;
+use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\NetshoesSdk\Entity\Order\Schema;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -25,7 +26,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class OrderCommand extends AbstractCommand
 {
-    protected $list = ['view', 'update', 'list', 'translateTo', 'schema'];
+    protected $list = ['view', 'update', 'list', 'translateTo', 'translateFrom', 'schema'];
 
     protected function update($app)
     {
@@ -128,6 +129,22 @@ class OrderCommand extends AbstractCommand
                 file_put_contents($filenameOutput, $json);
 
                 return $output->writeln('Arquivo <info>'.$filenameOutput.'</info> gerado.');
+            });
+    }
+
+    public function translateFrom($app)
+    {
+        $this->getApp()->appendCommand('order:translate:from', 'Importa o pedido no padrão comum')
+            ->addArgument('filenameInput', InputArgument::REQUIRED, 'Arquivo json com dados do pedido')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $foreign = new TranslatorDataCollection($app->jsonLoadFromFile($input->getArgument('filenameInput')));
+
+                $p = $app->factorySdk($list)->factoryManager('order')->factoryTranslator([
+                    'foreign' => $foreign,
+                ]);
+
+                $app->displayOrder($p->translateFrom(), $output);
             });
     }
 

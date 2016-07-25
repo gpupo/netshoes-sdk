@@ -71,16 +71,16 @@ $shipping = [
     'freightAmount'      => 'string',
     'country'            => 'string',
     'customer'           => $customer,
-    'sender' => [],
-    'items' => $items,
+    'sender'             => [],
+    'items'              => $items,
 ];
 
 return [
-    'orderNumber'         => $foreign->get('orderNumber'),
-    'originSite'          => $foreign->get('merchant')['name'],
-    'orderStatus'         => $foreign->get('orderStatus'),
-    'orderDate'           => $foreign->get('orderDate'),
-    'totalDiscount'       => $foreign->get('discount'),
-    'totalNet'            => $foreign->get('price'),
-    'shippings'           => [$shipping],
+    'orderNumber'   => $foreign->get('orderNumber'),
+    'originSite'    => $foreign->get('merchant')['name'],
+    'orderStatus'   => $foreign->get('orderStatus'),
+    'orderDate'     => $foreign->get('orderDate'),
+    'totalDiscount' => $foreign->get('discount'),
+    'totalNet'      => $foreign->get('price'),
+    'shippings'     => [$shipping],
 ];
