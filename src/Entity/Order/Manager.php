@@ -15,9 +15,12 @@
 namespace Gpupo\NetshoesSdk\Entity\Order;
 
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
+use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 
 class Manager extends AbstractManager
 {
+    use TranslatorManagerTrait;
+
     protected $entity = 'Order';
 
     /**
@@ -28,20 +31,13 @@ class Manager extends AbstractManager
         $this->maps = include 'map.config.php';
     }
 
-    protected function factoryDecorator(Order $order, $decoratorName)
+    public function factoryDecorator(Order $order, $decoratorName)
     {
         $className = __NAMESPACE__.'\\Decorator\\'.$decoratorName;
         $instance = new $className();
         $instance->setOrder($order);
 
         return $instance;
-    }
-
-    public function export(Order $order)
-    {
-        $decorator = $this->factoryDecorator($order, 'CommonSchema');
-
-        return $decorator->toArray();
     }
 
     public function updateStatus(Order $order)
@@ -67,5 +63,12 @@ class Manager extends AbstractManager
         }
 
         throw new \InvalidArgumentException('Order Status não suportado', 1);
+    }
+
+    public function factoryTranslator(array $data = [])
+    {
+        $translator = new Translator($data);
+
+        return $translator;
     }
 }

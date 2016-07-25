@@ -24,7 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class OrderCommand extends AbstractCommand
 {
-    protected $list = ['view', 'update', 'list'];
+    protected $list = ['view', 'update', 'list', 'translateTo'];
 
     protected function update($app)
     {
@@ -106,6 +106,27 @@ class OrderCommand extends AbstractCommand
                     $app->displayOrder($p, $output);
                     $output->writeln("\n\n--------------------------------------\n\n");
                 }
+            });
+    }
+
+    public function translateTo($app)
+    {
+        $this->getApp()->appendCommand('order:translate:to', 'Exporta o pedido no padrão comum')
+            ->addArgument('orderId', InputArgument::REQUIRED, 'Order ID')
+            ->addArgument('filenameOutput', InputArgument::REQUIRED, 'Caminho do arquivo que será gerado')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $id = $input->getArgument('orderId');
+                $filenameOutput = $input->getArgument('filenameOutput');
+                $p = $app->factorySdk($list)->factoryManager('order')->translatorFindById($id);
+
+                if (empty($p)) {
+                    return $output->writeln('<error>Pedido não encontrado!</error>');
+                }
+                $json = json_encode($p->toArray(), JSON_PRETTY_PRINT);
+                file_put_contents($filenameOutput, $json);
+
+                return $output->writeln('Arquivo <info>'.$filenameOutput.'</info> gerado.');
             });
     }
 }
