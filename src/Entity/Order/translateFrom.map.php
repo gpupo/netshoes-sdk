@@ -12,67 +12,60 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-$a = function ($key, $array) {
-    if (array_key_exists($key, $array)) {
-        return $array[$key];
-    }
-};
-
 $items = [];
 
 foreach ($foreign->get('acceptedOffer') as $sku) {
     $items[] = [
-        'itemId'            => 'string',
-        'ean'               => 'string',
-        'brand'             => 'string',
-        'name'              => 'string',
-        'quantity'          => 'string',
-        'sku'               => 'string',
-        'departmentName'    => 'string',
-        'departmentCode'    => 'string',
-        'totalGross'        => 'string',
-        'totalCommission'   => 'string',
-        'totalDiscount'     => 'string',
-        'totalFreight'      => 'string',
-        'totalNet'          => 'string',
-        'grossUnitValue'    => 'string',
-        'discountUnitValue' => 'string',
-        'netUnitValue'      => 'string',
-        'color'             => 'string',
-        'flavor'            => 'string',
-        'size'              => 'string',
+        'itemId'            => $sku['itemOffered']['sku'],
+        'ean'               => '',
+        'brand'             => '',
+        'name'              => $sku['itemOffered']['name'],
+        'quantity'          => $sku['eligibleQuantity']['value'],
+        'sku'               => $sku['itemOffered']['sku'],
+        'departmentName'    => '',
+        'departmentCode'    => '',
+        'totalGross'        => '',
+        'totalCommission'   => '',
+        'totalDiscount'     => '',
+        'totalFreight'      => '',
+        'totalNet'          => '',
+        'grossUnitValue'    => '',
+        'discountUnitValue' => '',
+        'netUnitValue'      => '',
+        'color'             => '',
+        'flavor'            => '',
+        'size'              => '',
     ];
 }
 
 $customer = [
-    'document'         => 'string',
-    'stateInscription' => 'string',
-    'customerName'     => 'string',
-    'recipientName'    => 'string',
-    'tradeName'        => 'string',
-    'cellPhone'        => 'string',
-    'landLine'         => 'string',
+    'document'         => '',
+    'stateInscription' => '',
+    'customerName'     => '',
+    'recipientName'    => '',
+    'tradeName'        => '',
+    'cellPhone'        => '',
+    'landLine'         => '',
     'address'          => [
-        'neighborhood' => 'string',
-        'postalCode'   => 'string',
-        'city'         => 'string',
-        'complement'   => 'string',
-        'state'        => 'string',
-        'street'       => 'string',
-        'number'       => 'string',
-        'reference'    => 'string',
+        'neighborhood' => '',
+        'postalCode'   => '',
+        'city'         => '',
+        'complement'   => '',
+        'state'        => '',
+        'street'       => '',
+        'number'       => '',
+        'reference'    => '',
     ],
 ];
 
 $shipping = [
-    'shippingCode'       => 'string',
-    'status'             => 'string',
-    'cancellationReason' => 'string',
-    'freightAmount'      => 'string',
-    'country'            => 'string',
-    'customer'           => $customer,
-    'sender'             => [],
-    'items'              => $items,
+    'shippingCode'  => '',
+    'status'        => $foreign->get('orderStatus'),
+    'freightAmount' => '',
+    'country'       => '',
+    'customer'      => $customer,
+    'sender'        => [],
+    'items'         => $items,
 ];
 
 return [
@@ -82,5 +75,6 @@ return [
     'orderDate'     => $foreign->get('orderDate'),
     'totalDiscount' => $foreign->get('discount'),
     'totalNet'      => $foreign->get('price'),
+    'totalQuantity' => $foreign->get('quantity'),
     'shippings'     => [$shipping],
 ];
