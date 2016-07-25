@@ -104,6 +104,9 @@ class OrderCommand extends AbstractCommand
                 $collection = $app->factorySdk($list)->factoryManager('order')
                 ->fetch(0, 50, ['orderStatus' => $type]);
 
+                if (0 === $collection->count()) {
+                    return $output->writeln('<error>Nenhum pedido encontrado!</error>');
+                }
                 foreach ($collection as $p) {
                     $app->displayOrder($p, $output);
                     $output->writeln("\n\n--------------------------------------\n\n");
