@@ -26,23 +26,16 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class OrderCommand extends AbstractCommand
 {
-    protected $list = ['view', 'update', 'list', 'translateTo', 'translateFrom'];
+    protected $list = ['view', 'factoryForStatus', 'translateTo', 'translateFrom'];
 
-    protected function update($app)
-    {
-        $this->factoryUpdate($app, 'approved');
-        $this->factoryUpdate($app, 'invoiced');
-        $this->factoryUpdate($app, 'shipped');
-        $this->factoryUpdate($app, 'delivered');
-    }
+    protected $statusList = ['approved', 'invoiced', 'shipped', 'delivered', 'canceled'];
 
-    protected function list($app)
+    protected function factoryForStatus($app)
     {
-        $this->factoryList($app, 'approved');
-        $this->factoryList($app, 'invoiced');
-        $this->factoryList($app, 'shipped');
-        $this->factoryList($app, 'delivered');
-        $this->factoryList($app, 'canceled');
+        foreach ($this->statusList as $status) {
+            $this->factoryUpdate($app, $status);
+            $this->factoryList($app, $status);
+        }
     }
 
     protected function factoryUpdate($app, $type, Closure $decorator = null)
@@ -128,10 +121,8 @@ class OrderCommand extends AbstractCommand
                 if (empty($p)) {
                     return $output->writeln('<error>Pedido não encontrado!</error>');
                 }
-                $json = json_encode($p->toArray(), JSON_PRETTY_PRINT);
-                file_put_contents($filenameOutput, $json);
 
-                return $output->writeln('Arquivo <info>'.$filenameOutput.'</info> gerado.');
+                return $app->jsonSaveToFile($p->toArray(), $filenameOutput, $output);
             });
     }
 

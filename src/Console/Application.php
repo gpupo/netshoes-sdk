@@ -29,8 +29,7 @@ class Application extends AbstractApplication
     public function doRun(InputInterface $input, OutputInterface $output)
     {
         $output->writeln('<bg=green;options=bold>gpupo/netshoes-sdk</>');
-        $output->writeln('<options=bold>'
-        .'Atenção! Esta aplicação é apenas uma '
+        $output->writeln('<options=bold>Atenção! Esta aplicação é apenas uma '
         .'ferramenta de apoio ao desenvolvedor e não deve ser usada no ambiente de produção!'
         .'</>');
 
@@ -73,7 +72,6 @@ class Application extends AbstractApplication
         $this->displayTableResults($output, [$order->toLog()]);
         $output->writeln('Shipping - Order #<comment>'.$order->getId().'</comment>');
         $this->displayTableResults($output, [$order->getShipping()->toLog()]);
-
         $output->writeln('Shipping Items - Order #<comment>'.$order->getId().'</comment>');
         $this->displayTableResults($output, $order->getShipping()->getItems()->toLog());
     }
@@ -88,7 +86,6 @@ class Application extends AbstractApplication
         ]]);
 
         $output->writeln('<fg=yellow>Skus</>');
-
         $this->displayTableResults($output, $p->getSkus());
     }
 
@@ -101,5 +98,13 @@ class Application extends AbstractApplication
         $string = file_get_contents($filename);
 
         return json_decode($string, true);
+    }
+
+    public function jsonSaveToFile(array $array, $filename, OutputInterface $output)
+    {
+        $json = json_encode($array, JSON_PRETTY_PRINT);
+        file_put_contents($filename, $json);
+
+        return $output->writeln('Arquivo <info>'.$filename.'</info> gerado.');
     }
 }

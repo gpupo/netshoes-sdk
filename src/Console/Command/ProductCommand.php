@@ -80,10 +80,8 @@ class ProductCommand extends AbstractCommand
                 if (empty($p)) {
                     return $output->writeln('<error>Produto não encontrado!</error>');
                 }
-                $json = json_encode($p->toArray(), JSON_PRETTY_PRINT);
-                file_put_contents($filenameOutput, $json);
 
-                return $output->writeln('Arquivo <info>'.$filenameOutput.'</info> gerado.');
+                return $app->jsonSaveToFile($p->toArray(), $filenameOutput, $output);
             });
     }
 
