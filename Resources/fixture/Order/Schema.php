@@ -12,7 +12,7 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
-namespace Gpupo\NetshoesSdk\Entity\Order;
+namespace Gpupo\NetshoesSdk;
 
 use Gpupo\CommonSchema\AbstractSchema;
 
@@ -20,12 +20,12 @@ class Schema extends AbstractSchema
 {
     public function getSchema()
     {
-        return include __DIR__.'/../../../Resources/fixture/Order/array.php';
+        return include __DIR__.'/array.php';
     }
 
     public function getRawSchema()
     {
-        $content = file_get_contents(__DIR__.'/../../../Resources/fixture/Order/schema.json');
+        $content = file_get_contents(__DIR__.'/schema.json');
 
         return $this->load(json_decode($content, true));
     }
