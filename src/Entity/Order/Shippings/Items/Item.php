@@ -131,12 +131,11 @@ class Item extends EntityAbstract implements EntityInterface
                 'gtin'  => $this->getEan(),
                 'brand' => $this->getBrand(),
             ],
-            'price'            => $this->getNetUnitValue(),
-            'discount'         => $this->getDiscountUnitValue(),
-            'priceCurrency'    => 'BRL',
-            'eligibleQuantity' => [
-                'value' => $this->getQuantity(),
-            ],
+            'price'    => $this->getNetUnitValue(),
+            'discount' => $this->getTotalDiscount(),
+            'quantity' => $this->getQuantity(),
+            'freight'  => $this->getTotalFreight(),
+            'total'    => $this->getTotalNet(),
         ];
 
         return $array;

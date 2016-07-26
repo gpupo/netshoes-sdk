@@ -20,7 +20,7 @@ foreach ($foreign->get('acceptedOffer') as $sku) {
         'ean'               => '',
         'brand'             => '',
         'name'              => $sku['itemOffered']['name'],
-        'quantity'          => $sku['eligibleQuantity']['value'],
+        'quantity'          => $sku['quantity'],
         'sku'               => $sku['itemOffered']['sku'],
         'departmentName'    => '',
         'departmentCode'    => '',
