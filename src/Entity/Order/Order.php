@@ -27,7 +27,6 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setDevolutionRequested(boolean $devolutionRequested)    Define devolutionRequested
  * @method bool getExchangeRequested()    Acesso a exchangeRequested
  * @method setExchangeRequested(boolean $exchangeRequested)    Define exchangeRequested
- * @method string getOrderDate()    Acesso a orderDate
  * @method setOrderDate(string $orderDate)    Define orderDate
  * @method string getOrderNumber()    Acesso a orderNumber
  * @method setOrderNumber(string $orderNumber)    Define orderNumber
@@ -134,5 +133,16 @@ class Order extends EntityAbstract implements EntityInterface, CollectionInterfa
         $this->setRequiredSchema(['businessUnit', 'orderDate', 'orderNumber']);
 
         return $this->isValid();
+    }
+
+    public function getOrderDate()
+    {
+        $od = $this->get('orderDate');
+
+        if (intval($od) === $od) {
+            return date('Y-m-d', $od / 1000);
+        }
+
+        return $od;
     }
 }

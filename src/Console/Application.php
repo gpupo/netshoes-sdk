@@ -70,9 +70,7 @@ class Application extends AbstractApplication
     {
         $output->writeln('Order #<comment>'.$order->getId().'</comment>');
         $this->displayTableResults($output, [$order->toLog()]);
-        $output->writeln('Shipping - Order #<comment>'.$order->getId().'</comment>');
-        $this->displayTableResults($output, [$order->getShipping()->toLog()]);
-        $output->writeln('Shipping Items - Order #<comment>'.$order->getId().'</comment>');
+        $this->displayTableResults($output, $order->getShipping()->getCustomer()->toLog());
         $this->displayTableResults($output, $order->getShipping()->getItems()->toLog());
     }
 
