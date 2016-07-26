@@ -26,7 +26,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class OrderCommand extends AbstractCommand
 {
-    protected $list = ['view', 'update', 'list', 'translateTo', 'translateFrom', 'schema'];
+    protected $list = ['view', 'update', 'list', 'translateTo', 'translateFrom'];
 
     protected function update($app)
     {
@@ -148,15 +148,6 @@ class OrderCommand extends AbstractCommand
                 ]);
 
                 $app->displayOrder($p->translateFrom(), $output);
-            });
-    }
-
-    public function schema($app)
-    {
-        $this->getApp()->appendCommand('order:schema', 'Exporta o schema')
-            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
-                $schema = new Schema();
-                $output->writeln($schema->getTemplate());
             });
     }
 }
