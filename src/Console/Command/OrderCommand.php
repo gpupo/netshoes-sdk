@@ -16,7 +16,6 @@ namespace Gpupo\NetshoesSdk\Console\Command;
 
 use Closure;
 use Gpupo\CommonSchema\TranslatorDataCollection;
-use Gpupo\NetshoesSdk\Entity\Order\Schema;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
