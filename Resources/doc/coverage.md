@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:      
-  2016-07-25 15:32:24      
+  2016-07-26 11:49:08      
                            
  Summary:                  
-  Classes: 75.56% (34/45)  
-  Methods: 80.65% (75/93)  
-  Lines:   87.26% (411/471)
+  Classes: 77.27% (34/44)  
+  Methods: 82.42% (75/91)  
+  Lines:   88.94% (426/479)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)

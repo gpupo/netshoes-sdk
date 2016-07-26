@@ -85,7 +85,7 @@ class Manager extends AbstractManager
                 throw new ManagerException('No price schedule on SKU #'.$sku->getId());
             }
         } catch (ManagerException $e) {
-            $this->getLogger()->addError($e->getMessage());
+            $this->log('error', $e->getMessage());
 
             return;
         }
