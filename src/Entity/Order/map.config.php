@@ -26,7 +26,8 @@ return [
     ],
     'fetch' => [
         'GET',
-        '/orders?expand=items,shippings,devolutionItems&page={offset}&size={limit}&orderStatus={orderStatus}',
+        '/orders?expand=items,shippings,devolutionItems&page={offset}&size={limit}'
+        .'&orderStatus={orderStatus}&orderStartDate={orderStartDate}',
     ],
     'findById' => [
         'GET',

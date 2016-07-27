@@ -14,9 +14,11 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Order;
 
+use DateInterval;
+use DateTime;
+use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
-use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Manager extends AbstractManager
 {
@@ -55,7 +57,7 @@ class Manager extends AbstractManager
         }
 
         if (in_array($entity->getOrderStatus(), ['approved', 'canceled',
-            'delivered', 'invoiced', 'shipped'], true)) {
+            'delivered', 'invoiced', 'shipped', ], true)) {
             $decorator = $this->factoryDecorator($entity, 'Status\\'.ucfirst($entity->getOrderStatus()));
             $json = $decorator->toJson();
             $mapKey = 'to'.ucfirst($entity->getOrderStatus());
@@ -79,5 +81,16 @@ class Manager extends AbstractManager
         $translator = new Translator($data);
 
         return $translator;
+    }
+
+    public function fetchQueue($offset = 0, $limit = 50, array $parameters = [])
+    {
+        $date = new DateTime();
+        $date->sub(new DateInterval('P4D'));
+
+        return $this->translatorFetch(0, 50, [
+            'orderStatus'    => 'approved',
+            'orderStartDate' => $date->format('Y-m-d'),
+        ]);
     }
 }
