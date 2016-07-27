@@ -6,7 +6,7 @@
  * @version 1
  */
 
-$operation = $manager->updateStatus($order);
+$operation = $manager->update($order);
 
 if (200 !== $operation->getHttpStatusCode()) {
     throw new \Exception('FAIL ['.$status.']: #'.$id);

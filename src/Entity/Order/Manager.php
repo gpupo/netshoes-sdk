@@ -16,6 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Order;
 
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
+use Gpupo\CommonSdk\Entity\EntityInterface;
 
 class Manager extends AbstractManager
 {
@@ -40,22 +41,30 @@ class Manager extends AbstractManager
         return $instance;
     }
 
-    public function updateStatus(Order $order)
+    /**
+     * {@inheritdoc}
+     */
+    public function update(EntityInterface $entity, EntityInterface $existent = null)
     {
-        $status = $order->getOrderStatus();
+        if (!empty($existent)) {
+            if ($entity->getOrderStatus() === $existent->getOrderStatus()) {
+                $this->log('info', 'Order sem atualização');
 
-        $list = ['approved', 'canceled', 'delivered', 'invoiced', 'shipped'];
+                return false;
+            }
+        }
 
-        if (in_array($status, $list, true)) {
-            $decorator = $this->factoryDecorator($order, 'Status\\'.ucfirst($status));
+        if (in_array($entity->getOrderStatus(), ['approved', 'canceled',
+            'delivered', 'invoiced', 'shipped'], true)) {
+            $decorator = $this->factoryDecorator($entity, 'Status\\'.ucfirst($entity->getOrderStatus()));
             $json = $decorator->toJson();
-            $mapKey = 'to'.ucfirst($status);
-            $shipping = $order->getShipping();
+            $mapKey = 'to'.ucfirst($entity->getOrderStatus());
+            $shipping = $entity->getShipping();
             $code = $shipping->getShippingCode();
             $shipping->toJson();
             $map = $this->factoryMap($mapKey, [
-                'orderNumber'  => $order->getOrderNumber(),
-                'itemId'       => $order->getOrderNumber(),
+                'orderNumber'  => $entity->getOrderNumber(),
+                'itemId'       => $entity->getOrderNumber(),
                 'shippingCode' => $code,
             ]);
 

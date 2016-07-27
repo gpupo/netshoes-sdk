@@ -106,13 +106,13 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @expectedException InvalidArgumentException
      * @covers ::factoryDecorator
-     * @covers ::updateStatus
+     * @covers ::update
      */
     public function updateStatusFail(Order $order)
     {
         $manager = $this->getManager();
         $order->setOrderStatus('abductee');
-        $manager->updateStatus($order);
+        $manager->update($order);
     }
 
     /**
@@ -123,13 +123,13 @@ class ManagerTest extends TestCaseAbstract
      * @covers ::execute
      * @covers ::factoryMap
      * @covers ::factoryDecorator
-     * @covers ::updateStatus
+     * @covers ::update
      */
     public function saveStatusToApproved(Order $order)
     {
         $manager = $this->getManager();
         $order->setOrderStatus('approved');
-        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
+        $this->assertSame(200, $manager->update($order)->getHttpStatusCode());
     }
 
     /**
@@ -139,14 +139,14 @@ class ManagerTest extends TestCaseAbstract
      * @covers ::fetch
      * @covers ::execute
      * @covers ::factoryMap
-     * @covers ::updateStatus
+     * @covers ::update
      * @expectedException InvalidArgumentException
      */
     public function saveStatusToInvoicedFail(Order $order)
     {
         $manager = $this->getManager();
         $order->setOrderStatus('invoiced');
-        $manager->updateStatus($order);
+        $manager->update($order);
     }
 
     /**
@@ -155,7 +155,7 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
-     * @covers ::updateStatus
+     * @covers ::update
      * @covers ::factoryMap
      */
     public function saveStatusToInvoiced(Order $order)
@@ -172,7 +172,7 @@ class ManagerTest extends TestCaseAbstract
 
         $order->getShipping()->setInvoice($invoice);
 
-        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
+        $this->assertSame(200, $manager->update($order)->getHttpStatusCode());
     }
 
     /**
@@ -181,7 +181,7 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
-     * @covers ::updateStatus
+     * @covers ::update
      * @covers ::factoryMap
      */
     public function saveStatusToCanceled(Order $order)
@@ -189,7 +189,7 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager();
         $order->setOrderStatus('canceled');
         $order->getShipping()->setCancellationReason('Solicitação do cliente');
-        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
+        $this->assertSame(200, $manager->update($order)->getHttpStatusCode());
     }
 
     /**
@@ -198,7 +198,7 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
-     * @covers ::updateStatus
+     * @covers ::update
      * @covers ::factoryMap
      */
     public function saveStatusToDelivered(Order $order)
@@ -206,7 +206,7 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager();
         $order->setOrderStatus('delivered');
         $order->getShipping()->getTransport()->setDeliveryDate('2016-05-10T09:44:54.000-03:00');
-        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
+        $this->assertSame(200, $manager->update($order)->getHttpStatusCode());
     }
 
     /**
@@ -215,7 +215,7 @@ class ManagerTest extends TestCaseAbstract
      * @dataProvider dataProviderOrders
      * @covers ::fetch
      * @covers ::execute
-     * @covers ::updateStatus
+     * @covers ::update
      * @covers ::factoryMap
      */
     public function saveStatusToShipped(Order $order)
@@ -231,6 +231,6 @@ class ManagerTest extends TestCaseAbstract
         ]);
 
         $order->getShipping()->setTransport($transport);
-        $this->assertSame(200, $manager->updateStatus($order)->getHttpStatusCode());
+        $this->assertSame(200, $manager->update($order)->getHttpStatusCode());
     }
 }
