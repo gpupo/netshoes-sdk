@@ -14,12 +14,14 @@
 
 namespace Gpupo\Tests\NetshoesSdk\Entity\Order;
 
+use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\NetshoesSdk\Entity\Order\Manager;
 use Gpupo\NetshoesSdk\Entity\Order\Order;
 use Gpupo\NetshoesSdk\Entity\Order\OrderCollection;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Invoice;
 use Gpupo\NetshoesSdk\Entity\Order\Shippings\Shipping;
+use Gpupo\NetshoesSdk\Entity\Order\Translator;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
@@ -86,6 +88,46 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Get a list of Common Schema Orders
+     * @test
+     * @depends testManager
+     * @covers ::translatorFetch
+     * @covers \Gpupo\NetshoesSdk\Entity\Order\Translator::translateTo
+     */
+    public function translatorFetch(Manager $manager)
+    {
+        $list = $manager->translatorFetch(0, 50, ['orderStatus' => 'approved']);
+        $this->assertInstanceOf(TranslatorDataCollection::class, $list);
+
+        $this->assertSame(1, $list->count());
+
+        foreach ($list as $order) {
+            $this->assertInstanceOf(TranslatorDataCollection::class, $order);
+        }
+
+        return $list;
+    }
+
+    /**
+     * @testdox Get a list of most recent Common Schema Orders
+     * @test
+     * @depends testManager
+     * @covers ::fetchQueue
+     * @covers \Gpupo\NetshoesSdk\Entity\Order\Translator::translateTo
+     */
+    public function fetchQueue(Manager $manager)
+    {
+        $list = $manager->fetchQueue();
+        $this->assertInstanceOf(TranslatorDataCollection::class, $list);
+        $this->assertSame(1, $list->count());
+        foreach ($list as $order) {
+            $this->assertInstanceOf(TranslatorDataCollection::class, $order);
+        }
+
+        return $list;
+    }
+
+    /**
      * @testdox Get a order based on order number
      * @covers ::findById
      * @covers ::execute
@@ -113,6 +155,21 @@ class ManagerTest extends TestCaseAbstract
         $manager = $this->getManager();
         $order->setOrderStatus('abductee');
         $manager->update($order);
+    }
+
+    /**
+     * @testdox Update Common Schema Order the shipping status to Approved
+     * @test
+     * @dataProvider dataProviderOrders
+     * @covers ::translatorUpdate
+     */
+    public function translatorUpdate(Order $order)
+    {
+        $order->setOrderStatus('approved');
+        $manager = $this->getManager();
+        $translator = new Translator(['native' => $order]);
+        $foreign = $translator->translateTo();
+        $this->assertSame(200, $manager->translatorUpdate($foreign)->getHttpStatusCode());
     }
 
     /**
