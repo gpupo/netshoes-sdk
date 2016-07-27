@@ -25,7 +25,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class OrderCommand extends AbstractCommand
 {
-    protected $list = ['view', 'factoryForStatus', 'translateTo', 'translateFrom'];
+    protected $list = ['view', 'factoryForStatus', 'translateTo', 'translateFrom', 'queue'];
 
     protected $statusList = ['approved', 'invoiced', 'shipped', 'delivered', 'canceled'];
 
@@ -101,8 +101,21 @@ class OrderCommand extends AbstractCommand
                 }
                 foreach ($collection as $p) {
                     $app->displayOrder($p, $output);
-                    $output->writeln("\n\n--------------------------------------\n\n");
                 }
+            });
+    }
+
+    protected function queue($app)
+    {
+        $this->getApp()->appendCommand('order:queue', 'Mostra os pedidos novos e que ainda aguardam processamento')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $collection = $app->factorySdk($list)->factoryManager('order')->fetchQueue();
+
+                if (0 === $collection->count()) {
+                    return $output->writeln('<info>Nenhum pedido na fila</info>');
+                }
+                $app->displayTableResults($output, $collection->toArray());
             });
     }
 
