@@ -38,36 +38,6 @@ foreach ($foreign->get('acceptedOffer') as $sku) {
     ];
 }
 
-$customer = [
-    'document'         => '',
-    'stateInscription' => '',
-    'customerName'     => '',
-    'recipientName'    => '',
-    'tradeName'        => '',
-    'cellPhone'        => '',
-    'landLine'         => '',
-    'address'          => [
-        'neighborhood' => '',
-        'postalCode'   => '',
-        'city'         => '',
-        'complement'   => '',
-        'state'        => '',
-        'street'       => '',
-        'number'       => '',
-        'reference'    => '',
-    ],
-];
-
-$shipping = [
-    'shippingCode'  => '',
-    'status'        => $foreign->get('orderStatus'),
-    'freightAmount' => '',
-    'country'       => '',
-    'customer'      => $customer,
-    'sender'        => [],
-    'items'         => $items,
-];
-
 return [
     'orderNumber'   => $foreign->get('orderNumber'),
     'originSite'    => $foreign->get('merchant')['name'],
@@ -76,5 +46,35 @@ return [
     'totalDiscount' => $foreign->get('discount'),
     'totalNet'      => $foreign->get('price'),
     'totalQuantity' => $foreign->get('quantity'),
-    'shippings'     => [$shipping],
+    'shippings'     => [
+        [
+            'shippingCode'  => '',
+            'status'        => $foreign->get('orderStatus'),
+            'freightAmount' => '',
+            'country'       => '',
+            'customer'      => [
+                'document'         => '',
+                'stateInscription' => '',
+                'customerName'     => '',
+                'recipientName'    => '',
+                'tradeName'        => '',
+                'cellPhone'        => '',
+                'landLine'         => '',
+                'address'          => [
+                    'neighborhood' => '',
+                    'postalCode'   => '',
+                    'city'         => '',
+                    'complement'   => '',
+                    'state'        => '',
+                    'street'       => '',
+                    'number'       => '',
+                    'reference'    => '',
+                ],
+            ],
+            'sender'        => [],
+            'items'         => $items,
+            'invoice'       => $foreign->get('invoice'),
+            'transport'     => $foreign->get('tracking'),
+        ],
+    ],
 ];
