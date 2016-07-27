@@ -88,9 +88,9 @@ class Manager extends AbstractManager
         $date = new DateTime();
         $date->sub(new DateInterval('P4D'));
 
-        return $this->translatorFetch(0, 50, [
+        return $this->translatorFetch($offset, $limit, array_merge([
             'orderStatus'    => 'approved',
             'orderStartDate' => $date->format('Y-m-d'),
-        ]);
+        ], $parameters));
     }
 }
