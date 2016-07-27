@@ -65,7 +65,7 @@ class OrderCommand extends AbstractCommand
                     $output->writeln('Iniciando mudança de status do pedido #<info>'
                     .$id.'</info> => <comment>'.$type.'</comment>');
 
-                    $operation = $manager->updateStatus($order);
+                    $operation = $manager->update($order);
 
                     if (200 === $operation->getHttpStatusCode()) {
                         $output->writeln('<info>Successo!</info>');

@@ -93,7 +93,7 @@ $invoice = $sdk->createInvoice([
 	'issueDate' => '2016-05-10T09:44:54.000-03:00',
 ]);
 $order->getShipping()->setInvoice($invoice);
-echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+echo $sdk->factoryManager('order')->update($order)->getHttpStatusCode()); // 200
 ```
 
 ### Shipped
@@ -109,7 +109,7 @@ $transport = $sdk->createTransport([
 	"estimatedDeliveryDate" => "2016-05-10T10:46:00.000-03:00",
 ]);
 $order->getShipping()->setTransport($transport);
-echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+echo $sdk->factoryManager('order')->update($order)->getHttpStatusCode()); // 200
 ```
 
 ### Delivered
@@ -121,7 +121,7 @@ $order = $sdk->createOrder($data)
 	->setOrderStatus('delivered')
 	->getShipping()->getTransport()
 	->setDeliveryDate("2016-05-10T10:53:00.000-03:00");
-echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+echo $sdk->factoryManager('order')->update($order)->getHttpStatusCode()); // 200
 ```
 ## Trade Order
 
