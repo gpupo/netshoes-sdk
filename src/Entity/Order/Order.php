@@ -30,7 +30,6 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setOrderDate(string $orderDate)    Define orderDate
  * @method string getOrderNumber()    Acesso a orderNumber
  * @method setOrderNumber(string $orderNumber)    Define orderNumber
- * @method string getOrderStatus()    Acesso a orderStatus
  * @method setOrderStatus(string $orderStatus)    Define orderStatus
  * @method string getOrderType()    Acesso a orderType
  * @method setOrderType(string $orderType)    Define orderType
@@ -116,6 +115,13 @@ class Order extends EntityAbstract implements EntityInterface, CollectionInterfa
         }
 
         return $shipping;
+    }
+
+    public function getOrderStatus()
+    {
+        $value = $this->get('orderStatus');
+
+        return strtolower($value);
     }
 
     public function getInvoice()
