@@ -17,6 +17,7 @@ namespace Gpupo\NetshoesSdk\Entity\Order;
 use DateInterval;
 use DateTime;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Response;
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
@@ -54,6 +55,13 @@ class Manager extends AbstractManager
 
                 return false;
             }
+        }
+
+        if ('processing' === $entity->getOrderStatus()) {
+            return new Response([
+                'raw'            => '{"message":"Order status not used"}',
+                'httpStatusCode' => 204,
+            ]);
         }
 
         if (in_array($entity->getOrderStatus(), ['approved', 'canceled',
