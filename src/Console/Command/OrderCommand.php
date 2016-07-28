@@ -115,7 +115,11 @@ class OrderCommand extends AbstractCommand
                 if (0 === $collection->count()) {
                     return $output->writeln('<info>Nenhum pedido na fila</info>');
                 }
-                $app->displayTableResults($output, $collection->toArray());
+
+                $app->displayTableResults($output, $collection->toArray(), [
+                    'merchant', 'orderNumber', 'acceptedOffer', 'orderDate',
+                    'customer', 'billingAddress', 'quantity', 'freight', 'total'
+                ], 49, true);
             });
     }
 
