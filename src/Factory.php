@@ -17,7 +17,7 @@ namespace Gpupo\NetshoesSdk;
 use Gpupo\CommonSdk\FactoryAbstract;
 use Gpupo\NetshoesSdk\Client\Client;
 
-class Factory extends FactoryAbstract
+final class Factory extends FactoryAbstract
 {
     public function setClient(array $clientOptions = [])
     {

@@ -16,7 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 
-class SkuCollection extends AbstractMetadata
+final class SkuCollection extends AbstractMetadata
 {
     protected function getKey()
     {

@@ -17,7 +17,7 @@ namespace Gpupo\NetshoesSdk\Client;
 use Gpupo\CommonSdk\Client\ClientAbstract;
 use Gpupo\CommonSdk\Client\ClientInterface;
 
-class Client extends ClientAbstract implements ClientInterface
+final class Client extends ClientAbstract implements ClientInterface
 {
     /**
      * @codeCoverageIgnore

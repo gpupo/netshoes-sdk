@@ -22,7 +22,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @codeCoverageIgnore
  */
-class ScreenplayCommand extends AbstractCommand
+final class ScreenplayCommand extends AbstractCommand
 {
     protected $list = ['all', 'main'];
 

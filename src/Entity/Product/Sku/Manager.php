@@ -18,7 +18,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Exception\ManagerException;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
-class Manager extends AbstractManager
+final class Manager extends AbstractManager
 {
     protected $entity = 'Sku';
 

@@ -17,7 +17,7 @@ namespace Gpupo\NetshoesSdk\Entity\Templates;
 use Gpupo\CommonSdk\Traits\PoolTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
-class Manager extends AbstractManager
+final class Manager extends AbstractManager
 {
     use PoolTrait;
 

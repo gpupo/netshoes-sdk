@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @codeCoverageIgnore
  */
-class TemplatesCommand extends AbstractCommand
+final class TemplatesCommand extends AbstractCommand
 {
     public function main($app)
     {

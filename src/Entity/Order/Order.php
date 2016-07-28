@@ -54,7 +54,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method float getTotalQuantity()    Acesso a totalQuantity
  * @method setTotalQuantity(float $totalQuantity)    Define totalQuantity
  */
-class Order extends EntityAbstract implements EntityInterface, CollectionInterface
+final class Order extends EntityAbstract implements EntityInterface, CollectionInterface
 {
     protected $primaryKey = 'orderNumber';
 

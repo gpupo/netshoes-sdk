@@ -24,7 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @codeCoverageIgnore
  */
-class Application extends AbstractApplication
+final class Application extends AbstractApplication
 {
     public function doRun(InputInterface $input, OutputInterface $output)
     {

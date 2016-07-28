@@ -16,7 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Attributes;
 
 use Gpupo\CommonSdk\Entity\CollectionAbstract;
 
-class Attributes extends CollectionAbstract
+final class Attributes extends CollectionAbstract
 {
     public function factoryElement($data)
     {

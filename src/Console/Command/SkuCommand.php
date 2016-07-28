@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @codeCoverageIgnore
  */
-class SkuCommand extends AbstractCommand
+final class SkuCommand extends AbstractCommand
 {
     protected $list = ['view', 'details', 'update'];
 

@@ -17,7 +17,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product;
 use Gpupo\CommonSdk\Entity\CollectionAbstract;
 use Gpupo\CommonSdk\Traits\FinderTrait;
 
-class Skus extends CollectionAbstract
+final class Skus extends CollectionAbstract
 {
     use FinderTrait;
 

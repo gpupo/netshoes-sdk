@@ -16,7 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\CommonSdk\Entity\CollectionAbstract;
 
-class Images extends CollectionAbstract
+final class Images extends CollectionAbstract
 {
     public function factoryElement($data)
     {

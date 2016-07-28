@@ -21,7 +21,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method int getAvailable()    Acesso a available
  * @method setAvailable(integer $available)    Define available
  */
-class Stock extends EntityAbstract implements EntityInterface
+final class Stock extends EntityAbstract implements EntityInterface
 {
     /**
      * @codeCoverageIgnore
