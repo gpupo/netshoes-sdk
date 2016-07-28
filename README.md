@@ -256,6 +256,19 @@ $order = $sdk->createOrder($data)
 	->setDeliveryDate("2016-05-10T10:53:00.000-03:00");
 echo $sdk->factoryManager('order')->update($order)->getHttpStatusCode()); // 200
 ```
+## Trade Order
+
+Acesso ao output padrão [Trading Order](https://github.com/gpupo/common-schema#schemas)
+
+```php
+<?php
+//..
+use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Order\Manager;
+//...
+$manager = new Manager();
+$tradeOrder = $manager->export($order);
+```
 
 
 
@@ -440,12 +453,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Factory sdk
 - [x] Append command
 
-### NetshoesSdk\Entity\Order\Decorator\CommonSchema
-
-
-- [x] Recebe o objeto ``Order`` 
-- [x] Possui output [Trading](https://github.com/gpupo/common-schema#schemas) 
-
 ### NetshoesSdk\Entity\Order\Decorator\Status\Approved
 
 
@@ -518,9 +525,11 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
 - [x] Get a list of Orders
-- [x] Dá acesso ao output [Trading](https://github.com/gpupo/common-schema#schemas) 
+- [x] Get a list of Common Schema Orders
+- [x] Get a list of most recent Common Schema Orders
 - [x] Get a order based on order number
 - [x] A atualização de status falha quando status não reconhecido 
+- [x] Update Common Schema Order the shipping status to Approved 
 - [x] Update the shipping status to Approved 
 - [x] Falha ao tentar mover o status de um pedido para invoiced sem informar NF 
 - [x] Update the shipping status to Invoiced 
@@ -545,7 +554,6 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 
 - [x] Possui validação
-- [x] Possui output [Trading](https://github.com/gpupo/common-schema#schemas) 
 - [x] Possui método ``getShipping()`` que é um atalho para ``->getShippings()->first()`` 
 - [x] Falha ao acessar ``getShipping()`` quando não houver nenhum objeto 
 - [x] Possui método ``getInvoice()`` que é um atalho para ``->getShippings()->first()->getInvoice()`` 
@@ -786,6 +794,13 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setTrackingShipDate()`` que define TrackingShipDate 
 - [x] Possui métodos especiais para output de informações
 
+### NetshoesSdk\Entity\Order\Translator
+
+
+- [x] ``translateTo()`` 
+- [x] ``translateFrom()`` 
+- [x] ``Traduz sem perder informação`` 
+
 ### NetshoesSdk\Entity\Product\Attributes\Attribute
 
 
@@ -808,7 +823,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Administra operações de Products
 - [x] Possui objeto Client
 - [x] Obtem a lista de produtos cadastrados
+- [x] Entrega lista de produtos no padrão comum
 - [x] Recupera informações de um produto especifico a partir de Id
+- [x] Recupera informações em padrão comum  a partir de Id
 - [x] Recebe false em caso de produto inexistente
 - [x] A Atualização de um Product requer que ele contenha Skus
 - [x] Atualiza o SKU de um produto
@@ -964,6 +981,13 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 
 - [x] Encontra um Sku pelo Id
+
+### NetshoesSdk\Entity\Product\Translator
+
+
+- [x] ``translateTo()`` 
+- [x] ``translateFrom()`` 
+- [x] ``Traduz sem perder informação de preço`` 
 
 ### NetshoesSdk\Entity\Templates\Item
 
