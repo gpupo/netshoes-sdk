@@ -118,7 +118,7 @@ class OrderCommand extends AbstractCommand
 
                 $app->displayTableResults($output, $collection->toArray(), [
                     'merchant', 'orderNumber', 'acceptedOffer', 'orderDate',
-                    'customer', 'billingAddress', 'quantity', 'freight', 'total'
+                    'customer', 'billingAddress', 'quantity', 'freight', 'total',
                 ], 49, true);
             });
     }

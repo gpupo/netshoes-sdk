@@ -32,7 +32,7 @@ class Manager extends AbstractManager
      */
     protected function setUp()
     {
-        $this->maps = include 'map.config.php';
+        $this->maps = include __DIR__.'/map/restful.map.php';
     }
 
     public function factoryDecorator(Order $order, $decoratorName)
