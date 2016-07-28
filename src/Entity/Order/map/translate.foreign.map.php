@@ -14,7 +14,7 @@
 
 $items = [];
 
-foreach ($foreign->get('acceptedOffer') as $sku) {
+foreach ((array) $foreign->get('acceptedOffer') as $sku) {
     $items[] = [
         'itemId'            => $sku['itemOffered']['sku'],
         'ean'               => '',

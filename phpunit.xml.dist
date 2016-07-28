@@ -24,6 +24,7 @@
             <exclude>
               <directory>src/Console/</directory>
               <directory>*.config.php</directory>
+              <directory>*.map.php</directory>
               <directory>*.template.php</directory>
             </exclude>
         </whitelist>
