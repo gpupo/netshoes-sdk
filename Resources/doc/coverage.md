@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:      
-  2016-07-28 09:40:15      
+  2016-07-28 11:00:31      
                            
  Summary:                  
   Classes: 77.27% (34/44)  
-  Methods: 81.91% (77/94)  
-  Lines:   88.38% (441/499)
+  Methods: 79.79% (75/94)  
+  Lines:   88.02% (441/501)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)
@@ -23,7 +23,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Order::OrderCollection
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Order::Translator
-  Methods:  50.00% ( 1/ 2)   Lines:  87.50% (  7/  8)
+  Methods:   0.00% ( 0/ 2)   Lines:  75.00% (  6/  8)
 \Gpupo\NetshoesSdk\Entity\Order\Decorator::AbstractDecorator
   Methods:  85.71% ( 6/ 7)   Lines:  95.24% ( 20/ 21)
 \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status::Approved
@@ -59,7 +59,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Product::Skus
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Product::Translator
-  Methods:  50.00% ( 1/ 2)   Lines:  87.50% (  7/  8)
+  Methods:   0.00% ( 0/ 2)   Lines:  77.78% (  7/  9)
 \Gpupo\NetshoesSdk\Entity\Product\Attributes::Attributes
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::Images

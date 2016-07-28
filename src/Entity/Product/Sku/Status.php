@@ -21,7 +21,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method bool getActive()    Acesso a active
  * @method setActive(boolean $active)    Define active
  */
-class Status extends EntityAbstract implements EntityInterface
+final class Status extends EntityAbstract implements EntityInterface
 {
     /**
      * @codeCoverageIgnore

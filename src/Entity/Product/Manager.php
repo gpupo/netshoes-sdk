@@ -19,7 +19,7 @@ use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 use Gpupo\NetshoesSdk\Factory;
 
-class Manager extends AbstractManager
+final class Manager extends AbstractManager
 {
     use TranslatorManagerTrait;
 

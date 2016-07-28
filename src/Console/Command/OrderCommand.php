@@ -23,7 +23,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @codeCoverageIgnore
  */
-class OrderCommand extends AbstractCommand
+final class OrderCommand extends AbstractCommand
 {
     protected $list = ['view', 'factoryForStatus', 'translateTo', 'translateFrom', 'queue'];
 

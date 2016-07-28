@@ -18,7 +18,7 @@ use Gpupo\CommonSchema\AbstractTranslator;
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSchema\TranslatorInterface;
 
-class Translator extends AbstractTranslator implements TranslatorInterface
+final class Translator extends AbstractTranslator implements TranslatorInterface
 {
     /**
      * {@inheritdoc}

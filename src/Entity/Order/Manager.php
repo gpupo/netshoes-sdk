@@ -21,7 +21,7 @@ use Gpupo\CommonSdk\Response;
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
-class Manager extends AbstractManager
+final class Manager extends AbstractManager
 {
     use TranslatorManagerTrait;
 

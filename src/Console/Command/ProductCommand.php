@@ -23,7 +23,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @codeCoverageIgnore
  */
-class ProductCommand extends AbstractCommand
+final class ProductCommand extends AbstractCommand
 {
     protected $list = ['view', 'insert', 'update', 'list', 'translateTo', 'translateUpdate'];
 

@@ -16,7 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
 use Gpupo\NetshoesSdk\Entity\AbstractMetadata;
 
-class PriceScheduleCollection extends AbstractMetadata
+final class PriceScheduleCollection extends AbstractMetadata
 {
     /**
      * @codeCoverageIgnore

@@ -33,7 +33,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method Gpupo\NetshoesSdk\Entity\Product\Attributes\Attributes getAttributes()    Acesso a attributes
  * @method setAttributes(Gpupo\NetshoesSdk\Entity\Product\Attributes\Attributes $attributes)    Define attributes
  */
-class Product extends EntityAbstract implements EntityInterface
+final class Product extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'productId';
 

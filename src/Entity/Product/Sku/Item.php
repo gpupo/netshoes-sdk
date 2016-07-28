@@ -17,7 +17,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 
-class Item extends EntityAbstract implements EntityInterface
+final class Item extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'sku';
 

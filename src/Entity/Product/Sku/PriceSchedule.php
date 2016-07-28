@@ -29,7 +29,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method string getDateEnd()    Acesso a dateEnd
  * @method setDateEnd(string $dateEnd)    Define dateEnd
  */
-class PriceSchedule extends EntityAbstract implements EntityInterface
+final class PriceSchedule extends EntityAbstract implements EntityInterface
 {
     /**
      * @codeCoverageIgnore

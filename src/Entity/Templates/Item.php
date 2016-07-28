@@ -25,7 +25,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method string getExternalCode()    Acesso a externalCode
  * @method setExternalCode(string $externalCode)    Define externalCode
  */
-class Item extends EntityAbstract implements EntityInterface
+final class Item extends EntityAbstract implements EntityInterface
 {
     protected $primaryKey = 'code';
 

@@ -23,7 +23,7 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method string getValue()    Acesso a value
  * @method setValue(string $value)    Define value
  */
-class Attribute extends EntityAbstract implements EntityInterface
+final class Attribute extends EntityAbstract implements EntityInterface
 {
     /**
      * @codeCoverageIgnore

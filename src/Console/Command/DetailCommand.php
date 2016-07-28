@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @codeCoverageIgnore
  */
-class DetailCommand extends AbstractCommand
+final class DetailCommand extends AbstractCommand
 {
     public function main($app)
     {
