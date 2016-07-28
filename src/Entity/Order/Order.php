@@ -63,26 +63,7 @@ class Order extends EntityAbstract implements EntityInterface, CollectionInterfa
      */
     public function getSchema()
     {
-        return [
-            'agreedDate'          => 'string',
-            'businessUnit'        => 'string',
-            'devolutionRequested' => 'boolean',
-            'exchangeRequested'   => 'boolean',
-            'orderDate'           => 'string',
-            'orderNumber'         => 'string',
-            'orderStatus'         => 'string',
-            'orderType'           => 'string',
-            'originNumber'        => 'string',
-            'originSite'          => 'string',
-            'paymentDate'         => 'string',
-            'shippings'           => 'object',
-            'totalCommission'     => 'number',
-            'totalDiscount'       => 'number',
-            'totalFreight'        => 'number',
-            'totalGross'          => 'number',
-            'totalNet'            => 'number',
-            'totalQuantity'       => 'number',
-        ];
+        return include __DIR__.'/map/schema.map.php';
     }
 
     protected function setUp()

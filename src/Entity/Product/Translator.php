@@ -15,6 +15,7 @@
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSchema\AbstractTranslator;
+use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSchema\TranslatorInterface;
 
 class Translator extends AbstractTranslator implements TranslatorInterface
@@ -29,7 +30,7 @@ class Translator extends AbstractTranslator implements TranslatorInterface
             throw new \Exception('Product missed!');
         }
 
-        $array = include __DIR__.'/translateTo.map.php';
+        $array = include __DIR__.'/map/translateTo.map.php';
 
         return $this->factoryOutputCollection($array);
     }
@@ -41,8 +42,10 @@ class Translator extends AbstractTranslator implements TranslatorInterface
     {
         $foreign = $this->getForeign();
 
-        $array = include __DIR__.'/translateFrom.map.php';
+        if (!$foreign instanceof TranslatorDataCollection) {
+            throw new \Exception('Foreign missed!');
+        }
 
-        return new Product($array);
+        return new Product(include __DIR__.'/map/translateFrom.map.php');
     }
 }
