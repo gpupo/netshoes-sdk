@@ -17,6 +17,7 @@ namespace Gpupo\NetshoesSdk\Entity\Order;
 use Gpupo\Common\Entity\CollectionInterface;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Traits\LoadTrait;
 
 /**
  * @method string getAgreedDate()    Acesso a agreedDate
@@ -56,6 +57,8 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  */
 final class Order extends EntityAbstract implements EntityInterface, CollectionInterface
 {
+    use LoadTrait;
+
     protected $primaryKey = 'orderNumber';
 
     /**
@@ -63,7 +66,7 @@ final class Order extends EntityAbstract implements EntityInterface, CollectionI
      */
     public function getSchema()
     {
-        return include __DIR__.'/map/schema.map.php';
+        return $this->loadArrayFromFile(__DIR__.'/map/schema.map.php');
     }
 
     protected function setUp()

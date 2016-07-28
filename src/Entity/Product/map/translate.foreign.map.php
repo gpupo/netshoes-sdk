@@ -20,7 +20,7 @@ $a = function ($key, $array) {
     }
 };
 
-foreach ($foreign['skus'] as $sku) {
+foreach ((array) $foreign->get('skus') as $sku) {
     $f = function ($key) use ($a, $sku) {
         return $a($key, $sku);
     };
@@ -43,14 +43,12 @@ foreach ($foreign['skus'] as $sku) {
         ];
 }
 
-$f = function ($key) use ($a, $foreign) {
-    return $a($key, $foreign);
-};
-
-return [
-     'productId'   => $f('productId'),
-     'department'  => $f('department'),
-     'productType' => $f('productType'),
-     'brand'       => $f('brand'),
+$array = [
+     'productId'   => $foreign->get('productId'),
+     'department'  => $foreign->get('department'),
+     'productType' => $foreign->get('productType'),
+     'brand'       => $foreign->get('brand'),
      'skus'        => $skusList,
  ];
+
+return $array;

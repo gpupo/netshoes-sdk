@@ -18,12 +18,14 @@ use DateInterval;
 use DateTime;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Response;
+use Gpupo\CommonSdk\Traits\LoadTrait;
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 
 final class Manager extends AbstractManager
 {
     use TranslatorManagerTrait;
+    use LoadTrait;
 
     protected $entity = 'Order';
 
@@ -32,7 +34,7 @@ final class Manager extends AbstractManager
      */
     protected function setUp()
     {
-        $this->maps = include __DIR__.'/map/restful.map.php';
+        $this->maps = $this->loadArrayFromFile(__DIR__.'/map/restful.map.php');
     }
 
     public function factoryDecorator(Order $order, $decoratorName)
@@ -81,7 +83,7 @@ final class Manager extends AbstractManager
             return $this->execute($map, $json);
         }
 
-        throw new \InvalidArgumentException('Order Status não suportado', 1);
+        throw new \InvalidArgumentException('Order Status ['.$entity->getOrderStatus().'] não suportado', 1);
     }
 
     public function factoryTranslator(array $data = [])

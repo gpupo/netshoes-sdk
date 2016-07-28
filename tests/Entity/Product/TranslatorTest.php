@@ -41,6 +41,55 @@ class TranslatorTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Falha ao tentar traduzir para extrangeiro sem possuir nativo
+     * @expectedException \Gpupo\CommonSchema\TranslatorException
+     * @expectedExceptionMessage Foreign object missed!
+     * @covers ::translateFrom
+     * @test
+     */
+    public function loadMapFailForeign()
+    {
+        $t = new Translator();
+        $t->translateFrom();
+    }
+
+    /**
+     * @testdox Falha ao tentar traduzir para nativo sem possuir estrangeiro
+     * @expectedException Exception
+     * @expectedExceptionMessage Product missed!
+     * @covers ::translateTo
+     * @test
+     */
+    public function loadMapFailNative()
+    {
+        $t = new Translator();
+        $t->translateTo();
+    }
+
+    /**
+     * @testdox ``loadMap()``
+     * @cover ::loadMap
+     * @test
+     * @dataProvider dataProviderArrayExpected
+     */
+    public function loadMap($expected)
+    {
+        $product = new Product($expected);
+
+        $t = $this->proxy(new Translator());
+        $foreign = new TranslatorDataCollection([
+            'productId' => '111',
+        ]);
+
+        $t->setForeign($foreign);
+        $t->setNative($product);
+        $list = $t->loadMap('native');
+        $this->assertSame($product->get('productId'), $list['productId']);
+        $list = $t->loadMap('foreign');
+        $this->assertSame($foreign->get('productId'), $list['productId']);
+    }
+
+    /**
      * @testdox ``translateTo()``
      * @cover ::translateTo
      * @dataProvider dataProviderTranslator

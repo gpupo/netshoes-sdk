@@ -17,21 +17,30 @@ namespace Gpupo\NetshoesSdk\Entity\Order;
 use Gpupo\CommonSchema\AbstractTranslator;
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSchema\TranslatorInterface;
+use Gpupo\CommonSdk\Traits\LoadTrait;
 
 final class Translator extends AbstractTranslator implements TranslatorInterface
 {
+    use LoadTrait;
+
+    private function loadMap($name)
+    {
+        $file = __DIR__.'/map/translate.'.$name.'.map.php';
+        $method = 'get'.ucfirst($name);
+
+        return $this->loadArrayFromFile($file, [$name => $this->$method()]);
+    }
+
     /**
      * {@inheritdoc}
      */
     public function translateTo()
     {
-        $native = $this->getNative();
-
-        if (!$native instanceof Order) {
+        if (!$this->getNative() instanceof Order) {
             throw new \Exception('Order missed!');
         }
 
-        return $this->factoryOutputCollection(include __DIR__.'/map/translateTo.map.php');
+        return $this->factoryOutputCollection($this->loadMap('native'));
     }
 
     /**
@@ -39,12 +48,10 @@ final class Translator extends AbstractTranslator implements TranslatorInterface
      */
     public function translateFrom()
     {
-        $foreign = $this->getForeign();
-
-        if (!$foreign instanceof TranslatorDataCollection) {
+        if (!$this->getForeign() instanceof TranslatorDataCollection) {
             throw new \Exception('Foreign missed!');
         }
 
-        return new Order(include __DIR__.'/map/translateFrom.map.php');
+        return new Order($this->loadMap('foreign'));
     }
 }

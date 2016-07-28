@@ -17,22 +17,31 @@ namespace Gpupo\NetshoesSdk\Entity\Product;
 use Gpupo\CommonSchema\AbstractTranslator;
 use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\CommonSchema\TranslatorInterface;
+use Gpupo\CommonSdk\Traits\LoadTrait;
 
 final class Translator extends AbstractTranslator implements TranslatorInterface
 {
+    use LoadTrait;
+
+    private function loadMap($name)
+    {
+        $file = __DIR__.'/map/translate.'.$name.'.map.php';
+        $method = 'get'.ucfirst($name);
+        $pars = [$name => $this->$method()];
+
+        return $this->loadArrayFromFile($file, $pars);
+    }
+
     /**
      * {@inheritdoc}
      */
     public function translateTo()
     {
-        $native = $this->getNative();
-        if (!$native instanceof Product) {
+        if (!$this->getNative() instanceof Product) {
             throw new \Exception('Product missed!');
         }
 
-        $array = include __DIR__.'/map/translateTo.map.php';
-
-        return $this->factoryOutputCollection($array);
+        return $this->factoryOutputCollection($this->loadMap('native'));
     }
 
     /**
@@ -40,12 +49,10 @@ final class Translator extends AbstractTranslator implements TranslatorInterface
      */
     public function translateFrom()
     {
-        $foreign = $this->getForeign();
-
-        if (!$foreign instanceof TranslatorDataCollection) {
+        if (!$this->getForeign() instanceof TranslatorDataCollection) {
             throw new \Exception('Foreign missed!');
         }
 
-        return new Product(include __DIR__.'/map/translateFrom.map.php');
+        return new Product($this->loadMap('foreign'));
     }
 }
