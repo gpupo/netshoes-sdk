@@ -229,7 +229,7 @@ $invoice = $sdk->createInvoice([
 	'issueDate' => '2016-05-10T09:44:54.000-03:00',
 ]);
 $order->getShipping()->setInvoice($invoice);
-echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+echo $sdk->factoryManager('order')->update($order)->getHttpStatusCode()); // 200
 ```
 
 ### Shipped
@@ -239,13 +239,13 @@ echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); 
 //..
 $order = $sdk->createOrder($data)->setOrderStatus('shipped');
 $transport = $sdk->createTransport([
-    "carrier":"Correios",
-    "trackingNumber":"PJ521644335BR",
-    "shipDate":"2016-05-10T10:46:00.000-03:00",
-    "estimatedDeliveryDate":"2016-05-10T10:46:00.000-03:00"
+	"carrier"               => "Correios",
+	"trackingNumber"        => "PJ521644335BR",
+	"shipDate"              => "2016-05-10T10:46:00.000-03:00",
+	"estimatedDeliveryDate" => "2016-05-10T10:46:00.000-03:00",
 ]);
 $order->getShipping()->setTransport($transport);
-echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+echo $sdk->factoryManager('order')->update($order)->getHttpStatusCode()); // 200
 ```
 
 ### Delivered
@@ -257,7 +257,20 @@ $order = $sdk->createOrder($data)
 	->setOrderStatus('delivered')
 	->getShipping()->getTransport()
 	->setDeliveryDate("2016-05-10T10:53:00.000-03:00");
-echo $sdk->factoryManager('order')->updateStatus($order)->getHttpStatusCode()); // 200
+echo $sdk->factoryManager('order')->update($order)->getHttpStatusCode()); // 200
+```
+## Trade Order
+
+Acesso ao output padrão [Trading Order](https://github.com/gpupo/common-schema#schemas)
+
+```php
+<?php
+//..
+use Gpupo\NetshoesSdk\Entity\Order\Order;
+use Gpupo\NetshoesSdk\Entity\Order\Manager;
+//...
+$manager = new Manager();
+$tradeOrder = $manager->export($order);
 ```
 
 
@@ -359,7 +372,7 @@ $ ./vendor/bin/netshoes-sdk order:update:to:delivered 111111 --file=vendor/gpupo
 
 ### Configurações
 
-Você poder criar um arquivo chamado ``app.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando
+Você poder criar um arquivo chamado ``bin/.netshoes.json`` com suas configurações personalizadas, as quais serão utilizadas na linha de comando
 
 ```JSON
 {
@@ -368,7 +381,7 @@ Você poder criar um arquivo chamado ``app.json`` com suas configurações perso
 }
 ```
 
-Utilize como modelo o arquivo ``app.json.dist``
+Utilize como modelo o arquivo ``bin/app.json.dist``
 
 
 
@@ -431,9 +444,9 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Sucesso ao definir options
 - [x] Gerencia uri de recurso
-- [x] Objeto request possui header
-- [x] Acesso a lista de pedidos
-- [x] Acesso a lista de produtos
+- [ ] Objeto request possui header
+- [ ] Acesso a lista de pedidos
+- [ ] Acesso a lista de produtos
 - [x] Render authorization
 - [x] Falha ao ser usado sem credenciais
 
@@ -515,8 +528,11 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
 - [x] Get a list of Orders
+- [x] Get a list of Common Schema Orders
+- [x] Get a list of most recent Common Schema Orders
 - [x] Get a order based on order number
 - [x] A atualização de status falha quando status não reconhecido 
+- [x] Update Common Schema Order the shipping status to Approved 
 - [x] Update the shipping status to Approved 
 - [x] Falha ao tentar mover o status de um pedido para invoiced sem informar NF 
 - [x] Update the shipping status to Invoiced 
@@ -703,7 +719,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setExchangeProcessCode()`` que define ExchangeProcessCode 
 - [x] Possui métodos especiais para output de informações
 
-### NetshoesSdk\Entity\Order\Shippings\Items
+### NetshoesSdk\Entity\Order\Shippings\Items\Items
 
 
 - [x] É uma coleção de objetos ``Gpupo\NetshoesSdk\Entity\Order\Shippings\Items\Item``
@@ -781,6 +797,13 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setTrackingShipDate()`` que define TrackingShipDate 
 - [x] Possui métodos especiais para output de informações
 
+### NetshoesSdk\Entity\Order\Translator
+
+
+- [x] ``translateTo()`` 
+- [x] ``translateFrom()`` 
+- [x] ``Traduz sem perder informação`` 
+
 ### NetshoesSdk\Entity\Product\Attributes\Attribute
 
 
@@ -803,10 +826,13 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Administra operações de Products
 - [x] Possui objeto Client
 - [x] Obtem a lista de produtos cadastrados
+- [x] Entrega lista de produtos no padrão comum
 - [x] Recupera informações de um produto especifico a partir de Id
+- [x] Recupera informações em padrão comum  a partir de Id
 - [x] Recebe false em caso de produto inexistente
 - [x] A Atualização de um Product requer que ele contenha Skus
 - [x] Atualiza o SKU de um produto
+- [x] Atualiza parcialmente as informações de um produto
 
 ### NetshoesSdk\Entity\Product\ProductCollection
 
@@ -894,6 +920,11 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
 - [x] Dá Acesso a detalhes de um SKU
+- [x] Atualiza as informações do SKU
+- [x] Não atualiza as informações do SKU desnecessariamente
+- [x] Atualiza os detalhes do SKU
+- [x] Não atualiza os detalhes do SKU desnecessariamente
+- [x] Atualiza os detalhes e as informações do SKU em uma única operação
 
 ### NetshoesSdk\Entity\Product\Sku\PriceScheduleCollection
 
@@ -949,11 +980,17 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``setAvailable()`` que define Available 
 - [x] Possui métodos especiais para output de informações
 
-### NetshoesSdk\Entity\Templates\Brand
+### NetshoesSdk\Entity\Product\Skus
 
 
-- [x] Possui Acesso a lista de marcas cadastradas
-- [x] Cada objeto da lista é uma instância de Item
+- [x] Encontra um Sku pelo Id
+
+### NetshoesSdk\Entity\Product\Translator
+
+
+- [x] ``translateTo()`` 
+- [x] ``translateFrom()`` 
+- [x] ``Traduz sem perder informação de preço`` 
 
 ### NetshoesSdk\Entity\Templates\Item
 
@@ -965,6 +1002,12 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui método ``getExternalCode()`` para acessar ExternalCode 
 - [x] Possui método ``setExternalCode()`` que define ExternalCode 
 - [x] Possui métodos especiais para output de informações
+
+### NetshoesSdk\Entity\Templates\Manager
+
+
+- [x] Possui Acesso a lista de marcas cadastradas
+- [x] Cada objeto da lista é uma instância de Item
 
 ### NetshoesSdk\Entity\Templates\TemplatesCollection
 
@@ -990,18 +1033,12 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 Name | Version | Description
 -----|---------|------------------------------------------------------
 codeclimate/php-test-reporter | v0.3.2 | PHP client for reporting test coverage to Code Climate
-doctrine/annotations | v1.2.7 | Docblock Annotations Parser
-doctrine/cache | v1.6.0 | Caching library offering an object-oriented API for many cache backends
-doctrine/collections | v1.3.0 | Collections Abstraction library
-doctrine/common | v2.5.3 | Common Library for Doctrine projects
-doctrine/inflector | v1.1.0 | Common String Manipulations with regard to casing and singular/plural rules.
 doctrine/instantiator | 1.0.5 | A small, lightweight utility to instantiate objects in PHP without invoking their constructors
-doctrine/lexer | v1.0.1 | Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.
 gpupo/cache | 1.3.0 | Caching library that implements PSR-6
-gpupo/common | 1.6.6 | Common Objects
-gpupo/common-sdk | 2.0.11 | Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
+gpupo/common | 1.7.3 | Common Objects
+gpupo/common-sdk | 2.2.0 | Componente de uso comum entre SDKs para integração a partir de aplicações PHP com Restful webservices
 guzzle/guzzle | v3.9.3 | PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle
-monolog/monolog | 1.19.0 | Sends your logs to files, sockets, inboxes, databases and various web services
+monolog/monolog | 1.20.0 | Sends your logs to files, sockets, inboxes, databases and various web services
 myclabs/deep-copy | 1.5.1 | Create deep copies (clones) of your objects
 phpdocumentor/reflection-common | 1.0 | Common reflection classes used by phpdocumentor to reflect the code structure
 phpdocumentor/reflection-docblock | 3.1.0 | With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.
@@ -1028,13 +1065,13 @@ sebastian/peek-and-poke | dev-master a8295 | Proxy for accessing non-public attr
 sebastian/recursion-context | 1.0.2 | Provides functionality to recursively process PHP variables
 sebastian/resource-operations | 1.0.0 | Provides a list of PHP built-in functions that operate on resources
 sebastian/version | 2.0.0 | Library that helps with managing the version number of Git-hosted PHP projects
-symfony/config | v3.1.1 | Symfony Config Component
-symfony/console | v3.1.1 | Symfony Console Component
-symfony/event-dispatcher | v2.8.7 | Symfony EventDispatcher Component
-symfony/filesystem | v3.1.1 | Symfony Filesystem Component
+symfony/config | v3.1.2 | Symfony Config Component
+symfony/console | v3.1.2 | Symfony Console Component
+symfony/event-dispatcher | v2.8.8 | Symfony EventDispatcher Component
+symfony/filesystem | v3.1.2 | Symfony Filesystem Component
 symfony/polyfill-mbstring | v1.2.0 | Symfony polyfill for the Mbstring extension
-symfony/stopwatch | v3.1.1 | Symfony Stopwatch Component
-symfony/yaml | v3.1.1 | Symfony Yaml Component
+symfony/stopwatch | v3.1.2 | Symfony Stopwatch Component
+symfony/yaml | v3.1.2 | Symfony Yaml Component
 twig/twig | v1.24.1 | Twig, the flexible, fast, and secure template language for PHP
 webmozart/assert | 1.0.2 | Assertions to validate method input/output with nice error messages.
 
