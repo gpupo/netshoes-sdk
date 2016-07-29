@@ -40,7 +40,7 @@ class InvoiceTest extends TestCaseAbstract
             'line'      => 1,
             'accessKey' => '1789616901235555001000004003000004003',
             'issueDate' => '2016-05-10T09:44:54.000-03:00',
-            'shipDate'  => 'string',
+            'shipDate'  => '',
             'url'       => 'string',
         ];
 
@@ -215,7 +215,6 @@ class InvoiceTest extends TestCaseAbstract
      */
     public function setIssueDate(Invoice $invoice, $expected = null)
     {
-        $this->assertSchemaSetter('issueDate', 'string', $invoice);
     }
 
     /**
