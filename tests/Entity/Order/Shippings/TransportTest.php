@@ -20,23 +20,6 @@ use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
  * @coversDefaultClass \Gpupo\NetshoesSdk\Entity\Order\Shippings\Transport
- *
- * @method string getCarrier()    Acesso a carrier
- * @method setCarrier(string $carrier)    Define carrier
- * @method string getDeliveryDate()    Acesso a deliveryDate
- * @method setDeliveryDate(string $deliveryDate)    Define deliveryDate
- * @method string getEstimatedDeliveryDate()    Acesso a estimatedDeliveryDate
- * @method setEstimatedDeliveryDate(string $estimatedDeliveryDate)    Define estimatedDeliveryDate
- * @method string getDeliveryService()    Acesso a deliveryService
- * @method setDeliveryService(string $deliveryService)    Define deliveryService
- * @method string getShipDate()    Acesso a shipDate
- * @method setShipDate(string $shipDate)    Define shipDate
- * @method string getTrackingLink()    Acesso a trackingLink
- * @method setTrackingLink(string $trackingLink)    Define trackingLink
- * @method string getTrackingNumber()    Acesso a trackingNumber
- * @method setTrackingNumber(string $trackingNumber)    Define trackingNumber
- * @method string getTrackingShipDate()    Acesso a trackingShipDate
- * @method setTrackingShipDate(string $trackingShipDate)    Define trackingShipDate
  */
 class TransportTest extends TestCaseAbstract
 {
@@ -119,7 +102,7 @@ class TransportTest extends TestCaseAbstract
      */
     public function getDeliveryDate(Transport $transport, $expected = null)
     {
-        $this->assertSchemaGetter('deliveryDate', 'string', $transport, $expected);
+        $this->assertSchemaGetter('deliveryDate', 'datetime', $transport, $expected);
     }
 
     /**
@@ -132,7 +115,7 @@ class TransportTest extends TestCaseAbstract
      */
     public function setDeliveryDate(Transport $transport, $expected = null)
     {
-        $this->assertSchemaSetter('deliveryDate', 'string', $transport);
+        $this->assertSchemaSetter('deliveryDate', 'datetime', $transport);
     }
 
     /**
@@ -145,7 +128,7 @@ class TransportTest extends TestCaseAbstract
      */
     public function getEstimatedDeliveryDate(Transport $transport, $expected = null)
     {
-        $this->assertSchemaGetter('estimatedDeliveryDate', 'string', $transport, $expected);
+        $this->assertSchemaGetter('estimatedDeliveryDate', 'datetime', $transport, $expected);
     }
 
     /**
@@ -158,7 +141,7 @@ class TransportTest extends TestCaseAbstract
      */
     public function setEstimatedDeliveryDate(Transport $transport, $expected = null)
     {
-        $this->assertSchemaSetter('estimatedDeliveryDate', 'string', $transport);
+        $this->assertSchemaSetter('estimatedDeliveryDate', 'datetime', $transport);
     }
 
     /**
@@ -197,7 +180,7 @@ class TransportTest extends TestCaseAbstract
      */
     public function getShipDate(Transport $transport, $expected = null)
     {
-        $this->assertSchemaGetter('shipDate', 'string', $transport, $expected);
+        $this->assertSchemaGetter('shipDate', 'datetime', $transport, $expected);
     }
 
     /**
@@ -210,7 +193,7 @@ class TransportTest extends TestCaseAbstract
      */
     public function setShipDate(Transport $transport, $expected = null)
     {
-        $this->assertSchemaSetter('shipDate', 'string', $transport);
+        $this->assertSchemaSetter('shipDate', 'datetime', $transport);
     }
 
     /**
@@ -275,7 +258,7 @@ class TransportTest extends TestCaseAbstract
      */
     public function getTrackingShipDate(Transport $transport, $expected = null)
     {
-        $this->assertSchemaGetter('trackingShipDate', 'string', $transport, $expected);
+        $this->assertSchemaGetter('trackingShipDate', 'datetime', $transport, $expected);
     }
 
     /**
@@ -288,6 +271,6 @@ class TransportTest extends TestCaseAbstract
      */
     public function setTrackingShipDate(Transport $transport, $expected = null)
     {
-        $this->assertSchemaSetter('trackingShipDate', 'string', $transport);
+        $this->assertSchemaSetter('trackingShipDate', 'datetime', $transport);
     }
 }

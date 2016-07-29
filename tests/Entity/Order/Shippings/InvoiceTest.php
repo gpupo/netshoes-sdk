@@ -202,7 +202,7 @@ class InvoiceTest extends TestCaseAbstract
      */
     public function getIssueDate(Invoice $invoice, $expected = null)
     {
-        $this->assertSchemaGetter('issueDate', 'string', $invoice, $expected);
+        $this->assertSchemaGetter('issueDate', 'datetime', $invoice, $expected);
     }
 
     /**
@@ -215,6 +215,7 @@ class InvoiceTest extends TestCaseAbstract
      */
     public function setIssueDate(Invoice $invoice, $expected = null)
     {
+        $this->assertSchemaSetter('issueDate', 'datetime', $invoice, $expected);
     }
 
     /**
@@ -227,7 +228,7 @@ class InvoiceTest extends TestCaseAbstract
      */
     public function getShipDate(Invoice $invoice, $expected = null)
     {
-        $this->assertSchemaGetter('shipDate', 'string', $invoice, $expected);
+        $this->assertSchemaGetter('shipDate', 'datetime', $invoice, $expected);
     }
 
     /**
@@ -240,7 +241,7 @@ class InvoiceTest extends TestCaseAbstract
      */
     public function setShipDate(Invoice $invoice, $expected = null)
     {
-        $this->assertSchemaSetter('shipDate', 'string', $invoice);
+        $this->assertSchemaSetter('shipDate', 'datetime', $invoice);
     }
 
     /**

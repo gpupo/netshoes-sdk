@@ -25,7 +25,6 @@ use Gpupo\NetshoesSdk\Traits\DateTimeTrait;
  * @method setLine(integer $line)    Define line
  * @method string getAccessKey()    Acesso a accessKey
  * @method setAccessKey(string $accessKey)    Define accessKey
- * @method string getShipDate()    Acesso a shipDate
  * @method setShipDate(string $shipDate)    Define shipDate
  * @method string getUrl()    Acesso a url
  * @method setUrl(string $url)    Define url
@@ -45,8 +44,8 @@ class Invoice extends EntityAbstract implements EntityInterface
             'number'    => 'string',
             'line'      => 'integer',
             'accessKey' => 'string',
-            'issueDate' => 'string',
-            'shipDate'  => 'string',
+            'issueDate' => 'datetime',
+            'shipDate'  => 'datetime',
             'url'       => 'string',
         ];
     }
@@ -64,4 +63,8 @@ class Invoice extends EntityAbstract implements EntityInterface
         return $this->dateGet('issueDate');
     }
 
+    public function getShipDate()
+    {
+        return $this->dateGet('shipDate');
+    }
 }

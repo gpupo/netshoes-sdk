@@ -16,25 +16,25 @@ namespace Gpupo\NetshoesSdk\Entity\Order\Shippings;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\NetshoesSdk\Traits\DateTimeTrait;
 
 /**
  * @method string getCarrier()    Acesso a carrier
  * @method setCarrier(string $carrier)    Define carrier
- * @method string getDeliveryDate()    Acesso a deliveryDate
  * @method setDeliveryDate(string $deliveryDate)    Define deliveryDate
  * @method string getDeliveryService()    Acesso a deliveryService
  * @method setDeliveryService(string $deliveryService)    Define deliveryService
- * @method string getShipDate()    Acesso a shipDate
  * @method setShipDate(string $shipDate)    Define shipDate
  * @method string getTrackingLink()    Acesso a trackingLink
  * @method setTrackingLink(string $trackingLink)    Define trackingLink
  * @method string getTrackingNumber()    Acesso a trackingNumber
  * @method setTrackingNumber(string $trackingNumber)    Define trackingNumber
- * @method string getTrackingShipDate()    Acesso a trackingShipDate
  * @method setTrackingShipDate(string $trackingShipDate)    Define trackingShipDate
  */
 class Transport extends EntityAbstract implements EntityInterface
 {
+    use DateTimeTrait;
+
     /**
      * @codeCoverageIgnore
      */
@@ -42,14 +42,34 @@ class Transport extends EntityAbstract implements EntityInterface
     {
         return [
             'carrier'               => 'string',
-            'deliveryDate'          => 'string',
-            'estimatedDeliveryDate' => 'string',
+            'deliveryDate'          => 'datetime',
+            'estimatedDeliveryDate' => 'datetime',
             'deliveryService'       => 'string',
-            'shipDate'              => 'string',
+            'shipDate'              => 'datetime',
             'trackingLink'          => 'string',
             'trackingNumber'        => 'string',
-            'trackingShipDate'      => 'string',
+            'trackingShipDate'      => 'datetime',
         ];
+    }
+
+    public function getDeliveryDate()
+    {
+        return $this->dateGet('deliveryDate');
+    }
+
+    public function getEstimatedDeliveryDate()
+    {
+        return $this->dateGet('estimatedDeliveryDate');
+    }
+
+    public function getShipDate()
+    {
+        return $this->dateGet('shipDate');
+    }
+
+    public function getTrackingShipDate()
+    {
+        return $this->dateGet('trackingShipDate');
     }
 
     public function check($status = null)

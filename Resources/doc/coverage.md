@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:      
-  2016-07-28 17:39:29      
+  2016-07-29 09:12:54      
                            
  Summary:                  
-  Classes: 77.27% (34/44)  
-  Methods: 81.25% (78/96)  
-  Lines:   88.25% (443/502)
+  Classes: 75.56% (34/45)  
+  Methods: 80.58% (83/103) 
+  Lines:   87.96% (453/515)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)
@@ -37,13 +37,13 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Order\Decorator\Status::Shipped
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  7/  7)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings::Invoice
-  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  3/  3)
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  5/  5)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings::Shipping
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  5/  5)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings::Shippings
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings::Transport
-  Methods:   0.00% ( 0/ 1)   Lines:  80.00% (  4/  5)
+  Methods:  80.00% ( 4/ 5)   Lines:  88.89% (  8/  9)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer::Address
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  9/  9)
 \Gpupo\NetshoesSdk\Entity\Order\Shippings\Customer::Customer
@@ -69,7 +69,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Product\Sku::Manager
   Methods:  55.56% ( 5/ 9)   Lines:  57.35% ( 39/ 68)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::PriceSchedule
-  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 12/ 12)
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  9/  9)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::PriceScheduleCollection
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  9/  9)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::SkuCollection
@@ -78,3 +78,5 @@ Code Coverage Report:
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Templates::TemplatesCollection
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+\Gpupo\NetshoesSdk\Traits::DateTimeTrait
+  Methods:   0.00% ( 0/ 2)   Lines:  70.00% (  7/ 10)
