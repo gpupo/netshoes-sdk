@@ -18,6 +18,7 @@ use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\NetshoesSdk\Entity\Product\Manager;
 use Gpupo\NetshoesSdk\Entity\Product\Product;
+use Gpupo\NetshoesSdk\Entity\Product\Sku\Manager as SkuManager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
@@ -54,7 +55,7 @@ class ManagerTest extends TestCaseAbstract
      * @testdox Possui objeto Client
      * @covers ::getClient
      */
-    public function testGetClient($manager)
+    public function testGetClient(Manager $manager)
     {
         $this->assertInstanceOf(Client::class, $manager->getClient());
     }
@@ -68,7 +69,7 @@ class ManagerTest extends TestCaseAbstract
      * @covers \Gpupo\NetshoesSdk\Client\Client::getDefaultOptions
      * @covers \Gpupo\NetshoesSdk\Client\Client::renderAuthorization
      */
-    public function testFetch($manager)
+    public function testFetch(Manager $manager)
     {
         $list = $manager->fetch();
         $this->assertInstanceOf('\Gpupo\NetshoesSdk\Entity\Product\ProductCollection', $list);
@@ -80,6 +81,7 @@ class ManagerTest extends TestCaseAbstract
      * @testdox Entrega lista de produtos no padrão comum
      * @depends testManager
      * @covers ::translatorFetch
+     * @covers ::factoryTranslator
      */
     public function translatorFetch(Manager $manager)
     {
@@ -87,6 +89,18 @@ class ManagerTest extends TestCaseAbstract
         $this->assertInstanceOf(TranslatorDataCollection::class, $list);
         $this->assertGreaterThan(1, $list->count());
         $this->assertInstanceOf(TranslatorDataCollection::class, $list->first());
+    }
+
+    /**
+     * @testdox Tem acesso ao Manager de Sku
+     * @depends testManager
+     * @covers ::skuManager
+     * @test
+     */
+    public function skuManager(Manager $manager)
+    {
+        $o = $this->proxy($manager);
+        $this->assertInstanceOf(SkuManager::class, $o->skuManager());
     }
 
     /**
@@ -238,6 +252,8 @@ class ManagerTest extends TestCaseAbstract
         ];
 
         $this->assertSame($this->shift($manager, $expected), $operation);
+        $this->assertFalse($manager->patch($current, []));
+        $this->assertSame(200, $manager->patch($current, ['department'])['response_code']);
     }
 
     protected function shift($manager, $expected)

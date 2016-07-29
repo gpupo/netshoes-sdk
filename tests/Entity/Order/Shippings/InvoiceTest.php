@@ -203,6 +203,13 @@ class InvoiceTest extends TestCaseAbstract
     public function getIssueDate(Invoice $invoice, $expected = null)
     {
         $this->assertSchemaGetter('issueDate', 'datetime', $invoice, $expected);
+        $invoice->setIssueDate(null);
+        $this->assertNull($invoice->getIssueDate());
+        $datetime = '2016-05-10T00:00:00.000-03:00';
+        $invoice->setIssueDate($datetime);
+        $this->assertSame($datetime, $invoice->getIssueDate());
+        $invoice->setIssueDate('2016-05-10');
+        $this->assertSame($datetime, $invoice->getIssueDate());
     }
 
     /**

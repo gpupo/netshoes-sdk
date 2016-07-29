@@ -67,7 +67,7 @@ class PriceScheduleTest extends TestCaseAbstract
         $priceSchedule = $this->proxy($rawPriceSchedule);
 
         foreach ($this->dateFormatList as $string) {
-            $this->assertSame('2016-06-24T00:00:00+00:00', $priceSchedule->dateFormat($string));
+            $this->assertSame('2016-06-24T00:00:00-03:00', $priceSchedule->dateFormat($string));
         }
     }
 
@@ -84,7 +84,7 @@ class PriceScheduleTest extends TestCaseAbstract
     {
         foreach ($this->dateFormatList as $string) {
             $priceSchedule->setDateInit($string);
-            $this->assertSame('2016-06-24T00:00:00+00:00', $priceSchedule->getDateInit());
+            $this->assertSame('2016-06-24T00:00:00-03:00', $priceSchedule->getDateInit());
         }
     }
 
@@ -101,7 +101,7 @@ class PriceScheduleTest extends TestCaseAbstract
     {
         foreach ($this->dateFormatList as $string) {
             $priceSchedule->setDateEnd($string);
-            $this->assertSame('2016-06-24T00:00:00+00:00', $priceSchedule->getDateEnd());
+            $this->assertSame('2016-06-24T00:00:00-03:00', $priceSchedule->getDateEnd());
         }
     }
 

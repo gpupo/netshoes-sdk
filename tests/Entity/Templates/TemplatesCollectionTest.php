@@ -52,4 +52,16 @@ class TemplatesCollectionTest extends TestCaseAbstract
     {
         $this->assertSame($container->getMetadata()->getSelf(), '/v1/brands');
     }
+
+    /**
+     * @depends testLinks
+     * @test
+     */
+    public function cutMetadataEmpty(MetadataContainerAbstract $container)
+    {
+        $o = $this->proxy($container);
+        $this->assertSame([[]], $o->cutMetadata([]), 'empty array');
+        $this->assertSame([[]], $o->cutMetadata(''), 'string');
+        $this->assertSame([[]], $o->cutMetadata(null), 'null');
+    }
 }

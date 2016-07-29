@@ -103,6 +103,18 @@ class ProductTest extends TestCaseAbstract
     }
 
     /**
+     * @dataProvider dataProviderProducts
+     * @cover ::toPatch
+     * @test
+     */
+    public function toPatch($data)
+    {
+        $product = $this->factory($data);
+        $list = $product->toPatch(['department']);
+        $this->assertSame(['productId', 'department'], array_keys($list));
+    }
+
+    /**
      * @testdox Possui método ``getProductId()`` para acessar ProductId
      * @dataProvider dataProviderObject
      * @test
