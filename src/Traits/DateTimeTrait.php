@@ -21,25 +21,20 @@ trait DateTimeTrait
 {
     protected function dateFormat($string)
     {
-        $timezone = new DateTimeZone('UTC');
-        try {
-            $datetime = new DateTime($string, $timezone);
+        $timezone = new DateTimeZone('America/Sao_Paulo');
+        $datetime = new DateTime($string, $timezone);
 
-            return $datetime->format('c');
-        } catch (\Exception $e) {
-            return;
-        }
+        return $datetime->format('c');
     }
+
     protected function dateGet($key)
     {
         $value = $this->get($key);
 
-        if (empty($value)) {
-            return;
+        if (!empty($value)) {
+            $string = $this->dateFormat($value);
+
+            return str_replace('-03:00', '.000-03:00', $string);
         }
-
-        $string = $this->dateFormat($value);
-
-        return str_replace('-03:00', '.000-03:00', $string);
     }
 }

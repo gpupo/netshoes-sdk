@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:      
-  2016-07-29 09:12:54      
+  2016-07-29 09:58:32      
                            
  Summary:                  
-  Classes: 75.56% (34/45)  
-  Methods: 80.58% (83/103) 
-  Lines:   87.96% (453/515)
+  Classes: 84.44% (38/45)  
+  Methods: 90.91% (90/99)  
+  Lines:   96.90% (469/484)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)
@@ -15,7 +15,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity::AbstractManager
   Methods:  80.00% ( 4/ 5)   Lines:  87.50% (  7/  8)
 \Gpupo\NetshoesSdk\Entity::AbstractMetadata
-  Methods:  50.00% ( 1/ 2)   Lines:  93.33% ( 14/ 15)
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 15/ 15)
 \Gpupo\NetshoesSdk\Entity\Order::Manager
   Methods:  50.00% ( 2/ 4)   Lines:  78.12% ( 25/ 32)
 \Gpupo\NetshoesSdk\Entity\Order::Order
@@ -53,7 +53,9 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Order\Shippings\Items::Items
   Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  7/  7)
 \Gpupo\NetshoesSdk\Entity\Product::Manager
-  Methods:  33.33% ( 2/ 6)   Lines:  54.84% ( 17/ 31)
+  Methods:  83.33% ( 5/ 6)   Lines:  93.55% ( 29/ 31)
+\Gpupo\NetshoesSdk\Entity\Product::Product
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  2/  2)
 \Gpupo\NetshoesSdk\Entity\Product::ProductCollection
   Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
 \Gpupo\NetshoesSdk\Entity\Product::Skus
@@ -67,7 +69,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Product\Sku::Item
   Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 24/ 24)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::Manager
-  Methods:  55.56% ( 5/ 9)   Lines:  57.35% ( 39/ 68)
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 39/ 39)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::PriceSchedule
   Methods: 100.00% ( 4/ 4)   Lines: 100.00% (  9/  9)
 \Gpupo\NetshoesSdk\Entity\Product\Sku::PriceScheduleCollection
@@ -79,4 +81,4 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Templates::TemplatesCollection
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
 \Gpupo\NetshoesSdk\Traits::DateTimeTrait
-  Methods:   0.00% ( 0/ 2)   Lines:  70.00% (  7/ 10)
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  8/  8)

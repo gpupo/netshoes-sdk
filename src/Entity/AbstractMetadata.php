@@ -23,7 +23,7 @@ abstract class AbstractMetadata extends MetadataContainerAbstract
 
     protected function cutMetadata($raw)
     {
-        if (!is_array($raw)) {
+        if (empty($raw) || !is_array($raw)) {
             return [[]];
         }
 
