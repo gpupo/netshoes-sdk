@@ -55,7 +55,7 @@ class TranslatorTest extends TestCaseAbstract
 
     /**
      * @testdox Falha ao tentar traduzir para nativo sem possuir estrangeiro
-     * @expectedException Exception
+     * @expectedException \Gpupo\CommonSchema\TranslatorException
      * @expectedExceptionMessage Product missed!
      * @covers ::translateTo
      * @test

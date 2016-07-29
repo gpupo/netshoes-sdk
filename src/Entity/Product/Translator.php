@@ -16,6 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSchema\AbstractTranslator;
 use Gpupo\CommonSchema\TranslatorDataCollection;
+use Gpupo\CommonSchema\TranslatorException;
 use Gpupo\CommonSchema\TranslatorInterface;
 use Gpupo\CommonSdk\Traits\LoadTrait;
 
@@ -38,7 +39,7 @@ final class Translator extends AbstractTranslator implements TranslatorInterface
     public function translateTo()
     {
         if (!$this->getNative() instanceof Product) {
-            throw new \Exception('Product missed!');
+            throw new TranslatorException('Product missed!');
         }
 
         return $this->factoryOutputCollection($this->loadMap('native'));
@@ -50,7 +51,7 @@ final class Translator extends AbstractTranslator implements TranslatorInterface
     public function translateFrom()
     {
         if (!$this->getForeign() instanceof TranslatorDataCollection) {
-            throw new \Exception('Foreign missed!');
+            throw new TranslatorException('Foreign missed!');
         }
 
         return new Product($this->loadMap('foreign'));

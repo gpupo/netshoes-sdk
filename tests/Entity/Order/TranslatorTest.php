@@ -41,6 +41,32 @@ class TranslatorTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Falha ao tentar traduzir para extrangeiro sem possuir nativo
+     * @expectedException \Gpupo\CommonSchema\TranslatorException
+     * @expectedExceptionMessage Foreign object missed!
+     * @covers ::translateFrom
+     * @test
+     */
+    public function loadMapFailForeign()
+    {
+        $t = new Translator();
+        $t->translateFrom();
+    }
+
+    /**
+     * @testdox Falha ao tentar traduzir para nativo sem possuir estrangeiro
+     * @expectedException \Gpupo\CommonSchema\TranslatorException
+     * @expectedExceptionMessage Order missed!
+     * @covers ::translateTo
+     * @test
+     */
+    public function loadMapFailNative()
+    {
+        $t = new Translator();
+        $t->translateTo();
+    }
+
+    /**
      * @testdox ``translateTo()``
      * @cover ::translateTo
      * @dataProvider dataProviderTranslator
