@@ -21,11 +21,23 @@ trait DateTimeTrait
 {
     protected function dateFormat($string)
     {
+        $zone = 'America/Sao_Paulo';
+
         if (intval($string) === $string) {
-            $string = date('c', $string / 1000);
+            $df = date_default_timezone_get();
+            if ($df !== $zone) {
+                date_default_timezone_set($zone);
+            }
+            $date =  date('c', $string / 1000);
+
+            if ($df !== $zone) {
+                date_default_timezone_set($df);
+            }
+
+            return $date;
         }
 
-        $timezone = new DateTimeZone('America/Sao_Paulo');
+        $timezone = new DateTimeZone($zone);
         $datetime = new DateTime($string, $timezone);
 
         return $datetime->format('c');
