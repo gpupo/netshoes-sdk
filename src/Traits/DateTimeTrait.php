@@ -1,4 +1,17 @@
 <?php
+
+/*
+ * This file is part of gpupo/netshoes-sdk
+ * Created by Gilmar Pupo <g@g1mr.com>
+ * For the information of copyright and license you should read the file
+ * LICENSE which is distributed with this source code.
+ * Para a informação dos direitos autorais e de licença você deve ler o arquivo
+ * LICENSE que é distribuído com este código-fonte.
+ * Para obtener la información de los derechos de autor y la licencia debe leer
+ * el archivo LICENSE que se distribuye con el código fuente.
+ * For more information, see <http://www.g1mr.com/>.
+ */
+
 namespace Gpupo\NetshoesSdk\Traits;
 
 use DateTime;
@@ -6,7 +19,6 @@ use DateTimeZone;
 
 trait DateTimeTrait
 {
-
     protected function dateFormat($string)
     {
         $timezone = new DateTimeZone('UTC');
@@ -15,7 +27,7 @@ trait DateTimeTrait
 
             return $datetime->format('c');
         } catch (\Exception $e) {
-            return null;
+            return;
         }
     }
     protected function dateGet($key)
@@ -27,8 +39,7 @@ trait DateTimeTrait
         }
 
         $string = $this->dateFormat($value);
-//return $string;
-        return str_replace('-03:00', '.000-03:00', $string);
 
+        return str_replace('-03:00', '.000-03:00', $string);
     }
 }
