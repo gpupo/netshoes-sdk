@@ -17,7 +17,10 @@ namespace Gpupo\NetshoesSdk;
 use Gpupo\CommonSdk\FactoryAbstract;
 use Gpupo\NetshoesSdk\Client\Client;
 
-final class Factory extends FactoryAbstract
+/**
+ * Construtor principal, extendido pelo Factory de MarkethubBundle
+ */
+class Factory extends FactoryAbstract
 {
     public function setClient(array $clientOptions = [])
     {
@@ -26,7 +29,7 @@ final class Factory extends FactoryAbstract
 
     public function getNamespace()
     {
-        return '\Gpupo\NetshoesSdk\Entity\\';
+        return  '\\'.__NAMESPACE__.'\Entity\\';
     }
 
     protected function getSchema($namespace = null)
