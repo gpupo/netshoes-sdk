@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:      
-  2016-07-29 15:08:53      
+  2016-07-29 21:31:23      
                            
  Summary:                  
   Classes: 86.67% (39/45)  
   Methods: 93.20% (96/103) 
-  Lines:   97.21% (488/502)
+  Lines:   97.25% (495/509)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)
@@ -81,4 +81,4 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity\Templates::TemplatesCollection
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
 \Gpupo\NetshoesSdk\Traits::DateTimeTrait
-  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 17/ 17)

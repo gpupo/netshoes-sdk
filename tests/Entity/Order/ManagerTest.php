@@ -338,6 +338,8 @@ class ManagerTest extends TestCaseAbstract
      */
     public function fetchShippedInvoiced()
     {
+        ini_set('date.timezone', 'Europe/Athens');
+
         $manager = $this->getManager('shipped.json');
         $id = '11263255514';
         $order = $manager->findById($id);
@@ -352,8 +354,8 @@ class ManagerTest extends TestCaseAbstract
             'url'       => '',
         ], $invoice->toArray());
 
-        $this->assertSame('2016-07-27T21:03:22.000-03:00', $invoice->getIssueDate());
-        $this->assertSame('2016-07-11T19:26:33.000-03:00', $invoice->getShipDate());
+        $this->assertSame('2016-07-27T21:03:22.000-03:00', $invoice->getIssueDate(), 'issueDate');
+        $this->assertSame('2016-07-11T19:26:33.000-03:00', $invoice->getShipDate(), 'shipDate');
 
         return $order;
     }
