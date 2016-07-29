@@ -1,12 +1,12 @@
 
 
 Code Coverage Report:      
-  2016-07-29 14:18:13      
+  2016-07-29 15:08:53      
                            
  Summary:                  
   Classes: 86.67% (39/45)  
-  Methods: 93.00% (93/100) 
-  Lines:   97.34% (476/489)
+  Methods: 93.20% (96/103) 
+  Lines:   97.21% (488/502)
 
 \Gpupo\NetshoesSdk::Factory
   Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 13/ 13)
@@ -17,7 +17,7 @@ Code Coverage Report:
 \Gpupo\NetshoesSdk\Entity::AbstractMetadata
   Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 15/ 15)
 \Gpupo\NetshoesSdk\Entity\Order::Manager
-  Methods:  50.00% ( 2/ 4)   Lines:  78.12% ( 25/ 32)
+  Methods:  71.43% ( 5/ 7)   Lines:  78.26% ( 18/ 23)
 \Gpupo\NetshoesSdk\Entity\Order::Order
   Methods: 100.00% ( 8/ 8)   Lines: 100.00% ( 18/ 18)
 \Gpupo\NetshoesSdk\Entity\Order::OrderCollection

@@ -263,6 +263,34 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Não atualiza pedido que não alterou status
+     * @test
+     * @dataProvider dataProviderOrders
+     * @covers ::findById
+     * @covers ::resolvePrevious
+     */
+    public function saveNotChanged(Order $order)
+    {
+        $manager = $this->getManager('shipped.json');
+        $order->setOrderStatus('shipped');
+        $this->assertSame(204, $manager->update($order)->getHttpStatusCode());
+    }
+
+    /**
+     * @testdox Normaliza Shipping
+     * @test
+     * @dataProvider dataProviderOrders
+     * @covers ::normalizeShipping
+     */
+    public function normalizeShipping(Order $order)
+    {
+        $manager = $this->proxy($this->getManager('shipped.json'));
+        $previous = $manager->resolvePrevious($order);
+        $normalized = $manager->normalizeShipping($order, $previous);
+        $this->assertSame(311450984, $normalized->getShipping()->getShippingCode());
+    }
+
+    /**
      * @testdox Update the shipping status to Delivered - Require ``Transport Delivery Date``
      * @test
      * @dataProvider dataProviderOrders
