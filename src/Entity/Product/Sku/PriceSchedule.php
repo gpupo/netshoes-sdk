@@ -14,10 +14,9 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Product\Sku;
 
-use DateTime;
-use DateTimeZone;
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\NetshoesSdk\Traits\DateTimeTrait;
 
 /**
  * @method float getPriceFrom()    Acesso a priceFrom
@@ -31,6 +30,8 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  */
 final class PriceSchedule extends EntityAbstract implements EntityInterface
 {
+    use DateTimeTrait;
+
     /**
      * @codeCoverageIgnore
      */
@@ -47,14 +48,6 @@ final class PriceSchedule extends EntityAbstract implements EntityInterface
     protected function setUp()
     {
         $this->setOptionalSchema(['priceFrom', 'dateEnd']);
-    }
-
-    protected function dateFormat($string)
-    {
-        $timezone = new DateTimeZone('UTC');
-        $datetime = new DateTime($string, $timezone);
-
-        return $datetime->format('c');
     }
 
     public function setDateInit($string)

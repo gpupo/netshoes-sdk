@@ -16,6 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Order\Shippings;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\NetshoesSdk\Traits\DateTimeTrait;
 
 /**
  * @method string getNumber()    Acesso a number
@@ -24,8 +25,6 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  * @method setLine(integer $line)    Define line
  * @method string getAccessKey()    Acesso a accessKey
  * @method setAccessKey(string $accessKey)    Define accessKey
- * @method string getIssueDate()    Acesso a issueDate
- * @method setIssueDate(string $issueDate)    Define issueDate
  * @method string getShipDate()    Acesso a shipDate
  * @method setShipDate(string $shipDate)    Define shipDate
  * @method string getUrl()    Acesso a url
@@ -33,6 +32,8 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
  */
 class Invoice extends EntityAbstract implements EntityInterface
 {
+    use DateTimeTrait;
+
     protected $primaryKey = 'number';
 
     /**
@@ -57,4 +58,10 @@ class Invoice extends EntityAbstract implements EntityInterface
 
         return $this->isValid();
     }
+
+    public function getIssueDate()
+    {
+        return $this->dateGet('issueDate');
+    }
+
 }
