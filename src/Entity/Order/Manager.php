@@ -46,25 +46,57 @@ final class Manager extends AbstractManager
         return $instance;
     }
 
+    protected function resolvePrevious(Order $entity)
+    {
+        try {
+            $o = $this->findById($entity->getId());
+            if ($o instanceof Order) {
+                return $o;
+            }
+        } catch (\Exception $o) {
+            throw new \Exception('Order #'.$entity->getId().' not found on marketplace!');
+        }
+    }
+
+    protected function normalizeShipping(Order $entity, Order $existent)
+    {
+        if (1000 > intval($entity->getShipping()->getShippingCode())) {
+            $code = $existent->getShipping()->getShippingCode();
+            $entity->getShipping()->setShippingCode($code);
+        }
+
+        return $entity;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function update(EntityInterface $entity, EntityInterface $existent = null)
     {
-        if (!empty($existent)) {
-            if ($entity->getOrderStatus() === $existent->getOrderStatus()) {
-                $this->log('info', 'Order sem atualização');
+        parent::update($entity, $existent);
 
-                return false;
-            }
+        $factory204 = function ($message) {
+            return new Response([
+                'raw'            => '{"message":"'.$message.'"}',
+                'httpStatusCode' => 204,
+            ]);
+        };
+
+        if (empty($existent)) {
+            $existent = $this->resolvePrevious($entity);
+        }
+
+        if ($entity->getOrderStatus() === $existent->getOrderStatus()) {
+            $this->log('info', 'Order sem atualização');
+
+            return $factory204('Order status not changed!');
         }
 
         if ('processing' === $entity->getOrderStatus()) {
-            return new Response([
-                'raw'            => '{"message":"Order status not used"}',
-                'httpStatusCode' => 204,
-            ]);
+            return $factory204('Order status not used!');
         }
+
+        $entity = $this->normalizeShipping($entity, $existent);
 
         if (in_array($entity->getOrderStatus(), ['approved', 'canceled',
             'delivered', 'invoiced', 'shipped', ], true)) {
