@@ -94,14 +94,8 @@ final class OrderCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app, $type) {
                 $list = $app->processInputParameters([], $input, $output);
                 $collection = $app->factorySdk($list)->factoryManager('order')
-                ->fetch(0, 50, ['orderStatus' => $type]);
-
-                if (0 === $collection->count()) {
-                    return $output->writeln('<error>Nenhum pedido encontrado!</error>');
-                }
-                foreach ($collection as $p) {
-                    $app->displayOrder($p, $output);
-                }
+                ->translatorFetch(0, 50, ['orderStatus' => $type]);
+                $app->displayOrderList($collection, $output);
             });
     }
 
@@ -111,15 +105,7 @@ final class OrderCommand extends AbstractCommand
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
                 $list = $app->processInputParameters([], $input, $output);
                 $collection = $app->factorySdk($list)->factoryManager('order')->fetchQueue();
-
-                if (0 === $collection->count()) {
-                    return $output->writeln('<info>Nenhum pedido na fila</info>');
-                }
-
-                $app->displayTableResults($output, $collection->toArray(), [
-                    'merchant', 'orderNumber', 'acceptedOffer', 'orderDate',
-                    'customer', 'billingAddress', 'quantity', 'freight', 'total',
-                ], 49, true);
+                $app->displayOrderList($collection, $output);
             });
     }
 
