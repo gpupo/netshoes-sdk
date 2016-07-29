@@ -71,6 +71,8 @@ final class Application extends AbstractApplication
         $output->writeln('Order #<comment>'.$order->getId().'</comment>');
         $this->displayTableResults($output, [$order->toLog()]);
         $this->displayTableResults($output, $order->getShipping()->getCustomer()->toLog());
+        $this->displayTableResults($output, [$order->getShipping()->getInvoice()->toArray()]);
+        $this->displayTableResults($output, [$order->getShipping()->getTransport()->toArray()]);
         $this->displayTableResults($output, $order->getShipping()->getItems()->toLog());
     }
 
