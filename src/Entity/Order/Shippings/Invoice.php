@@ -50,6 +50,18 @@ class Invoice extends EntityAbstract implements EntityInterface
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    protected function beforeConstruct($data = null)
+    {
+        if (is_array($data) && array_key_exists('date', $data)) {
+            $data['issueDate'] = $data['date'];
+        }
+
+        return $data;
+    }
+
     public function check()
     {
         $this->setRequiredSchema(['number', 'line', 'accessKey', 'issueDate']);

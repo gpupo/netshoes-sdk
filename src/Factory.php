@@ -18,7 +18,7 @@ use Gpupo\CommonSdk\FactoryAbstract;
 use Gpupo\NetshoesSdk\Client\Client;
 
 /**
- * Construtor principal, extendido pelo Factory de MarkethubBundle
+ * Construtor principal, extendido pelo Factory de MarkethubBundle.
  */
 class Factory extends FactoryAbstract
 {

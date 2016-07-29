@@ -21,6 +21,10 @@ trait DateTimeTrait
 {
     protected function dateFormat($string)
     {
+        if (intval($string) === $string) {
+            $string = date('c', $string /1000);
+        }
+
         $timezone = new DateTimeZone('America/Sao_Paulo');
         $datetime = new DateTime($string, $timezone);
 

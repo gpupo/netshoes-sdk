@@ -88,6 +88,19 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Get a empty list of Orders
+     * @test
+     * @covers \Gpupo\NetshoesSdk\Entity\AbstractManager::findById
+     * @covers ::execute
+     * @covers ::factoryMap
+     */
+    public function fetchNotFound()
+    {
+        $manager = $this->getManager('notfound.json');
+        $this->assertFalse($manager->findById(1001));
+    }
+
+    /**
      * @testdox Get a list of Common Schema Orders
      * @test
      * @depends testManager
@@ -289,5 +302,54 @@ class ManagerTest extends TestCaseAbstract
 
         $order->getShipping()->setTransport($transport);
         $this->assertSame(200, $manager->update($order)->getHttpStatusCode());
+    }
+
+    /**
+     * @testdox Pedido em situação ``Shipped`` possui Invoice
+     * @test
+     */
+    public function fetchShippedInvoiced()
+    {
+        $manager = $this->getManager('shipped.json');
+        $id = '11263255514';
+        $order = $manager->findById($id);
+        $invoice = $order->getShipping()->getInvoice();
+        $this->assertSame($id, $order->getId());
+        $this->assertSame([
+            'number'    => '',
+            'line'      => 0,
+            'accessKey' => '4233371852869900012255001001955271085166950',
+            'issueDate' => 1469664202000,
+            'shipDate'  => 1468275993000,
+            'url'       => '',
+        ], $invoice->toArray());
+
+        $this->assertSame('2016-07-27T21:03:22.000-03:00', $invoice->getIssueDate());
+        $this->assertSame('2016-07-11T19:26:33.000-03:00', $invoice->getShipDate());
+
+        return $order;
+    }
+
+    /**
+     * @testdox Pedido em situação ``Shipped`` possui Transport
+     * @depends fetchShippedInvoiced
+     * @test
+     */
+    public function fetchShippedTransport(Order $order)
+    {
+        $transport = $order->getShipping()->getTransport();
+        $this->assertSame([
+            'carrier'               => 'Correios',
+            'deliveryDate'          => '',
+            'estimatedDeliveryDate' => '',
+            'deliveryService'       => 'Normal',
+            'shipDate'              => 1469664000000,
+            'trackingLink'          => 'http://rastreamento.ns2online.com.br/DU164795539BR',
+            'trackingNumber'        => 'DU164795539BR',
+            'trackingShipDate'      => 1469739449000,
+        ], $transport->toArray());
+
+        $this->assertSame('2016-07-27T21:00:00.000-03:00', $transport->getShipDate());
+        $this->assertSame('2016-07-28T17:57:29.000-03:00', $transport->getTrackingShipDate());
     }
 }
