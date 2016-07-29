@@ -16,6 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Order;
 
 use Gpupo\CommonSchema\AbstractTranslator;
 use Gpupo\CommonSchema\TranslatorDataCollection;
+use Gpupo\CommonSchema\TranslatorException;
 use Gpupo\CommonSchema\TranslatorInterface;
 use Gpupo\CommonSdk\Traits\LoadTrait;
 
@@ -37,7 +38,7 @@ final class Translator extends AbstractTranslator implements TranslatorInterface
     public function translateTo()
     {
         if (!$this->getNative() instanceof Order) {
-            throw new \Exception('Order missed!');
+            throw new TranslatorException('Order missed!');
         }
 
         return $this->factoryOutputCollection($this->loadMap('native'));
@@ -49,7 +50,7 @@ final class Translator extends AbstractTranslator implements TranslatorInterface
     public function translateFrom()
     {
         if (!$this->getForeign() instanceof TranslatorDataCollection) {
-            throw new \Exception('Foreign missed!');
+            throw new TranslatorException('Foreign missed!');
         }
 
         return new Order($this->loadMap('foreign'));
