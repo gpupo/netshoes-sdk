@@ -1,0 +1,116 @@
+{
+    "expands": [
+        "shippings",
+        "items",
+        "devolutionItems"
+    ],
+    "agreedDate": 1470366000000,
+    "paymentDate": 1469491669000,
+    "orderDate": 1469491747000,
+    "orderNumber": "11263255514",
+    "originNumber": "",
+    "totalQuantity": 1,
+    "originSite": "ZATTINI",
+    "businessUnit": "59",
+    "orderStatus": "Shipped",
+    "orderType": "Sale",
+    "devolutionRequested": false,
+    "exchangeRequested": false,
+    "totalGross": 233.35,
+    "totalCommission": 0,
+    "totalDiscount": 0,
+    "totalFreight": 24.35,
+    "totalNet": 209,
+    "shippings": [
+        {
+            "expands": [
+                "items",
+                "devolutionItems"
+            ],
+            "shippingCode": 311450984,
+            "status": "Shipped",
+            "shippingEstimate": 1470711600000,
+            "deliveryTime": 11,
+            "freightAmount": 24.35,
+            "country": "BR",
+            "transport": {
+                "expands": [],
+                "trackingNumber": "DU164795539BR",
+                "trackingLink": "http://rastreamento.ns2online.com.br/DU164795539BR",
+                "trackingShipDate": 1469739449000,
+                "shipDate": 1469664000000,
+                "deliveryService": "Normal",
+                "carrier": "Correios"
+            },
+            "invoice": {
+                "expands": [],
+                "accessKey": "4233371852869900012255001001955271085166950",
+                "date": 1469664202000,
+                "shipDate": 1468275993000
+            },
+            "customer": {
+                "expands": [],
+                "document": "22055551881",
+                "stateInscription": "",
+                "customerName": "Abraham Laboriel",
+                "recipientName": "Abraham Laboriel",
+                "cellPhone": "(11)66125785",
+                "landLine": "(11)98177785",
+                "address": {
+                    "expands": [],
+                    "neighborhood": "Jazz Bassists",
+                    "postalCode": "17086043",
+                    "city": "SAO PAULO",
+                    "complement": "casa",
+                    "state": "SAO PAULO",
+                    "street": "Rua Fá Sustenido",
+                    "number": "051",
+                    "reference": "Próximo de Sol"
+                }
+            },
+            "sender": {
+                "expands": [],
+                "supplierCnpj": "18468699000122",
+                "sellerCode": 1221,
+                "sellerName": "Acme",
+                "supplierName": "Acme Ltda"
+            },
+            "items": [
+                {
+                    "expands": [],
+                    "itemId": 307728800,
+                    "manufacturerCode": "24755",
+                    "ean": "0892456000334",
+                    "brand": "Animale",
+                    "name": "Animale Intense For Men EDT Masculino 50ml Animale",
+                    "quantity": 1,
+                    "sku": "24755",
+                    "departmentName": "Beleza",
+                    "departmentCode": 5598804,
+                    "grossUnitValue": 209,
+                    "discountUnitValue": 0,
+                    "netUnitValue": 209,
+                    "color": "Incolor",
+                    "flavor": "Único"
+                }
+            ],
+            "_links": {
+                "self": {
+                    "href": "http://prd-vs-mp.netshoes.local:8684/v1/orders/11263255514/shippings/311450984"
+                },
+                "order": {
+                    "href": "http://prd-vs-mp.netshoes.local:8684/v1/orders/11263255514"
+                }
+            }
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://prd-vs-mp.netshoes.local:8684/v1/orders/11263255514"
+        },
+        "shippings": {
+            "href": "http://prd-vs-mp.netshoes.local:8684/v1/orders/11263255514/shippings"
+        }
+    },
+    "links": []
+}
