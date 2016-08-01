@@ -20,7 +20,6 @@ use Gpupo\NetshoesSdk\Entity\Product\Product;
 use Gpupo\NetshoesSdk\Factory;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Gpupo\CommonSchema\TranslatorDataCollection;
 
 /**
  * @codeCoverageIgnore
@@ -77,19 +76,6 @@ final class Application extends AbstractApplication
         $this->displayTableResults($output, $order->getShipping()->getItems()->toLog());
     }
 
-    public function displayOrderList(TranslatorDataCollection $collection, OutputInterface $output)
-    {
-        if (0 === $collection->count()) {
-            return $output->writeln('<info>Nenhum pedido para exibir</info>');
-        }
-
-        return $this->displayTableResults($output, $collection->toArray(), [
-            'merchant', 'orderNumber', 'acceptedOffer', 'orderDate',
-            'customer', 'billingAddress', 'quantity', 'freight', 'total',
-        ], 49, true);
-
-    }
-
     public function displayProduct(Product $p, OutputInterface $output)
     {
         $this->displayTableResults($output, [[
@@ -101,24 +87,5 @@ final class Application extends AbstractApplication
 
         $output->writeln('<fg=yellow>Skus</>');
         $this->displayTableResults($output, $p->getSkus());
-    }
-
-    public function jsonLoadFromFile($filename)
-    {
-        if (!file_exists($filename)) {
-            throw new \Exception('Filename '.$filename.' not exists!');
-        }
-
-        $string = file_get_contents($filename);
-
-        return json_decode($string, true);
-    }
-
-    public function jsonSaveToFile(array $array, $filename, OutputInterface $output)
-    {
-        $json = json_encode($array, JSON_PRETTY_PRINT);
-        file_put_contents($filename, $json);
-
-        return $output->writeln('Arquivo <info>'.$filename.'</info> gerado.');
     }
 }

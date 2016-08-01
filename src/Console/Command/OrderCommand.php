@@ -27,7 +27,7 @@ final class OrderCommand extends AbstractCommand
 {
     protected $list = ['view', 'factoryForStatus', 'translateTo', 'translateFrom', 'queue'];
 
-    protected $statusList = ['approved', 'invoiced', 'shipped', 'delivered', 'canceled'];
+    protected $statusList = ['approved', 'invoiced', 'shipped', 'delivered', 'canceled', 'frozen'];
 
     protected function factoryForStatus($app)
     {
