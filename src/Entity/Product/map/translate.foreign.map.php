@@ -15,7 +15,7 @@
 $skusList = [];
 
 $a = function ($key, $array) {
-    if (array_key_exists($key, $array)) {
+    if (array_key_exists($key, (array) $array)) {
         return $array[$key];
     }
 };
