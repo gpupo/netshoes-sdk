@@ -28,7 +28,7 @@ trait DateTimeTrait
             if ($df !== $zone) {
                 date_default_timezone_set($zone);
             }
-            $date =  date('c', $string / 1000);
+            $date = date('c', $string / 1000);
 
             if ($df !== $zone) {
                 date_default_timezone_set($df);
