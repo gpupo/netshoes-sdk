@@ -40,6 +40,8 @@ foreach ((array) $foreign->get('skus') as $sku) {
             'sellPrice'   => $f('sellPrice'),
             'stock'       => $f('stock'),
             'status'      => $f('status'),
+            'video'       => $f('video'),
+            'images'      => $f('images'),
         ];
 }
 
