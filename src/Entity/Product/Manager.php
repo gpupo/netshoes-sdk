@@ -60,6 +60,18 @@ final class Manager extends AbstractManager
         return $feedback;
     }
 
+    protected function resolveIfNew(EntityInterface $entity, EntityInterface $existent = null)
+    {
+        if ($existent instanceof EntityInterface) {
+            return;
+        }
+        if (false !== parent::findById($entity->getId())) {
+            return;
+        }
+
+        $this->save($entity);
+    }
+
     private function skuManager()
     {
         return $this->factorySubManager(Factory::getInstance(), 'sku');
@@ -73,6 +85,8 @@ final class Manager extends AbstractManager
         if (0 === $entity->getSkus()->count()) {
             throw new \InvalidArgumentException('Product precisa conter SKU!');
         }
+
+        $this->resolveIfNew($entity, $existent);
 
         $response = [];
 
