@@ -25,7 +25,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class ProductCommand extends AbstractCommand
 {
-    protected $list = ['view', 'insert', 'update', 'list', 'translateTo', 'translateUpdate'];
+    protected $list = ['view', 'status', 'insert', 'update', 'list', 'translateTo', 'translateUpdate'];
 
     public function list($app)
     {
@@ -136,6 +136,19 @@ final class ProductCommand extends AbstractCommand
 
                 ]);
                 $command->run($t, $output);
+            });
+    }
+
+    public function status($app)
+    {
+        $this->getApp()->appendCommand('product:status', 'Consulta o status de um produto')
+            ->addArgument('productId', InputArgument::REQUIRED, 'Product ID')
+            ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+                $list = $app->processInputParameters([], $input, $output);
+                $id = $input->getArgument('productId');
+                $output->writeln('Status do Product #<info>'.$id.'</info>');
+                $status = $app->factorySdk($list)->factoryManager('product')->fetchStatusById($id);
+                $app->displayTableResults($output, [$status->toArray()]);
             });
     }
 
