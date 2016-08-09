@@ -5,7 +5,7 @@
 
 Para informações do formato de ``$data`` veja o arquivo ``vendor/gpupo/netshoes-sdk/Resources/fixture/Product/new.json``
 
-### Acesso a lista de produtos cadastrados:
+### Acesso a lista de produtos cadastrados
 
 ``` php
 <?php
@@ -22,6 +22,16 @@ $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection d
 //..
 $produto = $sdk->factoryManager('product')->findById(9)); // Objeto Produto
 echo $product->getName(); // Acesso ao nome do produto de Id 9
+```
+
+### Acesso ao Status de um Product
+
+
+``` php
+<?php
+//..
+$status = $sdk->factoryManager('product')->fetchStatusById(9)); // Objeto Status
+$status->isPending(); // boolean ou RuntimeException code 404 (inexixtente)
 ```
 
 ### Criação de um produto

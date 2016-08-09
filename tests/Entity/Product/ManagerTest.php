@@ -18,8 +18,8 @@ use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\NetshoesSdk\Entity\Product\Manager;
 use Gpupo\NetshoesSdk\Entity\Product\Product;
-use Gpupo\NetshoesSdk\Entity\Product\Status;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Manager as SkuManager;
+use Gpupo\NetshoesSdk\Entity\Product\Status;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
 /**
