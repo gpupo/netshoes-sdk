@@ -12,6 +12,7 @@
  * For more information, see <http://www.g1mr.com/>.
  */
 
+$extra = (array) $foreign->get('extra');
 $items = [];
 
 foreach ((array) $foreign->get('acceptedOffer') as $sku) {
@@ -38,7 +39,41 @@ foreach ((array) $foreign->get('acceptedOffer') as $sku) {
     ];
 }
 
-return [
+$shipping = [
+    'shippingCode'  => '',
+    'status'        => $foreign->get('orderStatus'),
+    'freightAmount' => '',
+    'country'       => '',
+    'customer'      => [
+        'document'         => '',
+        'stateInscription' => '',
+        'customerName'     => '',
+        'recipientName'    => '',
+        'tradeName'        => '',
+        'cellPhone'        => '',
+        'landLine'         => '',
+        'address'          => [
+            'neighborhood' => '',
+            'postalCode'   => '',
+            'city'         => '',
+            'complement'   => '',
+            'state'        => '',
+            'street'       => '',
+            'number'       => '',
+            'reference'    => '',
+        ],
+    ],
+    'sender'    => [],
+    'items'     => $items,
+    'invoice'   => $foreign->get('invoice'),
+    'transport' => $foreign->get('tracking'),
+];
+
+if (array_key_exists('cancelationReason', $extra)) {
+    $shipping['cancelationReason'] = $extra['cancelationReason'];
+}
+
+$data = [
     'orderNumber'   => $foreign->get('orderNumber'),
     'originSite'    => $foreign->get('merchant')['name'],
     'orderStatus'   => $foreign->get('orderStatus'),
@@ -46,35 +81,7 @@ return [
     'totalDiscount' => $foreign->get('discount'),
     'totalNet'      => $foreign->get('price'),
     'totalQuantity' => $foreign->get('quantity'),
-    'shippings'     => [
-        [
-            'shippingCode'  => '',
-            'status'        => $foreign->get('orderStatus'),
-            'freightAmount' => '',
-            'country'       => '',
-            'customer'      => [
-                'document'         => '',
-                'stateInscription' => '',
-                'customerName'     => '',
-                'recipientName'    => '',
-                'tradeName'        => '',
-                'cellPhone'        => '',
-                'landLine'         => '',
-                'address'          => [
-                    'neighborhood' => '',
-                    'postalCode'   => '',
-                    'city'         => '',
-                    'complement'   => '',
-                    'state'        => '',
-                    'street'       => '',
-                    'number'       => '',
-                    'reference'    => '',
-                ],
-            ],
-            'sender'    => [],
-            'items'     => $items,
-            'invoice'   => $foreign->get('invoice'),
-            'transport' => $foreign->get('tracking'),
-        ],
-    ],
+    'shippings'     => [$shipping],
 ];
+
+return $data;

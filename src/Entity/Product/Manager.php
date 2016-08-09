@@ -18,6 +18,8 @@ use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 use Gpupo\NetshoesSdk\Factory;
+use Gpupo\CommonSdk\Exception\RuntimeException;
+use Gpupo\CommonSdk\Exception\InvalidArgumentException;
 
 final class Manager extends AbstractManager
 {
@@ -61,18 +63,13 @@ final class Manager extends AbstractManager
         return $feedback;
     }
 
-    protected function resolveIfNew(EntityInterface $entity, EntityInterface $existent = null)
+    protected function resolveNew(EntityInterface $entity)
     {
-        if ($existent instanceof EntityInterface) {
-            return;
-        }
-        if (false !== parent::findById($entity->getId())) {
-            return;
-        }
-
         $this->save($entity);
 
-        return true;
+        return [
+            'created'   => true,
+        ];
     }
 
     public function fetchStatusById($itemId)
@@ -101,19 +98,22 @@ final class Manager extends AbstractManager
     public function update(EntityInterface $entity, EntityInterface $existent = null)
     {
         if (0 === $entity->getSkus()->count()) {
-            throw new \InvalidArgumentException('Product precisa conter SKU!');
+            throw new InvalidArgumentException('Product precisa conter SKU!');
         }
 
-        if (true === $this->resolveIfNew($entity, $existent)) {
-            return [
-                'created' => true,
-            ];
-        }
+        try {
+            $status = $entity->get('status');
+            if (!$status instanceof Status) {
+                $status = $this->fetchStatusById($entity->getId());
+            }
 
-        if (true === $this->fetchStatusById($entity->getId())->isPending()) {
-            return [
-                'pending' => true,
-            ];
+            if (true === $status->isPending()) {
+                return ['pending' => true];
+            }
+        } catch (RuntimeException $e) {
+            if (404 === $e->getCode()) {
+                return $this->resolveNew($entity);
+            }
         }
 
         $response = [];

@@ -148,7 +148,7 @@ final class ProductCommand extends AbstractCommand
                 $id = $input->getArgument('productId');
                 $output->writeln('Status do Product #<info>'.$id.'</info>');
                 $status = $app->factorySdk($list)->factoryManager('product')->fetchStatusById($id);
-                $app->displayTableResults($output, [$status->toArray()]);
+                $app->displayTableResults($output, [$status->toLog()]);
             });
     }
 

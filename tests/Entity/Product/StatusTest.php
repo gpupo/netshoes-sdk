@@ -29,7 +29,7 @@ class StatusTest extends TestCaseAbstract
     {
         $status = new Status([
             'active'      => true,
-            'statusMatch' => 'PROCESSADO_INTEGRACAO_CATALOGO',
+            'statusMatch' => 'PROCESSANDO_INTEGRACAO_CATALOGO',
         ]);
 
         $this->assertTrue($status->isPending());

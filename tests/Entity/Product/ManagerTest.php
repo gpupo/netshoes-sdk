@@ -18,6 +18,7 @@ use Gpupo\CommonSchema\TranslatorDataCollection;
 use Gpupo\NetshoesSdk\Client\Client;
 use Gpupo\NetshoesSdk\Entity\Product\Manager;
 use Gpupo\NetshoesSdk\Entity\Product\Product;
+use Gpupo\NetshoesSdk\Entity\Product\Status;
 use Gpupo\NetshoesSdk\Entity\Product\Sku\Manager as SkuManager;
 use Gpupo\Tests\NetshoesSdk\TestCaseAbstract;
 
@@ -186,6 +187,11 @@ class ManagerTest extends TestCaseAbstract
         $currentArray = $this->getResourceJson('fixture/Product/Update/current.json');
         $previous = $this->getFactory()->createProduct($previousArray);
         $current = $this->getFactory()->createProduct($currentArray);
+        $status = new Status([
+            'active'      => true,
+            'statusMatch' => 'PROCESSADO_INTEGRACAO_CATALOGO',
+        ]);
+        $current->set('status', $status);
         $operation = $manager->update($current, $previous);
 
         $expected =
@@ -225,6 +231,11 @@ class ManagerTest extends TestCaseAbstract
         $currentArray = $this->getResourceJson('fixture/Product/Update/patch.json');
         $previous = $this->getFactory()->createProduct($previousArray);
         $current = $this->getFactory()->createProduct($currentArray);
+        $status = new Status([
+            'active'      => true,
+            'statusMatch' => 'PROCESSADO_INTEGRACAO_CATALOGO',
+        ]);
+        $current->set('status', $status);
         $operation = $manager->update($current, $previous);
 
         $expected = [
