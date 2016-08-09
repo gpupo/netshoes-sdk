@@ -16,6 +16,7 @@ namespace Gpupo\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Exception\RuntimeException;
 
 /**
  */
@@ -35,7 +36,32 @@ final class Status extends EntityAbstract implements EntityInterface
         ];
     }
 
+    public function getMessage()
+    {
+        $statusMatch = $this->get('statusMatch');
+
+        if (empty($statusMatch)) {
+            throw new RuntimeException('Product Not Found', 404);
+        }
+
+        return $statusMatch;
+    }
+
     public function isPending()
     {
+        return ('PROCESSADO_INTEGRACAO_CATALOGO' !== $this->getMessage());
+    }
+
+    public function toLog()
+    {
+        $array = [
+            'message' => $this->getMessage(),
+        ];
+
+        foreach (['getActive', 'getHasPrice', 'getHasStock', 'isPending'] as $k) {
+            $array[$k] = (true === $this->$k()) ? 'yes' : 'no';
+        }
+
+        return $array;
     }
 }
