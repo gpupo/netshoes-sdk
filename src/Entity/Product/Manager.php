@@ -33,11 +33,12 @@ final class Manager extends AbstractManager
      * @codeCoverageIgnore
      */
     protected $maps = [
-        'save'     => ['POST', '/products'],
-        'findById' => ['GET', '/products/{itemId}'],
-        'patch'    => ['PATCH', '/products/{itemId}'],
-        'update'   => ['PUT', '/products/{itemId}'],
-        'fetch'    => ['GET', '/products?page={offset}&size={limit}'],
+        'save'       => ['POST', '/products'],
+        'findById'   => ['GET', '/products/{itemId}'],
+        'patch'      => ['PATCH', '/products/{itemId}'],
+        'update'     => ['PUT', '/products/{itemId}'],
+        'fetch'      => ['GET', '/products?page={offset}&size={limit}'],
+        'statusById' => ['GET', '/skus/{itemId}/bus/{buId}/status'],
     ];
 
     public function patch(EntityInterface $entity, $compare)
@@ -70,6 +71,23 @@ final class Manager extends AbstractManager
         }
 
         $this->save($entity);
+
+        return true;
+    }
+
+    public function fetchStatusById($itemId)
+    {
+        $response = $this->perform($this->factoryMap('statusById', [
+            'itemId' => $itemId,
+        ]));
+
+        $data = $this->processResponse($response);
+
+        if (empty($data)) {
+            return;
+        }
+
+        return new Status($data->toArray());
     }
 
     private function skuManager()
@@ -86,7 +104,17 @@ final class Manager extends AbstractManager
             throw new \InvalidArgumentException('Product precisa conter SKU!');
         }
 
-        $this->resolveIfNew($entity, $existent);
+        if (true === $this->resolveIfNew($entity, $existent)) {
+            return [
+                'created' => true,
+            ];
+        }
+
+        if (true === $this->fetchStatusById($entity->getId())->isPending()) {
+            return [
+                'pending' => true,
+            ];
+        }
 
         $response = [];
 
