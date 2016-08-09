@@ -15,11 +15,11 @@
 namespace Gpupo\NetshoesSdk\Entity\Product;
 
 use Gpupo\CommonSdk\Entity\EntityInterface;
+use Gpupo\CommonSdk\Exception\InvalidArgumentException;
+use Gpupo\CommonSdk\Exception\RuntimeException;
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
 use Gpupo\NetshoesSdk\Factory;
-use Gpupo\CommonSdk\Exception\RuntimeException;
-use Gpupo\CommonSdk\Exception\InvalidArgumentException;
 
 final class Manager extends AbstractManager
 {
@@ -68,7 +68,7 @@ final class Manager extends AbstractManager
         $this->save($entity);
 
         return [
-            'created'   => true,
+            'created' => true,
         ];
     }
 

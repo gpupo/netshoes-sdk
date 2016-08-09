@@ -138,7 +138,7 @@ $sdk->setLogger($logger);
 
 Para informações do formato de ``$data`` veja o arquivo ``vendor/gpupo/netshoes-sdk/Resources/fixture/Product/new.json``
 
-### Acesso a lista de produtos cadastrados:
+### Acesso a lista de produtos cadastrados
 
 ``` php
 <?php
@@ -155,6 +155,16 @@ $produtosCadastrados = $sdk->factoryManager('product')->fetch(); // Collection d
 //..
 $produto = $sdk->factoryManager('product')->findById(9)); // Objeto Produto
 echo $product->getName(); // Acesso ao nome do produto de Id 9
+```
+
+### Acesso ao Status de um Product
+
+
+``` php
+<?php
+//..
+$status = $sdk->factoryManager('product')->fetchStatusById(9)); // Objeto Status
+$status->isPending(); // boolean ou RuntimeException code 404 (inexixtente)
 ```
 
 ### Criação de um produto
@@ -525,6 +535,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Administra operações de SKUs
 - [x] Possui objeto client
 - [x] Get a list of Orders
+- [x] Get a empty list of Orders
 - [x] Get a list of Common Schema Orders
 - [x] Get a list of most recent Common Schema Orders
 - [x] Get a order based on order number
@@ -534,8 +545,12 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Falha ao tentar mover o status de um pedido para invoiced sem informar NF 
 - [x] Update the shipping status to Invoiced 
 - [x] Update the shipping status to Canceled - Require ``Shipping Cancellation Reason`` 
+- [x] Não atualiza pedido que não alterou status 
+- [x] Normaliza Shipping 
 - [x] Update the shipping status to Delivered - Require ``Transport Delivery Date`` 
 - [x] Update the shipping status to Shipped - Require ``Transport Info`` 
+- [x] Pedido em situação ``Shipped`` possui Invoice
+- [x] Pedido em situação ``Shipped`` possui Transport
 
 ### NetshoesSdk\Entity\Order\OrderCollection
 
@@ -797,6 +812,8 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 ### NetshoesSdk\Entity\Order\Translator
 
 
+- [x] Falha ao tentar traduzir para extrangeiro sem possuir nativo
+- [x] Falha ao tentar traduzir para nativo sem possuir estrangeiro
 - [x] ``translateTo()`` 
 - [x] ``translateFrom()`` 
 - [x] ``Traduz sem perder informação`` 
@@ -824,6 +841,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui objeto Client
 - [x] Obtem a lista de produtos cadastrados
 - [x] Entrega lista de produtos no padrão comum
+- [x] Tem acesso ao Manager de Sku
 - [x] Recupera informações de um produto especifico a partir de Id
 - [x] Recupera informações em padrão comum  a partir de Id
 - [x] Recebe false em caso de produto inexistente
@@ -849,6 +867,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Possui propriedades e objetos 
 - [x] Possui uma colecao attributes 
 - [x] Entrega json 
+- [x] To patch 
 - [x] Possui método ``getProductId()`` para acessar ProductId 
 - [x] Possui método ``setProductId()`` que define ProductId 
 - [x] Possui método ``getSkus()`` para acessar Skus 
@@ -982,9 +1001,17 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 
 - [x] Encontra um Sku pelo Id
 
+### NetshoesSdk\Entity\Product\Status
+
+
+- [x] Identifica se um produto está pendente
+
 ### NetshoesSdk\Entity\Product\Translator
 
 
+- [x] Falha ao tentar traduzir para extrangeiro sem possuir nativo
+- [x] Falha ao tentar traduzir para nativo sem possuir estrangeiro
+- [x] ``loadMap()`` 
 - [x] ``translateTo()`` 
 - [x] ``translateFrom()`` 
 - [x] ``Traduz sem perder informação de preço`` 
@@ -1013,6 +1040,7 @@ as rotas de Entity/Product/Sku precisam ser revistas.
 - [x] Instance
 - [x] Possui objeto metadata
 - [x] Metadata self
+- [x] Cut metadata empty
 
 ### NetshoesSdk\Factory
 
