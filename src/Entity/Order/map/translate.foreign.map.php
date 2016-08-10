@@ -69,8 +69,8 @@ $shipping = [
     'transport' => $foreign->get('tracking'),
 ];
 
-if (array_key_exists('cancelationReason', $extra)) {
-    $shipping['cancelationReason'] = $extra['cancelationReason'];
+if (array_key_exists('cancellationReason', $extra)) {
+    $shipping['cancellationReason'] = $extra['cancellationReason'];
 }
 
 $data = [
