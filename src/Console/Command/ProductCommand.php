@@ -25,9 +25,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class ProductCommand extends AbstractCommand
 {
-    protected $list = ['view', 'status', 'insert', 'update', 'list', 'translateTo', 'translateUpdate'];
+    protected $list = ['view', 'status', 'insert', 'update', 'fetch', 'translateTo', 'translateUpdate'];
 
-    public function list($app)
+    public function fetch($app)
     {
         $this->getApp()->appendCommand('product:list', 'List')
             ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {

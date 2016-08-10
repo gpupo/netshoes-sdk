@@ -31,7 +31,7 @@ echo $product->getName(); // Acesso ao nome do produto de Id 9
 <?php
 //..
 $status = $sdk->factoryManager('product')->fetchStatusById(9)); // Objeto Status
-$status->isPending(); // boolean ou RuntimeException code 404 (inexixtente)
+$status->isPending(); // boolean ou RuntimeException code 404 (inexistente)
 ```
 
 ### Criação de um produto
