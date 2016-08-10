@@ -18,8 +18,6 @@ use Gpupo\CommonSdk\Entity\EntityAbstract;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Exception\RuntimeException;
 
-/**
- */
 final class Status extends EntityAbstract implements EntityInterface
 {
     /**
