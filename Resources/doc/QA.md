@@ -11,3 +11,5 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2/big.png)](https://insight.sensiolabs.com/projects/c59c4efb-173f-4008-b7e8-17a2586fb0f2)
 
 [![StyleCI](https://styleci.io/repos/61658580/shield)](https://styleci.io/repos/61658580)
+
+[![Dependency Status](https://dependencyci.com/github/gpupo/netshoes-sdk/badge)](https://dependencyci.com/github/gpupo/netshoes-sdk)
