@@ -51,6 +51,6 @@ $array = [
      'productType' => $foreign->get('productType'),
      'brand'       => $foreign->get('brand'),
      'skus'        => $skusList,
- ];
+];
 
 return $array;

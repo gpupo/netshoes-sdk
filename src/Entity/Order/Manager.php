@@ -14,8 +14,6 @@
 
 namespace Gpupo\NetshoesSdk\Entity\Order;
 
-use DateInterval;
-use DateTime;
 use Gpupo\CommonSdk\Entity\EntityInterface;
 use Gpupo\CommonSdk\Response;
 use Gpupo\CommonSdk\Traits\LoadTrait;

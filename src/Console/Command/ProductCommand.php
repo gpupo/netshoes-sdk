@@ -133,7 +133,6 @@ final class ProductCommand extends AbstractCommand
                 $t = new ArrayInput([
                     'command' => 'product:sku:details',
                     'skuId'   => $id,
-
                 ]);
                 $command->run($t, $output);
             });

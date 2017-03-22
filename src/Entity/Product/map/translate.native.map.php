@@ -47,4 +47,4 @@ return [
      'category'    => '',
      'brand'       => $native->getBrand(),
      'skus'        => $skusList,
- ];
+];
