@@ -16,6 +16,7 @@ namespace Gpupo\NetshoesSdk\Traits;
 
 use DateTime;
 use DateTimeZone;
+use DateInterval;
 
 trait DateTimeTrait
 {
@@ -52,5 +53,13 @@ trait DateTimeTrait
 
             return str_replace('-03:00', '.000-03:00', $string);
         }
+    }
+
+    protected function dateMove($move)
+    {
+        $date = new DateTime();
+        $date->sub(new DateInterval($move));
+
+        return $date->format('c');
     }
 }

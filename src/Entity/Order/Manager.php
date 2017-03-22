@@ -21,11 +21,13 @@ use Gpupo\CommonSdk\Response;
 use Gpupo\CommonSdk\Traits\LoadTrait;
 use Gpupo\CommonSdk\Traits\TranslatorManagerTrait;
 use Gpupo\NetshoesSdk\Entity\AbstractManager;
+use Gpupo\NetshoesSdk\Traits\DateTimeTrait;
 
 final class Manager extends AbstractManager
 {
     use TranslatorManagerTrait;
     use LoadTrait;
+    use DateTimeTrait;
 
     protected $entity = 'Order';
 
@@ -127,12 +129,9 @@ final class Manager extends AbstractManager
 
     public function fetchQueue($offset = 0, $limit = 50, array $parameters = [])
     {
-        $date = new DateTime();
-        $date->sub(new DateInterval('P4D'));
-
         return $this->translatorFetch($offset, $limit, array_merge([
             'orderStatus'    => 'approved',
-            'orderStartDate' => $date->format('Y-m-d'),
+            'orderStartDate' => $this->dateMove('P4D'),
         ], $parameters));
     }
 }

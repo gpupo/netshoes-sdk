@@ -66,6 +66,17 @@ class ManagerTest extends TestCaseAbstract
     }
 
     /**
+     * @testdox Factory date value
+     * @test
+     * @depends testManager
+     * @covers \Gpupo\NetshoesSdk\Traits\DateTimeTrait::dateMove
+     */
+    public function dateMove(Manager $manager)
+    {
+        $this->assertSame(25, strlen($this->proxy($manager)->dateMove('P4D')));
+    }
+
+    /**
      * @testdox Get a list of Orders
      * @test
      * @depends testManager
