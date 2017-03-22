@@ -108,7 +108,9 @@
         <ul>
             <li style="color: #555753;">✓ Administra operações de SKUs</li>
             <li style="color: #555753;">✓ Possui objeto client</li>
+            <li style="color: #555753;">✓ Factory date value</li>
             <li style="color: #555753;">✓ Get a list of Orders</li>
+            <li style="color: #555753;">✓ Get a empty list of Orders</li>
             <li style="color: #555753;">✓ Get a list of Common Schema Orders</li>
             <li style="color: #555753;">✓ Get a list of most recent Common Schema Orders</li>
             <li style="color: #555753;">✓ Get a order based on order number</li>
@@ -118,8 +120,12 @@
             <li style="color: #555753;">✓ Falha ao tentar mover o status de um pedido para invoiced sem informar NF </li>
             <li style="color: #555753;">✓ Update the shipping status to Invoiced </li>
             <li style="color: #555753;">✓ Update the shipping status to Canceled - Require ``Shipping Cancellation Reason`` </li>
+            <li style="color: #555753;">✓ Não atualiza pedido que não alterou status </li>
+            <li style="color: #555753;">✓ Normaliza Shipping </li>
             <li style="color: #555753;">✓ Update the shipping status to Delivered - Require ``Transport Delivery Date`` </li>
             <li style="color: #555753;">✓ Update the shipping status to Shipped - Require ``Transport Info`` </li>
+            <li style="color: #555753;">✓ Pedido em situação ``Shipped`` possui Invoice</li>
+            <li style="color: #555753;">✓ Pedido em situação ``Shipped`` possui Transport</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\OrderCollectionTest">Gpupo\Tests\NetshoesSdk\Entity\Order\OrderCollection</h2>
         <ul>
@@ -175,7 +181,6 @@
             <li style="color: #555753;">✓ Possui método ``setTotalNet()`` que define TotalNet </li>
             <li style="color: #555753;">✓ Possui método ``getTotalQuantity()`` para acessar TotalQuantity </li>
             <li style="color: #555753;">✓ Possui método ``setTotalQuantity()`` que define TotalQuantity </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Customer\AddressTest">Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Customer\Address</h2>
         <ul>
@@ -195,7 +200,6 @@
             <li style="color: #555753;">✓ Possui método ``setState()`` que define State </li>
             <li style="color: #555753;">✓ Possui método ``getStreet()`` para acessar Street </li>
             <li style="color: #555753;">✓ Possui método ``setStreet()`` que define Street </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Customer\CustomerTest">Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Customer\Customer</h2>
         <ul>
@@ -215,7 +219,6 @@
             <li style="color: #555753;">✓ Possui método ``setStateInscription()`` que define StateInscription </li>
             <li style="color: #555753;">✓ Possui método ``getTradeName()`` para acessar TradeName </li>
             <li style="color: #555753;">✓ Possui método ``setTradeName()`` que define TradeName </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\InvoiceTest">Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Invoice</h2>
         <ul>
@@ -236,7 +239,6 @@
             <li style="color: #555753;">✓ Possui método ``setShipDate()`` que define ShipDate </li>
             <li style="color: #555753;">✓ Possui método ``getUrl()`` para acessar Url </li>
             <li style="color: #555753;">✓ Possui método ``setUrl()`` que define Url </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Items\ItemTest">Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Items\Item</h2>
         <ul>
@@ -290,7 +292,6 @@
             <li style="color: #555753;">✓ Possui método ``setDevolutionExchangeStatus()`` que define DevolutionExchangeStatus </li>
             <li style="color: #555753;">✓ Possui método ``getExchangeProcessCode()`` para acessar ExchangeProcessCode </li>
             <li style="color: #555753;">✓ Possui método ``setExchangeProcessCode()`` que define ExchangeProcessCode </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Items\ItemsTest">Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Items\Items</h2>
         <ul>
@@ -307,7 +308,6 @@
             <li style="color: #555753;">✓ Possui método ``setSupplierCnpj()`` que define SupplierCnpj </li>
             <li style="color: #555753;">✓ Possui método ``getSupplierName()`` para acessar SupplierName </li>
             <li style="color: #555753;">✓ Possui método ``setSupplierName()`` que define SupplierName </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\ShippingTest">Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Shipping</h2>
         <ul>
@@ -333,7 +333,6 @@
             <li style="color: #555753;">✓ Possui método ``setCancellationReason()`` que define CancellationReason </li>
             <li style="color: #555753;">✓ Possui método ``getDevolutionItems()`` para acessar DevolutionItems </li>
             <li style="color: #555753;">✓ Possui método ``setDevolutionItems()`` que define DevolutionItems </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\ShippingsTest">Gpupo\Tests\NetshoesSdk\Entity\Order\Shippings\Shippings</h2>
         <ul>
@@ -359,10 +358,11 @@
             <li style="color: #555753;">✓ Possui método ``setTrackingNumber()`` que define TrackingNumber </li>
             <li style="color: #555753;">✓ Possui método ``getTrackingShipDate()`` para acessar TrackingShipDate </li>
             <li style="color: #555753;">✓ Possui método ``setTrackingShipDate()`` que define TrackingShipDate </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Order\TranslatorTest">Gpupo\Tests\NetshoesSdk\Entity\Order\Translator</h2>
         <ul>
+            <li style="color: #555753;">✓ Falha ao tentar traduzir para extrangeiro sem possuir nativo</li>
+            <li style="color: #555753;">✓ Falha ao tentar traduzir para nativo sem possuir estrangeiro</li>
             <li style="color: #555753;">✓ ``translateTo()`` </li>
             <li style="color: #555753;">✓ ``translateFrom()`` </li>
             <li style="color: #555753;">✓ ``Traduz sem perder informação`` </li>
@@ -373,7 +373,6 @@
             <li style="color: #555753;">✓ Possui método ``setName()`` que define Name </li>
             <li style="color: #555753;">✓ Possui método ``getValue()`` para acessar Value </li>
             <li style="color: #555753;">✓ Possui método ``setValue()`` que define Value </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\Attributes\AttributesTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Attributes\Attributes</h2>
         <ul>
@@ -385,6 +384,7 @@
             <li style="color: #555753;">✓ Possui objeto Client</li>
             <li style="color: #555753;">✓ Obtem a lista de produtos cadastrados</li>
             <li style="color: #555753;">✓ Entrega lista de produtos no padrão comum</li>
+            <li style="color: #555753;">✓ Tem acesso ao Manager de Sku</li>
             <li style="color: #555753;">✓ Recupera informações de um produto especifico a partir de Id</li>
             <li style="color: #555753;">✓ Recupera informações em padrão comum  a partir de Id</li>
             <li style="color: #555753;">✓ Recebe false em caso de produto inexistente</li>
@@ -406,6 +406,7 @@
             <li style="color: #555753;">✓ Possui propriedades e objetos </li>
             <li style="color: #555753;">✓ Possui uma colecao attributes </li>
             <li style="color: #555753;">✓ Entrega json </li>
+            <li style="color: #555753;">✓ To patch </li>
             <li style="color: #555753;">✓ Possui método ``getProductId()`` para acessar ProductId </li>
             <li style="color: #555753;">✓ Possui método ``setProductId()`` que define ProductId </li>
             <li style="color: #555753;">✓ Possui método ``getSkus()`` para acessar Skus </li>
@@ -418,13 +419,11 @@
             <li style="color: #555753;">✓ Possui método ``setBrand()`` que define Brand </li>
             <li style="color: #555753;">✓ Possui método ``getAttributes()`` para acessar Attributes </li>
             <li style="color: #555753;">✓ Possui método ``setAttributes()`` que define Attributes </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\ImageTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\Image</h2>
         <ul>
             <li style="color: #555753;">✓ Possui método ``getUrl()`` para acessar Url </li>
             <li style="color: #555753;">✓ Possui método ``setUrl()`` que define Url </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\ImagesTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\Images</h2>
         <ul>
@@ -461,7 +460,6 @@
             <li style="color: #555753;">✓ Possui método ``setDepth()`` que define Depth </li>
             <li style="color: #555753;">✓ Possui método ``getWeight()`` para acessar Weight </li>
             <li style="color: #555753;">✓ Possui método ``setWeight()`` que define Weight </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\ManagerTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\Manager</h2>
         <ul>
@@ -493,13 +491,11 @@
             <li style="color: #555753;">✓ Possui método ``setPriceTo()`` que define PriceTo </li>
             <li style="color: #555753;">✓ Possui método ``getDateInit()`` para acessar DateInit </li>
             <li style="color: #555753;">✓ Possui método ``getDateEnd()`` para acessar DateEnd </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\PriceTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\Price</h2>
         <ul>
             <li style="color: #555753;">✓ Possui método ``getPrice()`` para acessar Price </li>
             <li style="color: #555753;">✓ Possui método ``setPrice()`` que define Price </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\SkuCollectionTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\SkuCollection</h2>
         <ul>
@@ -512,20 +508,25 @@
         <ul>
             <li style="color: #555753;">✓ Possui método ``getActive()`` para acessar Active </li>
             <li style="color: #555753;">✓ Possui método ``setActive()`` que define Active </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\StockTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Sku\Stock</h2>
         <ul>
             <li style="color: #555753;">✓ Possui método ``getAvailable()`` para acessar Available </li>
             <li style="color: #555753;">✓ Possui método ``setAvailable()`` que define Available </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\SkusTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Skus</h2>
         <ul>
             <li style="color: #555753;">✓ Encontra um Sku pelo Id</li>
         </ul>
+        <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\StatusTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Status</h2>
+        <ul>
+            <li style="color: #555753;">✓ Identifica se um produto está pendente</li>
+        </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Product\TranslatorTest">Gpupo\Tests\NetshoesSdk\Entity\Product\Translator</h2>
         <ul>
+            <li style="color: #555753;">✓ Falha ao tentar traduzir para extrangeiro sem possuir nativo</li>
+            <li style="color: #555753;">✓ Falha ao tentar traduzir para nativo sem possuir estrangeiro</li>
+            <li style="color: #555753;">✓ ``loadMap()`` </li>
             <li style="color: #555753;">✓ ``translateTo()`` </li>
             <li style="color: #555753;">✓ ``translateFrom()`` </li>
             <li style="color: #555753;">✓ ``Traduz sem perder informação de preço`` </li>
@@ -538,7 +539,6 @@
             <li style="color: #555753;">✓ Possui método ``setName()`` que define Name </li>
             <li style="color: #555753;">✓ Possui método ``getExternalCode()`` para acessar ExternalCode </li>
             <li style="color: #555753;">✓ Possui método ``setExternalCode()`` que define ExternalCode </li>
-            <li style="color: #555753;">✓ Possui métodos especiais para output de informações</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\Entity\Templates\ManagerTest">Gpupo\Tests\NetshoesSdk\Entity\Templates\Manager</h2>
         <ul>
@@ -551,6 +551,7 @@
             <li style="color: #555753;">✓ Instance</li>
             <li style="color: #555753;">✓ Possui objeto metadata</li>
             <li style="color: #555753;">✓ Metadata self</li>
+            <li style="color: #555753;">✓ Cut metadata empty</li>
         </ul>
         <h2 id="Gpupo\Tests\NetshoesSdk\FactoryTest">Gpupo\Tests\NetshoesSdk\Factory</h2>
         <ul>
