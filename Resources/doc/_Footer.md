@@ -1,5 +1,5 @@
 
-@gpupo.[repos()](http://www.g1mr.com/)
+@gpupo.[repos()](https://opensource.gpupo.com/)
 | $github.[repo()](https://github.com/gpupo/netshoes-sdk/)
 | $bitbucket.[repo()](https://bitbucket.org/gpupo/netshoes-sdk/)
 
