@@ -1,11 +1,11 @@
 {
     "name": "gpupo/netshoes-sdk",
     "description": "SDK Não Oficial para integração a partir de aplicações PHP com APIs da Netshoes Marketplace",
-    "homepage": "http://www.g1mr.com/netshoes-sdk/",
+    "homepage": "https://opensource.gpupo.com/netshoes-sdk/",
     "authors": [
         {
             "name": "Gilmar Pupo",
-            "email": "g@g1mr.com"
+            "email": "contact@gpupo.com"
         }
     ],
     "keywords": ["netshoes", "marketplace", "sdk", "api"],
