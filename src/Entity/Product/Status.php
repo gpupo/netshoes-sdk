@@ -47,7 +47,7 @@ final class Status extends EntityAbstract implements EntityInterface
 
     public function isPending()
     {
-        return 'PROCESSADO_INTEGRACAO_CATALOGO' !== $this->getMessage();
+        return false === $this->get('active');
     }
 
     public function toLog()
