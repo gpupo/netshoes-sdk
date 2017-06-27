@@ -14,9 +14,9 @@
 
 namespace Gpupo\NetshoesSdk\Traits;
 
+use DateInterval;
 use DateTime;
 use DateTimeZone;
-use DateInterval;
 
 trait DateTimeTrait
 {
