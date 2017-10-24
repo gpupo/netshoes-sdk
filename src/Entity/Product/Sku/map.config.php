@@ -28,6 +28,5 @@ return [
     'savePrice'         => ['PUT', $s.'/prices'], //Save a base price
     'saveStock'         => ['PUT', $s.'/stocks'], //Update stock quantity by sku
     'getStock'          => ['GET', $s.'/stocks'], //Get Stock
-    'saveStatus'        => ['PUT', $s.'/bus/{buId}/status'], //Save Status
     'getStatus'         => ['GET', $s.'/bus/{buId}/status'], //Get Status
 ];

@@ -2,7 +2,7 @@
 
 /*
  * This file is part of gpupo/netshoes-sdk
- * Created by Gilmar Pupo <g@g1mr.com>
+ * Created by Gilmar Pupo <contact@gpupo.com>
  * For the information of copyright and license you should read the file
  * LICENSE which is distributed with this source code.
  * Para a informação dos direitos autorais e de licença você deve ler o arquivo

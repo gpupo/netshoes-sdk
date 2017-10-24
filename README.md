@@ -77,7 +77,7 @@ Proibido:
 * Aos que [fizeram sugestões importantes](https://github.com/gpupo/netshoes-sdk/issues);
 * Aos desenvolvedores que criaram as [bibliotecas utilizadas neste componente](https://github.com/gpupo/netshoes-sdk/blob/master/Resources/doc/libraries-list.md).
 
- _- [Gilmar Pupo](http://www.g1mr.com/)_
+ _- [Gilmar Pupo](https://opensource.gpupo.com/)_
 
 
 
@@ -399,8 +399,8 @@ Utilize como modelo o arquivo ``bin/app.json.dist``
 * [Netshoes-sdk Composer Package](https://packagist.org/packages/gpupo/netshoes-sdk) no packagist.org
 * [Documentação Oficial](http://developers.netshoes.com.br/api-portal/)
 * [SDK Oficial](https://github.com/netshoes/marketplace-api-sdk-php)
-* [Marketplace-bundle Composer Package](http://www.g1mr.com/MarkethubBundle/) - Integração deste pacote com Symfony
-* [Outras SDKs para o Ecommerce do Brasil](http://www.g1mr.com/common-sdk/)
+* [Marketplace-bundle Composer Package](https://opensource.gpupo.com/MarkethubBundle/) - Integração deste pacote com Symfony
+* [Outras SDKs para o Ecommerce do Brasil](https://opensource.gpupo.com/common-sdk/)
 
 
 
